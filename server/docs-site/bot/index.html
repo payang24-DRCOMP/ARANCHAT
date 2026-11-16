@@ -1,0 +1,273 @@
+<!doctype html>
+<!-- คู่มือการ์ด + ปุ่ม + คำสั่งบอท + มินิแอป __BRAND__ — https://__CHAT_HOST__/connect/bot/
+     ต้นฉบับ: ~/aranchat-ess/docs-site/bot/ → scripts/25-docs.sh คัดลอกไป ~/aranchat-apps/web-dist/docs/bot/ (nginx: location ^~ /connect/bot/)
+     API จริง: notify/server.mjs + notify/cardkit.mjs · แม่แบบ: notify/templates/examples.json -->
+<html lang="th" translate="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google" content="notranslate">
+  <title>การ์ดและบอท __BRAND__</title>
+  <link rel="icon" href="/branding/icon-120.png">
+  <link rel="stylesheet" href="/branding/aranchat.css">
+  <style>
+    :root { --brand: #5B3FD9; --ink: #0F172A; --muted: #475569; --line: #E4DCFD; --tint: #F4F1FC; --code: #1E1B3A; --ok: #0E7A55; --crit: #DC2626; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #F1EEF9; color: var(--ink); font-family: "Inter", "Sarabun", "Noto Sans Thai", system-ui, sans-serif; line-height: 1.6; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 24px 16px 48px; }
+    header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+    header img { width: 44px; height: 44px; border-radius: 12px; }
+    header b { font-size: 20px; }
+    header nav { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+    header nav a { padding: 8px 16px; border-radius: 999px; background: #fff; color: var(--brand); text-decoration: none; font-weight: 600; border: 1px solid var(--line); }
+    .toc { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 16px; }
+    .toc a { padding: 6px 14px; border-radius: 999px; background: var(--tint); color: var(--brand); text-decoration: none; font-weight: 600; font-size: 14px; }
+    section { background: #fff; border-radius: 24px; padding: 24px; margin-bottom: 16px; box-shadow: 0 8px 24px rgba(26,15,77,.06); scroll-margin-top: 16px; }
+    h1 { margin: 0 0 8px; font-size: 28px; line-height: 1.3; }
+    h2 { margin: 0 0 12px; font-size: 22px; }
+    h3 { margin: 20px 0 8px; font-size: 17px; }
+    p, li { color: var(--muted); }
+    p { margin: 0 0 12px; }
+    ul { margin: 0 0 12px; padding-left: 20px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 12px; }
+    th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+    td:first-child { white-space: nowrap; }
+    td:last-child { min-width: 0; }
+    table { table-layout: auto; }
+    code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Sarabun", "Noto Sans Thai", monospace; font-size: 13px; background: var(--tint); padding: 2px 6px; border-radius: 6px; color: #3B2A9E; }
+    pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Sarabun", "Noto Sans Thai", monospace; margin: 0 0 12px; background: var(--code); color: #EDE9FE; padding: 16px; border-radius: 16px; overflow-x: auto; font-size: 13px; line-height: 1.55; }
+    pre code { background: none; color: inherit; padding: 0; }
+    .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 12px 0 4px; }
+    .flow div { background: var(--tint); border-radius: 16px; padding: 14px; font-size: 14px; color: var(--muted); }
+    .flow b { display: block; color: var(--ink); margin-bottom: 2px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+    .tpl { border: 1px solid var(--line); border-radius: 20px; padding: 14px; background: #FBFAFE; display: flex; flex-direction: column; gap: 10px; }
+    .tpl img { width: 100%; max-width: 340px; align-self: center; border-radius: 18px; box-shadow: 0 4px 16px rgba(30,27,75,.08); }
+    .tpl h3 { margin: 0; }
+    .tpl p { margin: 0; font-size: 14px; }
+    details summary { cursor: pointer; font-weight: 600; color: var(--brand); }
+    details pre { margin-top: 8px; max-height: 420px; }
+    .copy { float: right; font: inherit; font-size: 12px; border: 0; background: rgba(255,255,255,.12); color: #EDE9FE; padding: 2px 10px; border-radius: 999px; cursor: pointer; }
+    .note { background: #FFF7ED; border-radius: 16px; padding: 12px 16px; color: #9A3412; font-size: 14px; margin-bottom: 12px; }
+    .ok { background: #ECFDF5; color: #065F46; }
+    .shot { display: block; width: 100%; max-width: 760px; border-radius: 16px; border: 1px solid var(--line); margin: 8px 0 12px; }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+    .tabs button { border: 1px solid var(--line); background: #fff; color: var(--ink); padding: 6px 14px; border-radius: 999px; font: inherit; font-weight: 600; cursor: pointer; }
+    .tabs button[aria-selected="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+    footer { margin-top: 24px; text-align: center; color: #64748B; font-size: 13px; }
+    td code { overflow-wrap: anywhere; word-break: break-word; }
+    section { overflow-x: auto; }
+    @media (max-width: 760px) { .flow { grid-template-columns: 1fr 1fr; } h1 { font-size: 24px; } section { padding: 16px; } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="/branding/icon-120.png" alt="">
+    <b>__BRAND__ · การ์ดและบอท</b>
+    <nav><a href="/connect/">← ส่งแจ้งเตือน (พื้นฐาน)</a><a href="https://__CHAT_HOST__/">เปิดเว็บแชท</a></nav>
+  </header>
+
+  <section>
+    <h1>การ์ด ปุ่ม คำสั่ง และมินิแอป</h1>
+    <p>ต่อจาก <a href="/connect/">คู่มือส่งแจ้งเตือน</a>: ระบบของคุณส่งการ์ดที่จัดหน้าได้ (ตาราง ขั้นตอน ตัวเลขสรุป รูป) พร้อมปุ่มให้กดในแชท
+       แล้วรับผลการกดกลับมาที่ระบบ — อนุมัติงาน รับเคส นัดหมาย ได้จบในแชท ข้อมูลทั้งหมดอยู่บนเซิร์ฟเวอร์ของโรงพยาบาล</p>
+    <div class="flow">
+      <div><b>1. ส่งการ์ด</b><code>POST /api/notify</code> ใส่ <code>sections</code> / <code>buttons</code></div>
+      <div><b>2. คนกดปุ่ม</b>ทุกคนในห้องเห็นว่าใครกดอะไร</div>
+      <div><b>3. เรียก webhook</b>ของระบบคุณ (ลงลายเซ็น HMAC)</div>
+      <div><b>4. การ์ดอัปเดต</b>แสดงผลการตัดสิน + ซ่อนปุ่ม ทุกห้อง</div>
+    </div>
+  </section>
+
+  <nav class="toc">
+    <a href="#templates">แม่แบบการ์ด</a><a href="#structure">โครงสร้างการ์ด</a><a href="#buttons">ปุ่ม</a>
+    <a href="#webhook">Webhook</a><a href="#commands">คำสั่ง / และเมนู</a><a href="#miniapp">มินิแอป</a><a href="#limits">ข้อจำกัด</a>
+  </nav>
+
+  <section id="templates">
+    <h2>แม่แบบการ์ดสำหรับงานโรงพยาบาล</h2>
+    <p>ภาพทุกใบคือการ์ดจริงจาก JSON ด้านล่าง — คัดลอกไปแก้ข้อความ แล้วใส่ <code>to</code> (ผู้รับ) ก่อนส่ง</p>
+    <div class="gallery" id="gallery"><p>กำลังโหลดแม่แบบ…</p></div>
+  </section>
+
+  <section id="structure">
+    <h2>โครงสร้างการ์ด</h2>
+    <p>ทุกช่องไม่บังคับ ยกเว้น <code>event</code> และ <code>title</code> · แอปรุ่นเก่าที่ยังไม่รู้จักช่องใหม่ จะเห็นการ์ดแบบเดิม/ข้อความธรรมดา</p>
+    <table>
+      <tr><th>ช่อง</th><th>ใช้ทำอะไร</th></tr>
+      <tr><td><code>level</code></td><td>สีหัวการ์ด: <code>info</code> น้ำเงิน · <code>success</code> เขียว · <code>warning</code> ส้ม · <code>critical</code> แดง (<code>priority: "urgent"</code> = แดง + ปุ่มรับทราบ + เตือนซ้ำ/ส่งต่อ)</td></tr>
+      <tr><td><code>subtitle</code></td><td>บรรทัดรองใต้หัวข้อ</td></tr>
+      <tr><td><code>image</code></td><td>รูปใหญ่ใต้หัวการ์ด: <code>https://…</code> (≤ 2 MB — เซิร์ฟเวอร์ดึงแล้วเก็บในแชทให้ แอปไม่ต้องโหลดจากภายนอก)</td></tr>
+      <tr><td><code>fields</code></td><td><code>[["HN","0012345"], ["K","2.4","crit"]]</code> — ช่องที่ 3 คือโทนสี: <code>crit</code> แดง ‼ · <code>high</code> ส้ม ↑ · <code>low</code> น้ำเงิน ↓ · <code>ok</code> เขียว · <code>muted</code> จาง</td></tr>
+      <tr><td><code>sections</code></td><td>ส่วนเนื้อหา (สูงสุด 8) — ดูตารางถัดไป</td></tr>
+      <tr><td><code>buttons</code></td><td>ปุ่ม (สูงสุด 4) — ดู <a href="#buttons">ปุ่ม</a></td></tr>
+      <tr><td><code>quick_replies</code></td><td>ปุ่มตอบด่วนเหนือช่องพิมพ์ <code>[{"label":"ดูอีกครั้ง","text":"/lab 0012345"}]</code> หายเมื่อมีข้อความใหม่ (สูงสุด 6) · ข้อความลงท้ายด้วยเว้นวรรค = ใส่ลงช่องพิมพ์ให้พิมพ์ต่อ</td></tr>
+      <tr><td><code>approvers</code></td><td>ผู้มีสิทธิ์กดปุ่มสั่งงาน <code>["arankub:12", "@user:__SERVER__"]</code> — ไม่ใส่ = ทุกคนที่เห็นการ์ด (ระบบควรตรวจสิทธิ์ซ้ำที่ webhook เสมอ)</td></tr>
+    </table>
+    <h3>ส่วนเนื้อหา (<code>sections</code>)</h3>
+    <table>
+      <tr><th>type</th><th>ตัวอย่าง</th></tr>
+      <tr><td><code>text</code></td><td><code>{"type":"text","text":"เหตุผล: …"}</code></td></tr>
+      <tr><td><code>fields</code></td><td><code>{"type":"fields","title":"เตียง","items":[["อายุรกรรมหญิง","เต็ม","crit"]]}</code></td></tr>
+      <tr><td><code>table</code></td><td><code>{"type":"table","columns":["รายการ","ผล","ช่วงปกติ"],"rows":[["K","2.4","3.5–5.1"]],"tones":[["","crit",""]]}</code> (≤ 4 คอลัมน์ · 20 แถว)</td></tr>
+      <tr><td><code>steps</code></td><td><code>{"type":"steps","items":[{"label":"ปลายทางตอบรับ","time":"10:12","state":"done"},{"label":"รถออก","state":"current"}]}</code> — state: done / current / todo</td></tr>
+      <tr><td><code>stats</code></td><td><code>{"type":"stats","items":[{"label":"OPD","value":"412"},{"label":"Admit","value":"18","tone":"high"}]}</code> (≤ 4 ช่อง)</td></tr>
+    </table>
+  </section>
+
+  <section id="buttons">
+    <h2>ปุ่ม</h2>
+    <table>
+      <tr><th>type</th><th>กดแล้ว</th><th>ตัวอย่าง</th></tr>
+      <tr><td><code>link</code></td><td>เปิดลิงก์</td><td><code>{"type":"link","label":"เปิดใน AranKub","url":"https://…"}</code></td></tr>
+      <tr><td><code>copy</code></td><td>คัดลอกข้อความ (เช่น HN ไปวางใน HOSxP)</td><td><code>{"type":"copy","label":"คัดลอก HN","text":"0012345"}</code></td></tr>
+      <tr><td><code>action</code></td><td>ส่งผลกลับระบบ (webhook) · ตัดสินได้ครั้งเดียว · <code>confirm</code> = ถามยืนยันก่อน</td><td><code>{"type":"action","id":"approve","label":"อนุมัติ","style":"primary"}</code></td></tr>
+      <tr><td><code>datetime</code></td><td>เลือกวันเวลา แล้วส่งค่ากลับ · <code>mode</code>: date / time / datetime · <code>min</code> <code>max</code> <code>initial</code></td><td><code>{"type":"datetime","id":"pickup","label":"นัดรับยา","mode":"datetime","min":"2026-11-17T08:00"}</code></td></tr>
+      <tr><td><code>app</code></td><td>เปิดมินิแอป (หน้าเว็บในแชท รู้ว่าใครเปิด)</td><td><code>{"type":"app","label":"กรอกแบบฟอร์ม","url":"https://…"}</code></td></tr>
+    </table>
+    <p><code>style</code>: <code>primary</code> (ปุ่มทึบ) · <code>secondary</code> · <code>danger</code> (ขอบแดง) · ปุ่มสั่งงาน/เลือกวันเวลากดได้เฉพาะในห้องที่บอทส่งการ์ด — การ์ดที่ผู้ใช้ส่งต่อไปห้องอื่นแสดงอย่างเดียว</p>
+  </section>
+
+  <section id="webhook">
+    <h2>Webhook — รับผลการกดปุ่ม และคำสั่ง /</h2>
+    <p>ระบบตั้ง URL ของตัวเองครั้งเดียวด้วย key ของระบบ · ได้ <code>secret</code> กลับมา (แสดงครั้งเดียว — เก็บให้ดี)</p>
+    <pre><code>curl -X PUT https://__CHAT_HOST__/api/notify/webhook \
+  -H "Authorization: Bearer $ARANCHAT_KEY" -H "Content-Type: application/json" \
+  -d '{"url": "https://your-system.example/aranchat-hook"}'
+# {"url": "...", "secret": "acw_…"}
+
+curl -X POST https://__CHAT_HOST__/api/notify/webhook/test -H "Authorization: Bearer $ARANCHAT_KEY"   # ลองยิง
+curl https://__CHAT_HOST__/api/notify/webhook -H "Authorization: Bearer $ARANCHAT_KEY"               # ดู lastError</code></pre>
+    <h3>สิ่งที่ระบบของคุณได้รับ</h3>
+    <pre><code>POST https://your-system.example/aranchat-hook
+X-AranChat-Signature: base64(HMAC-SHA256(secret, body ดิบ))
+
+{ "type": "action",                 // action | ack | command | test
+  "event": "leave.request", "id": "LV-2026-0458",   // event + id ที่คุณส่งมาตอนสร้างการ์ด
+  "action": "approve", "label": "อนุมัติ", "value": null,   // value = ค่าจากปุ่ม datetime
+  "user": { "mxid": "@somchai:__SERVER__", "name": "สมชาย ใจดี", "arankub": "12" },
+  "at": "2026-11-16T04:34:03.691Z", "webhookEventId": "c1286de0-…", "timestamp": 1794803245033 }</code></pre>
+    <h3>ตอบกลับ (ภายใน 10 วินาที · ไม่บังคับ)</h3>
+    <pre><code>{ "status": { "text": "อนุมัติแล้ว โดย สมชาย ใจดี", "tone": "ok" },   // แสดงบนการ์ด (tone: ok | crit | …)
+  "close": true,                                                     // false = ยังไม่ปิด กดปุ่มอื่นต่อได้
+  "reply": "บันทึกในระบบลาแล้ว" }                                   // ข้อความตอบในห้อง</code></pre>
+    <p>ตอบไม่ใช่ 2xx / หมดเวลา → ผู้ใช้เห็น "ส่งไปยังระบบต้นทางไม่สำเร็จ — ลองกดใหม่" และการ์ดยังไม่ปิด · ไม่ตั้ง webhook → การ์ดปิดพร้อมแสดง "อนุมัติ · ชื่อคนกด · เวลา"</p>
+    <div class="note"><b>ต้องตรวจทุกครั้ง:</b> ลายเซ็นตรง · <code>timestamp</code> ไม่เก่าเกิน 5 นาที · <code>webhookEventId</code> ไม่ซ้ำ · <code>user</code> มีสิทธิ์ทำรายการนั้นจริง ·
+      สถานะเปลี่ยนได้ครั้งเดียว (<code>UPDATE … WHERE status = 'pending'</code>) · <code>args</code> / <code>value</code> มาจากผู้ใช้ ห้ามต่อเป็น SQL/คำสั่งตรงๆ</div>
+    <div class="tabs" id="sigtabs"></div>
+    <pre><code id="sigcode"></code></pre>
+  </section>
+
+  <section id="commands">
+    <h2>คำสั่ง / และเมนูบอท</h2>
+    <p>ผู้ใช้พิมพ์ <code>/</code> ในแชทกับ “__BRAND__ แจ้งเตือน” หรือในห้องแจ้งเตือน แล้วเลือกคำสั่งจากรายการ · เมนูเป็นปุ่มถาวรเหนือช่องพิมพ์</p>
+    <img class="shot" src="img/menu.png" alt="เมนูบอทเหนือช่องพิมพ์">
+    <pre><code>curl -X PUT https://__CHAT_HOST__/api/notify/bot \
+  -H "Authorization: Bearer $ARANCHAT_KEY" -H "Content-Type: application/json" -d '{
+  "commands": [
+    { "command": "lab", "description": "ดูผลแล็บล่าสุด", "usage": "/lab &lt;HN&gt;" },
+    { "command": "bed", "description": "เตียงว่างตอนนี้" }
+  ],
+  "menu": [
+    { "label": "🧪 ผลแล็บ", "type": "text", "text": "/lab " },
+    { "label": "🛏 เตียงว่าง", "type": "text", "text": "/bed" },
+    { "label": "📋 แบบฟอร์ม", "type": "app", "url": "https://your-system.example/form" }
+  ] }'</code></pre>
+    <p>คำสั่งพื้นฐาน <code>/help</code> <code>/settings</code> มีให้แล้ว · ชื่อคำสั่งซ้ำกับระบบอื่นไม่ได้ · เมนูรวมทุกระบบสูงสุด 8 ปุ่ม · <code>text</code> ลงท้ายด้วยเว้นวรรค = ใส่ลงช่องพิมพ์ให้พิมพ์ต่อ</p>
+    <h3>webhook ได้รับ</h3>
+    <pre><code>{ "type": "command", "command": "lab", "args": "0012345",
+  "user": { "mxid": "…", "name": "…", "arankub": "12" },
+  "room": { "id": "!…", "kind": "dm", "channel": null } }    // kind: dm | channel</code></pre>
+    <h3>ตอบกลับด้วยข้อความ หรือการ์ด</h3>
+    <pre><code>{ "reply": "พิมพ์ HN ด้วย เช่น /lab 0012345",
+  "quick_replies": [{ "label": "ตัวอย่าง", "text": "/lab 0012345" }] }
+
+{ "card": { "title": "ผลแล็บล่าสุด HN 0012345", "level": "info",
+            "sections": [{ "type": "table", "columns": ["รายการ","ผล","ช่วงปกติ"], "rows": [["Hb","9.8","12–16"]], "tones": [["","low",""]] }],
+            "buttons": [{ "type": "copy", "label": "คัดลอก HN", "text": "0012345" }] } }</code></pre>
+    <img class="shot" src="img/command_lab.png" alt="การ์ดตอบคำสั่ง /lab" style="max-width:340px">
+  </section>
+
+  <section id="miniapp">
+    <h2>มินิแอป</h2>
+    <p>ปุ่ม/เมนูแบบ <code>app</code> เปิดหน้าเว็บของคุณในแชท (เว็บ/Desktop: หน้าต่างซ้อน · Android: เบราว์เซอร์ในเครื่อง) พร้อม token ระบุตัวผู้ใช้ใน fragment ของ URL:</p>
+    <pre><code>https://your-system.example/form#aranchat_openid=&lt;token&gt;&amp;aranchat_server=__SERVER__</code></pre>
+    <p>หน้าเว็บอ่าน token จาก <code>location.hash</code> ส่งให้ระบบหลังบ้าน แล้วระบบหลังบ้านถามว่าใครเปิด (token อายุประมาณ 1 ชั่วโมง · fragment ไม่ถูกส่งไปกับคำขอ HTTP จึงไม่อยู่ใน log):</p>
+    <pre><code>curl -X POST https://__CHAT_HOST__/api/notify/miniapp/whoami \
+  -H "Authorization: Bearer $ARANCHAT_KEY" -H "Content-Type: application/json" \
+  -d '{"token": "&lt;aranchat_openid&gt;"}'
+# {"mxid": "@somchai:__SERVER__", "name": "สมชาย ใจดี", "arankub": "12"}</code></pre>
+    <div class="note">ถ้าหน้าเว็บตั้ง <code>X-Frame-Options: DENY</code> จะเปิดในหน้าต่างซ้อนไม่ได้ — ผู้ใช้กด “เปิดในหน้าต่างใหม่” ได้ หรืออนุญาต <code>frame-ancestors https://__CHAT_HOST__</code></div>
+  </section>
+
+  <section id="limits">
+    <h2>ข้อจำกัด</h2>
+    <ul>
+      <li>ส่งได้ 60 ครั้ง/นาที/ระบบ · ผู้รับไม่เกิน 200 รายต่อครั้ง · body ไม่เกิน 64 KB</li>
+      <li>การ์ด: ช่องข้อมูล 12 · ส่วนเนื้อหา 8 · ปุ่ม 4 · ปุ่มตอบด่วน 6 · ตาราง 4 คอลัมน์ × 20 แถว</li>
+      <li>คำสั่ง / ใช้ได้ในแชทกับบอทและห้องแจ้งเตือน (ห้องที่ไม่เข้ารหัส) — แชทกลุ่มที่เข้ารหัส บอทอ่านไม่ได้โดยออกแบบ</li>
+      <li>webhook ต้องตอบภายใน 10 วินาที · ส่งครั้งเดียว ไม่ส่งซ้ำ — งานนาน ให้ตอบ 200 ก่อนแล้วส่งผลภายหลังด้วย <code>POST /api/notify</code></li>
+      <li>การ์ดที่มีปุ่มสั่งงานจำไว้ 30 วัน · ห้ามใส่ชื่อ-นามสกุลผู้ป่วยในการ์ด (ใช้ HN) ตามแนวทาง PDPA ของโรงพยาบาล</li>
+    </ul>
+  </section>
+
+  <footer>__BRAND__ · คู่มือการ์ดและบอท · แม่แบบ JSON: <a href="examples.json">examples.json</a></footer>
+</div>
+<script>
+  const DESC = {
+    lab_critical: ["ค่าวิกฤตแล็บ", "ด่วน: ตารางผลพร้อมสีค่าผิดปกติ ปุ่มคัดลอก HN · มีปุ่มรับทราบ + เตือนซ้ำ 15 นาที / ส่งต่อ 30 นาทีให้อัตโนมัติ"],
+    approval: ["ขออนุมัติ (ใบลา / ขอซื้อ)", "ปุ่มอนุมัติ / ไม่อนุมัติ (ถามยืนยัน) · กดแล้วการ์ดแสดงผลและซ่อนปุ่ม"],
+    refer: ["ส่งต่อผู้ป่วย", "ขั้นตอนแบบเส้นเวลา · ปุ่มแจ้งสถานะถัดไป"],
+    system_down: ["ระบบล่ม", "หัวแดง · ปุ่มรับเรื่องให้ทีม IT"],
+    daily_report: ["สรุปบริการรายวัน", "ตัวเลขสรุปตัวใหญ่ + ช่องข้อมูลมีโทนสี"],
+    announcement: ["เชิญประชุม / ประกาศ", "รูปใหญ่ + ปุ่มเข้าร่วม / ไม่สะดวก"],
+  };
+  const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]);
+  fetch("examples.json").then((r) => r.json()).then((ex) => {
+    const g = document.getElementById("gallery");
+    g.innerHTML = "";
+    for (const [k, v] of Object.entries(ex)) {
+      if (k.startsWith("_")) continue;
+      const json = JSON.stringify({ ...v, to: ["room:<ห้อง>"] }, null, 2);
+      const [title, desc] = DESC[k] ?? [k, ""];
+      const el = document.createElement("div");
+      el.className = "tpl";
+      el.innerHTML = `<h3>${esc(title)}</h3><p>${esc(desc)}</p><img src="img/${k}.png" alt="${esc(title)}" loading="lazy">
+        <details><summary>JSON</summary><pre><button class="copy" type="button">คัดลอก</button><code>${esc(json)}</code></pre></details>`;
+      el.querySelector(".copy").onclick = (e) => navigator.clipboard?.writeText(json).then(() => (e.target.textContent = "คัดลอกแล้ว ✓"));
+      g.append(el);
+    }
+  }).catch(() => (document.getElementById("gallery").innerHTML = '<p>โหลดแม่แบบไม่ได้ — เปิด <a href="examples.json">examples.json</a></p>'));
+
+  const SIG = {
+    "Node.js": `import { createHmac, timingSafeEqual } from "node:crypto";
+// raw = body ดิบ (Buffer) ก่อน JSON.parse
+function valid(raw, header, secret) {
+  const want = createHmac("sha256", secret).update(raw).digest();
+  const got = Buffer.from(header ?? "", "base64");
+  return got.length === want.length && timingSafeEqual(got, want);
+}`,
+    Python: `import hmac, hashlib, base64
+def valid(raw: bytes, header: str, secret: str) -> bool:
+    want = base64.b64encode(hmac.new(secret.encode(), raw, hashlib.sha256).digest()).decode()
+    return hmac.compare_digest(want, header or "")
+# FastAPI: raw = await request.body(); header = request.headers.get("x-aranchat-signature")`,
+    PHP: `<?php
+$raw = file_get_contents("php://input");
+$want = base64_encode(hash_hmac("sha256", $raw, $secret, true));
+if (!hash_equals($want, $_SERVER["HTTP_X_ARANCHAT_SIGNATURE"] ?? "")) { http_response_code(401); exit; }
+$e = json_decode($raw, true);`,
+  };
+  const tabs = document.getElementById("sigtabs"), code = document.getElementById("sigcode");
+  for (const name of Object.keys(SIG)) {
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = name; b.setAttribute("role", "tab");
+    b.onclick = () => { [...tabs.children].forEach((x) => x.setAttribute("aria-selected", x === b)); code.textContent = SIG[name]; };
+    tabs.append(b);
+  }
+  tabs.firstChild.click();
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+event_preview.m.reaction.user	%(sender)s ตอบ %(reaction)s ที่ %(message)s
+event_preview.m.reaction.you	คุณตอบ %(reaction)s ที่ %(message)s
+inviting_user_and_n_others.other	กำลังเชิญ %(user)s และอีก %(count)s คน
+items_and_n_others.one	<Items/> และอีก 1 คน
+items_and_n_others.other	<Items/> และอีก %(count)s คน
+timeline.m.room.join_rules.invite	%(senderDisplayName)s ตั้งห้องให้เข้าได้เฉพาะคนที่ได้รับเชิญ
+timeline.m.room.join_rules.public	%(senderDisplayName)s เปิดห้องให้ทุกคนที่มีลิงก์เข้าได้
+voip.n_people_joined.one	เข้าร่วม %(count)s คน
+voip.n_people_joined.other	เข้าร่วม %(count)s คน

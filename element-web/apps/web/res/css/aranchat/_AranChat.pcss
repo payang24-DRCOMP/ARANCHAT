@@ -1,0 +1,713 @@
+/*
+ * AranChat — หน้าตาแบบแอปแชท (เปิดเมื่อ config.json มีคีย์ "aranchat")
+ *   แถบเมนู: src/aranchat/AranChatRail.tsx (ใน .mx_SpacePanel_aranchat)
+ *   จอแคบ ≤768px: แถบเมนูล่าง · แสดงทีละหน้า .mx_AranChat_pane_list / _room (LoggedInView) · ปุ่มย้อนกลับ .mx_AranChat_back (RoomHeader)
+ * ระบบหน้าตา (elayadesign/ai-design-skills · landing-page-design):
+ *   ระยะ 2/4/8/12/16/24/32 · มุมโค้ง 8/12/16/24/full · ตัวหนาไม่เกิน 700 · ไม่ใช้พื้นหลังไล่สี
+ *   ขยับเฉพาะ transform/opacity · cubic-bezier(0.22,1,0.36,1) · hover 300ms · กดแล้วยุบ scale(.98) · ตรวจที่กว้าง 390px
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
+:root {
+    --ac-ink: #1e1b4b;
+    --ac-muted: #64607a;
+    --ac-line: #ece8f6;
+    --ac-brand: #5b3fd9;
+    --ac-tint: #f4f1fc;
+    --ac-tint-2: #eee9fc;
+    --ac-field: #f4f2f8;
+    --ac-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --ac-bar: 64px;
+}
+
+/* ---------- แถบเมนู ---------- */
+.mx_SpacePanel.mx_SpacePanel_aranchat {
+    width: 80px;
+    padding-top: var(--cpd-space-3x);
+    background: #fff;
+    border-right: 1px solid var(--ac-line);
+    gap: 2px;
+
+    > .mx_AranChatRail {
+        order: -1;
+    }
+    > .mx_UserMenu {
+        margin: auto auto 4px;
+    }
+}
+
+.mx_AranChatRail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    padding: 0 8px 8px;
+    box-sizing: border-box;
+}
+.mx_AranChatRail_logo {
+    border: 0;
+    padding: 0;
+    margin-bottom: 8px;
+    background: none;
+    cursor: pointer;
+
+    img {
+        display: block;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+    }
+}
+.mx_AranChatRail_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    width: 64px;
+    padding: 8px 0;
+    border: 0;
+    border-radius: 16px;
+    background: transparent;
+    color: var(--ac-muted);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+        background-color 300ms var(--ac-ease),
+        color 300ms var(--ac-ease),
+        transform 300ms var(--ac-ease);
+
+    &:hover {
+        background: var(--ac-tint);
+        color: var(--ac-brand);
+    }
+    &:active {
+        transform: scale(0.98);
+    }
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.7;
+        stroke-linejoin: round;
+    }
+}
+.mx_AranChatRail_item_active {
+    background: var(--ac-tint-2);
+    color: var(--ac-brand);
+    font-weight: 700;
+
+    svg {
+        fill: currentColor;
+        stroke: none;
+    }
+}
+.mx_AranChatRail_icon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+}
+.mx_AranChatRail_badge {
+    position: absolute;
+    top: -4px;
+    right: -12px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    box-sizing: border-box;
+    border-radius: 999px;
+    background: #e5484d;
+    color: #fff;
+    font-size: 11px;
+    line-height: 16px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* ---------- รายการแชท ---------- */
+.mx_AranChat {
+    .mx_LeftPanel,
+    .mx_RoomListPanel {
+        background: #fff;
+    }
+    [data-testid="room-list-header"] h1 {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--ac-ink);
+    }
+    [data-testid="room-list-search"] #room-list-search-button {
+        border-radius: 999px;
+        background: var(--ac-field);
+        border-color: transparent;
+        min-height: 40px;
+    }
+    [data-testid="primary-filters"] [role="option"] {
+        border-radius: 0;
+        background: transparent;
+        border: 0;
+        border-bottom: 2px solid transparent;
+        box-shadow: none;
+        color: var(--ac-muted);
+        font-weight: 600;
+        padding: 4px 4px 8px;
+        margin-right: 8px;
+        transition: color 300ms var(--ac-ease);
+
+        &[aria-selected="true"] {
+            color: var(--ac-brand);
+            border-bottom-color: var(--ac-brand);
+        }
+    }
+    .mx_RoomListItemView {
+        border-radius: 12px;
+        margin: 2px 8px;
+        transition: background-color 300ms var(--ac-ease);
+
+        &:hover {
+            background: #f7f5fc;
+        }
+        &[aria-selected="true"] {
+            background: var(--ac-tint-2);
+        }
+        [data-testid="room-name"] {
+            font-weight: 600;
+            font-size: 15px;
+        }
+    }
+
+    /* ---------- ห้องแชท ---------- */
+    .mx_RoomHeader {
+        background: #fff;
+        min-height: 64px;
+        border-bottom: 1px solid var(--ac-line);
+    }
+    .mx_RoomHeader_heading {
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .mx_RoomView_body .mx_RoomView_timeline {
+        background: #f3f0fb url("/res/img/aranchat/waves.svg") center bottom / 100% 55% no-repeat;
+    }
+    .mx_RoomView_body .mx_RoomView_messagePanel {
+        background: transparent;
+    }
+    .mx_MImageBody .mx_MImageBody_thumbnail_container {
+        border: 2px solid #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgb(46 31 122 / 12%);
+    }
+    /* สติกเกอร์: ไม่มีกรอบ/เงาแบบ LINE (รูปโปร่งใสลอยบนพื้นแชท) */
+    .mx_MStickerBody_wrapper .mx_MImageBody_thumbnail_container,
+    .mx_MStickerBody_wrapper .mx_MImageBody_thumbnail_container img {
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: none;
+    }
+
+    /* ---------- ช่องพิมพ์ ---------- */
+    .mx_MessageComposer.mx_MessageComposer {
+        background: #fff;
+        border-top: 1px solid var(--ac-line);
+        padding: 8px 0;
+    }
+    .mx_MessageComposer_wrapper {
+        padding: 0 16px;
+    }
+    .mx_MessageComposer_row {
+        align-items: center;
+        gap: 8px;
+    }
+    /* ไอคอนกุญแจ "ไม่เข้ารหัส" หน้าช่องพิมพ์ — ห้องปกติไม่เข้ารหัส (ค่าเริ่มต้นของเรา) ไม่ต้องเตือนทุกห้อง */
+    .mx_MessageComposer_e2eIconWrapper {
+        display: none;
+    }
+    /* กล่องพิมพ์ทรงแคปซูล: พื้น/ขอบอยู่ชั้นนอกชั้นเดียว (ชั้นใน Element ตั้ง min-height 55px + padding ซ้ำ → สูงเกิน) */
+    .mx_MessageComposer_wrapper .mx_SendMessageComposer {
+        background: var(--ac-field);
+        border-radius: 24px;
+        padding: 0 16px;
+        margin: 0;
+        min-height: 40px;
+        justify-content: center; /* ชั้นนี้ Element จัดแบบคอลัมน์ — จัดกลางแนวตั้ง */
+    }
+    .mx_MessageComposer_wrapper .mx_BasicMessageComposer {
+        background: transparent;
+        padding: 0;
+        min-height: 0;
+    }
+    .mx_MessageComposer_wrapper .mx_BasicMessageComposer_input {
+        margin: 8px 0;
+        max-height: 160px;
+    }
+    .mx_MessageComposer_actions {
+        gap: 4px;
+    }
+    .mx_MessageComposer_sendMessage {
+        width: 24px;
+        height: 24px;
+        padding: 8px;
+        border-radius: 999px;
+        background: var(--ac-brand);
+        transition: transform 300ms var(--ac-ease);
+
+        &:active {
+            transform: scale(0.98);
+        }
+        svg {
+            color: #fff;
+        }
+    }
+}
+.mx_AranChat_back {
+    display: none;
+}
+
+/* ---------- ระบบงาน ---------- */
+.mx_AranChatApps {
+    position: fixed;
+    z-index: 4000;
+    left: 96px;
+    top: 72px;
+    width: min(440px, calc(100vw - 112px));
+    box-sizing: border-box;
+    padding: 16px;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 16px 48px rgb(26 15 77 / 22%);
+    font-family: var(--cpd-font-family-sans);
+    animation: mx_AranChat_pop 500ms var(--ac-ease);
+}
+@keyframes mx_AranChat_pop {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+.mx_AranChatApps_head {
+    b {
+        display: block;
+        font-size: 18px;
+        color: var(--ac-ink);
+    }
+    span {
+        font-size: 13px;
+        color: var(--ac-muted);
+    }
+}
+.mx_AranChatApps_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+}
+.mx_AranChatApps_app {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 12px;
+    border-radius: 16px;
+    border: 1px solid var(--ac-line);
+    color: var(--ac-ink);
+    text-decoration: none;
+    transition:
+        background-color 300ms var(--ac-ease),
+        border-color 300ms var(--ac-ease),
+        transform 300ms var(--ac-ease);
+
+    &:hover {
+        background: #f7f5fc;
+        border-color: #c4b5fd;
+        text-decoration: none;
+    }
+    &:active {
+        transform: scale(0.98);
+    }
+}
+.mx_AranChatApps_icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+.mx_AranChatApps_text {
+    min-width: 0;
+
+    b {
+        display: block;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    small {
+        display: block;
+        font-size: 12px;
+        line-height: 1.4;
+        color: var(--ac-muted);
+    }
+}
+
+/* ---------- โปรแกรมที่เปิดซ้อนในหน้าแชท ---------- */
+.mx_AranChatView {
+    position: fixed;
+    z-index: 3000;
+    inset: 0 0 0 80px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-left: 1px solid var(--ac-line);
+
+    iframe {
+        flex: 1;
+        width: 100%;
+        border: 0;
+    }
+}
+.mx_AranChatView_bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 56px;
+    padding: 0 12px 0 16px;
+    border-bottom: 1px solid var(--ac-line);
+
+    .mx_AranChatApps_icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+    b {
+        flex: 1;
+        min-width: 0;
+        font-size: 16px;
+        color: var(--ac-ink);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+.mx_AranChatView_btn {
+    border: 1px solid #d9d0f5;
+    background: #fff;
+    color: var(--ac-brand);
+    border-radius: 999px;
+    padding: 8px 12px;
+    font: inherit;
+    font-size: 13px;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 300ms var(--ac-ease);
+
+    &:hover {
+        background: var(--ac-tint);
+        text-decoration: none;
+    }
+}
+.mx_AranChatView_close {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    font-size: 16px;
+}
+
+/* ================= จอแคบ (มือถือ / หน้าต่างเล็ก) ================= */
+@media (max-width: 768px) {
+    .mx_SpacePanel.mx_SpacePanel_aranchat {
+        width: 0 !important;
+        min-width: 0 !important;
+        padding: 0;
+        border: 0;
+        overflow: visible;
+
+        > :not(.mx_AranChatRail) {
+            display: none;
+        }
+    }
+    .mx_AranChatRail {
+        position: fixed;
+        z-index: 3500;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: stretch;
+        gap: 0;
+        height: calc(var(--ac-bar) + env(safe-area-inset-bottom));
+        padding: 4px 4px env(safe-area-inset-bottom);
+        background: #fff;
+        border-top: 1px solid var(--ac-line);
+    }
+    .mx_AranChatRail_logo {
+        display: none;
+    }
+    .mx_AranChatRail_item {
+        flex: 1;
+        width: auto;
+        min-width: 0;
+        padding: 4px 0;
+        justify-content: center;
+        border-radius: 12px;
+        font-size: 11px;
+    }
+    .mx_AranChatRail_item_active {
+        background: transparent;
+    }
+
+    /* แสดงทีละหน้า: รายการแชท (เต็มจอ เหนือแถบเมนู) หรือ ห้องแชท (เต็มจอ ไม่มีแถบเมนู) */
+    /* โครงของ Element: [data-group] > nav.mx_SpacePanel + [data-panel] (รายการ) + .mx_Separator + [data-panel] (ห้อง) */
+    .mx_MatrixChat.mx_AranChat {
+        .mx_Separator {
+            display: none !important;
+        }
+        > [data-group] > [data-panel] {
+            flex: 1 1 100% !important;
+            max-width: none !important;
+            min-width: 0 !important;
+        }
+    }
+    .mx_MatrixChat.mx_AranChat_pane_list {
+        padding-bottom: calc(var(--ac-bar) + env(safe-area-inset-bottom));
+        box-sizing: border-box;
+
+        > [data-group] > [data-panel]:has(> .mx_LeftPanel_panel > .mx_RoomView_wrapper) {
+            display: none !important;
+        }
+    }
+    .mx_MatrixChat.mx_AranChat_pane_room {
+        > [data-group] > [data-panel]:has(.mx_LeftPanel_outerWrapper) {
+            display: none !important;
+        }
+        .mx_AranChatRail {
+            display: none;
+        }
+    }
+    .mx_AranChat .mx_AranChat_back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--ac-ink);
+        cursor: pointer;
+
+        &:active {
+            transform: scale(0.98);
+            background: var(--ac-tint);
+        }
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+    .mx_AranChat .mx_RoomHeader {
+        min-height: 56px;
+        padding-left: 4px;
+    }
+
+    .mx_AranChatApps {
+        left: 8px;
+        right: 8px;
+        top: auto;
+        bottom: calc(var(--ac-bar) + env(safe-area-inset-bottom) + 8px);
+        width: auto;
+        max-height: 70vh;
+        overflow: auto;
+    }
+    .mx_AranChatView {
+        inset: 0 0 calc(var(--ac-bar) + env(safe-area-inset-bottom)) 0;
+        border-left: 0;
+    }
+}
+@media (max-width: 480px) {
+    .mx_AranChatApps_grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .mx_AranChatRail_item,
+    .mx_AranChatApps,
+    .mx_AranChatApps_app {
+        transition: none;
+        animation: none;
+    }
+}
+
+/* "อ่านแล้ว" ใต้ข้อความของเรา (EventTile/ReceiptAdapter.tsx) */
+.mx_AranChat_read {
+    display: inline-block;
+    font-size: 11px;
+    line-height: 16px;
+    color: var(--ac-muted);
+    white-space: nowrap;
+}
+/* ตำแหน่ง "อ่านแล้ว" และสีฟองข้อความ: _AranChatLine.pcss */
+
+/* รูปประจำตัวบนปุ่มโปรไฟล์ */
+.mx_AranChatRail_item .mx_BaseAvatar {
+    display: block;
+}
+.mx_AranChatRail_item_active .mx_BaseAvatar {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ac-brand);
+    border-radius: 999px;
+}
+
+/* ---------- หน้าเพื่อน (src/aranchat/AranChatFriends.tsx) ---------- */
+.mx_AranChatFriends {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+    background: #fff;
+}
+.mx_AranChatFriends_head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 16px 16px 8px;
+
+    h1 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--ac-ink);
+
+        small {
+            display: block;
+            margin-top: 2px;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--ac-muted);
+        }
+    }
+}
+.mx_AranChatFriends_add {
+    border: 1px solid #d9d0f5;
+    background: #fff;
+    color: var(--ac-brand);
+    border-radius: 999px;
+    padding: 8px 12px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 300ms var(--ac-ease);
+
+    &:hover {
+        background: var(--ac-tint);
+    }
+}
+.mx_AranChatFriends_search {
+    margin: 0 16px 8px;
+    padding: 8px 16px;
+    min-height: 40px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ac-field);
+    font: inherit;
+    font-size: 14px;
+    color: var(--ac-ink);
+    outline: none;
+
+    &:focus {
+        box-shadow: 0 0 0 2px #c4b5fd;
+    }
+}
+.mx_AranChatFriends_list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0 8px 16px;
+
+    h2 {
+        margin: 16px 8px 4px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--ac-muted);
+
+        span {
+            margin-left: 4px;
+            color: #9b95b5;
+        }
+    }
+}
+.mx_AranChatFriends_row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 8px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    transition: background-color 300ms var(--ac-ease);
+
+    &:hover {
+        background: #f7f5fc;
+    }
+    &:active {
+        transform: scale(0.98);
+    }
+}
+.mx_AranChatFriends_name {
+    min-width: 0;
+
+    b,
+    small {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    b {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--ac-ink);
+    }
+    small {
+        font-size: 12px;
+        color: var(--ac-muted);
+    }
+}
+.mx_AranChatFriends_empty {
+    margin: 24px 8px;
+    color: var(--ac-muted);
+    text-align: center;
+}
+
+/* ป้าย "ใหม่" = เจ้าหน้าที่เข้าระบบภายใน 7 วัน (src/aranchat/newFriends.ts) */
+.mx_AranChatFriends_new {
+    margin-left: auto;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    flex: none;
+}

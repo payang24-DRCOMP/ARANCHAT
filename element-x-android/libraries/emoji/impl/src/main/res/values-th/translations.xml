@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="emoji_picker_category_activity">"กิจกรรม"</string>
+  <string name="emoji_picker_category_flags">"ธง"</string>
+  <string name="emoji_picker_category_foods">"อาหารและเครื่องดื่ม"</string>
+  <string name="emoji_picker_category_nature">"สัตว์และธรรมชาติ"</string>
+  <string name="emoji_picker_category_objects">"สิ่งของ"</string>
+  <string name="emoji_picker_category_people">"หน้ายิ้มและผู้คน"</string>
+  <string name="emoji_picker_category_places">"การเดินทางและสถานที่"</string>
+  <string name="emoji_picker_category_recent">"อีโมจิล่าสุด"</string>
+  <string name="emoji_picker_category_symbols">"สัญลักษณ์"</string>
+  <string name="emoji_picker_search_placeholder">"ค้นหาอีโมจิ"</string>
+</resources>

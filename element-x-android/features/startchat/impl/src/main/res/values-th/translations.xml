@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_create_room_action_create_room">"ห้องใหม่"</string>
+  <string name="screen_room_directory_search_title">"รายชื่อห้อง"</string>
+  <string name="screen_start_chat_error_starting_chat">"เกิดข้อผิดพลาดขณะเริ่มแชท"</string>
+  <string name="screen_start_chat_join_room_by_address_action">"เข้าห้องด้วยที่อยู่"</string>
+  <string name="screen_start_chat_join_room_by_address_invalid_address">"ที่อยู่ไม่ถูกต้อง"</string>
+  <string name="screen_start_chat_join_room_by_address_placeholder">"กรอกที่อยู่…"</string>
+  <string name="screen_start_chat_join_room_by_address_room_found">"พบห้องที่ตรงกัน"</string>
+  <string name="screen_start_chat_join_room_by_address_room_not_found">"ไม่พบห้อง"</string>
+  <string name="screen_start_chat_join_room_by_address_supporting_text">"เช่น #room-name:matrix.org"</string>
+</resources>

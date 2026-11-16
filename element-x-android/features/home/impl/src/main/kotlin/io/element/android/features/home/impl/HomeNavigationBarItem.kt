@@ -1,0 +1,40 @@
+/*
+ * Copyright (c) 2025 Element Creations Ltd.
+ * Copyright 2025 New Vector Ltd.
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-Element-Commercial.
+ * Please see LICENSE files in the repository root for full details.
+ */
+
+package io.element.android.features.home.impl
+
+import androidx.annotation.StringRes
+import androidx.compose.runtime.Composable
+import io.element.android.compound.tokens.generated.CompoundIcons
+
+enum class HomeNavigationBarItem(
+    @StringRes
+    val labelRes: Int,
+) {
+    Chats(
+        labelRes = R.string.screen_home_tab_chats
+    ),
+    // AranChat: แท็บ "เพื่อน" แทน Spaces (friends/AranFriends.kt)
+    Friends(
+        labelRes = R.string.aranchat_tab_friends
+    );
+
+    @Composable
+    fun icon(
+        isSelected: Boolean,
+    ) = when (this) {
+        Chats -> if (isSelected) CompoundIcons.ChatSolid() else CompoundIcons.Chat()
+        Friends -> if (isSelected) CompoundIcons.UserProfileSolid() else CompoundIcons.UserProfile()
+    }
+
+    companion object {
+        fun from(index: Int): HomeNavigationBarItem {
+            return entries.getOrElse(index) { Chats }
+        }
+    }
+}

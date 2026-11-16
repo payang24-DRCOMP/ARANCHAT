@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_identity_confirmation_cannot_confirm">"ยืนยันไม่ได้ใช่ไหม"</string>
+  <string name="screen_identity_confirmation_create_new_recovery_key">"สร้างรหัสกู้คืนใหม่"</string>
+  <string name="screen_identity_confirmation_sign_out">"ออกจากระบบ"</string>
+  <string name="screen_identity_confirmation_subtitle">"เลือกวิธียืนยันเพื่อตั้งค่าการส่งข้อความแบบปลอดภัย"</string>
+  <string name="screen_identity_confirmation_title">"ยืนยันตัวตนดิจิทัลของคุณ"</string>
+  <string name="screen_identity_confirmation_use_another_device">"ใช้อุปกรณ์อื่น"</string>
+  <string name="screen_identity_confirmation_use_recovery_key">"ใช้รหัสกู้คืน"</string>
+  <string name="screen_identity_confirmed_subtitle">"ตอนนี้อ่านและส่งข้อความได้อย่างปลอดภัย และคนที่คุณคุยด้วยก็เชื่อถืออุปกรณ์นี้ได้"</string>
+  <string name="screen_identity_confirmed_title">"ยืนยันอุปกรณ์แล้ว"</string>
+  <string name="screen_identity_use_another_device">"ใช้อุปกรณ์อื่น"</string>
+  <string name="screen_identity_waiting_on_other_device">"กำลังรออุปกรณ์อีกเครื่อง…"</string>
+  <string name="screen_notification_optin_subtitle">"เปลี่ยนการตั้งค่าได้ภายหลัง"</string>
+  <string name="screen_notification_optin_title">"อนุญาตการแจ้งเตือน ไม่พลาดทุกข้อความ"</string>
+</resources>

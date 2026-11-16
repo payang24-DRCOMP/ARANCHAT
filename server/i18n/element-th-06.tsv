@@ -1,0 +1,190 @@
+settings.preferences.default_timezone	ตามเบราว์เซอร์ (%(timezone)s)
+settings.preferences.dialog_title	<strong>การตั้งค่า:</strong> การกำหนดลักษณะ
+settings.preferences.enable_content_protection	เปิดการป้องกันเนื้อหา
+settings.preferences.enable_hardware_acceleration	ใช้การเร่งด้วยฮาร์ดแวร์
+settings.preferences.enable_tray_icon	แสดงไอคอนที่ถาดระบบ และย่อหน้าต่างไปไว้ที่นั่นเมื่อปิด
+settings.preferences.keyboard_heading	แป้นพิมพ์ลัด
+settings.preferences.keyboard_view_shortcuts_button	ดูแป้นพิมพ์ลัดทั้งหมดได้ที่<a>นี่</a>
+settings.preferences.link_previews_description	แสดงข้อมูลของลิงก์ใต้ข้อความ
+settings.preferences.link_previews_heading	ตัวอย่างลิงก์
+settings.preferences.media_heading	รูปภาพ GIF และวิดีโอ
+settings.preferences.presence_description	แชร์ความเคลื่อนไหวและสถานะของคุณให้ผู้อื่นเห็น
+settings.preferences.publish_timezone	แสดงเขตเวลาในโปรไฟล์สาธารณะ
+settings.preferences.rm_lifetime	ระยะเวลาของเครื่องหมายอ่านถึง (ms)
+settings.preferences.rm_lifetime_offscreen	ระยะเวลาของเครื่องหมายอ่านถึงเมื่ออยู่นอกจอ (ms)
+settings.preferences.room_directory_heading	รายชื่อห้อง
+settings.preferences.room_list_heading	รายการห้อง
+settings.preferences.show_avatars_pills	แสดงรูปโปรไฟล์ในการแท็กผู้ใช้ ห้อง และเหตุการณ์
+settings.preferences.show_polls_button	แสดงปุ่มโพล
+settings.preferences.startup_window_behaviour_label	การเปิดโปรแกรมและหน้าต่าง
+settings.preferences.surround_text	ครอบข้อความที่เลือกเมื่อพิมพ์อักขระพิเศษ
+settings.preferences.time_heading	การแสดงเวลา
+settings.preferences.user_timezone	ตั้งเขตเวลา
+settings.appearance.bundled_emoji_font	ใช้ฟอนต์อีโมจิที่มากับแอป
+settings.appearance.compact_layout	แสดงข้อความแบบกะทัดรัด
+settings.appearance.compact_layout_description	ต้องเลือกรูปแบบ "ทันสมัย" ก่อนจึงจะใช้ได้
+settings.appearance.custom_font	ใช้ฟอนต์ของระบบ
+settings.appearance.custom_font_description	ระบุชื่อฟอนต์ที่ติดตั้งในเครื่อง แล้ว %(brand)s จะพยายามใช้ฟอนต์นั้น
+settings.appearance.custom_font_name	ชื่อฟอนต์ของระบบ
+settings.appearance.custom_font_size	กำหนดขนาดเอง
+settings.appearance.dialog_title	<strong>การตั้งค่า:</strong> การแสดงผล
+settings.appearance.font_size	ขนาดตัวอักษร
+settings.appearance.font_size_default	%(fontSize)s (ค่าเริ่มต้น)
+settings.appearance.high_contrast	คอนทราสต์สูง
+settings.appearance.image_size_default	ค่าเริ่มต้น
+settings.appearance.image_size_large	ใหญ่
+settings.appearance.layout_bubbles	ข้อความแบบฟองคำพูด
+settings.appearance.layout_irc	IRC (ทดลอง)
+settings.appearance.match_system_theme	ใช้ธีมตามระบบ
+settings.appearance.timeline_image_size	ขนาดรูปภาพในไทม์ไลน์
+settings.sidebar.dialog_title	<strong>การตั้งค่า:</strong> แถบด้านข้าง
+settings.sidebar.metaspaces_home_all_rooms	แสดงทุกห้อง
+settings.sidebar.metaspaces_home_all_rooms_description	แสดงทุกห้องในหน้าหลัก แม้จะอยู่ใน Space
+settings.sidebar.metaspaces_home_description	หน้าหลักช่วยให้เห็นภาพรวมของทุกอย่าง
+settings.sidebar.metaspaces_orphans	ห้องที่ไม่อยู่ใน Space
+settings.sidebar.metaspaces_orphans_description	รวมทุกห้องที่ไม่ได้อยู่ใน Space ไว้ที่เดียว
+settings.sidebar.metaspaces_subsection	Space ที่แสดง
+settings.sidebar.metaspaces_video_rooms	ห้องวิดีโอและการประชุม
+settings.sidebar.metaspaces_video_rooms_description	รวมห้องวิดีโอส่วนตัวและการประชุมทั้งหมด
+settings.sidebar.metaspaces_video_rooms_description_invite_extension	ในการประชุม คุณเชิญคนที่ไม่ได้ใช้ Matrix ได้
+settings.sidebar.spaces_explainer	Space ใช้จัดกลุ่มห้องและผู้คน นอกจาก Space ที่คุณอยู่ ยังมี Space สำเร็จรูปให้ใช้ด้วย
+settings.sidebar.title	แถบด้านข้าง
+settings.account.dialog_title	<strong>การตั้งค่า:</strong> บัญชี
+settings.account.title	บัญชี
+settings.activityIsUnread	นับความเคลื่อนไหวใหม่ทั้งหมดเป็นข้อความที่ยังไม่อ่าน
+settings.all_rooms_home	แสดงทุกห้องในหน้าหลัก
+settings.all_rooms_home_description	ทุกห้องที่คุณอยู่จะแสดงในหน้าหลัก
+settings.always_show_message_timestamps	แสดงเวลาของข้อความเสมอ
+settings.automatic_language_detection_syntax_highlight	ตรวจภาษาโค้ดอัตโนมัติเพื่อไฮไลต์ไวยากรณ์
+settings.autoplay_gifs	เล่น GIF อัตโนมัติ
+settings.autoplay_videos	เล่นวิดีโออัตโนมัติ
+settings.big_emoji	แสดงอีโมจิขนาดใหญ่ในแชท
+settings.code_block_expand_default	ขยายบล็อกโค้ดเป็นค่าเริ่มต้น
+settings.code_block_line_numbers	แสดงเลขบรรทัดในบล็อกโค้ด
+settings.disable_historical_profile	แสดงรูปและชื่อปัจจุบันของผู้ใช้ในประวัติข้อความ
+settings.emoji_autocomplete	แนะนำอีโมจิขณะพิมพ์
+settings.enable_markdown	ใช้ Markdown
+settings.enable_markdown_description	ขึ้นต้นข้อความด้วย <code>/plain</code> เพื่อส่งโดยไม่ใช้ markdown
+settings.inline_url_previews_default	แสดงตัวอย่างลิงก์
+settings.inline_url_previews_encrypted	แสดงตัวอย่างลิงก์ในห้องที่เข้ารหัส
+settings.inline_url_previews_encrypted_bundled_only	ในห้องที่เข้ารหัส แสดงเฉพาะตัวอย่างที่แนบมากับข้อความ
+settings.insert_trailing_colon_mentions	ใส่เครื่องหมาย : หลังชื่อที่แท็กไว้ต้นข้อความ
+settings.jump_to_bottom_on_send	เลื่อนไปข้อความล่าสุดเมื่อส่งข้อความ
+settings.not_supported	ผู้ให้บริการบัญชีของคุณไม่มีฟีเจอร์นี้
+settings.prompt_invite	ถามก่อนส่งคำเชิญไปยัง Matrix ID ที่อาจไม่ถูกต้อง
+settings.replace_plain_emoji	แปลงอีโมจิแบบตัวอักษรเป็นรูปอัตโนมัติ
+settings.send_read_receipts	ส่งสถานะว่าอ่านแล้ว
+settings.send_read_receipts_unsupported	เซิร์ฟเวอร์ไม่รองรับการปิดสถานะว่าอ่านแล้ว
+settings.send_typing_notifications	แสดงให้ผู้อื่นเห็นว่ากำลังพิมพ์
+settings.show_avatar_changes	แสดงการเปลี่ยนรูปโปรไฟล์
+settings.show_breadcrumbs	แสดงทางลัดห้องที่ดูล่าสุดเหนือรายการห้อง
+settings.show_chat_effects	แสดงเอฟเฟกต์ในแชท (เช่น ภาพเคลื่อนไหวพลุกระดาษ)
+settings.show_displayname_changes	แสดงการเปลี่ยนชื่อที่แสดง
+settings.show_join_leave	แสดงข้อความเข้า/ออกห้อง (ไม่รวมการเชิญ/นำออก/แบน)
+settings.show_message_previews	แสดงตัวอย่างข้อความ
+settings.show_nsfw_content	แสดงเนื้อหาไม่เหมาะสม (NSFW)
+settings.show_people_sections	แสดงหมวดบุคคล
+settings.show_read_receipts	แสดงสถานะการอ่านของผู้อื่น
+settings.show_redaction_placeholder	แสดงข้อความแทนที่ข้อความที่ถูกลบ
+settings.show_sections	แสดงหมวด
+settings.show_stickers_button	แสดงปุ่มสติกเกอร์
+settings.show_typing_notifications	แสดงว่าผู้อื่นกำลังพิมพ์
+settings.showbold	แสดงความเคลื่อนไหวทั้งหมดในรายการห้อง (จุดหรือจำนวนข้อความที่ยังไม่อ่าน)
+settings.tac_only_notifications	ในแท็บเธรดอื่นๆ แสดงเฉพาะการแจ้งเตือน
+settings.use_12_hour_format	แสดงเวลาแบบ 12 ชั่วโมง (เช่น 2:30pm)
+settings.use_command_enter_send_message	กด Command + Enter เพื่อส่งข้อความ
+settings.use_command_f_search	กด Command + F เพื่อค้นหาในไทม์ไลน์
+settings.use_control_enter_send_message	กด Ctrl + Enter เพื่อส่งข้อความ
+settings.use_control_f_search	กด Ctrl + F เพื่อค้นหาในไทม์ไลน์
+settings.warn_quit	เตือนก่อนปิดโปรแกรม
+settings.warning	<w>คำเตือน:</w> <description/>
+timeline.m.room.member.accepted_3pid_invite	%(targetName)s รับคำเชิญของ %(displayName)s แล้ว
+timeline.m.room.member.accepted_invite	%(targetName)s รับคำเชิญแล้ว
+timeline.m.room.member.ban	%(senderName)s แบนผู้ใช้
+timeline.m.room.member.ban_reason	%(senderName)s แบนผู้ใช้: %(reason)s
+timeline.m.room.member.ban_reason_spoiler	%(senderName)s แบน <user/>: %(reason)s
+timeline.m.room.member.ban_spoiler	%(senderName)s แบน <user/>
+timeline.m.room.member.change_avatar	%(senderName)s เปลี่ยนรูปโปรไฟล์
+timeline.m.room.member.change_name	%(oldDisplayName)s เปลี่ยนชื่อที่แสดงเป็น %(displayName)s
+timeline.m.room.member.change_name_avatar	%(oldDisplayName)s เปลี่ยนชื่อที่แสดงและรูปโปรไฟล์
+timeline.m.room.member.invite	%(senderName)s เชิญ %(targetName)s
+timeline.m.room.member.join	%(targetName)s เข้าร่วมห้อง
+timeline.m.room.member.kick	%(senderName)s นำ %(targetName)s ออก
+timeline.m.room.member.kick_reason	%(senderName)s นำ %(targetName)s ออก: %(reason)s
+timeline.m.room.member.knock	%(senderName)s ขอเข้าร่วม
+timeline.m.room.member.knock_accepted	%(senderName)s อนุญาตให้ %(targetName)s เข้าร่วม
+timeline.m.room.member.knock_denied	%(senderName)s ปฏิเสธคำขอเข้าร่วมของ %(targetName)s
+timeline.m.room.member.knock_reason	%(senderName)s ขอเข้าร่วม: %(reason)s
+timeline.m.room.member.knock_retracted	%(targetName)s ถอนคำขอเข้าร่วม
+timeline.m.room.member.left	%(targetName)s ออกจากห้อง
+timeline.m.room.member.left_reason	%(targetName)s ออกจากห้อง: %(reason)s
+timeline.m.room.member.no_change	%(senderName)s ไม่ได้เปลี่ยนแปลงอะไร
+timeline.m.room.member.reject_invite	%(targetName)s ปฏิเสธคำเชิญ
+timeline.m.room.member.reject_invite_reason	%(targetName)s ปฏิเสธคำเชิญ: %(reason)s
+timeline.m.room.member.remove_avatar	%(senderName)s ลบรูปโปรไฟล์
+timeline.m.room.member.remove_name	%(senderName)s ลบชื่อที่แสดง (%(oldDisplayName)s)
+timeline.m.room.member.set_avatar	%(senderName)s ตั้งรูปโปรไฟล์
+timeline.m.room.member.set_name	%(senderName)s ตั้งชื่อที่แสดงเป็น %(displayName)s
+timeline.m.room.member.unban	%(senderName)s ยกเลิกการแบน %(targetName)s
+timeline.m.room.member.withdrew_invite	%(senderName)s ยกเลิกคำเชิญของ %(targetName)s
+timeline.m.room.member.withdrew_invite_reason	%(senderName)s ยกเลิกคำเชิญของ %(targetName)s: %(reason)s
+timeline.context_menu.collapse_reply_thread	ย่อเธรดคำตอบ
+timeline.context_menu.external_url	URL ต้นทาง
+timeline.context_menu.open_in_osm	เปิดใน OpenStreetMap
+timeline.context_menu.report	รายงาน
+timeline.context_menu.resent_unsent_reactions	ส่งความรู้สึก %(unsentCount)s รายการอีกครั้ง
+timeline.context_menu.show_url_preview	แสดงตัวอย่าง
+timeline.context_menu.view_related_event	ดูเหตุการณ์ที่เกี่ยวข้อง
+timeline.context_menu.view_source	ดูซอร์ส
+timeline.reactions.add_reaction_prompt	เพิ่มความรู้สึก
+timeline.reactions.custom_reaction_fallback_label	ความรู้สึกแบบกำหนดเอง
+timeline.reactions.label	%(reactors)s แสดงความรู้สึกด้วย %(content)s
+timeline.reactions.tooltip_caption	แสดงความรู้สึกด้วย %(shortName)s
+timeline.typing_indicator.more_users.one	%(names)s และอีก 1 คนกำลังพิมพ์ …
+timeline.typing_indicator.more_users.other	%(names)s และอีก %(count)s คนกำลังพิมพ์ …
+timeline.typing_indicator.one_user	%(displayName)s กำลังพิมพ์ …
+timeline.typing_indicator.two_users	%(names)s และ %(lastPerson)s กำลังพิมพ์ …
+timeline.edits.tooltip_label	แก้ไขเมื่อ %(date)s เลือกเพื่อดูประวัติการแก้ไข
+timeline.edits.tooltip_sub	ดูประวัติการแก้ไข
+timeline.edits.tooltip_title	แก้ไขเมื่อ %(date)s
+timeline.reply.error_loading	โหลดข้อความต้นทางไม่ได้ อาจไม่มีอยู่แล้ว หรือคุณไม่มีสิทธิ์ดู
+timeline.reply.in_reply_to	<a>ตอบกลับ</a> <pill>
+timeline.reply.in_reply_to_for_export	ตอบกลับ<a>ข้อความนี้</a>
+timeline.m.image.error	แสดงรูปไม่ได้เพราะเกิดข้อผิดพลาด
+timeline.m.image.error_decrypting	ถอดรหัสรูปไม่สำเร็จ
+timeline.m.image.error_downloading	ดาวน์โหลดรูปไม่สำเร็จ
+timeline.m.image.sent	%(senderDisplayName)s ส่งรูปภาพ
+timeline.m.image.show_image	แสดงรูป
+timeline.m.file.error_decrypting	ถอดรหัสไฟล์แนบไม่สำเร็จ
+timeline.m.file.size_unknown	ไม่ทราบขนาด
+timeline.m.file.error_invalid	ไฟล์ไม่ถูกต้อง
+timeline.m.video.error_decrypting	ถอดรหัสวิดีโอไม่สำเร็จ
+timeline.m.video.show_video	แสดงวิดีโอ
+timeline.m.audio.error_downloading_audio	ดาวน์โหลดเสียงไม่สำเร็จ
+timeline.m.audio.error_processing_audio	ประมวลผลข้อความเสียงไม่สำเร็จ
+timeline.m.audio.error_processing_voice_message	ประมวลผลข้อความเสียงไม่สำเร็จ
+timeline.m.audio.audio_player	เครื่องเล่นเสียง
+timeline.m.audio.unnamed_audio	เสียงไม่มีชื่อ
+timeline.read_marker_new	ใหม่
+timeline.redacted.tooltip	ยกเลิกเมื่อ %(date)s
+timeline.self_redaction	คุณยกเลิกข้อความแล้ว
+timeline.redaction	ข้อความถูกยกเลิกโดย %(name)s
+timeline.m.room.name.change	%(senderDisplayName)s เปลี่ยนชื่อห้องจาก %(oldRoomName)s เป็น %(newRoomName)s
+timeline.m.room.name.remove	%(senderDisplayName)s ลบชื่อห้อง
+timeline.m.room.name.set	%(senderDisplayName)s เปลี่ยนชื่อห้องเป็น %(roomName)s
+timeline.m.room.topic.changed	%(senderDisplayName)s เปลี่ยนหัวข้อเป็น "%(topic)s"
+timeline.m.room.topic.removed	%(senderDisplayName)s ลบหัวข้อ
+timeline.m.room.avatar.changed	%(senderDisplayName)s เปลี่ยนรูปห้อง
+timeline.m.room.avatar.lightbox_title	%(senderDisplayName)s เปลี่ยนรูปของ %(roomName)s
+timeline.m.room.avatar.changed_img	%(senderDisplayName)s เปลี่ยนรูปห้องเป็น <img/>
+timeline.m.room.avatar.removed	%(senderDisplayName)s ลบรูปห้อง
+timeline.m.room.create.continuation	ห้องนี้ต่อจากการสนทนาเดิม
+timeline.m.room.create.see_older_messages	คลิกที่นี่เพื่อดูข้อความเก่า
+timeline.m.room.create.unknown_predecessor	ไม่พบห้องเวอร์ชันเก่า (room ID: %(roomId)s) และไม่มีข้อมูล 'via_servers' สำหรับค้นหา
+timeline.m.room.create.unknown_predecessor_guess_server	ไม่พบห้องเวอร์ชันเก่า (room ID: %(roomId)s) และไม่มีข้อมูล 'via_servers' สำหรับค้นหา อาจลองเดาเซิร์ฟเวอร์จาก room ID ได้ ถ้าต้องการลอง คลิกลิงก์นี้:
+timeline.creation_summary_dm	%(creator)s สร้างแชทส่วนตัวนี้
+timeline.creation_summary_room	%(creator)s สร้างและตั้งค่าห้อง
+timeline.send_state_encrypting	กำลังเข้ารหัสข้อความ…
+timeline.send_state_failed	ส่งไม่สำเร็จ
+timeline.send_state_sending	กำลังส่งข้อความ…
+timeline.send_state_sent	ส่งข้อความแล้ว

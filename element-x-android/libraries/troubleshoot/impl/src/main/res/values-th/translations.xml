@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_push_history_title">"ประวัติการแจ้งเตือน"</string>
+  <string name="troubleshoot_notifications_screen_action">"เริ่มทดสอบ"</string>
+  <string name="troubleshoot_notifications_screen_action_again">"ทดสอบอีกครั้ง"</string>
+  <string name="troubleshoot_notifications_screen_failure">"บางการทดสอบไม่ผ่าน โปรดดูรายละเอียด"</string>
+  <string name="troubleshoot_notifications_screen_notice">"ทดสอบเพื่อหาปัญหาในการตั้งค่าที่อาจทำให้การแจ้งเตือนไม่ทำงานตามปกติ"</string>
+  <string name="troubleshoot_notifications_screen_quick_fix_action">"ลองแก้ไข"</string>
+  <string name="troubleshoot_notifications_screen_success">"ผ่านการทดสอบทั้งหมด"</string>
+  <string name="troubleshoot_notifications_screen_title">"แก้ปัญหาการแจ้งเตือน"</string>
+  <string name="troubleshoot_notifications_screen_waiting">"บางการทดสอบต้องตรวจสอบ โปรดดูรายละเอียด"</string>
+</resources>

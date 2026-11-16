@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_dm_details_block_alert_action">"บล็อก"</string>
+  <string name="screen_dm_details_block_alert_description">"ผู้ใช้ที่ถูกบล็อกจะส่งข้อความหาคุณไม่ได้ และข้อความทั้งหมดของเขาจะถูกซ่อน เลิกบล็อกได้ทุกเมื่อ"</string>
+  <string name="screen_dm_details_block_user">"บล็อกผู้ใช้"</string>
+  <string name="screen_dm_details_unblock_alert_action">"เลิกบล็อก"</string>
+  <string name="screen_dm_details_unblock_alert_description">"คุณจะเห็นข้อความทั้งหมดจากผู้ใช้นี้อีกครั้ง"</string>
+  <string name="screen_dm_details_unblock_user">"เลิกบล็อกผู้ใช้"</string>
+  <string name="screen_room_member_details_block_alert_action">"บล็อก"</string>
+  <string name="screen_room_member_details_block_alert_description">"ผู้ใช้ที่ถูกบล็อกจะส่งข้อความหาคุณไม่ได้ และข้อความทั้งหมดของเขาจะถูกซ่อน เลิกบล็อกได้ทุกเมื่อ"</string>
+  <string name="screen_room_member_details_block_user">"บล็อกผู้ใช้"</string>
+  <string name="screen_room_member_details_title">"โปรไฟล์"</string>
+  <string name="screen_room_member_details_unblock_alert_action">"เลิกบล็อก"</string>
+  <string name="screen_room_member_details_unblock_alert_description">"คุณจะเห็นข้อความทั้งหมดจากผู้ใช้นี้อีกครั้ง"</string>
+  <string name="screen_room_member_details_unblock_user">"เลิกบล็อกผู้ใช้"</string>
+  <string name="screen_room_member_details_verify_button_subtitle">"ใช้เว็บแชทเพื่อยืนยันผู้ใช้นี้"</string>
+  <string name="screen_room_member_details_verify_button_title">"ยืนยัน %1$s"</string>
+  <string name="screen_start_chat_error_starting_chat">"เกิดข้อผิดพลาดขณะเริ่มแชท"</string>
+</resources>

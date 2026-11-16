@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_bug_report_attach_screenshot">"แนบภาพหน้าจอ"</string>
+  <string name="screen_bug_report_contact_me">"ติดต่อกลับได้ถ้ามีคำถามเพิ่มเติม"</string>
+  <string name="screen_bug_report_contact_me_title">"ติดต่อฉัน"</string>
+  <string name="screen_bug_report_edit_screenshot">"แก้ไขภาพหน้าจอ"</string>
+  <string name="screen_bug_report_editor_description">"โปรดอธิบายปัญหา ทำอะไรอยู่ คาดว่าจะเกิดอะไร และเกิดอะไรขึ้นจริง ยิ่งละเอียดยิ่งดี"</string>
+  <string name="screen_bug_report_editor_placeholder">"อธิบายปัญหา…"</string>
+  <string name="screen_bug_report_editor_supporting">"ถ้าทำได้ โปรดเขียนคำอธิบายเป็นภาษาอังกฤษ"</string>
+  <string name="screen_bug_report_error_description_too_short">"คำอธิบายสั้นเกินไป โปรดเล่ารายละเอียดเพิ่ม ขอบคุณ"</string>
+  <string name="screen_bug_report_github_issue_description">"กรอกหมายเลข GitHub issue ที่เกี่ยวข้องได้ (ถ้ามี)"</string>
+  <string name="screen_bug_report_github_issue_label">"GitHub issue"</string>
+  <string name="screen_bug_report_include_crash_logs">"ส่งบันทึกการขัดข้อง"</string>
+  <string name="screen_bug_report_include_logs">"อนุญาตบันทึก"</string>
+  <string name="screen_bug_report_include_logs_error">"บันทึกใหญ่เกินกว่าจะแนบในรายงานนี้ โปรดส่งด้วยวิธีอื่น"</string>
+  <string name="screen_bug_report_include_screenshot">"ส่งภาพหน้าจอ"</string>
+  <string name="screen_bug_report_logs_description">"จะแนบบันทึกไปกับข้อความเพื่อช่วยตรวจสอบ ถ้าไม่ต้องการแนบ ให้ปิดตัวเลือกนี้"</string>
+  <string name="screen_bug_report_rash_logs_alert_title">"%1$s ปิดตัวเองเมื่อใช้งานครั้งก่อน ต้องการส่งรายงานปัญหาให้เราไหม"</string>
+  <string name="screen_bug_report_send_notification_settings_description">"ถ้ามีปัญหาการแจ้งเตือน การส่งกฎการแจ้งเตือนช่วยหาสาเหตุได้ กฎเหล่านี้อาจมีข้อมูลส่วนตัว เช่น ชื่อที่แสดงหรือคำที่ตั้งให้แจ้งเตือน"</string>
+  <string name="screen_bug_report_send_notification_settings_title">"ส่งการตั้งค่าการแจ้งเตือน"</string>
+  <string name="screen_bug_report_view_logs">"ดูบันทึก"</string>
+</resources>

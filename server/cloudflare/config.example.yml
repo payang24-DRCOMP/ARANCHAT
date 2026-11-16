@@ -1,0 +1,30 @@
+# ตัวอย่าง /etc/cloudflared/config.yml (กรณี tunnel แบบตั้งค่าในเครื่อง)
+# ถ้าตั้งค่า tunnel ผ่านหน้าเว็บ Cloudflare Zero Trust ให้ดูวิธีใน README แทน
+#
+# ⚠️ ลำดับสำคัญ: กฎ /.well-known/matrix/ ต้องอยู่ "ก่อน" กฎของเว็บ AranKub เดิม
+# ⚠️ ถ้าเปลี่ยน TRAEFIK_HTTP_PORT ใน config.env ให้แก้ 8080 ทุกบรรทัดตามด้วย
+
+tunnel: <TUNNEL_ID_เดิมของ_AranKub>
+credentials-file: /etc/cloudflared/<TUNNEL_ID>.json
+
+ingress:
+  # --- AranChat ---
+  - hostname: arankub.com
+    path: ^/\.well-known/matrix/.*
+    service: http://localhost:8880
+  - hostname: chat.arankub.com
+    service: http://localhost:8880
+  - hostname: matrix.arankub.com
+    service: http://localhost:8880
+  - hostname: account.arankub.com
+    service: http://localhost:8880
+  - hostname: mrtc.arankub.com
+    service: http://localhost:8880
+  - hostname: admin.arankub.com
+    service: http://localhost:8880
+
+  # --- AranKub เดิม (คงไว้ตามที่ใช้อยู่ แก้พอร์ตให้ตรงของจริง) ---
+  - hostname: arankub.com
+    service: http://localhost:3000
+
+  - service: http_status:404

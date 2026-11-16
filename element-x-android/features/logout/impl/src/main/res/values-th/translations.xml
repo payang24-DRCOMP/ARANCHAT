@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_signout_confirmation_dialog_content">"ต้องการนำอุปกรณ์นี้ออกใช่ไหม"</string>
+  <string name="screen_signout_confirmation_dialog_submit">"นำอุปกรณ์นี้ออก"</string>
+  <string name="screen_signout_confirmation_dialog_title">"นำอุปกรณ์นี้ออก"</string>
+  <string name="screen_signout_in_progress_dialog_content">"กำลังนำอุปกรณ์ออก…"</string>
+  <string name="screen_signout_key_backup_disabled_subtitle">"นี่เป็นอุปกรณ์เดียวของคุณ ถ้านำออก ครั้งหน้าที่เข้าสู่ระบบจะต้องใช้รหัสกู้คืนเพื่อยืนยันตัวตนและกู้แชทที่เข้ารหัส"</string>
+  <string name="screen_signout_key_backup_disabled_title">"คุณกำลังจะเข้าถึงแชทที่เข้ารหัสไม่ได้"</string>
+  <string name="screen_signout_key_backup_offline_subtitle">"ยังสำรองกุญแจไม่เสร็จตอนออฟไลน์ เชื่อมต่อใหม่ให้สำรองเสร็จก่อนนำอุปกรณ์นี้ออก"</string>
+  <string name="screen_signout_key_backup_offline_title">"ยังสำรองกุญแจไม่เสร็จ"</string>
+  <string name="screen_signout_key_backup_ongoing_subtitle">"โปรดรอให้เสร็จก่อนนำอุปกรณ์นี้ออก"</string>
+  <string name="screen_signout_key_backup_ongoing_title">"ยังสำรองกุญแจไม่เสร็จ"</string>
+  <string name="screen_signout_other_verified_device_dialog_content">"ต้องเข้าถึงอุปกรณ์อื่นที่ยืนยันแล้ว หรือรหัสกู้คืนได้เสมอ เพื่อไม่ให้ประวัติแชทที่เข้ารหัสหาย"</string>
+  <string name="screen_signout_other_verified_device_dialog_title">"ต้องการนำอุปกรณ์นี้ออกใช่ไหม"</string>
+  <string name="screen_signout_preference_item">"นำอุปกรณ์นี้ออก"</string>
+  <string name="screen_signout_recovery_disabled_subtitle">"นี่เป็นอุปกรณ์เดียวของคุณ ถ้านำออก ครั้งหน้าที่เข้าสู่ระบบจะต้องใช้รหัสกู้คืนเพื่อยืนยันตัวตนและกู้แชทที่เข้ารหัส"</string>
+  <string name="screen_signout_recovery_disabled_title">"คุณกำลังจะเข้าถึงแชทที่เข้ารหัสไม่ได้"</string>
+  <string name="screen_signout_save_recovery_key_action_continue">"นำอุปกรณ์นี้ออกต่อ"</string>
+  <string name="screen_signout_save_recovery_key_subtitle">"นี่เป็นอุปกรณ์เดียวของคุณ ถ้านำออก ครั้งหน้าที่เข้าสู่ระบบจะต้องใช้รหัสกู้คืนเพื่อยืนยันตัวตนและกู้แชทที่เข้ารหัส"</string>
+  <string name="screen_signout_save_recovery_key_title">"ตรวจว่ามีรหัสกู้คืนก่อนนำอุปกรณ์นี้ออก"</string>
+</resources>

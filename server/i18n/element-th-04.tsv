@@ -1,0 +1,190 @@
+user_info.invited_by	เชิญโดย %(sender)s
+user_info.jump_to_rr_button	ไปยังจุดที่อ่านถึง
+user_info.kick_button_room	นำออกจากห้อง
+user_info.kick_button_room_name	นำออกจาก %(roomName)s
+user_info.kick_button_space	นำออกจาก Space
+user_info.kick_button_space_everything	นำออกจากทุกที่ที่ฉันมีสิทธิ์
+user_info.kick_space_specific	นำออกจากบางที่ที่ฉันมีสิทธิ์
+user_info.kick_space_warning	ผู้ใช้จะยังเข้าถึงส่วนที่คุณไม่ได้เป็นผู้ดูแลได้
+user_info.promote_warning	ย้อนกลับไม่ได้ เพราะคุณกำลังให้ผู้ใช้มีสิทธิ์เท่ากับตัวคุณเอง
+user_info.redact.confirm_button.one	ลบ 1 ข้อความ
+user_info.redact.confirm_button.other	ลบ %(count)s ข้อความ
+user_info.redact.confirm_description_1.one	คุณกำลังจะลบ %(count)s ข้อความของ %(user)s ข้อความจะถูกลบถาวรสำหรับทุกคนในการสนทนา ต้องการดำเนินการต่อหรือไม่?
+user_info.redact.confirm_description_1.other	คุณกำลังจะลบ %(count)s ข้อความของ %(user)s ข้อความจะถูกลบถาวรสำหรับทุกคนในการสนทนา ต้องการดำเนินการต่อหรือไม่?
+user_info.redact.confirm_description_2	ถ้าข้อความเยอะอาจใช้เวลาสักครู่ ระหว่างนี้อย่ารีเฟรชหน้า
+user_info.redact.confirm_keep_state_explainer	ยกเลิกเครื่องหมายถ้าต้องการลบข้อความระบบของผู้ใช้นี้ด้วย (เช่น การเข้า/ออก การเปลี่ยนโปรไฟล์…)
+user_info.redact.confirm_keep_state_label	เก็บข้อความระบบไว้
+user_info.redact.confirm_title	ลบข้อความล่าสุดของ %(user)s
+user_info.redact.no_recent_messages_description	ลองเลื่อนขึ้นในไทม์ไลน์เพื่อดูข้อความก่อนหน้า
+user_info.redact.no_recent_messages_title	ไม่พบข้อความล่าสุดของ %(user)s
+user_info.redact_button	ลบข้อความ
+user_info.revoke_invite	เพิกถอนคำเชิญ
+user_info.room_encrypted	ข้อความในห้องนี้เข้ารหัสต้นทางถึงปลายทาง
+user_info.room_encrypted_detail	ข้อความของคุณปลอดภัย มีเพียงคุณและผู้รับเท่านั้นที่มีกุญแจเปิดอ่าน
+user_info.room_unencrypted	ข้อความในห้องนี้ไม่ได้เข้ารหัสต้นทางถึงปลายทาง
+user_info.room_unencrypted_detail	ในห้องที่เข้ารหัส ข้อความของคุณปลอดภัย มีเพียงคุณและผู้รับเท่านั้นที่มีกุญแจเปิดอ่าน
+user_info.send_message	ส่งข้อความ
+user_info.share_button	แชร์โปรไฟล์
+user_info.unban_button_room	ยกเลิกการแบนจากห้อง
+user_info.unban_button_space	ยกเลิกการแบนจาก Space
+user_info.unban_room_confirm_title	ยกเลิกการแบนจาก %(roomName)s
+user_info.unban_space_everything	ยกเลิกการแบนจากทุกที่ที่ฉันมีสิทธิ์
+user_info.unban_space_specific	ยกเลิกการแบนจากบางที่ที่ฉันมีสิทธิ์
+user_info.unban_space_warning	ผู้ใช้จะยังเข้าถึงส่วนที่คุณไม่ได้เป็นผู้ดูแลไม่ได้
+user_info.unignore_button	เลิกเพิกเฉย
+user_info.verification_unavailable	ยืนยันผู้ใช้ไม่ได้ในขณะนี้
+user_info.verify_button	ยืนยันผู้ใช้
+user_info.verify_explainer	เพื่อความปลอดภัยยิ่งขึ้น ยืนยันผู้ใช้นี้ด้วยรหัสใช้ครั้งเดียวบนอุปกรณ์ของทั้งสองฝ่าย
+welcome.tagline_element	รวดเร็ว ใช้งานง่าย
+welcome.title_element	ยินดีต้อนรับสู่ AranChat
+welcome.title_generic	ยินดีต้อนรับสู่ %(brand)s
+onboarding.create_room	สร้างแชทกลุ่ม
+onboarding.explore_rooms	สำรวจห้องสาธารณะ
+onboarding.has_avatar_label	เยี่ยม ช่วยให้คนอื่นรู้ว่าเป็นคุณ
+onboarding.intro_byline	แชทภายในโรงพยาบาล ข้อมูลอยู่บนเซิร์ฟเวอร์ของเราเอง
+onboarding.intro_welcome	ยินดีต้อนรับสู่ %(appName)s
+onboarding.no_avatar_label	เพิ่มรูปเพื่อให้คนอื่นรู้ว่าเป็นคุณ
+onboarding.send_dm	ส่งข้อความส่วนตัว
+onboarding.welcome_detail	มาเริ่มต้นใช้งานกัน
+onboarding.welcome_user	ยินดีต้อนรับ %(name)s
+notifier.m.key.verification.request	%(name)s ขอให้ยืนยันตัวตน
+empty_room	ห้องว่าง
+info_tooltip_title	ข้อมูล
+dialog_close_label	ปิดหน้าต่าง
+message_edit_dialog_title	ประวัติการแก้ไขข้อความ
+language_dropdown_label	เลือกภาษา
+room.3pid_invite_email_not_found_account	คำเชิญนี้ส่งไปที่ %(email)s ซึ่งไม่ได้ผูกกับบัญชีของคุณ
+room.3pid_invite_email_not_found_account_room	คำเชิญเข้า %(roomName)s นี้ส่งไปที่ %(email)s ซึ่งไม่ได้ผูกกับบัญชีของคุณ
+room.3pid_invite_error_description	เกิดข้อผิดพลาด (%(errcode)s) ระหว่างตรวจสอบคำเชิญ ลองแจ้งข้อมูลนี้ให้ผู้ที่เชิญคุณทราบ
+room.3pid_invite_error_invite_action	ลองเข้าร่วมต่อ
+room.3pid_invite_error_invite_subtitle	เข้าร่วมได้ด้วยคำเชิญที่ใช้งานได้เท่านั้น
+room.3pid_invite_error_public_subtitle	คุณยังเข้าร่วมที่นี่ได้
+room.3pid_invite_error_title	คำเชิญของคุณมีปัญหา
+room.3pid_invite_error_title_room	คำเชิญเข้า %(roomName)s ของคุณมีปัญหา
+room.3pid_invite_no_is_subtitle	ตั้งค่าเซิร์ฟเวอร์ยืนยันตัวตนในการตั้งค่าเพื่อรับคำเชิญใน %(brand)s โดยตรง
+room.banned_by	คุณถูกแบนโดย %(memberName)s
+room.banned_from_room_by	คุณถูกแบนจาก %(roomName)s โดย %(memberName)s
+room.context_menu.copy_link	คัดลอกลิงก์
+room.context_menu.favourite	รายการโปรด
+room.context_menu.forget	ลืมห้องนี้
+room.context_menu.low_priority	ความสำคัญต่ำ
+room.context_menu.mark_read	ทำเครื่องหมายว่าอ่านแล้ว
+room.context_menu.mark_unread	ทำเครื่องหมายว่ายังไม่อ่าน
+room.context_menu.notifications_default	ตามค่าเริ่มต้น
+room.context_menu.notifications_mute	ปิดเสียงห้อง
+room.context_menu.title	ตัวเลือกห้อง
+room.context_menu.unfavourite	อยู่ในรายการโปรด
+room.creating_room_text	กำลังสร้างห้องกับ %(names)s
+room.dm_invite_action	เริ่มแชท
+room.dm_invite_subtitle	<userName/> ต้องการแชทกับคุณ
+room.dm_invite_title	ต้องการแชทกับ %(user)s หรือไม่?
+room.drop_file_prompt	วางไฟล์ที่นี่เพื่ออัปโหลด
+room.edit_topic	แก้ไขหัวข้อ
+room.error_cancel_knock_title	ยกเลิกไม่สำเร็จ
+room.error_join_403	ต้องได้รับเชิญจึงจะเข้าห้องนี้ได้
+room.error_join_404_1	คุณพยายามเข้าร่วมด้วย Room ID โดยไม่ได้ระบุเซิร์ฟเวอร์ Room ID เป็นรหัสภายใน ใช้เข้าร่วมห้องโดยตรงไม่ได้หากไม่มีข้อมูลเพิ่ม
+room.error_join_404_2	ถ้ารู้ที่อยู่ห้อง ลองเข้าร่วมด้วยที่อยู่นั้นแทน
+room.error_join_404_invite	ผู้ที่เชิญคุณออกจากห้องไปแล้ว หรือเซิร์ฟเวอร์ของเขาออฟไลน์
+room.error_join_404_invite_same_hs	ผู้ที่เชิญคุณออกจากห้องไปแล้ว
+room.error_join_connection	เข้าร่วมไม่สำเร็จ
+room.error_join_incompatible_version_1	ขออภัย ระบบของคุณไม่ใช่เวอร์ชันล่าสุด จึงเข้าร่วมที่นี่ไม่ได้
+room.error_join_incompatible_version_2	โปรดติดต่อผู้ให้บริการบัญชีของคุณ
+room.error_join_title	เข้าร่วมไม่สำเร็จ
+room.error_join_unknown	เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ
+room.error_jump_to_date	เซิร์ฟเวอร์ตอบกลับ %(statusCode)s พร้อมรหัสข้อผิดพลาด %(errorCode)s
+room.error_jump_to_date_connection	เกิดปัญหาเครือข่ายระหว่างค้นหาวันที่ที่ระบุ ระบบอาจล่มหรืออินเทอร์เน็ตมีปัญหาชั่วคราว โปรดลองใหม่ ถ้ายังเป็นอยู่ โปรดติดต่อผู้ดูแลระบบ
+room.error_jump_to_date_details	รายละเอียดข้อผิดพลาด
+room.error_jump_to_date_not_found	ไม่พบข้อความตั้งแต่ %(dateString)s เป็นต้นไป ลองเลือกวันที่ก่อนหน้านี้
+room.error_jump_to_date_send_logs_prompt	โปรดส่ง<debugLogsLink>บันทึกการแก้ปัญหา</debugLogsLink>เพื่อช่วยเราหาสาเหตุ
+room.error_jump_to_date_title	ไม่พบข้อความในวันที่นั้น
+room.face_pile_summary.one	คนที่คุณรู้จัก %(count)s คนเข้าร่วมแล้ว
+room.face_pile_summary.other	คนที่คุณรู้จัก %(count)s คนเข้าร่วมแล้ว
+room.face_pile_tooltip_label.one	ดูสมาชิก 1 คน
+room.face_pile_tooltip_label.other	ดูสมาชิกทั้ง %(count)s คน
+room.face_pile_tooltip_shortcut	รวมถึง %(commaSeparatedMembers)s
+room.face_pile_tooltip_shortcut_joined	รวมถึงคุณ, %(commaSeparatedMembers)s
+room.failed_determine_user	ระบุผู้ใช้ที่จะเพิกเฉยไม่ได้ เพราะข้อมูลสมาชิกเปลี่ยนไปแล้ว
+room.failed_reject_invite	ปฏิเสธคำเชิญไม่สำเร็จ
+room.forget_room	ลืมห้องนี้
+room.forget_space	ลืม Space นี้
+room.header.join_video_call	เข้าร่วมวิดีโอคอล
+room.header.join_voice_call	เข้าร่วมการโทร
+room.header.n_people_asking_to_join.one	ขอเข้าร่วม
+room.header.n_people_asking_to_join.other	%(count)s คนขอเข้าร่วม
+room.header.room_is_public	ห้องนี้เป็นห้องสาธารณะ
+room.header.shared_history_tooltip	สมาชิกใหม่เห็นประวัติข้อความ
+room.header.world_readable_history_tooltip	ทุกคนเห็นประวัติข้อความ
+room.header_avatar_open_settings_label	เปิดการตั้งค่าห้อง
+room.header_face_pile_tooltip	บุคคล
+room.header_untrusted_label	ไม่น่าเชื่อถือ
+room.inaccessible	ขณะนี้เข้าห้องหรือ Space นี้ไม่ได้
+room.inaccessible_name	ขณะนี้เข้า %(roomName)s ไม่ได้
+room.inaccessible_subtitle_1	ลองใหม่ภายหลัง หรือขอให้ผู้ดูแลห้องหรือ Space ตรวจสอบสิทธิ์ของคุณ
+room.inaccessible_subtitle_2	ได้รับรหัส %(errcode)s ระหว่างเข้าห้องหรือ Space ถ้าคิดว่าข้อความนี้ผิดพลาด โปรด<issueLink>รายงานปัญหา</issueLink>
+room.intro.display_topic	หัวข้อ: <topic/>
+room.intro.dm_caption	การสนทนานี้มีแค่คุณสองคน เว้นแต่จะมีใครเชิญคนอื่นเข้ามา
+room.intro.edit_topic	หัวข้อ: <topic/> (<a>แก้ไข</a>)
+room.intro.enable_encryption_prompt	เปิดการเข้ารหัสได้ในการตั้งค่า
+room.intro.encrypted_3pid_dm_pending_join	เมื่อทุกคนเข้าร่วมแล้ว คุณจะเริ่มแชทได้
+room.intro.no_avatar_label	เพิ่มรูปเพื่อให้คนอื่นหาห้องของคุณเจอง่าย
+room.intro.no_topic	<a>เพิ่มหัวข้อ</a>เพื่อให้คนอื่นรู้ว่าห้องนี้เกี่ยวกับอะไร
+room.intro.private_unencrypted_warning	ปกติข้อความส่วนตัวจะถูกเข้ารหัส แต่ห้องนี้ไม่ได้เข้ารหัส มักเกิดจากอุปกรณ์หรือวิธีที่ไม่รองรับ เช่น เชิญทางอีเมล
+room.intro.room_invite	เชิญเข้าเฉพาะห้องนี้
+room.intro.send_message_start_dm	ส่งข้อความแรกเพื่อเชิญ <displayName/> มาแชท
+room.intro.start_of_dm_history	นี่คือจุดเริ่มต้นการสนทนาส่วนตัวกับ <displayName/>
+room.intro.start_of_room	นี่คือจุดเริ่มต้นของ <roomName/>
+room.intro.unencrypted_warning	ยังไม่ได้เปิดการเข้ารหัสต้นทางถึงปลายทาง
+room.intro.user_created	%(displayName)s สร้างห้องนี้
+room.intro.you_created	คุณสร้างห้องนี้
+room.invite_email_mismatch_suggestion	แชร์อีเมลนี้ในการตั้งค่าเพื่อรับคำเชิญใน %(brand)s โดยตรง
+room.invite_sent_to_email	คำเชิญนี้ส่งไปที่ %(email)s
+room.invite_sent_to_email_room	คำเชิญเข้า %(roomName)s นี้ส่งไปที่ %(email)s
+room.invite_subtitle	เชิญโดย <userName/>
+room.invite_this_room	เชิญเข้าห้องนี้
+room.invite_title	ต้องการเข้าร่วม %(roomName)s หรือไม่?
+room.inviter_unknown	ไม่ทราบ
+room.invites_you_text	<inviter/> เชิญคุณ
+room.join_button_account	ลงทะเบียน
+room.join_failed_needs_invite	ต้องได้รับเชิญจึงจะดู %(roomName)s ได้
+room.join_the_discussion	เข้าร่วมการสนทนา
+room.join_title_account	เข้าร่วมการสนทนาด้วยบัญชี
+room.joining	กำลังเข้าร่วม…
+room.joining_room	กำลังเข้าห้อง…
+room.joining_space	กำลังเข้า Space…
+room.jump_read_marker	เลื่อนไปยังข้อความแรกที่ยังไม่อ่าน
+room.jump_to_bottom_button	เลื่อนไปยังข้อความล่าสุด
+room.kick_reason	เหตุผล: %(reason)s
+room.kicked_by	คุณถูกนำออกโดย %(memberName)s
+room.kicked_from_room_by	คุณถูกนำออกจาก %(roomName)s โดย %(memberName)s
+room.knock_cancel_action	ยกเลิกคำขอ
+room.knock_denied_subtitle	เนื่องจากถูกปฏิเสธ คุณจะเข้าร่วมใหม่ไม่ได้ เว้นแต่ผู้ดูแลหรือผู้ควบคุมจะเชิญ
+room.knock_denied_title	คำขอเข้าร่วมถูกปฏิเสธ
+room.knock_message_field_placeholder	ข้อความ (ไม่บังคับ)
+room.knock_prompt	ขอเข้าร่วมหรือไม่?
+room.knock_prompt_name	ขอเข้าร่วม %(roomName)s หรือไม่?
+room.knock_send_action	ส่งคำขอเข้าร่วม
+room.knock_sent	ส่งคำขอเข้าร่วมแล้ว
+room.knock_sent_subtitle	คำขอเข้าร่วมของคุณรอการอนุมัติ
+room.knock_subtitle	ต้องได้รับอนุญาตก่อนจึงจะดูหรือร่วมสนทนาในห้องนี้ได้ ส่งคำขอเข้าร่วมได้ด้านล่าง
+room.leave_error_title	ออกจากห้องไม่สำเร็จ
+room.leave_server_notices_description	แชทนี้ใช้รับข้อความสำคัญจากผู้ดูแลระบบ จึงออกไม่ได้
+room.leave_server_notices_title	ออกจากห้องประกาศของเซิร์ฟเวอร์ไม่ได้
+room.leave_unexpected_error	เซิร์ฟเวอร์เกิดข้อผิดพลาดระหว่างออกจากห้อง
+room.link_email_to_receive_3pid_invite	ผูกอีเมลนี้กับบัญชีในการตั้งค่าเพื่อรับคำเชิญใน %(brand)s โดยตรง
+room.loading_preview	กำลังโหลดตัวอย่าง
+room.no_peek_join_prompt	ดูตัวอย่าง %(roomName)s ไม่ได้ ต้องการเข้าร่วมหรือไม่?
+room.no_peek_no_name_join_prompt	ไม่มีตัวอย่าง ต้องการเข้าร่วมหรือไม่?
+room.not_found_subtitle	แน่ใจหรือไม่ว่ามาถูกที่?
+room.not_found_title	ไม่มีห้องหรือ Space นี้
+room.not_found_title_name	ไม่มี %(roomName)s
+room.peek_join_prompt	คุณกำลังดูตัวอย่าง %(roomName)s ต้องการเข้าร่วมหรือไม่?
+room.pinned_message_banner.button_close_list	ปิดรายการ
+room.pinned_message_banner.button_view_all	ดูทั้งหมด
+room.pinned_message_banner.description	ข้อความที่ปักหมุด
+room.pinned_message_banner.go_to_newest_message	ดูข้อความที่ปักหมุดในไทม์ไลน์ และแสดงข้อความปักหมุดล่าสุดที่นี่
+room.pinned_message_banner.go_to_next_message	ดูข้อความที่ปักหมุดในไทม์ไลน์ และแสดงข้อความปักหมุดก่อนหน้าที่นี่
+room.pinned_message_banner.title	ข้อความที่ปักหมุด <bold>%(index)s จาก %(length)s</bold>
+room.read_topic	อ่านหัวข้อทั้งหมด
+room.rejecting	กำลังปฏิเสธคำเชิญ…
+room.rejoin_button	เข้าร่วมอีกครั้ง
+room.room_content	เนื้อหาในห้อง

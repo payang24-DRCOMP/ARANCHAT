@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_decline_and_block_block_user_option_description">"คุณจะไม่เห็นข้อความหรือคำเชิญจากผู้ใช้นี้"</string>
+  <string name="screen_decline_and_block_block_user_option_title">"บล็อกผู้ใช้"</string>
+  <string name="screen_decline_and_block_report_user_option_description">"รายงานห้องนี้ไปยังผู้ให้บริการบัญชี"</string>
+  <string name="screen_decline_and_block_report_user_reason_placeholder">"อธิบายเหตุผลที่รายงาน…"</string>
+  <string name="screen_decline_and_block_title">"ปฏิเสธและบล็อก"</string>
+  <string name="screen_invites_decline_chat_message">"ต้องการปฏิเสธคำเชิญเข้าร่วม %1$s ใช่ไหม"</string>
+  <string name="screen_invites_decline_chat_title">"ปฏิเสธคำเชิญ"</string>
+  <string name="screen_invites_decline_direct_chat_message">"ต้องการปฏิเสธแชทส่วนตัวกับ %1$s ใช่ไหม"</string>
+  <string name="screen_invites_decline_direct_chat_title">"ปฏิเสธแชท"</string>
+  <string name="screen_invites_empty_list">"ไม่มีคำเชิญ"</string>
+  <string name="screen_invites_invited_you">"%1$s (%2$s) เชิญคุณ"</string>
+  <string name="screen_join_room_decline_and_block_alert_confirmation">"ใช่ ปฏิเสธและบล็อก"</string>
+  <string name="screen_join_room_decline_and_block_alert_message">"ต้องการปฏิเสธคำเชิญเข้าห้องนี้ใช่ไหม %1$s จะติดต่อหรือเชิญคุณเข้าห้องไม่ได้อีก"</string>
+  <string name="screen_join_room_decline_and_block_alert_title">"ปฏิเสธคำเชิญและบล็อก"</string>
+  <string name="screen_join_room_decline_and_block_button_title">"ปฏิเสธและบล็อก"</string>
+</resources>

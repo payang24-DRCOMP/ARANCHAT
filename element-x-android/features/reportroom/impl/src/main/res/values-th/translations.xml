@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_report_room_leave_failed_alert_message">"ส่งรายงานสำเร็จ แต่ออกจากห้องไม่สำเร็จ โปรดลองใหม่"</string>
+  <string name="screen_report_room_leave_failed_alert_title">"ออกจากห้องไม่ได้"</string>
+  <string name="screen_report_room_reason_footer">"รายงานแชทนี้ไปยังผู้ให้บริการบัญชี ถ้าข้อความเข้ารหัส ผู้ให้บริการจะอ่านไม่ได้"</string>
+  <string name="screen_report_room_reason_placeholder">"อธิบายเหตุผลที่รายงาน…"</string>
+  <string name="screen_report_room_title">"รายงานห้อง"</string>
+</resources>

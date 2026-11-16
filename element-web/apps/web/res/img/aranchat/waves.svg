@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 560" preserveAspectRatio="none">
+  <!-- พื้นหลังห้องแชท: คลื่นสีม่วงอ่อนด้านล่าง (aranchat.css → .mx_RoomView_timeline) -->
+  <path d="M0 250 C 260 120 520 120 760 210 S 1220 320 1440 190 V560 H0Z" fill="#E6DFFB"/>
+  <path d="M0 360 C 300 250 560 270 820 340 S 1240 420 1440 320 V560 H0Z" fill="#D8CCF8"/>
+  <path d="M0 460 C 280 390 620 400 900 450 S 1260 500 1440 430 V560 H0Z" fill="#C9B8F4"/>
+</svg>

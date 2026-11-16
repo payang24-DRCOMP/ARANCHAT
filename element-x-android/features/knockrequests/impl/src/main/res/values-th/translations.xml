@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_knock_requests_list_accept_all_alert_confirm_button_title">"ใช่ ยอมรับทั้งหมด"</string>
+  <string name="screen_knock_requests_list_accept_all_alert_description">"ต้องการยอมรับคำขอเข้าร่วมทั้งหมดใช่ไหม"</string>
+  <string name="screen_knock_requests_list_accept_all_alert_title">"ยอมรับคำขอทั้งหมด"</string>
+  <string name="screen_knock_requests_list_accept_all_button_title">"ยอมรับทั้งหมด"</string>
+  <string name="screen_knock_requests_list_accept_all_failed_alert_description">"ยอมรับคำขอทั้งหมดไม่สำเร็จ ลองอีกครั้งไหม"</string>
+  <string name="screen_knock_requests_list_accept_all_failed_alert_title">"ยอมรับคำขอทั้งหมดไม่สำเร็จ"</string>
+  <string name="screen_knock_requests_list_accept_all_loading_title">"กำลังยอมรับคำขอเข้าร่วมทั้งหมด"</string>
+  <string name="screen_knock_requests_list_accept_failed_alert_description">"ยอมรับคำขอนี้ไม่สำเร็จ ลองอีกครั้งไหม"</string>
+  <string name="screen_knock_requests_list_accept_failed_alert_title">"ยอมรับคำขอไม่สำเร็จ"</string>
+  <string name="screen_knock_requests_list_accept_loading_title">"กำลังยอมรับคำขอเข้าร่วม"</string>
+  <string name="screen_knock_requests_list_ban_alert_confirm_button_title">"ใช่ ปฏิเสธและแบน"</string>
+  <string name="screen_knock_requests_list_ban_alert_description">"ต้องการปฏิเสธและแบน %1$s ใช่ไหม ผู้ใช้นี้จะขอเข้าห้องนี้อีกไม่ได้"</string>
+  <string name="screen_knock_requests_list_ban_alert_title">"ปฏิเสธและแบนการเข้าถึง"</string>
+  <string name="screen_knock_requests_list_ban_loading_title">"กำลังปฏิเสธและแบนการเข้าถึง"</string>
+  <string name="screen_knock_requests_list_decline_alert_confirm_button_title">"ใช่ ปฏิเสธ"</string>
+  <string name="screen_knock_requests_list_decline_alert_description">"ต้องการปฏิเสธคำขอเข้าห้องนี้ของ %1$s ใช่ไหม"</string>
+  <string name="screen_knock_requests_list_decline_alert_title">"ปฏิเสธการเข้าถึง"</string>
+  <string name="screen_knock_requests_list_decline_and_ban_action_title">"ปฏิเสธและแบน"</string>
+  <string name="screen_knock_requests_list_decline_failed_alert_description">"ปฏิเสธคำขอนี้ไม่สำเร็จ ลองอีกครั้งไหม"</string>
+  <string name="screen_knock_requests_list_decline_failed_alert_title">"ปฏิเสธคำขอไม่สำเร็จ"</string>
+  <string name="screen_knock_requests_list_decline_loading_title">"กำลังปฏิเสธคำขอเข้าร่วม"</string>
+  <string name="screen_knock_requests_list_empty_state_description">"เมื่อมีคนขอเข้าห้อง คำขอจะแสดงที่นี่"</string>
+  <string name="screen_knock_requests_list_empty_state_title">"ไม่มีคำขอเข้าร่วมที่รออยู่"</string>
+  <string name="screen_knock_requests_list_initial_loading_title">"กำลังโหลดคำขอเข้าร่วม…"</string>
+  <string name="screen_knock_requests_list_title">"คำขอเข้าร่วม"</string>
+  <plurals name="screen_room_multiple_knock_requests_title">
+    <item quantity="other">"%1$s และอีก %2$d คนต้องการเข้าร่วมห้องนี้"</item>
+  </plurals>
+  <string name="screen_room_multiple_knock_requests_view_all_button_title">"ดูทั้งหมด"</string>
+  <string name="screen_room_single_knock_request_accept_button_title">"ยอมรับ"</string>
+  <string name="screen_room_single_knock_request_title">"%1$s ต้องการเข้าร่วมห้องนี้"</string>
+  <string name="screen_room_single_knock_request_view_button_title">"ดู"</string>
+</resources>

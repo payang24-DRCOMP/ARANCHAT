@@ -1,0 +1,206 @@
+/* AranChat — ชวนเพื่อน / แชร์กลุ่ม (src/aranchat/AranShareDialog.tsx) */
+.mx_AranChatFriends_add.mx_AranChatFriends_invite {
+    background: var(--ac-brand, #5b3fd9);
+    border-color: var(--ac-brand, #5b3fd9);
+    color: #fff;
+    margin-right: 6px;
+}
+.mx_AranChatFriends_add {
+    white-space: nowrap;
+}
+.mx_AranShareDialog {
+    width: min(420px, calc(100vw - 32px));
+}
+.mx_AranShareDialog_body {
+    text-align: center;
+}
+.mx_AranShareDialog_lead {
+    color: var(--cpd-color-text-secondary);
+    margin: 0 0 12px;
+}
+.mx_AranShareDialog_notice {
+    background: var(--cpd-color-bg-success-subtle, #e7f7ee);
+    color: var(--cpd-color-text-success-primary, #0b6e3b);
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-size: 13px;
+}
+.mx_AranShareDialog_qr {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    img {
+        border-radius: 16px;
+        background: #fff;
+        padding: 8px;
+    }
+}
+.mx_AranShareDialog_link {
+    font-family: var(--cpd-font-family-mono, monospace);
+    font-size: 14px;
+    background: var(--cpd-color-bg-subtle-secondary);
+    border-radius: 10px;
+    padding: 8px 10px;
+    margin: 8px 0 14px;
+    word-break: break-all;
+    user-select: all;
+}
+.mx_AranShareDialog_buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.mx_AranShareDialog_btn {
+    border: 1.5px solid var(--cpd-color-border-interactive-secondary);
+    background: var(--cpd-color-bg-canvas-default);
+    color: var(--ac-brand, #5b3fd9);
+    border-radius: 999px;
+    padding: 10px 18px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    &[disabled],
+    &[aria-disabled="true"] {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+/* ปุ่มส่ง LINE สีเขียวตามที่ผู้ใช้คุ้น */
+.mx_AranSharePanel .mx_AranShareDialog_line {
+    background: #06c755;
+    border-color: #06c755;
+    color: #fff !important;
+}
+.mx_AranShareDialog_stats {
+    margin-top: 14px;
+    font-weight: 600;
+}
+.mx_AranShareDialog_error {
+    color: var(--cpd-color-text-critical-primary);
+}
+
+/* QR โค้ดของฉัน (ตั้งค่า → บัญชี) */
+.mx_AranMyQr {
+    border: 1px solid var(--cpd-color-border-interactive-secondary);
+    border-radius: 20px;
+    padding: 16px;
+    text-align: center;
+    h3 {
+        margin: 0 0 4px;
+        font: var(--cpd-font-heading-sm-semibold);
+    }
+}
+
+/* เลือกเพื่อนเพื่อส่งข้อมูลติดต่อ (ปุ่ม + → เพื่อน) */
+.mx_AranContactPicker {
+    width: min(420px, calc(100vw - 32px));
+}
+.mx_AranContactPicker_lead {
+    color: var(--cpd-color-text-secondary);
+    margin: 0 0 10px;
+}
+.mx_AranContactPicker_search {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--cpd-color-border-interactive-secondary);
+    font: inherit;
+    margin-bottom: 8px;
+}
+.mx_AranContactPicker_list {
+    max-height: min(420px, 55vh);
+    overflow-y: auto;
+}
+.mx_AranContactPicker_row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 8px 6px;
+    border: 0;
+    background: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    color: inherit;
+    .mx_AranContactPicker_name {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-width: 0;
+    }
+    small {
+        color: var(--cpd-color-text-secondary);
+    }
+    em {
+        color: var(--cpd-color-text-secondary);
+        font-style: normal;
+        font-size: 12px;
+    }
+    &:hover {
+        background: var(--cpd-color-bg-subtle-secondary);
+    }
+}
+.mx_AranContactPicker_empty,
+.mx_AranContactPicker_error {
+    text-align: center;
+    color: var(--cpd-color-text-secondary);
+    padding: 16px 0;
+}
+
+/* การ์ดแนะนำเพื่อนในห้องแชท */
+.mx_AranContact {
+    width: 240px;
+    max-width: 100%;
+    background: #fff;
+    color: #1e1350;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgb(46 31 122 / 12%);
+}
+.mx_AranContact_head {
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #8b5cf6, #5b3fd9);
+}
+.mx_AranContact_person {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    .mx_AranContact_name {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+    b {
+        font-size: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    small {
+        color: #64748b;
+    }
+}
+.mx_AranContact_btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    border-top: 1px solid #eee;
+    background: none;
+    color: #5b3fd9;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+        background: #f6f3ff;
+    }
+}

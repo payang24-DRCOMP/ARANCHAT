@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="troubleshoot_notifications_test_firebase_availability_description">"ตรวจว่า Firebase ใช้งานได้"</string>
+  <string name="troubleshoot_notifications_test_firebase_availability_failure">"Firebase ใช้งานไม่ได้"</string>
+  <string name="troubleshoot_notifications_test_firebase_availability_success">"Firebase ใช้งานได้"</string>
+  <string name="troubleshoot_notifications_test_firebase_availability_title">"ตรวจ Firebase"</string>
+  <string name="troubleshoot_notifications_test_firebase_token_description">"ตรวจว่ามี token ของ Firebase"</string>
+  <string name="troubleshoot_notifications_test_firebase_token_failure">"ไม่ทราบ token ของ Firebase"</string>
+  <string name="troubleshoot_notifications_test_firebase_token_success">"token ของ Firebase: %1$s"</string>
+  <string name="troubleshoot_notifications_test_firebase_token_title">"ตรวจ token ของ Firebase"</string>
+</resources>

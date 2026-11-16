@@ -1,0 +1,10 @@
+{
+    "appId": "com.arankub.aranchat.desktop",
+    "name": "aranchat-desktop",
+    "productName": "AranChat",
+    "description": "AranChat — แชทและแจ้งเตือนในหน่วยงาน",
+    "protocols": [
+        "com.arankub.chat.desktop",
+        "aranchat"
+    ]
+}

@@ -1,0 +1,158 @@
+/* AranChat — หน้าตาแบบแอปแชท (แถบเมนูมีชื่อ · รายการแชท · ห้องแชทพื้นคลื่น)
+ * เปิดใช้เมื่อ <html class="ac-layout"> (aranchat-early.js — ทดลองก่อนเปิดทุกคน: ?ac_layout=on / off)
+ * แถบเมนู: aranchat-nav.js แทรก .ac-rail ไว้ใน .mx_SpacePanel · ซ่อนรายการ Space ของ Element (หน่วยงานไม่ใช้)
+ * จอกว้าง: แถบเมนูซ้าย + รายการแชท + ห้องแชท · จอแคบ (≤768px): แถบเมนูล่าง แสดงทีละหน้า (รายการ ⇄ ห้อง มีปุ่มย้อนกลับ)
+ *   aranchat-nav.js ตั้ง <html data-ac-pane="list|room"> ให้รู้ว่าตอนนี้แสดงหน้าไหน
+ * ระบบหน้าตา (elayadesign/ai-design-skills · landing-page-design):
+ *   ระยะ 2/4/8/12/16/24/32 เท่านั้น · มุมโค้ง 8/12/16/24/full · ตัวหนาไม่เกิน 700 · ไม่ใช้พื้นหลังไล่สี
+ *   ขยับเฉพาะ transform/opacity · เส้นโค้ง cubic-bezier(0.22,1,0.36,1) · hover 300ms · กดแล้วยุบ scale(.98)
+ *   ตรวจที่กว้าง 390px: ไม่มีอะไรล้นจอ
+ * เลือกส่วนต่างๆ ด้วย data-testid / คลาส mx_ ที่ Element ตั้งไว้ — อัปเดต Element แล้วเช็คหน้าตาอีกครั้ง */
+.ac-layout {
+  --ac-ink: #1E1B4B; --ac-muted: #64607A; --ac-line: #ECE8F6;
+  --ac-brand-c: #5B3FD9; --ac-tint: #F4F1FC; --ac-tint-2: #EEE9FC; --ac-field: #F4F2F8;
+  --ac-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ac-bar: 64px;
+}
+@media (prefers-reduced-motion: reduce) { .ac-layout * { transition-duration: 0ms !important; animation: none !important; } }
+
+/* ---------- แถบเมนู ---------- */
+.ac-layout .mx_SpacePanel { width: 80px !important; padding-top: 12px; background: #fff !important; border-right: 1px solid var(--ac-line); gap: 2px; }
+.ac-layout .mx_SpacePanel > .mx_SpacePanel_toggleCollapse, .ac-layout .mx_SpacePanel > .mx_SpaceTreeLevel { display: none !important; }
+.ac-layout .mx_SpacePanel > .ac-rail { order: -1; }
+.ac-layout .mx_SpacePanel > .mx_UserMenu { order: 8; margin: auto auto 4px; }
+.ac-layout .mx_SpacePanel > .ac-side { order: 9; }
+.ac-layout .mx_SpacePanel > .mx_QuickSettingsButton { order: 10; }
+.ac-layout .mx_SpacePanel > :not(.ac-rail):not(.mx_UserMenu):not(.ac-side):not(.mx_QuickSettingsButton) { order: 7; }
+.ac-layout .ac-rail { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 100%; padding: 0 8px 8px; box-sizing: border-box; }
+.ac-layout .ac-rail-logo { display: block; margin-bottom: 8px; }
+.ac-layout .ac-rail-logo img { width: 48px; height: 48px; border-radius: 12px; display: block; }
+.ac-layout .ac-rail-item {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; width: 64px; padding: 8px 0;
+  border-radius: 16px; color: var(--ac-muted) !important; text-decoration: none !important; font-size: 12px; font-weight: 500;
+  transition: background-color 300ms var(--ac-ease), color 300ms var(--ac-ease), transform 300ms var(--ac-ease);
+}
+.ac-layout .ac-rail-item:hover { background: var(--ac-tint); color: var(--ac-brand-c) !important; }
+.ac-layout .ac-rail-item:active { transform: scale(.98); }
+.ac-layout .ac-rail-item.ac-on { background: var(--ac-tint-2); color: var(--ac-brand-c) !important; font-weight: 700; }
+.ac-layout .ac-rail-item[hidden] { display: none; }
+.ac-layout .ac-rail-ic { position: relative; width: 24px; height: 24px; }
+.ac-layout .ac-rail-ic svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; }
+.ac-layout .ac-rail-item.ac-on .ac-rail-ic svg { fill: currentColor; stroke: none; }
+.ac-layout .ac-rail-badge {
+  position: absolute; top: -4px; right: -12px; min-width: 16px; height: 16px; padding: 0 4px; box-sizing: border-box;
+  border-radius: 999px; background: #E5484D; color: #fff; font-size: 11px; line-height: 16px; text-align: center; font-weight: 700;
+}
+.ac-layout .ac-rail-badge[hidden] { display: none; }
+
+/* ---------- รายการแชท: หัวเป็นชื่อแอป · ช่องค้นหาโค้งมน · ตัวกรองเป็นแท็บขีดเส้นใต้ ---------- */
+.ac-layout .mx_LeftPanel, .ac-layout .mx_RoomListPanel { background: #fff !important; }
+.ac-layout [data-testid="room-list-header"] h1 { font-size: 0 !important; }
+.ac-layout [data-testid="room-list-header"] h1::before { content: var(--ac-brand, "AranChat"); font-size: 24px; font-weight: 700; color: var(--ac-ink); }
+.ac-layout [data-testid="room-list-search"] button#room-list-search-button {
+  border-radius: 999px !important; background: var(--ac-field) !important; border-color: transparent !important; min-height: 40px;
+}
+.ac-layout [data-testid="primary-filters"] [role="option"] {
+  border-radius: 0 !important; background: transparent !important; border: 0 !important; box-shadow: none !important;
+  color: var(--ac-muted) !important; font-weight: 600; padding: 4px 4px 8px !important; margin-right: 8px;
+  border-bottom: 2px solid transparent !important; transition: color 300ms var(--ac-ease);
+}
+.ac-layout [data-testid="primary-filters"] [role="option"][aria-selected="true"] { color: var(--ac-brand-c) !important; border-bottom-color: var(--ac-brand-c) !important; }
+.ac-layout .mx_RoomListItemView { border-radius: 12px; margin: 2px 8px; transition: background-color 300ms var(--ac-ease); }
+.ac-layout .mx_RoomListItemView:hover { background: #F7F5FC !important; }
+.ac-layout .mx_RoomListItemView.mx_RoomListItemView_selected, .ac-layout .mx_RoomListItemView[aria-selected="true"] { background: var(--ac-tint-2) !important; }
+.ac-layout .mx_RoomListItemView [data-testid="room-name"] { font-weight: 600; font-size: 15px; }
+
+/* ---------- ห้องแชท: หัวห้องขาว · พื้นคลื่นสีม่วง (รูป ไม่ใช่สีไล่) · รูปขอบมนมีกรอบ ---------- */
+.ac-layout .mx_RoomHeader { background: #fff; min-height: 64px; border-bottom: 1px solid var(--ac-line); }
+.ac-layout .mx_RoomHeader .mx_RoomHeader_heading { font-size: 18px; font-weight: 700; }
+.ac-layout .mx_RoomView_body .mx_RoomView_timeline { background: #F3F0FB url("aranchat-waves.svg") center bottom / 100% 55% no-repeat !important; }
+.ac-layout .mx_RoomView_body .mx_RoomView_messagePanel { background: transparent !important; }
+.ac-layout .mx_MImageBody .mx_MImageBody_thumbnail_container { border: 2px solid #fff; border-radius: 16px; box-shadow: 0 2px 8px rgba(46, 31, 122, .12); }
+.ac-layout .ac-back { display: none; }
+
+/* ---------- ช่องพิมพ์: แคปซูลสีเทาอ่อน + ปุ่มส่งกลมสีแบรนด์ ---------- */
+.ac-layout .mx_MessageComposer { background: #fff; border-top: 1px solid var(--ac-line); }
+.ac-layout .mx_MessageComposer_wrapper .mx_BasicMessageComposer, .ac-layout .mx_MessageComposer_wrapper .mx_SendMessageComposer {
+  background: var(--ac-field); border-radius: 24px; padding: 8px 16px;
+}
+.ac-layout .mx_MessageComposer_sendMessage {
+  width: 24px !important; height: 24px !important; padding: 8px !important; border-radius: 999px !important;
+  background: var(--ac-brand-c) !important; transition: transform 300ms var(--ac-ease);
+}
+.ac-layout .mx_MessageComposer_sendMessage:active { transform: scale(.98); }
+.ac-layout .mx_MessageComposer_sendMessage svg { color: #fff !important; fill: #fff !important; }
+
+/* ---------- หน้าต่าง "ระบบงาน" (brand/apps.json) ---------- */
+.ac-apps {
+  position: fixed; z-index: 4000; left: 96px; top: 72px; width: min(440px, calc(100vw - 112px)); box-sizing: border-box;
+  padding: 16px; border-radius: 24px; background: #fff; box-shadow: 0 16px 48px rgba(26, 15, 77, .22);
+  font-family: var(--cpd-font-family-sans); animation: ac-pop 500ms var(--ac-ease);
+}
+@keyframes ac-pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.ac-apps-head b { display: block; font-size: 18px; color: var(--ac-ink); }
+.ac-apps-head span { font-size: 13px; color: var(--ac-muted); }
+.ac-apps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+.ac-app {
+  display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 16px; border: 1px solid var(--ac-line); min-width: 0;
+  color: var(--ac-ink) !important; text-decoration: none !important;
+  transition: background-color 300ms var(--ac-ease), border-color 300ms var(--ac-ease), transform 300ms var(--ac-ease);
+}
+.ac-app:hover { background: #F7F5FC; border-color: #C4B5FD; }
+.ac-app:active { transform: scale(.98); }
+.ac-app > span:last-child { min-width: 0; }
+.ac-app-ic { width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.ac-app b { display: block; font-size: 14px; line-height: 1.4; }
+.ac-app small { display: block; font-size: 12px; color: var(--ac-muted); line-height: 1.4; }
+
+/* ---------- โปรแกรมที่เปิดซ้อนในหน้าแชท (web view) ---------- */
+.ac-view { position: fixed; z-index: 3000; top: 0; bottom: 0; right: 0; left: 80px; display: flex; flex-direction: column; background: #fff; border-left: 1px solid var(--ac-line); }
+.ac-view-bar { display: flex; align-items: center; gap: 12px; height: 56px; padding: 0 12px 0 16px; border-bottom: 1px solid var(--ac-line); font-family: var(--cpd-font-family-sans); }
+.ac-view-bar .ac-app-ic { width: 32px; height: 32px; border-radius: 8px; font-size: 16px; }
+.ac-view-bar b { flex: 1; min-width: 0; font-size: 16px; color: var(--ac-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ac-view-btn {
+  border: 1px solid #D9D0F5; background: #fff; color: var(--ac-brand-c) !important; border-radius: 999px; padding: 8px 12px;
+  font-size: 13px; line-height: 1; text-decoration: none !important; cursor: pointer; font-family: inherit; white-space: nowrap;
+  transition: background-color 300ms var(--ac-ease);
+}
+.ac-view-btn:hover { background: var(--ac-tint); }
+.ac-view-x { width: 32px; height: 32px; padding: 0; font-size: 16px; }
+.ac-view iframe { flex: 1; width: 100%; border: 0; }
+
+/* ================= จอแคบ (มือถือ / หน้าต่างเล็ก) ================= */
+@media (max-width: 768px) {
+  /* แถบเมนูย้ายลงล่าง (แบบแอปแชทบนมือถือ) · เมนูผู้ใช้/ตั้งค่าด่วนเข้าทาง "โปรไฟล์" */
+  .ac-layout .mx_SpacePanel { width: 0 !important; min-width: 0 !important; padding: 0 !important; border: 0 !important; overflow: visible !important; }
+  .ac-layout .mx_SpacePanel > :not(.ac-rail) { display: none !important; }
+  .ac-layout .ac-rail {
+    position: fixed; z-index: 3500; left: 0; right: 0; bottom: 0; flex-direction: row; justify-content: space-around; align-items: stretch;
+    height: calc(var(--ac-bar) + env(safe-area-inset-bottom)); padding: 4px 4px env(safe-area-inset-bottom); gap: 0;
+    background: #fff; border-top: 1px solid var(--ac-line);
+  }
+  .ac-layout .ac-rail-logo { display: none; }
+  .ac-layout .ac-rail-item { flex: 1; width: auto; min-width: 0; padding: 4px 0; justify-content: center; border-radius: 12px; font-size: 11px; }
+  .ac-layout .ac-rail-item.ac-on { background: transparent; }
+  .ac-layout .mx_MatrixChat { padding-bottom: calc(var(--ac-bar) + env(safe-area-inset-bottom)); box-sizing: border-box; }
+
+  /* แสดงทีละหน้า: รายการแชท หรือ ห้องแชท (เต็มจอ) */
+  .ac-layout .mx_Separator { display: none !important; }
+  /* ในห้องแชท: ซ่อนแถบเมนูล่าง (พิมพ์ได้เต็มที่) + ปุ่มย้อนกลับบนหัวห้อง */
+  .ac-layout[data-ac-pane="room"] .ac-rail { display: none; }
+  .ac-layout[data-ac-pane="room"] .mx_MatrixChat { padding-bottom: env(safe-area-inset-bottom); }
+  .ac-layout .ac-back {
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 40px; height: 40px; margin-right: 4px;
+    border: 0; border-radius: 999px; background: transparent; color: var(--ac-ink); cursor: pointer; padding: 0;
+  }
+  .ac-layout .ac-back:active { transform: scale(.98); background: var(--ac-tint); }
+  .ac-layout .ac-back svg { width: 24px; height: 24px; }
+  .ac-layout .mx_RoomHeader { min-height: 56px; padding-left: 4px !important; }
+
+  /* ระบบงาน: แผ่นจากด้านล่าง · web view เต็มจอเหนือแถบเมนู */
+  .ac-apps { left: 8px; right: 8px; top: auto; bottom: calc(var(--ac-bar) + env(safe-area-inset-bottom) + 8px); width: auto; max-height: 70vh; overflow: auto; }
+  .ac-view { left: 0; bottom: calc(var(--ac-bar) + env(safe-area-inset-bottom)); border-left: 0; }
+  .ac-view-bar { padding: 0 8px 0 12px; gap: 8px; }
+}
+@media (max-width: 480px) {
+  .ac-apps-grid { grid-template-columns: 1fr; }
+  .ac-view-btn:not(.ac-view-x) { padding: 8px; font-size: 12px; }
+}

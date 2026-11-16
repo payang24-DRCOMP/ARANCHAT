@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="common_date_date_at_time">"%1$s เวลา %2$s"</string>
+  <string name="common_date_this_month">"เดือนนี้"</string>
+</resources>

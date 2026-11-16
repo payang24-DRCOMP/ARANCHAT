@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><!-- ไอคอน AranChat (แบบ 1+2 ก โทนม่วง): สองฟองคุยกัน ฟองหน้าเป็นตัว A ยิ้ม + จุดแจ้งเตือน · แก้ไฟล์นี้แล้วรัน scripts/09-branding.sh --><defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E1F7A"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+  <linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#DDD3FF"/><stop offset="1" stop-color="#A78BFA"/></linearGradient>
+  <filter id="s"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#1A0F4D" flood-opacity=".35"/></filter>
+  <clipPath id="k"><rect width="1024" height="1024" rx="230"/></clipPath></defs>
+  <rect width="1024" height="1024" rx="230" fill="url(#g)"/>
+  <g clip-path="url(#k)"><circle cx="150" cy="900" r="280" fill="#fff" opacity=".06"/></g>
+  <g fill="url(#m)"><rect x="430" y="210" width="410" height="320" rx="150"/><path d="M740 480 L812 618 L640 516 Z"/></g>
+  <g fill="#fff" opacity=".9"><circle cx="560" cy="360" r="26"/><circle cx="636" cy="360" r="26"/><circle cx="712" cy="360" r="26"/></g>
+  <g filter="url(#s)" fill="#fff"><rect x="168" y="380" width="520" height="420" rx="190"/><path d="M268 730 L214 880 L440 790 Z" stroke="#fff" stroke-width="16" stroke-linejoin="round"/></g>
+  <path d="M310 716 L428 468 L546 716" fill="none" stroke="#5B3FD9" stroke-width="66" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M358.38 624.24 Q428 673.84 497.62 624.24" fill="none" stroke="#8B5CF6" stroke-width="51.480000000000004" stroke-linecap="round"/>
+  <circle cx="826" cy="214" r="90" fill="#FF7A59" stroke="#3A2696" stroke-width="28"/></svg>

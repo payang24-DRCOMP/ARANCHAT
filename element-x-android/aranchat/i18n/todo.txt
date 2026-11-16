@@ -1,0 +1,1437 @@
+Log Out & Upgrade
+%1$s no longer supports the old protocol. Please log out and log back in to continue using the app.
+Your account provider no longer supports the old protocol. Please sign out and sign back in to continue using the app.
+Share anonymous usage data to help us identify issues.
+You can read all our terms %1$s.
+here
+Share analytics data
+We won\'t record or profile any personal data
+You can turn this off anytime
+We won\'t share your data with third parties
+Help improve %1$s
+Ongoing call
+Tap to return to the call
+☎️ Call in progress
+Element Call does not support using Bluetooth audio devices in this Android version. Please select a different audio device.
+Incoming Element Call
+An error occurred when creating the room
+The space could not be created because of an unknown error. Try again later.
+Add name…
+New space
+Only people invited can join.
+Anyone can find this room.\nYou can change this anytime in room settings.
+Anyone can ask to join but an administrator or a moderator must accept the request.
+Allow ask to join
+Anyone in %1$s can join but everyone else must request access.
+Anyone in %1$s can join.
+Who has access
+You’ll need an address in order to make it visible in the public directory.
+(no space)
+Do not add to a space
+No space selected
+Add to space
+Add description…
+Please confirm that you want to delete your account. This action cannot be undone.
+Delete all my messages
+Warning: Future users may see incomplete conversations.
+Deleting your account is %1$s, it will:
+irreversible
+%1$s your account (you can\'t log back in, and your ID can\'t be reused).
+Permanently disable
+Remove you from all chat rooms.
+Delete your account information from our identity server.
+Your messages will still be visible to registered users but won’t be available to new or unregistered users if you choose to delete them.
+Delete account
+Can\'t confirm?
+Create a new recovery key
+Choose how to verify to set up secure messaging.
+Confirm your digital identity
+Use another device
+Use recovery key
+Now you can read or send messages securely, and anyone you chat with can also trust this device.
+Device verified
+Waiting on other device…
+You can change your settings later.
+Allow notifications and never miss a message
+Disable battery optimisation for this app, to make sure all notifications are received.
+Disable optimisation
+Notifications not arriving?
+Your notification ping has been updated—clearer, quicker, and less disruptive.
+We’ve refreshed your sounds
+Your chats are automatically backed up with end-to-end encryption. To restore this backup and retain your digital identity when you lose access to all your devices, you will need your recovery key.
+Get recovery key
+Back up your chats
+Swipe up or down on your avatar to switch between your accounts without going to the app settings.
+Swipe your avatar to switch accounts
+Confirm your recovery key to maintain access to your key storage and message history.
+Enter your recovery key
+Forgot your recovery key?
+Your key storage is out of sync
+To ensure you never miss an important call, please change your settings to allow full-screen notifications when your phone is locked.
+Enhance your call experience
+Are you sure you want to decline the invitation to join %1$s?
+Are you sure you want to decline this private chat with %1$s?
+Decline chat
+No Invites
+%1$s (%2$s) invited you
+This is a one time process, thanks for waiting.
+Setting up your account.
+Add account
+Go to %1$s to sign into another account. Then you can easily switch between them.
+You can now add multiple accounts
+Create a new conversation or room
+Clear filters
+Get started by messaging someone.
+No chats yet.
+You can add a chat to your favourites in the chat settings.\nFor now, you can deselect filters in order to see your other chats
+You don’t have favourite chats yet
+You don\'t have any pending invites.
+You don’t have any low priority chats yet
+You don’t have any unread mentions
+You don’t have chats for this selection
+You don’t have any DMs yet
+Congrats!\nYou don’t have any unread messages!
+This room has been upgraded
+Your spaces
+Looks like you’re using a new device. Verify with another device to access your encrypted messages.
+Verify it’s you
+You will not see any messages or room invites from this user
+Block user
+Report this room to your account provider.
+Describe the reason to report…
+Yes, decline & block
+Are you sure you want to decline the invite to join this room? This will also prevent %1$s from contacting you or inviting you to rooms.
+Decline invite & block
+Already a member
+Already invited
+You currently don’t have any chats with these contacts. Confirm inviting them to this room before continuing.
+You currently don’t have any chats with this contact. Confirm inviting them to this room before continuing.
+Invite new contacts to this room?
+Invite new contact to this room?
+You were banned by %1$s.
+You were banned
+Reason: %1$s.
+Yes, cancel
+Are you sure that you want to cancel your request to join this room?
+Cancel request to join
+Joining failed
+You either need to be invited to join or there might be restrictions to access.
+Forget
+You need an invite in order to join
+Invited by
+You may need to be invited or be a member of a space in order to join.
+Send request to join
+Allowed characters %1$d of %2$d
+You will receive an invite to join the room if your request is accepted.
+We could not display the room preview. This may be due to network or server issues.
+We couldn’t display this room preview
+%1$s does not support spaces yet. You can access spaces on web.
+Spaces are not supported yet
+Tap the button below and a chat administrator will be notified. You\'ll be able to join the conversation once approved.
+You must be a member of this room to view the message history.
+Want to join this room?
+Preview is not available
+Yes, accept all
+Are you sure you want to accept all requests to join?
+Accept all requests
+Accept all
+We couldn’t accept all requests. Would you like to try again?
+Failed to accept all requests
+Accepting all requests to join
+We couldn’t accept this request. Would you like to try again?
+Failed to accept request
+Accepting request to join
+Yes, decline and ban
+Are you sure you want to decline and ban %1$s? This user won’t be able to request access to join this room again.
+Decline and ban from accessing
+Declining and banning access
+Yes, decline
+Are you sure you want to decline %1$s request to join this room?
+Decline access
+Decline and ban
+We couldn’t decline this request. Would you like to try again?
+Failed to decline request
+Declining request to join
+When somebody will ask to join the room, you’ll be able to see their request here.
+No pending request to join
+Loading requests to join…
+Requests to join
+%1$s +%2$d others want to join this room
+%1$s wants to join this room
+Are you sure that you want to leave this conversation? This conversation is not public and you won\'t be able to rejoin without an invite.
+Are you sure that you want to leave this room? You\'re the only person here. If you leave, no one will be able to join in the future, including you.
+Are you sure that you want to leave this room? This room is not public and you won\'t be able to rejoin without an invite.
+Choose owners
+You\'re the only owner of this room. You need to transfer ownership to someone else before you leave the room.
+Transfer ownership
+Are you sure that you want to leave the room?
+Scan the QR code
+Open %1$s on a laptop or desktop computer
+Scan the QR code with this device
+Ready to scan
+Open %1$s on a desktop computer to get the QR code
+Only scan a QR code after following the steps above on your own device. Never scan a code sent by another person.
+The numbers don’t match
+Enter 2-digit code
+This will verify that the connection to your other device is secure.
+Enter the number shown on your other device
+Your account provider does not support %1$s.
+%1$s not supported
+Your account provider doesn’t support signing into a new device with a QR code.
+QR code not supported
+The sign in was cancelled on the other device.
+Sign in request cancelled
+Sign in expired. Please try again.
+The sign in was not completed in time
+Open %1$s on the other device
+Select %1$s
+“Sign in with QR code”
+Scan the QR code shown here with the other device
+Desktop computer
+Loading QR code…
+Mobile device
+What type of device do you want to link?
+Please try again and make sure that you’ve entered the 2-digit code correctly. If the numbers still don’t match then contact your account provider.
+A secure connection could not be made to the new device. Your existing devices are still safe and you don\'t need to worry about them.
+What now?
+Try signing in again with a QR code in case this was a network problem
+If you encounter the same problem, try a different wifi network or use your mobile data instead of wifi
+If that doesn’t work, sign in manually
+Connection not secure
+You’ll be asked to enter the two digits shown on this device.
+Enter the number below on your other device
+The sign in was declined on the other device.
+Sign in declined
+You don’t need to do anything else.
+Your other device is already signed in
+Your other device does not support signing in to %s with a QR code.\n\nTry signing in manually, or scan the QR code with another device.
+Use the QR code shown on the other device.
+Wrong QR code
+You need to give permission for %1$s to use your device’s camera in order to continue.
+Allow camera access to scan the QR code
+An unexpected error occurred. Please try again.
+Waiting for your other device
+Your live location history will be stored in the room and visible to members after the session ends.
+Choose how long to share your live location.
+You do not have permissions to share your live location in this room
+biometric authentication
+biometric unlock
+Unlock with biometric
+Confirm biometric
+Forgot PIN?
+Change PIN code
+Allow biometric unlock
+Remove PIN
+Are you sure you want to remove PIN?
+Remove PIN?
+Allow %1$s
+I’d rather use PIN
+Save yourself some time and use %1$s to unlock the app each time
+Choose PIN
+Confirm PIN
+Lock %1$s to add extra security to your chats.\n\nChoose something memorable. If you forget this PIN, you will be logged out of the app.
+You cannot choose this as your PIN code for security reasons
+Choose a different PIN
+Please enter the same PIN twice
+PINs don\'t match
+You’ll need to re-login and create a new PIN to proceed
+This device is being removed
+You have %1$d attempts to unlock
+Wrong PIN. You have %1$d more chances
+Use biometric
+Use PIN
+Removing device…
+Change account provider
+Homeserver address
+Enter a search term or a domain address.
+Search for a company, community, or private server.
+Find an account provider
+This is where your conversations will live — just like you would use an email provider to keep your emails.
+You’re about to sign in to %s
+You’re about to create an account on %s
+Matrix.org is a large, free server on the public Matrix network for secure, decentralised communication, run by the Matrix.org Foundation.
+Use a different account provider, such as your own private server or a work account.
+Google Play
+The Element Pro app is required on %1$s. Please download it from the store.
+Element Pro required
+We couldn\'t reach this account provider. Please check that you have entered the account provider URL correctly. If the URL is correct, contact your account provider administrator for further help.
+Server isn\'t available due to an issue in the .well-known file:\n%1$s
+The selected account provider does not support sliding sync. The server needs to be upgraded to use %1$s.
+%1$s is not allowed to connect to %2$s.
+This app has been configured to allow: %1$s.
+Account provider %1$s not allowed.
+Homeserver URL
+Enter a domain address.
+What is the address of your server?
+If your account is provided by your company or a community, then change the account provider (example: companyname.com).
+Create an account on matrix.org for free. If you want to create an account with a different provider, then change it accordingly (example: communityname.org).
+example.com
+Select your server
+Enter your account provider
+Choose an account provider
+This account has been deleted.
+Incorrect username and/or password
+This is not a valid user identifier. Expected format: ‘@user:homeserver.org’
+This server is configured to use refresh tokens. These aren\'t supported when using password based login.
+The selected account provider doesn\'t support password or OAuth login. Please contact your account provider or choose a different one.
+Enter your details
+Matrix is an open network for secure, decentralised communication.
+Welcome back!
+Sign in to %1$s
+Open Element Classic
+Open Element Classic on your device
+Go to Settings > Security & Privacy
+In Cryptography keys management, select Encrypted messages recovery
+Follow the instructions to enable your key storage
+Come back to %1$s
+Enable your key storage before proceeding to %1$s
+You can add multiple accounts to the app and switch between them easily.
+Sign in to another account
+Version %1$s
+Checking account
+Sign in manually
+Sign in with QR code
+Welcome back
+Welcome to the fastest %1$s ever. Supercharged for speed and simplicity.
+Welcome to %1$s. Supercharged, for speed and simplicity.
+Establishing a secure connection
+Sign in to your other device and then try again, or use another device that’s already signed in.
+Other device not signed in
+Open %1$s on a desktop device
+Click on your avatar
+“Link new device”
+Only available if your account provider supports it.
+Open %1$s on another device to get the QR code
+Go to camera settings
+Start over
+Your account provider may ask for the following code to verify the sign in.
+Your verification code
+A private server for Element employees.
+You’re about to sign in to %1$s
+Choose account provider
+You’re about to create an account on %1$s
+Are you sure you want to remove this device?
+This is your only device. If you remove it you’ll need a recovery key in order to confirm your digital identity and restore your encrypted chats the next time you sign in.
+You’re about to lose access to your encrypted chats
+Your keys were still being backed up when you went offline. Reconnect so that your keys can be backed up before you remove this device.
+Your keys are still being backed up
+Please wait for this to complete before removing this device.
+Make sure you always have access to another verified device or your recovery key to avoid losing your encrypted chat history.
+Continue to remove this device
+Make sure you have access to your recovery key before removing this device
+The sender of the event does not match the owner of the device that sent it.
+The authenticity of this encrypted message can\'t be guaranteed on this device.
+Encrypted by a previously-verified user.
+Not encrypted.
+Encrypted by an unknown or deleted device.
+Encrypted by a device not verified by its owner.
+Encrypted by an unverified user.
+Invalid mime type: %s
+Missing media content
+Error details: %s
+Sending from unverified device
+Unknown error
+Flip image horizontally
+Flipped horizontally
+Original
+Flip image vertically
+Flipped vertically
+Rotate the image to the left
+%1$d degrees
+Edit photo
+Captions might not be visible to people using older apps.
+Tap to change the video upload quality
+The file could not be uploaded.
+Failed processing media to upload, please try again.
+Failed uploading media, please try again.
+The maximum file size allowed is %1$s.
+The file is too large to upload
+Item %1$d of %2$d
+Optimise image quality
+Processing…
+Add media
+Check if you want to hide all current and future messages from this user
+This message will be reported to your account provider. They will not be able to read any encrypted messages.
+Reason for reporting this content
+Take photo
+Record video
+Photo & Video Library
+Share location
+Text Formatting
+Enter reason…
+(Optional)
+Remove message?
+Message history is currently unavailable.
+Message history is unavailable in this room. Verify this device to see your message history.
+Would you like to invite them back?
+You are alone in this chat
+Everyone
+Send again
+Your message failed to send
+Add a reaction
+This is the beginning of %1$s.
+This is the beginning of this conversation.
+Unsupported call. Ask if the caller can use the new Element X app.
+Message copied
+%1$d members reacted with %2$s
+You and %1$d members reacted with %2$s
+You reacted with %1$s
+Show reactions summary
+%1$d removed messages
+%1$d room changes
+Jump to new room
+This room has been replaced and is no longer active
+See old messages
+This room is a continuation of another room
+%1$s, %2$s and %3$d others
+%1$s are typing
+%1$s and %2$s
+%1$d percents of total votes
+Will remove previous selection
+This is the winning answer
+Add option
+Show results only after poll ends
+Hide votes
+Option %1$d
+Your changes have not been saved. Are you sure you want to go back?
+Delete option %1$s
+Question or topic
+What is the poll about?
+Create Poll
+Are you sure you want to delete this poll?
+Delete Poll
+Edit poll
+Can\'t find any ongoing polls.
+Can\'t find any past polls.
+Ongoing
+Past
+Choose how to receive notifications
+Developer mode
+Enable to have access to features and functionality for developers.
+Custom Element Call base URL
+Set a custom base URL for Element Call.
+Invalid URL, please make sure you include the protocol (http/https) and the correct address.
+Hide avatars in room invite requests
+Hide media previews in timeline
+The distance you have to move to trigger an update.
+Make sure \"Precise Location” is enabled for this app. To change the permission go to %1$s.
+App Settings
+Live location updates
+Every %1$d meters
+Upload photos and videos faster and reduce data usage
+Optimise media quality
+Moderation and Safety
+Automatically optimise images for faster uploads and smaller file sizes.
+Optimise image upload quality
+%1$s. Tap here to change.
+High (1080p)
+Low (480p)
+Standard (720p)
+Video upload quality
+Push notification provider
+Disable the rich text editor to type Markdown manually.
+Read receipts
+If turned off, your read receipts won\'t be sent to anyone. You will still receive read receipts from other users.
+Share presence
+If turned off, you won’t be able to send or receive read receipts or typing notifications.
+Always hide
+Always show
+Show in private rooms
+Hidden media can always be shown by tapping on it.
+Show media in timeline
+Enable option to view message source in the timeline.
+You have no blocked users
+Unblock
+You\'ll be able to see all messages from them again.
+Unblock user
+Unblocking…
+Display name
+Your display name
+An unknown error was encountered and the information couldn\'t be changed.
+Unable to update profile
+Edit profile
+Updating profile…
+Gallery messages
+Send multiple images or videos in one go. Stable on mobile, but not yet supported by web.
+Users can request access to a room that is not open for anyone to join. Stable on mobile, web implementation exists but is experimental.
+Enable thread replies
+The app will restart to apply this change.
+Try out our latest ideas in development. These features are not finalised; they may be unstable, may change.
+Feeling experimental?
+Other users
+Your appearance
+Additional settings
+Call ringtone
+Audio and video calls
+Configuration mismatch
+We’ve simplified Notifications Settings to make options easier to find. Some custom settings you’ve chosen in the past are not shown here, but they’re still active.\n\nIf you proceed, some of your settings may change.
+Direct chats
+Custom setting per chat
+An error occurred while updating the notification setting.
+Mentions and replies only
+On direct chats, notify me for
+On group chats, notify me for
+Enable notifications on this device
+The configuration has not been corrected, please try again.
+Group chats
+Invitations
+Your account provider does not support this option in encrypted chats, you may not get notified in some chats.
+Choose another sound…
+Currently using %1$s
+Message sound
+All
+Notify me for
+Mentions of @room
+Dots or number of unread messages
+Show all activity in the room list
+Custom
+Custom sound…
+Error deleting file
+Element Default
+Element Fade
+Error importing file
+Problem previewing alert sound
+Sound
+Dismiss alert sound error
+Problem setting alert sound
+Silent
+System Default
+To receive notifications, please change your %1$s.
+system settings
+System notifications turned off
+Away
+Be right back
+Custom…
+Custom status…
+Focus time
+In a meeting
+On the road
+What\'s your status?
+Black
+System
+Push history
+Troubleshoot
+Troubleshoot notifications
+%1$s crashed the last time it was used. Would you like to share a crash report with us?
+You seem to be shaking the phone in frustration. Would you like to open the bug report screen?
+Rageshake
+Detection threshold
+Attach screenshot
+You may contact me if you have any follow up questions.
+Contact me
+Edit screenshot
+Please describe the problem. What did you do? What did you expect to happen? What actually happened. Please go into as much detail as you can.
+Describe the problem…
+If possible, please write the description in English.
+The description is too short, please provide more details about what happened. Thanks!
+You can enter the number of an associated GitHub issue, if any.
+GitHub issue
+Send crash logs
+Allow logs
+Your logs are excessively large so cannot be included in this report, please send them to us another way.
+Send screenshot
+Logs will be included with your message to make sure that everything is working properly. To send your message without logs, turn off this setting.
+If you are having issues with notifications, uploading the notification push rules can help us pinpoint the root cause. Note these rules can contain private information, such as your display name or keywords to be notified for.
+Send notification settings
+View logs
+Your report was submitted successfully, but we encountered an issue while trying to leave the room. Please try again.
+Unable to Leave Room
+Report this chat to your account provider. If the messages are encrypted, your account provider will not be able to read them.
+Admin
+Ban people
+Change settings
+Member
+Share live location
+Manage space
+Manage rooms
+Manage members
+Messages and content
+Moderator
+Remove people
+Change avatar
+Edit details
+Change name
+Change topic
+Send messages
+Permissions
+Edit Admins
+You will not be able to undo this action. You are promoting the user to have the same power level as you.
+Add Admin?
+You will not be able to undo this action. You are transferring the ownership to the selected users. Once you leave this will be permanent.
+Transfer ownership?
+%1$s (Pending)
+(Pending)
+Admins automatically have moderator privileges
+Owners automatically have admin privileges.
+Edit Moderators
+Choose Owners
+Admins
+Moderators
+Members
+You have unsaved changes.
+Save changes?
+There are no banned users.
+%1$d Banned
+Check the spelling or try a new search
+No results for “%1$s”
+%1$d People
+Ban user
+Only remove member
+They will be able to join this room again if invited.
+Unban user
+Banned
+%1$d Invited
+Pending
+Owner
+Room members
+Unbanning %1$s
+Admins and owners
+Change my role
+Demote to member
+Demote to moderator
+Member moderation
+Owners
+Reset permissions
+Once you reset permissions, you will lose the current settings.
+Reset permissions?
+Roles
+Room details
+Space details
+Roles & permissions
+Failed to resolve room alias.
+New members don\'t see history
+Edit address
+Push to talk
+Room Audio
+Video calls
+There was an unknown error and the information couldn\'t be changed.
+Unable to update room
+Messages are secured with locks. Only you and the recipients have the unique keys to unlock them.
+Message encryption enabled
+An error occurred when loading notification settings.
+Failed muting this room, please try again.
+Failed unmuting this room, please try again.
+Don\'t close the app until finished.
+Preparing invitations…
+Leave conversation
+Media and files
+Security & privacy
+Security
+Share room
+Topic
+Updating details…
+Allow custom setting
+Turning this on will override your default setting
+Notify me in this chat for
+You can change it in your %1$s.
+global settings
+Default setting
+Remove custom setting
+An error occurred while loading notification settings.
+Failed restoring the default mode, please try again.
+Failed setting the mode, please try again.
+Your account provider does not support this option in encrypted chats, you won\'t get notified in this chat.
+In this room, notify me for
+Add address
+Anyone in authorised spaces can join, but everyone else must request access.
+Everyone must request access.
+Anyone in %1$s can join, but everyone else must request access.
+Yes, enable encryption
+Once enabled, encryption for a room cannot be disabled, Message history will only be visible for room members since they were invited or since they joined the room.\nNo one besides the room members will be able to read messages. This may prevent bots and bridges to work correctly.\nWe do not recommend enabling encryption for rooms that anyone can find and join.
+Enable encryption?
+Once enabled, encryption cannot be disabled.
+Encryption
+Anyone
+Choose which spaces’ members can join this room without an invitation. %1$s
+Manage spaces
+Only invited people can join.
+Access
+Anyone in authorised spaces can join.
+Space members
+Spaces are not currently supported
+Allow for this room to be found by searching %1$s public room directory
+Allow to be found by searching the public directory.
+Visible in public directory
+Anyone (history is public)
+Changes won\'t affect past messages, only new ones. %1$s
+Who can read history
+Members since invited
+Members (full history)
+Room addresses are ways to find and access rooms. This also ensures you can easily share your room with others.\nYou can choose to publish your room in your homeserver public room directory.
+Room publishing
+Addresses are a way to find and access rooms and spaces. This also ensures you can easily share them with others.
+Visibility
+Failed loading
+Ban
+They won’t be able to join again if invited.
+Are you sure you want to ban this member?
+They won’t be able to join this space again if invited, but they’ll still keep their memberships of any rooms or subspaces.
+Banning %1$s
+Are you sure you want to remove this member?
+They will be able to join this space again if invited, and they’ll still keep their memberships of any rooms or subspaces.
+View profile
+Remove user
+Remove member and ban from joining in the future?
+Removing %1$s…
+They would be able to join again if invited
+Are you sure you want to unban this member?
+Delete key storage
+Turn on backup
+This will allow you to view your chat history on any new devices and is required for backup of chats and digital identity. %1$s.
+Key storage
+Key storage must be turned on to back up your chats.
+Upload keys from this device
+Allow key storage
+Change recovery key
+Enter recovery key
+Your key storage is currently out of sync.
+Sign into your account again
+When asked to verify your device, select %1$s
+“Reset all”
+Follow the instructions to create a new recovery key
+Save your new recovery key in a password manager or encrypted note
+Reset the encryption for your account using another device
+The recovery key you entered doesn\'t match
+Finish setup
+Enter your recovery key again.
+Confirm your recovery key
+Minimum %1$d characters. Do not use your account password
+Strength
+Passphrase strength: %1$s
+Moderate
+Strong
+Very strong
+Very weak
+Weak
+Choose a recovery key that you can memorize.
+Enter a recovery key
+Loading recovery key requirements
+To change your recovery key, go to Settings → Encryption → Backup
+You can use your recovery key to confirm new devices or restore your encrypted chats if you lose access to all your devices.
+Your backup is now fully set up
+Your account details, contacts, preferences, and chat list will be kept
+You will lose any message history that’s stored only on the server
+Other users will see that your digital identity has been reset
+Any devices you’re signed in to will need to be reconfirmed
+Only reset your digital identity if you don\'t have access to another verified device and you don\'t have your recovery key.
+It looks like you don’t have any chats yet. If this is correct, you can safely proceed with resetting your digital identity
+You don’t have access to any other verified devices or a recovery key, so you’ll need to reset your digital identity to continue using the app.
+You need to reset your digital identity
+If you don’t have access to any other verified devices and you don’t have your recovery key, then you’ll need to reset your digital identity to continue using the app.
+Can\'t confirm? You’ll need to reset your digital identity.
+You will lose your encrypted chat history and need to reset your digital identity if you remove all your devices.
+Are you sure you want to delete key storage?
+Deleting key storage will remove your digital identity and message keys from the server and turn off the following security features:
+You will not have encrypted message history on new devices
+You will lose access to your encrypted messages if you are signed out of %1$s everywhere
+Are you sure you want to turn off key storage and delete it?
+Get a new recovery key if you\'ve lost your existing one. After changing your recovery key, your old one will no longer work.
+Generate a new recovery key
+Do not share this with anyone!
+Recovery key changed
+Change recovery key?
+Create new recovery key
+Make sure nobody can see this screen!
+Please try again to confirm access to your key storage.
+Incorrect recovery key
+If you have a security key or security phrase, this will work too.
+Enter…
+Lost your recovery key?
+Recovery key confirmed
+Copied recovery key
+Generating…
+Save recovery key
+Write down this recovery key somewhere safe, like a password manager, encrypted note, or a physical safe.
+Tap to copy recovery key
+Save your recovery key somewhere safe
+You will not be able to access your new recovery key after this step.
+Have you saved your recovery key?
+Your key storage is protected by a recovery key. If you need a new recovery key after setup, you can recreate it by selecting ‘Change recovery key’.
+Generate your recovery key
+Recovery setup successful
+Yes, reset now
+This process is irreversible.
+Are you sure you want to reset your digital identity?
+An unknown error happened. Please check your account password is correct and try again.
+Confirm that you want to reset your digital identity.
+Enter your account password to continue
+Spaces where members can join the room without an invitation.
+(Unknown space)
+Other spaces you’re not a member of
+You removed this device from your account
+You’ve changed your password on another device
+Your server\'s session expired or the administrator has blocked your access
+You might have been signed out for one of the reasons listed below. Please sign in again to continue using %s.
+This device was removed for one of the reasons listed below. Please sign in again to connect this device to your account.
+Device removed
+%1$s (Admin)
+Leave %1$d rooms and space
+Select the rooms you’d like to leave which you\'re not the only administrator for:
+You need to assign another administrator for this space before you can leave.
+You are the only owner of %1$s. You need to transfer ownership to someone else before you leave.
+You will not be removed from the following room(s) because you\'re the only administrator:
+Leave %1$s?
+You are the only administrator for %1$s
+Adding a room will not affect the room access. To change the access go to Room settings > Security & privacy.
+Add your first room
+View members
+Removing a room will not affect the room access. To change the access go to Room info > Security & privacy.
+Remove %1$d rooms from %2$s
+An error occurred when trying to start a chat
+Join room by address
+Not a valid address
+Enter address…
+Matching room found
+Room not found
+e.g. #room-name:matrix.org
+Block
+Blocked users won\'t be able to send you messages and all their messages will be hidden. You can unblock them anytime.
+Use the web app to verify this user.
+Verify %1$s
+Something doesn’t seem right. Either the request timed out or the request was denied.
+Confirm that the emojis below match those shown on your other device.
+Compare emojis
+Confirm that the emojis below match those shown on the other user’s device.
+Confirm that the numbers below match those shown on your other session.
+Compare numbers
+Now you can read or send messages securely on your other device.
+Now you can trust the digital identity of this user when sending or receiving messages.
+Either the request timed out, the request was denied, or there was a verification mismatch.
+Prove it’s you in order to access your encrypted message history.
+Open an existing session
+Retry verification
+I am ready
+Waiting to match…
+Compare a unique set of emojis.
+Compare the unique emoji, ensuring they appear in the same order.
+Signed in
+Verification failed
+Only continue if you initiated this verification.
+Verify the other device to keep your message history secure.
+Verification requested
+They don’t match
+They match
+Please use another device or recovery key.
+Verification with this device is currently unavailable
+Make sure you have the app open in the other device before starting verification from here.
+Open the app on another verified device
+For extra security, verify this user by comparing a set of emojis on your devices. Do this by using a trusted way to communicate.
+Verify this user?
+User requesting verification:
+For extra security, another user wants to verify your digital identity. You’ll be shown a set of emojis to compare.
+You should see a popup on the other device. Start the verification from there now.
+Start verification on the other device
+Waiting for the other user
+Once accepted you’ll be able to continue with the verification.
+Accept the request to start the verification process in your other session to continue.
+Waiting to accept request
+No compatible app was found to handle this action.
+%1$s at %2$s
+This month
+Activities
+Flags
+Food & Drink
+Animals & Nature
+Objects
+Smileys & People
+Travel & Places
+Recent emojis
+Symbols
+Search emojis
+(avatar was changed too)
+%1$s changed their avatar
+You changed your avatar
+%1$s was demoted to member
+%1$s was demoted to moderator
+%1$s changed their display name from %2$s to %3$s
+You changed your display name from %1$s to %2$s
+%1$s removed their display name (it was %2$s)
+You removed your display name (it was %1$s)
+%1$s set their display name to %2$s
+You set your display name to %1$s
+%1$s was promoted to admin
+%1$s was promoted to moderator
+%1$s changed the room avatar
+You changed the room avatar
+%1$s removed the room avatar
+You removed the room avatar
+%1$s banned %2$s
+You banned %1$s
+You banned %1$s: %2$s
+%1$s banned %2$s: %3$s
+%1$s created the room
+You created the room
+%1$s invited %2$s
+%1$s accepted the invite
+You accepted the invite
+You invited %1$s
+%1$s invited you
+%1$s joined the room
+You joined the room
+%1$s is requesting to join
+%1$s granted access to %2$s
+You allowed %1$s to join
+You requested to join
+%1$s rejected %2$s\'s request to join
+You rejected %1$s\'s request to join
+%1$s rejected your request to join
+%1$s is no longer interested in joining
+You cancelled your request to join
+%1$s left the room
+You left the room
+%1$s changed the room name to: %2$s
+You changed the room name to: %1$s
+%1$s removed the room name
+You removed the room name
+%1$s made no changes
+You made no changes
+%1$s changed the pinned messages
+You changed the pinned messages
+%1$s pinned a message
+You pinned a message
+%1$s unpinned a message
+You unpinned a message
+%1$s rejected the invitation
+You rejected the invitation
+%1$s removed %2$s
+You removed %1$s
+You removed %1$s: %2$s
+%1$s removed %2$s: %3$s
+%1$s sent an invitation to %2$s to join the room
+You sent an invitation to %1$s to join the room
+%1$s revoked the invitation for %2$s to join the room
+You revoked the invitation for %1$s to join the room
+%1$s changed the topic to: %2$s
+You changed the topic to: %1$s
+%1$s removed the room topic
+You removed the room topic
+%1$s unbanned %2$s
+You unbanned %1$s
+%1$s made an unknown change to their membership
+Send invite
+Would you like to start a chat with %1$s?
+Send invite?
+You currently don’t have any chats with this person. Confirm inviting them before continuing.
+This file will be removed from the room and members won’t have access to it.
+Delete file?
+Check your internet connection and try again.
+Documents, audio files, and voice messages uploaded to this room will be shown here.
+No files uploaded yet
+Loading files…
+Loading media…
+Media
+Images and videos uploaded to this room will be shown here.
+No media uploaded yet
+Format
+No more files to show
+No more media to show
+File info
+Uploaded by
+Uploaded on
+In order to let the application use the camera, please grant the permission in the system settings.
+Please grant the permission in the system settings.
+In order to let the application use the microphone, please grant the permission in the system settings.
+In order to let the application display notifications, please grant the permission in the system settings.
+Check that the application can show notifications.
+Check permissions
+Listening for events
+Noisy notifications
+Ringing calls
+Silent notifications
+%1$s: %2$d messages
+%d notifications
+The UnifiedPush notification distributor couldn\'t be registered, so you will not receive notifications anymore. Please check the notifications settings of the app and the status of the push distributor.
+You have new messages.
+You have %d new messages.
+Shared %1$d attachments
+📞 Incoming call
+📹 Incoming call
+** Failed to send - please open room
+Reject
+%d invitations
+Invited you to chat
+%1$s invited you to chat
+Requested to join
+Started sharing their live location
+Mentioned you: %1$s
+New Messages
+%d new messages
+Reacted with %1$s
+Quick reply
+Invited you to join the room
+%1$s invited you to join the room
+Me
+%1$s mentioned or replied
+Invited you to join the space
+%1$s invited you to join the space
+You are viewing the notification! Tap me!
+Thread in %1$s
+%1$s: %2$s
+%1$s: %2$s %3$s
+%d unread notified messages
+%1$s in %2$s
+%1$s in %2$s and %3$s
+%d rooms
+Background synchronisation
+Google Services
+No valid Google Play Services found. Notifications may not work properly.
+Checking blocked users
+View blocked users
+No users are blocked.
+You blocked %1$d users. You will not receive notifications for these users.
+Blocked users
+Get the name of the current provider.
+No push providers selected.
+Current push provider: %1$s and current distributor: %2$s. But the distributor %3$s is not found. Maybe the application has been uninstalled?
+Current push provider: %1$s, but no distributors have been configured.
+Current push provider: %1$s.
+Current push provider: %1$s (%2$s)
+Current push provider
+Ensure that the application supports at least one push provider.
+No push provider support found.
+Found %1$d push providers: %2$s
+The application was built with support for: %1$s
+Push provider support
+Check that the application can display notification.
+The notification has not been clicked.
+Cannot display the notification.
+The notification has been clicked!
+Display notification
+Please tap the notification to continue the test.
+Ensure that the application is receiving push.
+Error: pusher has rejected the request.
+Error: %1$s.
+Error, cannot test push.
+Error, timeout waiting for push.
+Error: the push gateway is rate limiting this device, so notifications won\'t be reliable. Please set up a different push gateway.
+Push loop back took %1$d ms.
+Test Push loop back
+Ensure that Firebase is available.
+Firebase is not available.
+Firebase is available.
+Check Firebase
+Ensure that Firebase token is available.
+Firebase token is not known.
+Firebase token: %1$s.
+Check Firebase token
+Ensure that UnifiedPush distributors are available.
+No push distributors found.
+%1$d distributors found: %2$s.
+Check UnifiedPush
+The room list associated with this account cannot be loaded.
+Add attachment
+Toggle bullet list
+Cancel and close text formatting
+Toggle code block
+Add a caption
+Encrypted message…
+Message…
+Unencrypted message…
+%1$s, state: %2$s
+Apply bold format
+Apply italic format
+disabled
+off
+on
+Apply strikethrough format
+Apply underline format
+Toggle full screen mode
+Indent
+Apply inline code format
+Set link
+Toggle numbered list
+Open compose options
+Toggle quote
+Remove link
+Unindent
+Hold to record
+Run tests
+Run tests again
+Some tests failed. Please check the details.
+Run the tests to detect any issue in your configuration that may make notifications not behave as expected.
+Attempt to fix
+All tests passed successfully.
+Some tests require your attention. Please check the details.
+Add avatar
+Add reaction: %1$s
+Clear search field
+Minimise message text field
+Decrease votes allowed per person
+Increase votes allowed per person
+Custom emoji
+%1$d digits entered
+Duration: %1$s
+Edit avatar
+The full address will be %1$s
+Encryption details
+Expand message text field
+Gallery, attachment %1$d
+Gallery, failed scan %1$d
+Gallery, image %1$d
+Gallery, %1$d more medias
+Gallery, scanning %1$d
+Gallery, video %1$d
+Hide password
+Info
+Join call
+Jump to bottom
+Jump to unread
+Jump to first unread message
+Move the map to my location
+Mentions only
+New mentions
+New messages
+Other user\'s avatar
+Page %1$d
+Voice message, duration: %1$s, current position: %2$s
+Photo preview
+PIN field
+Pinned location
+Playback speed
+Ended poll
+Position: %1$s
+React with %1$s
+React with other emojis
+Previous message read by %1$s and %2$s
+Previous message read by %1$s and %2$d others
+Previous message read by %1$s
+show all read receipts
+Remove reaction: %1$s
+Remove reaction with %1$s
+Send files
+Sender location
+Sent by %1$s at %2$s
+Time limited action required, you have one minute to verify
+Settings, action required
+Show password
+Start a call
+Start a video call
+Start a voice call
+Status
+Threads in %1$s
+Tombstoned room
+User avatar
+Video preview
+View avatar
+View details
+Voice message, duration: %1$s
+Record voice message.
+Your avatar
+Add caption
+Add to timeline
+Cancel for now
+Choose file
+Choose photo
+Complete verification
+Confirm password
+Copy caption
+Copy link to message
+Copy text
+Copy to clipboard
+Create space
+Deactivate
+Deactivate account
+Delete file
+Discard
+Edit caption
+End poll
+Enter PIN
+Explore public spaces
+Finish
+Forgot password?
+Forward %1$d messages
+Go to roles & permissions
+Go to settings
+Invite people to %1$s
+Load more
+Manage account & devices
+Manage devices
+Open context menu
+Open with
+Remove caption
+Remove message
+Report bug
+Report content
+Report conversation
+Reset identity
+Retry decryption
+Send edited message
+Share link
+Sign in again
+Remove this device anyway
+Start verification
+Tap to load map
+Tap for options
+Translate
+Video call
+Voice call
+Yes, try again
+Your server now supports a new, faster protocol. Log out and log back in to upgrade now. Doing this now will help you avoid a forced logout when the old protocol is removed later.
+Upgrade available
+About
+Acceptable use policy
+Account settings
+Add an account
+Adding caption
+Advanced settings
+an image
+You were logged out of the session
+App settings
+Audio
+Bubbles
+Call declined
+Call in progress
+Call started
+You declined a call
+Chat backup
+Copied to clipboard
+Copyright
+Creating room…
+Creating space…
+Request canceled
+Left room
+Left space
+Invite declined
+Decryption error
+Developer options
+Device ID
+Direct chat
+Do not show this again
+Download failed
+Downloading
+(edited)
+Editing
+Editing caption
+* %1$s %2$s
+Empty file
+Ends at %1$s
+Enter your PIN
+An error occurred, you may not receive notifications for new messages. Please troubleshoot notifications from the settings.\n\nReason: %1$s.
+Failed
+Syncing notifications…
+File
+File deleted
+File saved
+File saved to Downloads
+Forward to
+Frequently used
+Gallery
+%1$d attachments…
+%1$d media items…
+GIF
+Group call in progress
+In reply to %1$s
+Install APK
+This Matrix ID can\'t be found, so the invite might not be received.
+Leaving room
+Leaving space
+Line copied to clipboard
+Link copied to clipboard
+Live location
+Live location ended
+Loading more…
+Location sharing
+%d others
+Media upload quality
+%1$d Members
+Message actions
+Message failed to send
+Message removed
+Moderation & safety
+%1$s (%2$s)
+There are no results for “%1$s”. Try a new search term.
+No room name
+No space name
+On a call
+Open source licenses
+or
+Permalink
+Permission
+Pinned
+Please check your internet connection
+Please wait…
+Are you sure you want to end this poll?
+Poll: %1$s
+Total votes: %1$s
+Results will show after the poll has ended
+%d votes
+Preparing…
+Privacy policy
+Reaction
+Reason
+Recovery key
+Refreshing…
+%1$d replies
+Replying to %1$s
+Report a problem
+Report submitted
+Results for “%1$s”
+Rich text editor
+Role
+e.g. your project name
+%1$d Rooms
+Saved changes
+Saving
+Screen lock
+Search for someone
+Search results
+Seen by
+Select an account
+%1$d selected
+Send to
+Sending…
+Sending failed
+.
+Server not supported
+Server unreachable
+Server URL
+Share space
+Shared live location
+Shared location
+Shared space
+Removing device
+Something went wrong
+We encountered an issue. Please try again.
+What is this space about?
+%1$d Spaces
+Starting chat…
+Switch accounts
+Syncing
+Third-party notices
+What is this room about?
+Unable to decrypt
+Sent from an insecure device
+You don\'t have access to this message
+Sender\'s verified digital identity was reset
+Invites couldn\'t be sent to one or more users.
+Unable to send invite(s)
+Unlock
+Unsupported call
+Unsupported event
+%1$s started a call
+Verification cancelled
+Verification complete
+Verify device
+Verify identity
+Verify user
+Video
+High quality
+Best quality but larger file size
+Low quality
+Fastest upload speed and smallest file size
+Standard quality
+Balance of quality and upload speed
+Voice message
+Waiting…
+Waiting for this message
+Waiting for live location…
+You
+Your account
+Download not available.
+Scanning…
+Preview and download have been disabled.
+The file is not safe
+%1$s (%2$s) shared this message since you were not in the room when it was sent.
+%1$s shared this message since you were not in the room when it was sent.
+This room has been configured so that new members can read history. %1$s
+%1$s\'s digital identity was reset. %2$s
+%1$s’s %2$s digital identity was reset. %3$s
+(%1$s)
+%1$s’s digital identity was reset.
+Withdraw verification
+Allow access
+The link %1$s is taking you to another site %2$s\n\nAre you sure you want to continue?
+Double-check this link
+Select the default quality of videos you upload.
+The max file size allowed is: %1$s
+The file size is too large to upload
+Room reported
+Reported and left room
+Confirmation
+Select the quality of the video you want to upload.
+Select video upload quality
+You’re already signed in as %1$s.
+Duplicate sign-in
+Your account provider needs to be upgraded to support Matrix Authentication Service and account creation.
+Failed creating the permalink
+%1$s could not load the map. Please try again later.
+Failed loading messages
+%1$s could not access your location. Please try again later.
+Failed to upload your voice message.
+The room no longer exists or the invite is no longer valid.
+Please enable your GPS to access location-based features.
+Message not found
+%1$s does not have permission to access your location. You can enable access in Settings.
+%1$s does not have permission to access your location. Enable access below.
+%1$s does not have permission to access your microphone. Enable access to record a voice message.
+This may be due to network or server issues.
+This room address already exists. Please try editing the room address field or change the room name
+Some characters are not allowed. Only letters, digits and the following symbols are supported ! $ & ‘ ( ) * + / ; = ? @ [ ] - . _
+Some messages have not been sent
+Sorry, an error occurred
+🔐️ Join me on %1$s
+Hey, talk to me on %1$s: %2$s
+Live Location Sharing
+Location sharing in progress
+%1$s Live Location
+%1$s Android
+Rageshake to report bug
+Screenshot
+Remove %1$s
+Votes allowed per person
+Nobody is sharing their location
+Sharing live location
+%1$d people
+On the map
+Your homeserver is on your local network. To connect, %1$s needs permission to reach devices on this network.
+Allow access to local network
+Failed selecting media, please try again.
+Press on a message and choose “%1$s” to include here.
+%1$d Pinned messages
+You\'re about to go to your %1$s account to reset your digital identity. Afterwards you\'ll be taken back to the app.
+Can\'t confirm? Go to your account to reset your digital identity.
+Withdraw verification and send
+You can withdraw your verification and send this message anyway, or you can cancel for now and try again later after reverifying %1$s.
+Your message was not sent because %1$s’s verified digital identity was reset
+Send message anyway
+%1$s is using one or more unverified devices. You can send the message anyway, or you can cancel for now and try again later after %2$s has verified all their devices.
+Your message was not sent because %1$s has not verified all devices
+One or more of your devices are unverified. You can send the message anyway, or you can cancel for now and try again later after you have verified all of your devices.
+Your message was not sent because you have not verified one or more of your devices
+Edit Admins or Owners
+Could not retrieve user details
+Message in %1$s
+Reduce
+Maximum messages selected
+%1$d messages forwarded
+Already viewing this room!
+%1$s of %2$s
+%1$s Pinned messages
+Loading message…
+View All
+%1$d messages selected
+Search for chats and messages
+Start searching
+There are no results for “%1$@.” Try a new search term.
+Share my location
+Open in Apple Maps
+Open in Google Maps
+Share selected location
+Sharing options
+Spaces you have created or joined.
+%1$s • %2$s
+Create spaces to organize rooms
+%1$s space
+Shared %1$s
+%1$d joined
+Message not sent because %1$s’s verified digital identity was reset.
+Message not sent because %1$s has not verified all devices.
+Message not sent because you have not verified one or more of your devices.
+Version: %1$s (%2$s)
+en
+Historical messages are not available on this device
+You need to verify this device for access to historical messages
+Unable to decrypt message
+This message was blocked either because you did not verify your device or because the sender needs to verify your digital identity.
+Your device is too old, a device with Android 8 or newer is required.
+Rendering maps is not supported

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="troubleshoot_notifications_test_unified_push_description">"ตรวจว่ามีตัวส่ง UnifiedPush"</string>
+  <string name="troubleshoot_notifications_test_unified_push_failure">"ไม่พบตัวส่งการแจ้งเตือน"</string>
+  <plurals name="troubleshoot_notifications_test_unified_push_success">
+    <item quantity="other">"พบตัวส่ง %1$d ราย: %2$s"</item>
+  </plurals>
+  <string name="troubleshoot_notifications_test_unified_push_title">"ตรวจ UnifiedPush"</string>
+</resources>

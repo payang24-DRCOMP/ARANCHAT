@@ -1,0 +1,190 @@
+room.room_is_low_priority	ห้องนี้มีความสำคัญต่ำ
+room.search.all_rooms_button	ค้นหาทุกห้อง
+room.search.placeholder	ค้นหาข้อความ…
+room.search.summary.one	พบ 1 ผลลัพธ์สำหรับ “<query/>”
+room.search.summary.other	พบ %(count)s ผลลัพธ์สำหรับ “<query/>”
+room.search.this_room_button	ค้นหาในห้องนี้
+room.unknown_status_code_for_timeline_jump	ไม่ทราบรหัสสถานะ
+room.unread_notifications_predecessor.one	คุณมีการแจ้งเตือนที่ยังไม่อ่าน %(count)s รายการในห้องเวอร์ชันก่อนหน้า
+room.unread_notifications_predecessor.other	คุณมีการแจ้งเตือนที่ยังไม่อ่าน %(count)s รายการในห้องเวอร์ชันก่อนหน้า
+room.upgrade_error_description	ตรวจสอบว่าเซิร์ฟเวอร์รองรับเวอร์ชันห้องที่เลือก แล้วลองใหม่
+room.upgrade_error_title	อัปเกรดห้องไม่สำเร็จ
+room.upgrade_warning_bar	การอัปเกรดห้องจะปิดห้องปัจจุบันและสร้างห้องใหม่ชื่อเดิม
+room.upgrade_warning_bar_admins	เฉพาะผู้ดูแลห้องเท่านั้นที่เห็นคำเตือนนี้
+room.upgrade_warning_bar_unstable	ห้องนี้ใช้ห้องเวอร์ชัน <roomVersion /> ซึ่งผู้ให้บริการบัญชีระบุว่า<i>ไม่เสถียร</i>
+room.upgrade_warning_bar_upgraded	ห้องนี้อัปเกรดแล้ว
+room.upload.uploading_multiple_file.one	กำลังอัปโหลด %(filename)s และไฟล์อื่นอีก %(count)s ไฟล์
+room.upload.uploading_multiple_file.other	กำลังอัปโหลด %(filename)s และไฟล์อื่นอีก %(count)s ไฟล์
+room.upload.uploading_single_file	กำลังอัปโหลด %(filename)s
+room.video_room	ห้องนี้เป็นห้องวิดีโอ
+room.waiting_for_join_subtitle	เมื่อผู้ที่ได้รับเชิญเข้าร่วม %(brand)s แล้ว คุณจะแชทได้และห้องจะถูกเข้ารหัสต้นทางถึงปลายทาง
+room.waiting_for_join_title	รอผู้ใช้เข้าร่วม %(brand)s
+room.history_visibility_badge.private	สมาชิกใหม่ไม่เห็นประวัติข้อความ
+room.history_visibility_badge.shared	สมาชิกใหม่เห็นประวัติข้อความ
+room.history_visibility_badge.world_readable	ทุกคนเห็นประวัติข้อความ
+room.jump_to_date	ไปยังวันที่
+room.jump_to_date_beginning	จุดเริ่มต้นของห้อง
+room.jump_to_date_prompt	เลือกวันที่ที่ต้องการไป
+room.pinned_message_badge	ข้อความที่ปักหมุด
+room.status_bar.contact_account_provider	ติดต่อผู้ให้บริการบัญชี
+room.status_bar.delete_all	ลบทั้งหมด
+room.status_bar.exceeded_resource_limit_description	โปรดติดต่อผู้ดูแลระบบเพื่อใช้งานต่อ
+room.status_bar.exceeded_resource_limit_title	ส่งข้อความไม่สำเร็จ เพราะระบบใช้ทรัพยากรเกินขีดจำกัด
+room.status_bar.failed_to_create_room_title	เริ่มแชทกับผู้ใช้นี้ไม่สำเร็จ
+room.status_bar.homeserver_blocked_title	ส่งข้อความไม่สำเร็จ เพราะผู้ให้บริการบัญชีระงับระบบนี้
+room.status_bar.monthly_user_limit_reached_title	ส่งข้อความไม่สำเร็จ เพราะระบบมีผู้ใช้ครบจำนวนสูงสุดต่อเดือนแล้ว
+room.status_bar.requires_consent_agreement_title	ส่งข้อความไม่ได้จนกว่าจะอ่านและยอมรับข้อกำหนดและเงื่อนไข
+room.status_bar.retry_all	ลองส่งใหม่ทั้งหมด
+room.status_bar.select_messages_to_retry	เลือกข้อความทั้งหมดหรือทีละข้อความเพื่อส่งใหม่หรือลบ
+room.status_bar.server_connectivity_lost_description	ข้อความที่ส่งจะถูกเก็บไว้จนกว่าการเชื่อมต่อจะกลับมา
+room.status_bar.server_connectivity_lost_title	ขาดการเชื่อมต่อกับเซิร์ฟเวอร์
+room.status_bar.some_messages_not_sent	ข้อความบางส่วนยังไม่ได้ส่ง
+settings.general.account_management_section	การจัดการบัญชี
+settings.general.account_section	บัญชี
+settings.general.add_email_dialog_title	เพิ่มอีเมล
+settings.general.add_email_failed_verification	ยืนยันอีเมลไม่สำเร็จ ตรวจว่ากดลิงก์ในอีเมลแล้ว
+settings.general.add_email_instructions	เราส่งอีเมลยืนยันไปให้แล้ว ทำตามขั้นตอนในอีเมล แล้วกดปุ่มด้านล่าง
+settings.general.add_msisdn_confirm_body	กดปุ่มด้านล่างเพื่อยืนยันการเพิ่มเบอร์โทรนี้
+settings.general.add_msisdn_confirm_button	ยืนยันการเพิ่มเบอร์โทร
+settings.general.add_msisdn_confirm_sso_button	ยืนยันการเพิ่มเบอร์โทรนี้ด้วยการเข้าสู่ระบบครั้งเดียว (SSO)
+settings.general.add_msisdn_dialog_title	เพิ่มเบอร์โทร
+settings.general.add_msisdn_instructions	ส่ง SMS ไปที่ +%(msisdn)s แล้ว โปรดกรอกรหัสยืนยันในข้อความ
+settings.general.add_msisdn_misconfigured	การตั้งค่าการเพิ่มเบอร์โทรไม่ถูกต้อง
+settings.general.allow_spellcheck	ตรวจตัวสะกด
+settings.general.application_language	ภาษาของแอป
+settings.general.application_language_reload_hint	แอปจะโหลดใหม่หลังเปลี่ยนภาษา
+settings.general.avatar_open_menu	เปิดเมนูรูปโปรไฟล์
+settings.general.avatar_remove_progress	กำลังลบรูป...
+settings.general.avatar_save_progress	กำลังอัปโหลดรูป...
+settings.general.avatar_upload_error_text	ไม่รองรับรูปแบบไฟล์ หรือรูปใหญ่เกิน %(size)s
+settings.general.avatar_upload_error_text_generic	อาจไม่รองรับรูปแบบไฟล์นี้
+settings.general.avatar_upload_error_title	อัปโหลดรูปโปรไฟล์ไม่สำเร็จ
+settings.general.confirm_adding_email_body	กดปุ่มด้านล่างเพื่อยืนยันการเพิ่มอีเมลนี้
+settings.general.confirm_adding_email_title	ยืนยันการเพิ่มอีเมล
+settings.general.deactivate_confirm_body	แน่ใจหรือไม่ว่าต้องการปิดใช้งานบัญชี ย้อนกลับไม่ได้
+settings.general.deactivate_confirm_body_sso	ยืนยันการปิดใช้งานบัญชีด้วยการเข้าสู่ระบบครั้งเดียว (SSO)
+settings.general.deactivate_confirm_content	ยืนยันว่าต้องการปิดใช้งานบัญชี หากดำเนินการต่อ:
+settings.general.deactivate_confirm_content_1	คุณจะเปิดใช้งานบัญชีอีกไม่ได้
+settings.general.deactivate_confirm_content_2	คุณจะเข้าสู่ระบบไม่ได้อีก
+settings.general.deactivate_confirm_content_3	จะไม่มีใครใช้ชื่อผู้ใช้ (MXID) นี้ได้อีก รวมถึงตัวคุณเอง
+settings.general.deactivate_confirm_content_4	คุณจะออกจากทุกห้องและแชทส่วนตัว
+settings.general.deactivate_confirm_content_5	คุณจะถูกนำออกจากเซิร์ฟเวอร์ยืนยันตัวตน คนอื่นจะหาคุณด้วยอีเมลหรือเบอร์โทรไม่เจออีก
+settings.general.deactivate_confirm_content_6	ข้อความเก่าของคุณจะยังมองเห็นได้สำหรับผู้ที่ได้รับไปแล้ว เหมือนอีเมลที่เคยส่ง ต้องการซ่อนข้อความที่ส่งไปแล้วจากผู้ที่จะเข้าห้องในอนาคตหรือไม่?
+settings.general.deactivate_confirm_continue	ยืนยันการปิดใช้งานบัญชี
+settings.general.deactivate_confirm_erase_label	ซ่อนข้อความของฉันจากผู้ที่เข้าร่วมใหม่
+settings.general.deactivate_section	ปิดใช้งานบัญชี
+settings.general.deactivate_warning	การปิดใช้งานบัญชีเป็นการกระทำถาวร โปรดระวัง!
+settings.general.discovery_email_empty	ตัวเลือกการค้นหาจะแสดงเมื่อเพิ่มอีเมลแล้ว
+settings.general.discovery_email_verification_instructions	กดลิงก์ยืนยันในกล่องอีเมลของคุณ
+settings.general.discovery_msisdn_empty	ตัวเลือกการค้นหาจะแสดงเมื่อเพิ่มเบอร์โทรแล้ว
+settings.general.discovery_needs_terms	ยอมรับข้อกำหนดการให้บริการของเซิร์ฟเวอร์ยืนยันตัวตน (%(serverName)s) เพื่อให้ผู้อื่นค้นหาคุณด้วยอีเมลหรือเบอร์โทรได้
+settings.general.discovery_needs_terms_title	ให้ผู้อื่นค้นหาคุณเจอ
+settings.general.display_name	ชื่อที่แสดง
+settings.general.display_name_error	ตั้งชื่อที่แสดงไม่สำเร็จ
+settings.general.email_adding_unsupported_by_hs	ผู้ให้บริการบัญชีไม่รองรับการเพิ่มอีเมล
+settings.general.email_address_in_use	อีเมลนี้ถูกใช้แล้ว
+settings.general.email_address_label	อีเมล
+settings.general.email_not_verified	ยังไม่ได้ยืนยันอีเมล
+settings.general.email_verification_instructions	เปิดลิงก์ในอีเมลที่ได้รับเพื่อยืนยัน แล้วกด ดำเนินการต่อ อีกครั้ง
+settings.general.emails_heading	อีเมล
+settings.general.error_add_email	เพิ่มอีเมลไม่สำเร็จ
+settings.general.error_deactivate_communication	ติดต่อเซิร์ฟเวอร์ไม่สำเร็จ โปรดลองใหม่
+settings.general.error_deactivate_invalid_auth	เซิร์ฟเวอร์ไม่ได้ส่งข้อมูลยืนยันตัวตนที่ถูกต้อง
+settings.general.error_deactivate_no_auth	เซิร์ฟเวอร์ไม่ได้ขอการยืนยันตัวตน
+settings.general.error_email_verification	ยืนยันอีเมลไม่สำเร็จ
+settings.general.error_invalid_email	อีเมลไม่ถูกต้อง
+settings.general.error_invalid_email_detail	อีเมลนี้ดูเหมือนจะไม่ถูกต้อง
+settings.general.error_msisdn_verification	ยืนยันเบอร์โทรไม่สำเร็จ
+settings.general.error_password_change_403	เปลี่ยนรหัสผ่านไม่สำเร็จ รหัสผ่านถูกต้องหรือไม่?
+settings.general.error_password_change_http	%(errorMessage)s (HTTP status %(httpStatus)s)
+settings.general.error_password_change_title	เปลี่ยนรหัสผ่านไม่สำเร็จ
+settings.general.error_password_change_unknown	เปลี่ยนรหัสผ่านไม่สำเร็จ ไม่ทราบสาเหตุ (%(stringifiedError)s)
+settings.general.error_remove_3pid	ลบข้อมูลติดต่อไม่สำเร็จ
+settings.general.error_revoke_email_discovery	ยกเลิกการแชร์อีเมลไม่สำเร็จ
+settings.general.error_revoke_msisdn_discovery	ยกเลิกการแชร์เบอร์โทรไม่สำเร็จ
+settings.general.error_share_email_discovery	แชร์อีเมลไม่สำเร็จ
+settings.general.error_share_msisdn_discovery	แชร์เบอร์โทรไม่สำเร็จ
+settings.general.identity_server_no_token	ไม่พบ access token ของเซิร์ฟเวอร์ยืนยันตัวตน
+settings.general.identity_server_not_set	ยังไม่ได้ตั้งค่าเซิร์ฟเวอร์ยืนยันตัวตน
+settings.general.invalid_phone_number	เบอร์โทรที่กรอกดูเหมือนจะไม่ถูกต้อง
+settings.general.language_section	ภาษา
+settings.general.msisdn_adding_unsupported_by_hs	ผู้ให้บริการบัญชีไม่รองรับการเพิ่มเบอร์โทร
+settings.general.msisdn_in_use	เบอร์โทรนี้ถูกใช้แล้ว
+settings.general.msisdn_label	เบอร์โทร
+settings.general.msisdn_verification_field_label	รหัสยืนยัน
+settings.general.msisdn_verification_instructions	โปรดกรอกรหัสยืนยันที่ส่งทาง SMS
+settings.general.msisdns_heading	เบอร์โทร
+settings.general.oidc_manage_button	จัดการบัญชี
+settings.general.password_change_section	ตั้งรหัสผ่านบัญชีใหม่…
+settings.general.password_change_success	เปลี่ยนรหัสผ่านเรียบร้อยแล้ว
+settings.general.personal_info	ข้อมูลส่วนตัว
+settings.general.profile_subtitle	นี่คือสิ่งที่ผู้อื่นเห็นในแอป
+settings.general.profile_subtitle_oidc	บัญชีของคุณจัดการโดยระบบยืนยันตัวตน (AranKub) ข้อมูลส่วนตัวบางอย่างจึงเปลี่ยนที่นี่ไม่ได้
+settings.general.remove_email_prompt	ลบ %(email)s หรือไม่?
+settings.general.remove_msisdn_prompt	ลบ %(phone)s หรือไม่?
+settings.general.spell_check_locale_placeholder	เลือกภาษา
+settings.general.unable_to_load_emails	โหลดอีเมลไม่สำเร็จ
+settings.general.unable_to_load_msisdns	โหลดเบอร์โทรไม่สำเร็จ
+settings.general.username	ชื่อผู้ใช้
+settings.notifications.default_setting_description	การตั้งค่านี้ใช้กับทุกห้องเป็นค่าเริ่มต้น
+settings.notifications.default_setting_section	ฉันต้องการรับการแจ้งเตือนสำหรับ (ค่าเริ่มต้น)
+settings.notifications.desktop_notification_message_preview	แสดงตัวอย่างข้อความในการแจ้งเตือนบนคอมพิวเตอร์
+settings.notifications.dialog_title	<strong>การตั้งค่า:</strong> การแจ้งเตือน
+settings.notifications.email_description	รับสรุปการแจ้งเตือนที่พลาดทางอีเมล
+settings.notifications.email_section	สรุปทางอีเมล
+settings.notifications.email_select	เลือกอีเมลที่จะรับสรุป จัดการอีเมลได้ใน<button>ทั่วไป</button>
+settings.notifications.enable_audible_notifications_session	เปิดเสียงแจ้งเตือนบนอุปกรณ์นี้
+settings.notifications.enable_desktop_notifications_session	เปิดการแจ้งเตือนบนคอมพิวเตอร์เครื่องนี้
+settings.notifications.enable_email_notifications	เปิดการแจ้งเตือนทางอีเมลสำหรับ %(email)s
+settings.notifications.enable_notifications_account	เปิดการแจ้งเตือนสำหรับบัญชีนี้
+settings.notifications.enable_notifications_account_detail	ปิดเพื่อหยุดการแจ้งเตือนในทุกอุปกรณ์
+settings.notifications.enable_notifications_device	เปิดการแจ้งเตือนบนอุปกรณ์นี้
+settings.notifications.error_loading	โหลดการตั้งค่าการแจ้งเตือนไม่สำเร็จ
+settings.notifications.error_permissions_denied	%(brand)s ไม่มีสิทธิ์ส่งการแจ้งเตือน โปรดตรวจการตั้งค่าเบราว์เซอร์
+settings.notifications.error_permissions_missing	%(brand)s ไม่ได้รับสิทธิ์ส่งการแจ้งเตือน โปรดลองใหม่
+settings.notifications.error_saving	บันทึกการตั้งค่าการแจ้งเตือนไม่สำเร็จ
+settings.notifications.error_saving_detail	เกิดข้อผิดพลาดระหว่างบันทึกการตั้งค่าการแจ้งเตือน
+settings.notifications.error_title	เปิดการแจ้งเตือนไม่สำเร็จ
+settings.notifications.error_updating	อัปเดตการตั้งค่าการแจ้งเตือนไม่สำเร็จ โปรดลองเปิด/ปิดตัวเลือกอีกครั้ง
+settings.notifications.invites	ได้รับเชิญเข้าห้อง
+settings.notifications.keywords	แสดงป้าย <badge/> เมื่อมีการใช้คำสำคัญในห้อง
+settings.notifications.keywords_prompt	กรอกคำสำคัญที่นี่ หรือใช้สำหรับคำสะกดอื่นหรือชื่อเล่น
+settings.notifications.labs_notice_error	อัปเดตการตั้งค่าการแจ้งเตือนไม่สำเร็จ
+settings.notifications.labs_notice_prompt	<strong>อัปเดต:</strong> เราปรับการตั้งค่าการแจ้งเตือนให้หาตัวเลือกง่ายขึ้น การตั้งค่าบางอย่างที่คุณเคยเลือกไว้ไม่แสดงที่นี่ แต่ยังมีผลอยู่ ถ้าดำเนินการต่อ การตั้งค่าบางอย่างอาจเปลี่ยน <a>ดูเพิ่มเติม</a>
+settings.notifications.mentions_keywords	การแท็กและคำสำคัญ
+settings.notifications.mentions_keywords_only	เฉพาะการแท็กและคำสำคัญ
+settings.notifications.messages_containing_keywords	ข้อความที่มีคำสำคัญ
+settings.notifications.noisy	มีเสียง
+settings.notifications.notices	ข้อความจากบอต
+settings.notifications.notify_at_room	แจ้งเตือนเมื่อมีคนใช้ @room
+settings.notifications.notify_keyword	แจ้งเตือนเมื่อมีคนใช้คำสำคัญ
+settings.notifications.notify_mention	แจ้งเตือนเมื่อมีคนแท็กด้วย @ชื่อที่แสดง หรือ %(mxid)s
+settings.notifications.other_section	เรื่องอื่นที่คุณอาจสนใจ:
+settings.notifications.people_mentions_keywords	บุคคล การแท็ก และคำสำคัญ
+settings.notifications.play_sound_for_description	ใช้กับทุกห้องในทุกอุปกรณ์เป็นค่าเริ่มต้น
+settings.notifications.play_sound_for_section	เล่นเสียงสำหรับ
+settings.notifications.push_targets	อุปกรณ์ที่รับการแจ้งเตือน
+settings.notifications.quick_actions_mark_all_read	ทำเครื่องหมายว่าอ่านทุกข้อความแล้ว
+settings.notifications.quick_actions_reset	รีเซ็ตเป็นค่าเริ่มต้น
+settings.notifications.quick_actions_section	การดำเนินการด่วน
+settings.notifications.room_activity	มีความเคลื่อนไหวในห้อง การอัปเกรด และข้อความสถานะ
+settings.notifications.rule_call	มีสายเรียกเข้า
+settings.notifications.rule_contains_display_name	ข้อความที่มีชื่อที่แสดงของฉัน
+settings.notifications.rule_contains_user_name	การ @แท็ก และการตอบกลับ
+settings.notifications.rule_encrypted	ข้อความเข้ารหัสในแชทกลุ่ม
+settings.notifications.rule_encrypted_room_one_to_one	ข้อความเข้ารหัสในแชทส่วนตัว
+settings.notifications.rule_invite_for_me	เมื่อฉันได้รับเชิญเข้าห้อง
+settings.notifications.rule_message	ข้อความในแชทกลุ่ม
+settings.notifications.rule_room_one_to_one	ข้อความในแชทส่วนตัว
+settings.notifications.rule_roomnotif	การแท็ก @room
+settings.notifications.rule_suppress_notices	ข้อความจากบอต
+settings.notifications.rule_tombstone	เมื่อห้องถูกอัปเกรด
+settings.notifications.show_message_desktop_notification	แสดงข้อความในการแจ้งเตือนบนคอมพิวเตอร์
+settings.notifications.voip	การโทรเสียงและวิดีโอ
+settings.preferences.Electron.enableContentProtection	ป้องกันไม่ให้แอปอื่นจับภาพหน้าต่างนี้
+settings.preferences.Electron.enableHardwareAcceleration	ใช้การเร่งด้วยฮาร์ดแวร์ (เปิด %(appName)s ใหม่เพื่อให้มีผล)
+settings.preferences.always_show_menu_bar	แสดงแถบเมนูของหน้าต่างเสมอ
+settings.preferences.autocomplete_delay	หน่วงเวลาเติมอัตโนมัติ (ms)
+settings.preferences.code_blocks_heading	บล็อกโค้ด
+settings.preferences.compact_modern	ใช้รูปแบบ 'ทันสมัย' แบบกะทัดรัด
+settings.preferences.composer_heading	ช่องพิมพ์ข้อความ

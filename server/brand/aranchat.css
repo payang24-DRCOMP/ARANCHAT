@@ -1,0 +1,63 @@
+/* AranChat — ปรับหน้าตา Element Web (ทาง ก.: CSS + config ไม่ fork)
+ * โหลดจาก index.html (k8s/branding.yaml.tpl sub_filter) · สีหลักตั้งใน values/branding.yaml.tpl (custom_themes)
+ * ใช้เฉพาะตัวแปร/คลาสหลักของ Element — อัปเดต Element แล้วเช็คหน้าตาอีกครั้ง
+ */
+@font-face { font-family: "Sarabun"; src: url("Sarabun-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Sarabun"; src: url("Sarabun-SemiBold.ttf") format("truetype"); font-weight: 500 600; font-display: swap; }
+@font-face { font-family: "Sarabun"; src: url("Sarabun-Bold.ttf") format("truetype"); font-weight: 700 900; font-display: swap; }
+
+/* ฟอนต์ไทยอ่านง่าย (Sarabun) ทั้งแอป — ภาษาอังกฤษ/ตัวเลขยังใช้ Inter ของ Element
+ * html[...]: Element โหลด CSS ธีม (ที่ตั้งตัวแปรนี้บน [class*="cpd-theme-"]) ทีหลังไฟล์นี้ → ต้องเจาะจงกว่า */
+:root, html:root, html[class*="cpd-theme-"] {
+  --cpd-font-family-sans: "Inter", "Sarabun", "Noto Sans Thai", system-ui, sans-serif;
+  --aranchat-teal: #5B3FD9;
+  --aranchat-green: #8B5CF6;
+}
+body, .mx_MatrixChat_wrapper, input, textarea, button {
+  font-family: var(--cpd-font-family-sans);
+}
+
+/* ข้อความไทยมีสระบน/ล่าง — เพิ่มระยะบรรทัดไม่ให้ชนกัน */
+.mx_EventTile_body, .mx_RoomTile_title, .mx_RoomListItemView, .mx_BasicMessageComposer_input {
+  line-height: 1.6;
+}
+
+/* พื้นห้องแชท: สีเดียวกับหน้าแชทแบบ LINE ในเว็บแชทของเรา (_AranChatLine.pcss · ฟองข้อความกำหนดที่นั่น) */
+.mx_RoomView_body .mx_RoomView_timeline, .mx_RoomView_messagePanel {
+  background-color: #CFD6EA;
+}
+
+/* การ์ดแจ้งเตือนจาก bot (รูป) — มุมโค้ง เงาเบา */
+.mx_MImageBody .mx_MImageBody_thumbnail_container img {
+  border-radius: 14px;
+}
+
+/* ปุ่มหลักโค้งมนขึ้น */
+.mx_AccessibleButton_kind_primary, .mx_Dialog_primary {
+  border-radius: 999px !important;
+}
+
+/* หน้าเข้าสู่ระบบบนมือถือ: Element ซ่อนโลโก้และบีบกล่องให้แคบ → กล่องเต็มความกว้าง โลโก้อยู่ด้านบน */
+@media only screen and (max-width: 480px) {
+  .mx_AuthPage_modal {
+    flex-direction: column;
+    width: calc(100% - 32px);
+    margin: 40px auto auto !important;
+    overflow: hidden;
+    box-shadow: 0 14px 40px rgba(26, 15, 77, .3);
+  }
+  .mx_AuthPage_modal .mx_AuthPage_modalContent { flex-direction: column; width: 100%; }
+  .mx_AuthPage_modal .mx_AuthHeader { display: flex; width: 100%; padding: 28px 0 8px; box-sizing: border-box; justify-content: center; }
+  .mx_AuthPage_modal .mx_AuthHeaderLogo { display: flex; justify-content: center; }
+  .mx_AuthPage_modal .mx_AuthHeaderLogo img { width: 140px; }
+  .mx_AuthPage_modal .mx_AuthBody { width: 100%; max-width: none; box-sizing: border-box; padding: 16px 24px 28px; border-radius: 0; }
+  .mx_AuthPage_modal .mx_AuthBody .mx_Login_submit, .mx_AuthPage_modal .mx_AuthBody .mx_SSOButton,
+  .mx_AuthPage_modal .mx_AuthBody .mx_AccessibleButton_kind_primary { width: 100%; }
+}
+
+/* ปุ่มหลัก (เช่น "ดำเนินการต่อ" หน้าเข้าสู่ระบบ) ใช้สีแบรนด์แทนสีดำของ Element */
+.mx_AuthPage, .mx_Dialog {
+  --cpd-color-bg-action-primary-rest: #5B3FD9;
+  --cpd-color-bg-action-primary-hovered: #4C2FC9;
+  --cpd-color-bg-action-primary-pressed: #3B2496;
+}

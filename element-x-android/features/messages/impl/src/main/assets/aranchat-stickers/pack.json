@@ -1,0 +1,150 @@
+{
+ "version": 1,
+ "name": "น้องอรัญ",
+ "stickers": [
+  {
+   "id": "ack",
+   "body": "รับทราบ",
+   "file": "ack.png",
+   "w": 320,
+   "h": 320,
+   "size": 9064
+  },
+  {
+   "id": "thanks_f",
+   "body": "ขอบคุณค่ะ",
+   "file": "thanks_f.png",
+   "w": 320,
+   "h": 320,
+   "size": 9921
+  },
+  {
+   "id": "thanks_m",
+   "body": "ขอบคุณครับ",
+   "file": "thanks_m.png",
+   "w": 320,
+   "h": 320,
+   "size": 9891
+  },
+  {
+   "id": "ok",
+   "body": "โอเค",
+   "file": "ok.png",
+   "w": 320,
+   "h": 320,
+   "size": 9078
+  },
+  {
+   "id": "fight",
+   "body": "สู้ๆ นะ",
+   "file": "fight.png",
+   "w": 320,
+   "h": 320,
+   "size": 10279
+  },
+  {
+   "id": "wait",
+   "body": "รอสักครู่",
+   "file": "wait.png",
+   "w": 320,
+   "h": 320,
+   "size": 9464
+  },
+  {
+   "id": "callback",
+   "body": "เดี๋ยวโทรกลับ",
+   "file": "callback.png",
+   "w": 320,
+   "h": 320,
+   "size": 9906
+  },
+  {
+   "id": "coming",
+   "body": "กำลังไป",
+   "file": "coming.png",
+   "w": 320,
+   "h": 320,
+   "size": 9120
+  },
+  {
+   "id": "urgent",
+   "body": "ด่วน!",
+   "file": "urgent.png",
+   "w": 320,
+   "h": 320,
+   "size": 8648
+  },
+  {
+   "id": "sorry",
+   "body": "ขอโทษนะ",
+   "file": "sorry.png",
+   "w": 320,
+   "h": 320,
+   "size": 9176
+  },
+  {
+   "id": "great",
+   "body": "เยี่ยมมาก",
+   "file": "great.png",
+   "w": 320,
+   "h": 320,
+   "size": 10557
+  },
+  {
+   "id": "morning",
+   "body": "สวัสดีตอนเช้า",
+   "file": "morning.png",
+   "w": 320,
+   "h": 320,
+   "size": 10739
+  },
+  {
+   "id": "night",
+   "body": "ฝันดี",
+   "file": "night.png",
+   "w": 320,
+   "h": 320,
+   "size": 9339
+  },
+  {
+   "id": "congrats",
+   "body": "ยินดีด้วย",
+   "file": "congrats.png",
+   "w": 320,
+   "h": 320,
+   "size": 11235
+  },
+  {
+   "id": "understood",
+   "body": "เข้าใจแล้ว",
+   "file": "understood.png",
+   "w": 320,
+   "h": 320,
+   "size": 9546
+  },
+  {
+   "id": "meeting",
+   "body": "ติดประชุม",
+   "file": "meeting.png",
+   "w": 320,
+   "h": 320,
+   "size": 9209
+  },
+  {
+   "id": "lunch",
+   "body": "พักเที่ยง",
+   "file": "lunch.png",
+   "w": 320,
+   "h": 320,
+   "size": 9624
+  },
+  {
+   "id": "love",
+   "body": "รักนะ",
+   "file": "love.png",
+   "w": 320,
+   "h": 320,
+   "size": 9168
+  }
+ ]
+}

@@ -1,0 +1,190 @@
+common.name	ชื่อ
+common.no_results	ไม่มีผลลัพธ์
+common.no_results_found	ไม่พบผลลัพธ์
+common.not_trusted	ไม่ได้รับความเชื่อถือ
+common.off	ปิด
+common.offline	ออฟไลน์
+common.on	เปิด
+common.options	ตัวเลือก
+common.orphan_rooms	ห้องอื่นๆ
+common.password	รหัสผ่าน
+common.people	บุคคล
+common.preferences	การกำหนดลักษณะ
+common.presence	สถานะออนไลน์
+common.preview_message	สวัสดีครับ วันนี้เป็นวันที่ดี!
+common.privacy	ความเป็นส่วนตัว
+common.private	ส่วนตัว
+common.private_room	ห้องส่วนตัว
+common.private_space	Space ส่วนตัว
+common.profile	โปรไฟล์
+common.public	สาธารณะ
+common.public_room	ห้องสาธารณะ
+common.public_space	Space สาธารณะ
+common.qr_code	QR Code
+common.random	สุ่ม
+common.reactions	ความรู้สึก
+common.recommended	แนะนำ
+common.report_a_bug	รายงานปัญหา
+common.room	ห้อง
+common.room_name	ชื่อห้อง
+common.rooms	ห้อง
+common.save	บันทึก
+common.saved	บันทึกแล้ว
+common.saving	กำลังบันทึก…
+common.secure_backup	สำรองข้อมูลอย่างปลอดภัย
+common.select_all	เลือกทั้งหมด
+common.server	เซิร์ฟเวอร์
+common.settings	การตั้งค่า
+common.setup_secure_messages	ตั้งค่าข้อความที่ปลอดภัย
+common.show_more	แสดงเพิ่มเติม
+common.skip	ข้าม
+common.someone	บางคน
+common.space	Space
+common.spaces	Space
+common.state_encryption_enabled	เปิดการเข้ารหัสสถานะ (ทดลอง)
+common.sticker	สติกเกอร์
+common.stickerpack	ชุดสติกเกอร์
+common.success	สำเร็จ
+common.suggestions	คำแนะนำ
+common.support	ความช่วยเหลือ
+common.theme	ธีม
+common.thread	เธรด
+common.threads	เธรด
+common.timeline	ไทม์ไลน์
+common.unavailable	ไม่พร้อมใช้งาน
+common.unencrypted	ไม่ได้เข้ารหัส
+common.unmute	เปิดเสียง
+common.unnamed_room	ห้องไม่มีชื่อ
+common.unnamed_space	Space ไม่มีชื่อ
+common.unverified	ยังไม่ยืนยัน
+common.updating	กำลังอัปเดต...
+common.user	ผู้ใช้
+common.user_avatar	รูปโปรไฟล์
+common.username	ชื่อผู้ใช้
+common.verified	ยืนยันแล้ว
+common.version	เวอร์ชัน
+common.video_room	ห้องวิดีโอ
+common.view_message	ดูข้อความ
+common.warning	คำเตือน
+common.encryption_enabled	เปิดการเข้ารหัสแล้ว
+room_list.add_space_label	เพิ่ม Space
+room_list.failed_add_tag	เพิ่มแท็ก %(tagName)s ให้ห้องไม่สำเร็จ
+room_list.failed_remove_tag	นำแท็ก %(tagName)s ออกจากห้องไม่สำเร็จ
+room_list.failed_set_dm_tag	ตั้งเป็นแชทส่วนตัวไม่สำเร็จ
+room_list.list_title	รายการห้อง
+room_list.more_options.leave_room	ออกจากห้อง
+room_list.more_options.copy_link	คัดลอกลิงก์
+room_list.more_options.favourited	รายการโปรด
+room_list.more_options.low_priority	ความสำคัญต่ำ
+room_list.more_options.mark_read	ทำเครื่องหมายว่าอ่านแล้ว
+room_list.more_options.mark_unread	ทำเครื่องหมายว่ายังไม่อ่าน
+room_list.more_options.move_to_section	ย้ายไปที่
+room_list.more_options.remove_from_section	นำออกจากหมวด
+room_list.notification_options	ตัวเลือกการแจ้งเตือน
+room_list.section.chats	แชท
+room_list.section.favourites	รายการโปรด
+room_list.section.invites	คำเชิญ
+room_list.section.low_priority	ความสำคัญต่ำ
+room_list.show_less	แสดงน้อยลง
+room_list.a11y.default	เปิดห้อง %(roomName)s
+room_list.a11y.drag_cancelled	ยกเลิกการลาก
+room_list.a11y.drag_end	วาง %(source)s บน %(target)s แล้ว
+room_list.a11y.drag_end_after	วาง %(source)s หลัง %(target)s แล้ว
+room_list.a11y.drag_end_before	วาง %(source)s ก่อน %(target)s แล้ว
+room_list.a11y.drag_end_original	%(source)s กลับไปที่ตำแหน่งเดิมแล้ว
+room_list.a11y.drag_instructions	กด Space เพื่อเริ่มหรือหยุดลาก ใช้ปุ่มลูกศรเพื่อย้าย และกด Esc เพื่อยกเลิก
+room_list.a11y.drag_over	%(source)s อยู่บน %(target)s
+room_list.a11y.drag_over_after	%(source)s จะถูกวางหลัง %(target)s
+room_list.a11y.drag_over_before	%(source)s จะถูกวางก่อน %(target)s
+room_list.a11y.drag_over_original	%(source)s จะกลับไปที่ตำแหน่งเดิม
+room_list.a11y.drag_start	กำลังลาก %(source)s
+room_list.a11y.invitation	เปิดคำเชิญเข้าห้อง %(roomName)s
+room_list.a11y.mention.one	เปิดห้อง %(roomName)s มีการแท็กที่ยังไม่อ่าน 1 รายการ
+room_list.a11y.mention.other	เปิดห้อง %(roomName)s มีการแท็กที่ยังไม่อ่าน %(count)s รายการ
+room_list.a11y.unread.one	เปิดห้อง %(roomName)s มีข้อความที่ยังไม่อ่าน 1 ข้อความ
+room_list.a11y.unread.other	เปิดห้อง %(roomName)s มีข้อความที่ยังไม่อ่าน %(count)s ข้อความ
+room_list.a11y.unsent_message	เปิดห้อง %(roomName)s มีข้อความที่ยังไม่ได้ส่ง
+room_list.a11y.video_call	เปิดห้อง %(roomName)s กำลังมีวิดีโอคอล
+room_list.a11y.voice_call	เปิดห้อง %(roomName)s กำลังมีการโทร
+room_list.appearance	การแสดงผล
+room_list.chat_moved	ย้ายแชทแล้ว
+room_list.collapse_all_sections	ย่อทุกหมวด
+room_list.collapse_filters	ย่อรายการตัวกรอง
+room_list.empty.no_chats	ยังไม่มีแชท
+room_list.empty.no_chats_description	เริ่มต้นด้วยการส่งข้อความหาใครสักคน หรือสร้างห้อง
+room_list.empty.no_chats_description_no_room_rights	เริ่มต้นด้วยการส่งข้อความหาใครสักคน
+room_list.empty.no_invites	ไม่มีคำเชิญที่ยังไม่อ่าน
+room_list.empty.no_mentions	ไม่มีการแท็กที่ยังไม่อ่าน
+room_list.empty.no_people	ยังไม่มีแชทส่วนตัวกับใคร
+room_list.empty.no_people_description	ยกเลิกตัวกรองเพื่อดูแชทอื่นๆ ได้
+room_list.empty.no_rooms	ยังไม่ได้อยู่ในห้องใด
+room_list.empty.no_rooms_description	ยกเลิกตัวกรองเพื่อดูแชทอื่นๆ ได้
+room_list.empty.no_unread	เยี่ยม! ไม่มีข้อความที่ยังไม่อ่าน
+room_list.empty.show_activity	ดูความเคลื่อนไหวทั้งหมด
+room_list.empty.show_chats	แสดงแชททั้งหมด
+room_list.expand_all_sections	ขยายทุกหมวด
+room_list.expand_filters	ขยายรายการตัวกรอง
+room_list.filters.favourite	รายการโปรด
+room_list.filters.invites	คำเชิญ
+room_list.filters.low_priority	ความสำคัญต่ำ
+room_list.filters.mentions	ถูกแท็ก
+room_list.filters.people	เพื่อน
+room_list.filters.rooms	กลุ่ม
+room_list.filters.unread	ยังไม่อ่าน
+room_list.open_space_menu	เปิดเมนู Space
+room_list.primary_filters	ตัวกรองรายการห้อง
+room_list.room.more_options	ตัวเลือกเพิ่มเติม
+room_list.room_options	ตัวเลือกห้อง
+room_list.section_created	สร้างหมวดแล้ว
+room_list.section_creation.description	หมวดเห็นเฉพาะคุณคนเดียว
+room_list.section_creation.label	ชื่อหมวด
+room_list.section_header.edit_section	แก้ไขหมวด
+room_list.section_header.more_options	ตัวเลือกเพิ่มเติม
+room_list.section_header.remove_section	ลบหมวด
+room_list.section_header.toggle	เปิด/ปิดหมวด %(section)s
+room_list.section_header.toggle_unread	เปิด/ปิดหมวด %(section)s ที่มีห้องยังไม่อ่าน
+room_list.show_message_previews	แสดงตัวอย่างข้อความ
+room_list.sort	เรียงลำดับ
+room_list.sort_type.activity	ความเคลื่อนไหวล่าสุด
+room_list.sort_type.atoz	ก-ฮ / A-Z
+room_list.sort_type.unread_first	ยังไม่อ่านก่อน
+room_list.space_menu.home	หน้าหลักของ Space
+room_list.space_menu.space_settings	การตั้งค่า Space
+room_list.unread_messages	ข้อความที่ยังไม่อ่าน
+composer.autocomplete.@room_description	แจ้งเตือนทุกคนในห้อง
+composer.autocomplete.command_a11y	เติมคำสั่งอัตโนมัติ
+composer.autocomplete.command_description	คำสั่ง
+composer.autocomplete.emoji_a11y	เติมอีโมจิอัตโนมัติ
+composer.autocomplete.notification_a11y	เติมการแจ้งเตือนอัตโนมัติ
+composer.autocomplete.notification_description	แจ้งเตือนทั้งห้อง
+composer.autocomplete.room_a11y	เติมชื่อห้องอัตโนมัติ
+composer.autocomplete.space_a11y	เติมชื่อ Space อัตโนมัติ
+composer.autocomplete.user_a11y	เติมชื่อผู้ใช้อัตโนมัติ
+composer.autocomplete.user_description	ผู้ใช้
+composer.close_sticker_picker	ซ่อนสติกเกอร์
+composer.edit_composer_label	แก้ไขข้อความ
+composer.format_bold	ตัวหนา
+composer.format_code_block	บล็อกโค้ด
+composer.format_decrease_indent	ลดการเยื้อง
+composer.format_increase_indent	เพิ่มการเยื้อง
+composer.format_inline_code	โค้ด
+composer.format_insert_link	แทรกลิงก์
+composer.format_italic	ตัวเอียง
+composer.format_italics	ตัวเอียง
+composer.format_link	ลิงก์
+composer.format_ordered_list	รายการลำดับเลข
+composer.format_strikethrough	ขีดฆ่า
+composer.format_underline	ขีดเส้นใต้
+composer.format_unordered_list	รายการสัญลักษณ์
+composer.formatting_toolbar_label	การจัดรูปแบบ
+composer.link_modal.link_field_label	ลิงก์
+composer.link_modal.text_field_label	ข้อความ
+composer.link_modal.title_create	สร้างลิงก์
+composer.link_modal.title_edit	แก้ไขลิงก์
+composer.mode_plain	ซ่อนการจัดรูปแบบ
+composer.mode_rich_text	แสดงการจัดรูปแบบ
+composer.no_perms_notice	คุณไม่มีสิทธิ์ส่งข้อความในห้องนี้
+composer.placeholder	พิมพ์ข้อความ…
+composer.placeholder_encrypted	พิมพ์ข้อความ…
+composer.placeholder_reply	พิมพ์คำตอบ…
+composer.placeholder_reply_encrypted	พิมพ์คำตอบ…

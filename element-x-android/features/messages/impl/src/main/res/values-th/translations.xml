@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="crypto_event_authenticity_mismatched_sender">"ผู้ส่งเหตุการณ์ไม่ตรงกับเจ้าของอุปกรณ์ที่ส่ง"</string>
+  <string name="crypto_event_authenticity_not_guaranteed">"ยืนยันความถูกต้องของข้อความที่เข้ารหัสนี้บนอุปกรณ์นี้ไม่ได้"</string>
+  <string name="crypto_event_authenticity_previously_verified">"เข้ารหัสโดยผู้ใช้ที่เคยยืนยันแล้ว"</string>
+  <string name="crypto_event_authenticity_sent_in_clear">"ไม่ได้เข้ารหัส"</string>
+  <string name="crypto_event_authenticity_unknown_device">"เข้ารหัสโดยอุปกรณ์ที่ไม่รู้จักหรือถูกลบแล้ว"</string>
+  <string name="crypto_event_authenticity_unsigned_device">"เข้ารหัสโดยอุปกรณ์ที่เจ้าของยังไม่ได้ยืนยัน"</string>
+  <string name="crypto_event_authenticity_unverified_identity">"เข้ารหัสโดยผู้ใช้ที่ยังไม่ได้ยืนยัน"</string>
+  <string name="error_sending_failure_invalid_mime_type">"ชนิดไฟล์ไม่ถูกต้อง: %s"</string>
+  <string name="error_sending_failure_missing_media_content">"ไม่มีเนื้อหาไฟล์"</string>
+  <string name="error_sending_failure_other">"รายละเอียดข้อผิดพลาด: %s"</string>
+  <string name="error_sending_failure_sending_from_unverified_device">"ส่งจากอุปกรณ์ที่ยังไม่ยืนยัน"</string>
+  <string name="error_sending_failure_unknown">"ข้อผิดพลาดที่ไม่ทราบสาเหตุ"</string>
+  <string name="screen_image_edition_a11y_flip_image_horizontally">"พลิกรูปแนวนอน"</string>
+  <string name="screen_image_edition_a11y_flip_image_horizontally_state_flipped">"พลิกแนวนอนแล้ว"</string>
+  <string name="screen_image_edition_a11y_flip_image_horizontally_state_original">"ต้นฉบับ"</string>
+  <string name="screen_image_edition_a11y_flip_image_vertically">"พลิกรูปแนวตั้ง"</string>
+  <string name="screen_image_edition_a11y_flip_image_vertically_state_flipped">"พลิกแนวตั้งแล้ว"</string>
+  <string name="screen_image_edition_a11y_flip_image_vertically_state_original">"ต้นฉบับ"</string>
+  <string name="screen_image_edition_a11y_rotate_to_the_left">"หมุนรูปไปทางซ้าย"</string>
+  <plurals name="screen_image_edition_a11y_rotation_state">
+    <item quantity="other">"%1$d องศา"</item>
+  </plurals>
+  <string name="screen_image_edition_title">"แก้ไขรูป"</string>
+  <string name="screen_media_upload_preview_caption_warning">"คำบรรยายอาจไม่แสดงสำหรับคนที่ใช้แอปรุ่นเก่า"</string>
+  <string name="screen_media_upload_preview_change_video_quality_prompt">"แตะเพื่อเปลี่ยนคุณภาพวิดีโอที่อัปโหลด"</string>
+  <string name="screen_media_upload_preview_error_could_not_be_uploaded">"อัปโหลดไฟล์ไม่ได้"</string>
+  <string name="screen_media_upload_preview_error_failed_processing">"เตรียมไฟล์สำหรับอัปโหลดไม่สำเร็จ โปรดลองใหม่"</string>
+  <string name="screen_media_upload_preview_error_failed_sending">"อัปโหลดไฟล์ไม่สำเร็จ โปรดลองใหม่"</string>
+  <string name="screen_media_upload_preview_error_too_large_message">"ขนาดไฟล์สูงสุดคือ %1$s"</string>
+  <string name="screen_media_upload_preview_error_too_large_title">"ไฟล์ใหญ่เกินกว่าจะอัปโหลดได้"</string>
+  <string name="screen_media_upload_preview_item_count">"รายการที่ %1$d จาก %2$d"</string>
+  <string name="screen_media_upload_preview_optimize_image_quality_title">"ปรับคุณภาพรูปให้เหมาะสม"</string>
+  <string name="screen_media_upload_preview_processing">"กำลังประมวลผล…"</string>
+  <string name="screen_media_upload_preview_title">"เพิ่มรูป/ไฟล์"</string>
+  <string name="screen_report_content_block_user">"บล็อกผู้ใช้"</string>
+  <string name="screen_report_content_block_user_hint">"เลือกถ้าต้องการซ่อนข้อความทั้งหมดของผู้ใช้นี้ ทั้งตอนนี้และต่อไป"</string>
+  <string name="screen_report_content_explanation">"ข้อความนี้จะถูกรายงานไปยังผู้ให้บริการบัญชี ผู้ให้บริการอ่านข้อความที่เข้ารหัสไม่ได้"</string>
+  <string name="screen_report_content_hint">"เหตุผลที่รายงานเนื้อหานี้"</string>
+  <string name="screen_room_attachment_source_camera">"กล้อง"</string>
+  <string name="screen_room_attachment_source_camera_photo">"ถ่ายรูป"</string>
+  <string name="screen_room_attachment_source_camera_video">"ถ่ายวิดีโอ"</string>
+  <string name="screen_room_attachment_source_files">"ไฟล์แนบ"</string>
+  <string name="screen_room_attachment_source_gallery">"รูปและวิดีโอ"</string>
+  <string name="screen_room_attachment_source_location">"แชร์ตำแหน่ง"</string>
+  <string name="screen_room_attachment_source_poll">"โพล"</string>
+  <string name="screen_room_attachment_text_formatting">"จัดรูปแบบข้อความ"</string>
+  <string name="screen_room_confirm_removal_reason_label">"เหตุผล (ไม่บังคับ)"</string>
+  <string name="screen_room_confirm_removal_reason_placeholder">"กรอกเหตุผล…"</string>
+  <string name="screen_room_confirm_removal_reason_supporting_text">"(ไม่บังคับ)"</string>
+  <string name="screen_room_confirm_removal_title">"ยกเลิกข้อความนี้ไหม"</string>
+  <string name="screen_room_encrypted_history_banner">"ตอนนี้ดูประวัติข้อความไม่ได้"</string>
+  <string name="screen_room_encrypted_history_banner_unverified">"ห้องนี้ดูประวัติข้อความไม่ได้ ยืนยันอุปกรณ์นี้เพื่อดูประวัติ"</string>
+  <string name="screen_room_invite_again_alert_message">"ต้องการเชิญกลับมาไหม"</string>
+  <string name="screen_room_invite_again_alert_title">"มีคุณคนเดียวในแชทนี้"</string>
+  <string name="screen_room_mentions_at_room_subtitle">"แจ้งเตือนทุกคนในห้อง"</string>
+  <string name="screen_room_mentions_at_room_title">"ทุกคน"</string>
+  <string name="screen_room_retry_send_menu_send_again_action">"ส่งอีกครั้ง"</string>
+  <string name="screen_room_retry_send_menu_title">"ส่งข้อความไม่สำเร็จ"</string>
+  <string name="screen_room_timeline_add_reaction">"เพิ่มอีโมจิตอบกลับ"</string>
+  <string name="screen_room_timeline_beginning_of_room">"นี่คือจุดเริ่มต้นของ %1$s"</string>
+  <string name="screen_room_timeline_beginning_of_room_no_name">"นี่คือจุดเริ่มต้นของบทสนทนานี้"</string>
+  <string name="screen_room_timeline_legacy_call">"การโทรนี้ไม่รองรับ ลองถามผู้โทรว่าใช้แอปรุ่นใหม่ได้ไหม"</string>
+  <string name="screen_room_timeline_less_reactions">"แสดงน้อยลง"</string>
+  <string name="screen_room_timeline_message_copied">"คัดลอกข้อความแล้ว"</string>
+  <string name="screen_room_timeline_no_permission_to_post">"คุณไม่มีสิทธิ์ส่งข้อความในห้องนี้"</string>
+  <plurals name="screen_room_timeline_reaction_a11y">
+    <item quantity="other">"สมาชิก %1$d คนตอบกลับด้วย %2$s"</item>
+  </plurals>
+  <plurals name="screen_room_timeline_reaction_including_you_a11y">
+    <item quantity="other">"คุณและสมาชิก %1$d คนตอบกลับด้วย %2$s"</item>
+  </plurals>
+  <string name="screen_room_timeline_reaction_you_a11y">"คุณตอบกลับด้วย %1$s"</string>
+  <string name="screen_room_timeline_reactions_show_less">"แสดงน้อยลง"</string>
+  <string name="screen_room_timeline_reactions_show_more">"แสดงเพิ่มเติม"</string>
+  <string name="screen_room_timeline_reactions_show_reactions_summary">"ดูสรุปการตอบกลับ"</string>
+  <string name="screen_room_timeline_read_marker_title">"ใหม่"</string>
+  <plurals name="screen_room_timeline_redacted_messages">
+    <item quantity="other">"ข้อความที่ถูกลบ %1$d ข้อความ"</item>
+  </plurals>
+  <plurals name="screen_room_timeline_state_changes">
+    <item quantity="other">"การเปลี่ยนแปลงห้อง %1$d รายการ"</item>
+  </plurals>
+  <string name="screen_room_timeline_tombstoned_room_action">"ไปที่ห้องใหม่"</string>
+  <string name="screen_room_timeline_tombstoned_room_message">"ห้องนี้ถูกแทนที่และไม่ใช้งานแล้ว"</string>
+  <string name="screen_room_timeline_upgraded_room_action">"ดูข้อความเก่า"</string>
+  <string name="screen_room_timeline_upgraded_room_message">"ห้องนี้ต่อจากห้องอื่น"</string>
+  <plurals name="screen_room_typing_many_members">
+    <item quantity="other">"%1$s, %2$s และอีก %3$d คน"</item>
+  </plurals>
+  <plurals name="screen_room_typing_notification">
+    <item quantity="other">"%1$s กำลังพิมพ์"</item>
+  </plurals>
+  <string name="screen_room_typing_two_members">"%1$s และ %2$s"</string>
+</resources>

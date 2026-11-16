@@ -1,0 +1,747 @@
+/*
+ * AranChat — หน้าแชทแบบ LINE (เลือกจาก mockup แบบ C) + การ์ดแจ้งเตือน
+ *   ฟองคนอื่น: รูป 36px ซ้าย + ชื่อเหนือฟอง สีขาว · ฟองเรา: ขวา สีม่วง ตัวอักษรขาว ไม่มีรูป
+ *   เวลา / "อ่านแล้ว" อยู่ข้างฟอง · ข้อความระบบเป็นป้ายเม็ดยากลางจอ
+ * Element ใช้ CSS module (ชื่อคลาสมี hash ต่อท้าย) → จับด้วยชื่อขึ้นต้น [class*="_stateOwnEvent_"] และ data-testid ของช่องต่างๆ
+ * ทดลองแก้สดได้ที่ ~/aranchat-apps/testenv (live.cjs) ก่อน build
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
+:root {
+    --ac-tl-bg: #cfd6ea;
+    --ac-bubble-in: #ffffff;
+    --ac-bubble-in-ink: #1e1b4b;
+    --ac-bubble-out: #7c64ee;
+    --ac-bubble-out-ink: #ffffff;
+    --ac-side-ink: #4b4766;
+    --ac-pill: rgba(30, 27, 75, 0.2);
+}
+
+.mx_AranChat .mx_RoomView_body[data-layout="bubble"] .mx_RoomView_timeline,
+.mx_AranChat .mx_RoomView_body[data-layout="bubble"] .mx_RoomView_messagePanel {
+    background-color: var(--ac-tl-bg);
+}
+
+.mx_AranChat .mx_RoomView_MessageList li.mx_EventTile[class*="_layoutBubble_"] {
+    --event-tile-bubble-margin-inline-start: 64px;
+    --event-tile-bubble-margin-inline-end: 72px;
+    --event-tile-bubble-line-margin-inline-start: 0px;
+    --event-tile-bubble-line-margin-inline-end: 0px;
+    --event-tile-bubble-corner-radius: 18px;
+    --event-tile-bubble-line-max-width: min(70%, 520px);
+    --event-tile-bubble-other-background: var(--ac-bubble-in);
+    --event-tile-bubble-self-background: var(--ac-bubble-out);
+    --event-tile-bubble-hover-background: transparent;
+    margin-block-start: 10px;
+
+    /* ไม่มีแถบไฮไลต์ทั้งแถวตอนชี้ (LINE ไม่มี) */
+    &::before {
+        display: none;
+    }
+
+    /* ฟอง: มุมโค้งเท่ากันทุกมุม ไม่มีที่ว่างขวาสำหรับเวลา (ย้ายเวลาออกไปข้างฟอง) */
+    > [data-testid="event-tile-line"] {
+        border-radius: 18px !important;
+        padding: 8px 12px;
+        line-height: 1.55;
+        color: var(--ac-bubble-in-ink);
+        overflow: visible;
+    }
+
+    /* เวลา: ข้างฟองด้านล่าง */
+    [data-testid="event-tile-slot-timestamp"] > * {
+        inset-inline-start: calc(100% + 6px);
+        inset-inline-end: auto;
+        inset-block-end: 0;
+        padding: 0;
+        font-size: 11px;
+        line-height: 1.3;
+        color: var(--ac-side-ink) !important;
+        background: none !important;
+        white-space: nowrap;
+    }
+
+    /* รูป/วิดีโอ/ไฟล์: ไม่มีพื้นฟอง */
+    > [class*="_lineMedia_"] {
+        background: transparent !important;
+        padding: 0 !important;
+    }
+    > [class*="_lineMedia_"] .mx_MediaBody {
+        background: transparent !important;
+    }
+
+    /* รูปโปรไฟล์ (เฉพาะคนอื่น): 36px ชิดซ้าย ระดับเดียวกับชื่อ */
+    > [data-testid="event-tile-slot-avatar"] {
+        inset-block-start: 0;
+        inset-inline-start: -48px;
+        border: 0;
+    }
+    > [data-testid="event-tile-slot-avatar"] > * {
+        box-shadow: none !important;
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 15px !important;
+        line-height: 36px !important;
+    }
+
+    /* ชื่อผู้ส่ง: ตัวเล็กเหนือฟอง */
+    > [data-testid="event-tile-slot-sender"] {
+        inset-block-start: 0;
+        inset-inline-start: 2px;
+        margin-bottom: 2px;
+        font-size: 12px;
+        line-height: 1.4;
+    }
+    > [data-testid="event-tile-slot-sender"] .mx_DisambiguatedProfile > span {
+        color: var(--ac-side-ink) !important;
+        font-weight: 500;
+        font-size: 12px;
+    }
+
+    /* ข้อความต่อเนื่องจากคนเดิม: ชิดกันขึ้น */
+    &[class*="_stateContinuation_"] {
+        margin-block-start: 4px;
+    }
+
+    > [data-testid="event-tile-slot-avatar"] {
+        --cpd-avatar-size: 36px !important;
+        background: none;
+    }
+    [data-testid="event-tile-slot-timestamp"] a {
+        text-decoration: none !important;
+    }
+
+    /* ---- ฟองของเรา: grid 2 ช่อง [อ่านแล้ว+เวลา | ฟอง] ให้ "อ่านแล้ว" อยู่ข้างฟองแบบ LINE ---- */
+    &[class*="_stateOwnEvent_"]:not([class*="_stateInfo_"]) {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) fit-content(min(70%, 520px));
+        column-gap: 6px;
+
+        > * {
+            grid-column: 1 / -1;
+        }
+        > [data-testid="event-tile-line"] {
+            grid-column: 2;
+            grid-row: 1;
+            max-width: 100%;
+            margin-inline: 0 !important;
+        }
+        /* ฟองสีม่วงเฉพาะข้อความ — รูป/ไฟล์ (_lineMedia_) ไม่มีพื้นฟอง */
+        /* การ์ด (แจ้งเตือน / แนะนำเพื่อน / โน้ต / อัลบั้ม) ก็ไม่มีพื้นฟอง */
+        > [data-testid="event-tile-line"]:not([class*="_lineMedia_"]):not(
+                :has(> [data-testid="event-tile-slot-body"] > :is(.mx_AranCard, .mx_AranContact, .mx_AranBoardCard))
+            ) {
+            background: var(--ac-bubble-out) !important;
+        }
+        > [data-testid="event-tile-slot-receipt"] {
+            grid-column: 1;
+            grid-row: 1;
+            position: static;
+            justify-self: end;
+            align-self: end;
+            padding-bottom: 15px;
+        }
+    }
+    &[class*="_stateOwnEvent_"] {
+        > [data-testid="event-tile-line"] {
+            color: var(--ac-bubble-out-ink);
+        }
+        > [data-testid="event-tile-line"] a {
+            color: inherit;
+            text-decoration: underline;
+        }
+        > [data-testid="event-tile-slot-avatar"] {
+            display: none;
+        }
+        [data-testid="event-tile-slot-timestamp"] > * {
+            inset-inline-start: auto;
+            inset-inline-end: calc(100% + 6px);
+        }
+    }
+
+    .mx_AranChat_read {
+        font-size: 11px;
+        color: var(--ac-side-ink);
+        line-height: 1.3;
+    }
+
+    /* ข้อความระบบ (เชิญ/เข้าห้อง/เปลี่ยนชื่อ): ป้ายเม็ดยาตรงกลาง ไม่มีฟอง */
+    &[class*="_stateInfo_"] {
+        margin-inline: 16px !important;
+        display: flex;
+        justify-content: center;
+
+        > [data-testid="event-tile-slot-avatar"],
+        > [data-testid="event-tile-slot-receipt"],
+        [data-testid="event-tile-slot-timestamp"] {
+            display: none;
+        }
+        > [data-testid="event-tile-line"] {
+            width: fit-content !important;
+            min-width: 0 !important;
+            max-width: 100%;
+            margin: 0 !important;
+            padding: 1px 12px !important;
+            background: var(--ac-pill) !important;
+            color: #fff !important;
+            font-size: 12px;
+        }
+        > [data-testid="event-tile-line"] * {
+            color: inherit !important;
+            font-size: 12px !important;
+        }
+    }
+}
+
+.mx_AranChat .mx_RoomView_MessageList .mx_GenericEventListSummary[data-layout="bubble"] {
+    margin-inline: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > .mx_EventTile_line {
+        width: fit-content;
+        padding: 1px 12px;
+        border-radius: 999px;
+        background: var(--ac-pill);
+        color: #fff;
+        font-size: 12px;
+    }
+    > .mx_EventTile_line * {
+        color: inherit !important;
+    }
+    .mx_GenericEventListSummary_avatars {
+        display: none;
+    }
+    > .mx_GenericEventListSummary_toggle {
+        order: 2;
+        margin: 2px 0 0;
+        font-size: 12px;
+        color: var(--ac-side-ink);
+        text-decoration: none;
+    }
+}
+
+/* วันที่ + ข้อความระบบ (เข้าห้อง ฯลฯ): ป้ายเม็ดยาตรงกลาง */
+.mx_AranChat .mx_RoomView_body[data-layout="bubble"] .mx_TimelineSeparator,
+.mx_AranChat .mx_RoomView_body[data-layout="bubble"] .mx_DateSeparator {
+    > hr {
+        display: none;
+    }
+    > h2,
+    > div {
+        margin: 0 auto;
+        padding: 2px 12px;
+        border-radius: 999px;
+        background: var(--ac-pill);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 500;
+    }
+}
+
+/* รูปโปรไฟล์แบบไม่มีภาพ: สีเข้ม ตัวอักษรขาว (ค่าเดิมของ Element สีจางมาก มองไม่เห็นบนพื้นห้องแชท) */
+.mx_AranChat :is(.mx_RoomView_MessageList, .mx_RoomListPanel, .mx_RoomHeader) {
+    .mx_BaseAvatar[data-color] {
+        color: #fff !important;
+        font-weight: 600;
+    }
+    .mx_BaseAvatar[data-color="1"] {
+        background: #5b3fd9 !important;
+    }
+    .mx_BaseAvatar[data-color="2"] {
+        background: #e0719b !important;
+    }
+    .mx_BaseAvatar[data-color="3"] {
+        background: #0ea5a4 !important;
+    }
+    .mx_BaseAvatar[data-color="4"] {
+        background: #f59e0b !important;
+    }
+    .mx_BaseAvatar[data-color="5"] {
+        background: #3b82f6 !important;
+    }
+    .mx_BaseAvatar[data-color="6"] {
+        background: #ef4444 !important;
+    }
+}
+
+/* ---------- การ์ดแจ้งเตือนแบบ LINE (src/aranchat/AranCardBody.tsx) ---------- */
+.mx_AranChat [data-testid="event-tile-line"]:has(> [data-testid="event-tile-slot-body"] > .mx_AranCard),
+/* การ์ดแนะนำเพื่อน / โน้ต / อัลบั้ม — ไม่อยู่ในฟองข้อความ */
+.mx_AranChat [data-testid="event-tile-line"]:has(> [data-testid="event-tile-slot-body"] > .mx_AranContact),
+.mx_AranChat [data-testid="event-tile-line"]:has(> [data-testid="event-tile-slot-body"] > .mx_AranBoardCard) {
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+.mx_AranCard {
+    --ac-card-hero: var(--ac-brand);
+    --ac-crit: #dc2626;
+    --ac-high: #c2410c;
+    --ac-low: #1d4ed8;
+    --ac-ok: #0e7a55;
+    width: 340px;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 18px;
+    background: var(--ac-bubble-in);
+    color: var(--ac-bubble-in-ink);
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow:
+        0 1px 2px rgb(30 27 75 / 8%),
+        0 4px 16px rgb(30 27 75 / 6%);
+}
+.mx_AranCard_success {
+    --ac-card-hero: linear-gradient(135deg, #0e7a55, #16a34a);
+}
+.mx_AranCard_warning {
+    --ac-card-hero: linear-gradient(135deg, #b45309, #f59e0b);
+}
+.mx_AranCard_critical {
+    --ac-card-hero: linear-gradient(135deg, #b91c1c, #ef4444);
+}
+.mx_AranCard_info {
+    --ac-card-hero: linear-gradient(135deg, #1d4ed8, #3b82f6);
+}
+.mx_AranCard_hero {
+    padding: 12px 16px 12px;
+    background: var(--ac-card-hero);
+    color: #fff;
+
+    small {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        opacity: 0.92;
+    }
+    b {
+        display: block;
+        margin-top: 2px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.4;
+    }
+}
+.mx_AranCard_subtitle {
+    display: block;
+    margin-top: 2px;
+    font-size: 13px;
+    opacity: 0.9;
+}
+.mx_AranCard_badge {
+    display: inline-block;
+    margin-inline-end: 6px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ac-crit);
+    font-weight: 700;
+}
+.mx_AranCard_image {
+    display: block;
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    background: var(--ac-tint);
+}
+.mx_AranCard_body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 16px;
+
+    dl {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 4px 12px;
+        margin: 0;
+    }
+    dt {
+        color: var(--ac-muted);
+    }
+    dd {
+        margin: 0;
+        font-weight: 500;
+        overflow-wrap: anywhere;
+    }
+    p {
+        margin: 0;
+        white-space: pre-line;
+    }
+}
+/* โทนสีค่า: วิกฤต / สูง / ต่ำ / ปกติ / จาง */
+.mx_AranCard_tone_crit {
+    color: var(--ac-crit);
+    font-weight: 700 !important;
+}
+.mx_AranCard_tone_high {
+    color: var(--ac-high);
+    font-weight: 600 !important;
+}
+.mx_AranCard_tone_low {
+    color: var(--ac-low);
+    font-weight: 600 !important;
+}
+.mx_AranCard_tone_ok {
+    color: var(--ac-ok);
+}
+.mx_AranCard_tone_muted {
+    color: var(--ac-muted);
+}
+.mx_AranCard_mark {
+    font-size: 12px;
+}
+.mx_AranCard_section {
+    padding-top: 8px;
+    border-top: 1px dashed var(--ac-line);
+}
+.mx_AranCard_body > .mx_AranCard_section:first-child {
+    padding-top: 0;
+    border-top: 0;
+}
+.mx_AranCard_sectionTitle {
+    margin: 0 0 6px;
+    color: var(--ac-muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+.mx_AranCard_steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        position: relative;
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        padding: 0 0 10px 22px;
+    }
+    li:last-child {
+        padding-bottom: 0;
+    }
+    /* เส้นเชื่อมระหว่างจุด */
+    li:not(:last-child)::before {
+        content: "";
+        position: absolute;
+        inset-inline-start: 6px;
+        top: 14px;
+        bottom: -2px;
+        width: 2px;
+        background: var(--ac-line);
+    }
+    li.mx_AranCard_step_done:not(:last-child)::before {
+        background: var(--ac-ok);
+    }
+}
+.mx_AranCard_dot {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--ac-line);
+    box-sizing: border-box;
+}
+.mx_AranCard_step_done .mx_AranCard_dot {
+    background: var(--ac-ok);
+}
+.mx_AranCard_step_current .mx_AranCard_dot {
+    background: var(--ac-bubble-in);
+    border: 4px solid var(--ac-brand);
+}
+.mx_AranCard_step_current .mx_AranCard_stepLabel {
+    font-weight: 700;
+}
+.mx_AranCard_step_todo .mx_AranCard_stepLabel {
+    color: var(--ac-muted);
+}
+.mx_AranCard_stepTime {
+    margin-inline-start: auto;
+    color: var(--ac-muted);
+    font-size: 12px;
+    white-space: nowrap;
+}
+.mx_AranCard_table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+
+    th {
+        padding: 4px 6px;
+        border-bottom: 1px solid var(--ac-line);
+        color: var(--ac-muted);
+        font-size: 12px;
+        font-weight: 600;
+        text-align: start;
+    }
+    td {
+        padding: 5px 6px;
+        border-bottom: 1px solid var(--ac-line);
+        font-variant-numeric: tabular-nums;
+    }
+    tr:last-child td {
+        border-bottom: 0;
+    }
+    th:first-child,
+    td:first-child {
+        padding-inline-start: 0;
+    }
+}
+.mx_AranCard_stats {
+    display: grid;
+    gap: 8px;
+}
+.mx_AranCard_stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 4px;
+    border-radius: 12px;
+    background: var(--ac-tint);
+    text-align: center;
+
+    b {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.2;
+        font-variant-numeric: tabular-nums;
+    }
+    small {
+        color: var(--ac-muted);
+        font-size: 11px;
+    }
+}
+.mx_AranCard_status {
+    margin: 0 16px 10px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: var(--ac-tint);
+    font-weight: 600;
+}
+.mx_AranCard_status.mx_AranCard_tone_ok {
+    background: rgb(14 122 85 / 10%);
+}
+.mx_AranCard_status.mx_AranCard_tone_crit {
+    background: rgb(220 38 38 / 10%);
+}
+.mx_AranCard_acks {
+    padding: 0 16px 10px;
+    font-size: 12px;
+    color: var(--ac-ok);
+}
+/* ปุ่ม: แบบเม็ดยาเต็มความกว้าง · หลัก = สีแบรนด์ทึบ · อันตราย = แดง · รอง = ขอบ */
+.mx_AranCard_actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 4px 16px 12px;
+}
+.mx_AranCard_pill {
+    /* การ์ดกว้าง: 2 ปุ่มต่อแถว · การ์ดแคบ (มือถือ) ปุ่มเรียงลงมาเต็มแถวเอง */
+    flex: 1 1 120px;
+    min-width: 0;
+    display: block;
+    padding: 9px 12px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font: inherit;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition:
+        background-color 200ms var(--ac-ease),
+        transform 120ms var(--ac-ease);
+
+    &:active:not(:disabled) {
+        transform: scale(0.97);
+    }
+    &:disabled {
+        cursor: default;
+        opacity: 0.7;
+    }
+}
+/* ปุ่มเดียว / ปุ่มที่เหลือเศษ → เต็มแถว */
+.mx_AranCard_pill:last-child:nth-child(odd) {
+    flex-basis: 100%;
+}
+.mx_AranCard_pillIcon {
+    width: 16px;
+    height: 16px;
+    margin-inline-end: 4px;
+    vertical-align: -3px;
+    fill: currentColor;
+}
+.mx_AranCard_pill_primary {
+    background: var(--ac-brand);
+    color: #fff !important;
+}
+.mx_AranCard_critical .mx_AranCard_pill_primary {
+    background: var(--ac-crit);
+}
+.mx_AranCard_pill_danger {
+    background: transparent;
+    border-color: var(--ac-crit);
+    color: var(--ac-crit) !important;
+}
+.mx_AranCard_pill_secondary {
+    background: var(--ac-tint);
+    color: var(--ac-brand) !important;
+}
+.mx_AranCard_pill_done {
+    background: rgb(14 122 85 / 10%);
+    color: var(--ac-ok) !important;
+}
+.mx_AranCard_foot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px 8px;
+    border-top: 1px solid var(--ac-line);
+    color: var(--ac-muted);
+    font-size: 12px;
+}
+.mx_AranCard_note {
+    flex: 1;
+    min-width: 0;
+}
+.mx_AranCard_forward {
+    flex: none;
+    padding: 2px 8px;
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    color: var(--ac-muted) !important;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+        background: var(--ac-tint);
+        color: var(--ac-brand) !important;
+    }
+}
+
+/* จอแคบ: ขอบซ้าย/ขวาแคบลง */
+@media (max-width: 768px) {
+    .mx_AranChat .mx_RoomView_MessageList li.mx_EventTile[class*="_layoutBubble_"] {
+        --event-tile-bubble-margin-inline-start: 56px;
+        --event-tile-bubble-margin-inline-end: 52px;
+        --event-tile-bubble-line-max-width: 78%;
+    }
+    /* การ์ดกว้างเกือบเต็มจอ (ฟองปกติกว้างได้แค่ 78%) */
+    .mx_AranChat .mx_RoomView_MessageList li.mx_EventTile[class*="_layoutBubble_"]:has(.mx_AranCard) {
+        --event-tile-bubble-line-max-width: 100%;
+        margin-inline-end: 44px;
+    }
+    .mx_AranCard {
+        width: 100%;
+        min-width: 240px;
+    }
+}
+
+/* แชทส่วนตัวใหม่: ซ่อนกล่อง "ยังไม่ได้เปิดการเข้ารหัสต้นทางถึงปลายทาง" — หน่วยงานปิดการเข้ารหัสเป็นค่าเริ่มต้น ผู้ใช้ไม่ต้องรู้ */
+.mx_AranChat .mx_NewRoomIntro .mx_cryptoEvent {
+    display: none;
+}
+
+/* ---------- รายการแชทแบบ LINE ----------
+ * รูป 44px · ชื่อตัวหนา · ข้อความล่าสุดสีจาง · เวลา (RoomListItemContent: mx_RoomListItemView_time) + วงตัวเลขยังไม่อ่านอยู่ขวา
+ * "รายการโปรด" บนสุด แล้ว "แชท" (ส่วนตัว+กลุ่มรวมกัน) เรียงจากข้อความล่าสุด (config: RoomList.showSections = true, showPeopleSection = false)
+ * ความสูงแถววัดจาก DOM เอง (VirtualizedRoomListView ไม่ได้ล็อกความสูง) จึงปรับได้ */
+.mx_AranChat .mx_RoomListPanel {
+    .mx_RoomListItemView {
+        min-height: 64px;
+    }
+    .mx_RoomListItemView .mx_RoomAvatarView,
+    .mx_RoomListItemView .mx_RoomAvatarView .mx_BaseAvatar {
+        --cpd-avatar-size: 44px !important;
+        width: 44px !important;
+        height: 44px !important;
+        flex: none;
+    }
+    .mx_RoomListItemView .mx_RoomAvatarView .mx_BaseAvatar {
+        font-size: 18px !important;
+        line-height: 44px !important;
+    }
+    .mx_RoomAvatarView_PresenceDecoration {
+        display: none;
+    }
+    /* รอยเว้าที่รูป (เว้นที่ให้จุดสถานะออนไลน์ซึ่งซ่อนแล้ว) */
+    .mx_RoomListItemView .mx_RoomAvatarView .mx_BaseAvatar {
+        mask-image: none !important;
+        -webkit-mask-image: none !important;
+    }
+    /* วงตัวเลขยังไม่อ่าน: สีแบรนด์ (เดิมเขียวของ Element) */
+    .mx_RoomListItemView_meta [class*="_unread-counter"],
+    .mx_RoomListItemView_meta [data-kind="primary"] {
+        background: var(--ac-brand) !important;
+    }
+    [data-testid="room-name"] {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--ac-ink);
+    }
+    .mx_RoomListItemView_meta {
+        display: flex;
+        flex: none;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 4px;
+        min-width: 40px;
+    }
+    .mx_RoomListItemView_time {
+        color: var(--ac-muted);
+        font-size: 11.5px;
+        white-space: nowrap;
+    }
+    /* ปุ่ม "สำรวจห้อง" (ห้องสาธารณะของ Matrix) — หน่วยงานไม่ใช้ */
+    button[aria-label="สำรวจห้อง"],
+    button[aria-label="Explore rooms"] {
+        display: none;
+    }
+}
+
+/* มุมซ้ายล่าง: รูปโปรไฟล์ / เธรด / ฟันเฟือง ของ Element ซ้ำกับเมนู "โปรไฟล์" บนแถบเมนู → ซ่อน */
+.mx_AranChat .mx_SpacePanel.mx_SpacePanel_aranchat {
+    > .mx_UserMenu,
+    > [class*="_wrapper_"]:has(.mx_UserMenu),
+    .mx_ThreadsActivityCentre_container,
+    .mx_ThreadsActivityCentreButton,
+    .mx_QuickSettingsButton {
+        display: none;
+    }
+}
+
+/* ไฟล์แนบในฟองของเรา: การ์ดไฟล์พื้นอ่อน → ชื่อไฟล์ใช้สีเข้ม (ไม่ใช่สีขาวของฟองเรา) */
+.mx_AranChat .mx_RoomView_MessageList li.mx_EventTile[class*="_stateOwnEvent_"] > [class*="_lineMedia_"],
+.mx_AranChat .mx_RoomView_MessageList li.mx_EventTile[class*="_stateOwnEvent_"] :is(.mx_MFileBody, .mx_MediaBody, [class*="_tile_"]) {
+    color: var(--ac-bubble-in-ink) !important;
+}
+
+/* "อ่านแล้ว N" ในกลุ่ม: รูปคนอ่านซ้อนกันเล็กๆ (ล่าสุดก่อน สูงสุด 4) ไว้ด้านบน — รู้ว่าใครอ่านแล้ว */
+.mx_AranChat_readFaces {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2px;
+
+    .mx_BaseAvatar {
+        box-shadow: 0 0 0 1.5px var(--ac-tl-bg);
+        font-size: 9px !important;
+    }
+    .mx_BaseAvatar + .mx_BaseAvatar {
+        margin-left: -4px;
+    }
+}
+.mx_AranChat .mx_RoomView_MessageList .mx_AranChat_read {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

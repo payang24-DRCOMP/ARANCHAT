@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_share_location_live_location_disclaimer_title">"ประวัติตำแหน่งสดจะเก็บไว้ในห้อง และสมาชิกเห็นได้หลังหยุดแชร์"</string>
+  <string name="screen_share_location_live_location_duration_picker_title">"เลือกระยะเวลาแชร์ตำแหน่งสด"</string>
+  <string name="screen_share_location_live_location_missing_permissions">"คุณไม่มีสิทธิ์แชร์ตำแหน่งสดในห้องนี้"</string>
+</resources>

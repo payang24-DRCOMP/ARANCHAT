@@ -1,0 +1,10 @@
+[
+    {
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.arankub.aranchat",
+            "sha256_cert_fingerprints": ["AD:0E:89:24:9B:E4:6E:ED:73:CC:8E:F6:D3:56:A8:94:9B:76:75:4C:64:78:5B:5B:BB:E6:7C:CF:F2:68:9F:E7"]
+        }
+    }
+]

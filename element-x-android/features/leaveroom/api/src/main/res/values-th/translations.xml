@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="leave_conversation_alert_subtitle">"ต้องการออกจากบทสนทนานี้ใช่ไหม บทสนทนานี้ไม่ใช่สาธารณะ จะกลับเข้ามาได้ต้องได้รับเชิญ"</string>
+  <string name="leave_room_alert_empty_subtitle">"ต้องการออกจากห้องนี้ใช่ไหม คุณเป็นคนเดียวในห้อง ถ้าออก จะไม่มีใครเข้าห้องนี้ได้อีก รวมถึงคุณ"</string>
+  <string name="leave_room_alert_private_subtitle">"ต้องการออกจากห้องนี้ใช่ไหม ห้องนี้ไม่ใช่สาธารณะ จะกลับเข้ามาได้ต้องได้รับเชิญ"</string>
+  <string name="leave_room_alert_select_new_owner_action">"เลือกเจ้าของห้อง"</string>
+  <string name="leave_room_alert_select_new_owner_subtitle">"คุณเป็นเจ้าของห้องนี้คนเดียว ต้องโอนสิทธิ์เจ้าของให้คนอื่นก่อนออกจากห้อง"</string>
+  <string name="leave_room_alert_select_new_owner_title">"โอนสิทธิ์เจ้าของ"</string>
+  <string name="leave_room_alert_subtitle">"ต้องการออกจากห้องใช่ไหม"</string>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_join_room_ban_by_message">"คุณถูกแบนโดย %1$s"</string>
+  <string name="screen_join_room_ban_message">"คุณถูกแบน"</string>
+  <string name="screen_join_room_ban_reason">"เหตุผล: %1$s"</string>
+  <string name="screen_join_room_cancel_knock_action">"ยกเลิกคำขอ"</string>
+  <string name="screen_join_room_cancel_knock_alert_confirmation">"ใช่ ยกเลิก"</string>
+  <string name="screen_join_room_cancel_knock_alert_description">"ต้องการยกเลิกคำขอเข้าร่วมห้องนี้ใช่ไหม"</string>
+  <string name="screen_join_room_cancel_knock_alert_title">"ยกเลิกคำขอเข้าร่วม"</string>
+  <string name="screen_join_room_decline_and_block_alert_confirmation">"ใช่ ปฏิเสธและบล็อก"</string>
+  <string name="screen_join_room_decline_and_block_alert_message">"ต้องการปฏิเสธคำเชิญเข้าห้องนี้ใช่ไหม %1$s จะติดต่อหรือเชิญคุณเข้าห้องไม่ได้อีก"</string>
+  <string name="screen_join_room_decline_and_block_alert_title">"ปฏิเสธคำเชิญและบล็อก"</string>
+  <string name="screen_join_room_decline_and_block_button_title">"ปฏิเสธและบล็อก"</string>
+  <string name="screen_join_room_fail_message">"เข้าร่วมไม่สำเร็จ"</string>
+  <string name="screen_join_room_fail_reason">"ต้องได้รับเชิญก่อน หรือห้องนี้อาจจำกัดการเข้าถึง"</string>
+  <string name="screen_join_room_forget_action">"ลืม"</string>
+  <string name="screen_join_room_invite_required_message">"ต้องได้รับเชิญจึงจะเข้าร่วมได้"</string>
+  <string name="screen_join_room_invited_by">"เชิญโดย"</string>
+  <string name="screen_join_room_join_action">"เข้าร่วม"</string>
+  <string name="screen_join_room_join_restricted_message">"อาจต้องได้รับเชิญหรือเป็นสมาชิกของพื้นที่ก่อนจึงจะเข้าร่วมได้"</string>
+  <string name="screen_join_room_knock_action">"ส่งคำขอเข้าร่วม"</string>
+  <string name="screen_join_room_knock_message_characters_count">"ใช้ได้ %1$d จาก %2$d ตัวอักษร"</string>
+  <string name="screen_join_room_knock_message_description">"ข้อความ (ไม่บังคับ)"</string>
+  <string name="screen_join_room_knock_sent_description">"คุณจะได้รับคำเชิญเข้าห้องเมื่อคำขอได้รับการอนุมัติ"</string>
+  <string name="screen_join_room_knock_sent_title">"ส่งคำขอเข้าร่วมแล้ว"</string>
+  <string name="screen_join_room_loading_alert_message">"แสดงตัวอย่างห้องไม่ได้ อาจเป็นเพราะเครือข่ายหรือเซิร์ฟเวอร์มีปัญหา"</string>
+  <string name="screen_join_room_loading_alert_title">"แสดงตัวอย่างห้องนี้ไม่ได้"</string>
+  <string name="screen_join_room_space_not_supported_description">"%1$s ยังไม่รองรับพื้นที่ ใช้พื้นที่ได้บนเว็บ"</string>
+  <string name="screen_join_room_space_not_supported_title">"ยังไม่รองรับพื้นที่"</string>
+  <string name="screen_join_room_subtitle_knock">"แตะปุ่มด้านล่าง ผู้ดูแลแชทจะได้รับแจ้ง และคุณจะเข้าร่วมบทสนทนาได้เมื่อได้รับอนุมัติ"</string>
+  <string name="screen_join_room_subtitle_no_preview">"ต้องเป็นสมาชิกห้องนี้จึงจะดูประวัติข้อความได้"</string>
+  <string name="screen_join_room_title_knock">"ต้องการเข้าร่วมห้องนี้ไหม"</string>
+  <string name="screen_join_room_title_no_preview">"ดูตัวอย่างไม่ได้"</string>
+</resources>

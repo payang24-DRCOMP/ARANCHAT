@@ -1,0 +1,190 @@
+invite.error_already_invited_room	เชิญเข้าห้องแล้ว
+invite.error_already_invited_space	เชิญเข้า Space แล้ว
+invite.error_already_joined_room	อยู่ในห้องแล้ว
+invite.error_already_joined_space	อยู่ใน Space แล้ว
+invite.error_bad_state	ต้องยกเลิกการแบนผู้ใช้ก่อนจึงจะเชิญได้
+invite.error_dm	สร้างแชทส่วนตัวไม่สำเร็จ
+invite.error_find_room	เกิดข้อผิดพลาดระหว่างเชิญผู้ใช้
+invite.error_find_user_description	ผู้ใช้ต่อไปนี้อาจไม่มีอยู่หรือไม่ถูกต้อง จึงเชิญไม่ได้: %(csvNames)s
+invite.error_find_user_title	ไม่พบผู้ใช้ต่อไปนี้
+invite.error_forbidden	ไม่รับคำเชิญ
+invite.error_invite	เชิญผู้ใช้เหล่านี้ไม่สำเร็จ โปรดตรวจรายชื่อแล้วลองใหม่
+invite.error_permissions_room	คุณไม่มีสิทธิ์เชิญผู้อื่นเข้าห้องนี้
+invite.error_permissions_space	คุณไม่มีสิทธิ์เชิญผู้อื่นเข้า Space นี้
+invite.error_profile_undisclosed	ไม่แน่ใจว่ามีผู้ใช้นี้อยู่หรือไม่
+invite.error_rate_limited	ส่งคำเชิญมากเกินไป โปรดลองใหม่ภายหลัง
+invite.error_transfer_multiple_target	โอนสายได้ให้ผู้ใช้คนเดียวเท่านั้น
+invite.error_unfederated_room	ห้องนี้ใช้ภายในเท่านั้น เชิญผู้ใช้จากเซิร์ฟเวอร์ภายนอกไม่ได้
+invite.error_unfederated_space	Space นี้ใช้ภายในเท่านั้น เชิญผู้ใช้จากเซิร์ฟเวอร์ภายนอกไม่ได้
+invite.error_unknown	เซิร์ฟเวอร์เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ
+invite.error_user_not_found	ไม่มีผู้ใช้นี้
+invite.error_version_unsupported_room	เซิร์ฟเวอร์ของผู้ใช้ไม่รองรับเวอร์ชันของห้อง
+invite.error_version_unsupported_space	เซิร์ฟเวอร์ของผู้ใช้ไม่รองรับเวอร์ชันของ Space
+invite.failed_generic	ดำเนินการไม่สำเร็จ
+invite.failed_title	เชิญไม่สำเร็จ
+invite.invalid_address	ไม่รู้จักที่อยู่นี้
+invite.name_email_mxid_share_room	เชิญด้วยชื่อ อีเมล ชื่อผู้ใช้ (เช่น <userId/>) หรือ<a>แชร์ห้องนี้</a>
+invite.name_email_mxid_share_space	เชิญด้วยชื่อ อีเมล ชื่อผู้ใช้ (เช่น <userId/>) หรือ<a>แชร์ Space นี้</a>
+invite.name_mxid_share_room	เชิญด้วยชื่อ ชื่อผู้ใช้ (เช่น <userId/>) หรือ<a>แชร์ห้องนี้</a>
+invite.name_mxid_share_space	เชิญด้วยชื่อ ชื่อผู้ใช้ (เช่น <userId/>) หรือ<a>แชร์ Space นี้</a>
+invite.progress.dont_close	อย่าปิดแอปจนกว่าจะเสร็จ
+invite.progress.preparing	กำลังเตรียมคำเชิญ...
+invite.recents_section	การสนทนาล่าสุด
+invite.room_failed_partial_description	ส่งคำเชิญให้คนอื่นแล้ว แต่เชิญคนด้านล่างไม่สำเร็จ
+invite.room_failed_partial_reason	%(reason)s:
+invite.room_failed_partial_title	ส่งคำเชิญได้ไม่ครบ
+invite.room_failed_title	เชิญผู้ใช้เข้า %(roomName)s ไม่สำเร็จ
+invite.send_link_prompt	หรือส่งลิงก์คำเชิญ
+invite.start_conversation_name_email_mxid_prompt	เริ่มสนทนาด้วยชื่อ อีเมล หรือชื่อผู้ใช้ (เช่น <userId/>)
+invite.start_conversation_name_mxid_prompt	เริ่มสนทนาด้วยชื่อหรือชื่อผู้ใช้ (เช่น <userId/>)
+invite.suggestions_disclaimer	คำแนะนำบางรายการอาจถูกซ่อนเพื่อความเป็นส่วนตัว
+invite.suggestions_disclaimer_prompt	ถ้าไม่เจอคนที่ต้องการ ส่งลิงก์คำเชิญด้านล่างให้เขาได้
+invite.suggestions_section	แชทส่วนตัวล่าสุด
+invite.to_room	เชิญเข้า %(roomName)s
+invite.to_space	เชิญเข้า %(spaceName)s
+invite.transfer_dial_pad_tab	แป้นกดหมายเลข
+invite.transfer_user_directory_tab	รายชื่อผู้ใช้
+invite.unable_find_profiles_description_default	ไม่พบโปรไฟล์ของ Matrix ID ด้านล่าง ต้องการเชิญต่อหรือไม่?
+invite.unable_find_profiles_invite_label_default	เชิญต่อ
+invite.unable_find_profiles_invite_never_warn_label_default	เชิญต่อและไม่ต้องเตือนอีก
+invite.unable_find_profiles_title	ผู้ใช้ต่อไปนี้อาจไม่มีอยู่
+invite.unban_first_title	ต้องยกเลิกการแบนผู้ใช้ก่อนจึงจะเชิญได้
+member_list.count.one	สมาชิก %(count)s คน
+member_list.count.other	สมาชิก %(count)s คน
+member_list.filter_placeholder	ค้นหาสมาชิกในห้อง
+member_list.invite_button_no_perms_tooltip	คุณไม่มีสิทธิ์เชิญผู้ใช้
+member_list.invited_label	ได้รับเชิญ
+member_list.list_title	รายชื่อสมาชิก
+member_list.no_matches	ไม่พบรายการที่ตรงกัน
+threads.all_threads	เธรดทั้งหมด
+threads.all_threads_description	แสดงเธรดทั้งหมดในห้องนี้
+threads.count_of_reply.one	%(count)s คำตอบ
+threads.count_of_reply.other	%(count)s คำตอบ
+threads.empty_description	ใช้ “%(replyInThread)s” เมื่อชี้ที่ข้อความ
+threads.empty_title	เธรดช่วยให้การสนทนาตรงประเด็นและติดตามง่าย
+threads.mark_all_read	ทำเครื่องหมายว่าอ่านทั้งหมดแล้ว
+threads.my_threads	เธรดของฉัน
+threads.my_threads_description	แสดงเธรดทั้งหมดที่คุณมีส่วนร่วม
+threads.open_thread	เปิดเธรด
+threads.show_thread_filter	แสดง:
+threads.error_start_thread_existing_relation	เริ่มเธรดจากข้อความนี้ไม่ได้
+leave_room_dialog.last_person_warning	คุณเป็นคนสุดท้ายในห้องนี้ ถ้าออกไป จะไม่มีใครเข้าห้องได้อีก รวมถึงตัวคุณเองด้วย
+leave_room_dialog.leave_room_title	ออกจาก '%(roomName)s' หรือไม่?
+leave_room_dialog.leave_space_title	ออกจาก '%(spaceName)s' หรือไม่?
+leave_room_dialog.room_leave_admin_warning	คุณเป็นผู้ดูแลคนเดียวของห้องนี้ ถ้าออกไป จะไม่มีใครเปลี่ยนการตั้งค่าห้องหรือจัดการเรื่องสำคัญได้
+leave_room_dialog.room_leave_mod_warning	คุณเป็นผู้ควบคุมคนเดียวของห้องนี้ ถ้าออกไป จะไม่มีใครเปลี่ยนการตั้งค่าห้องหรือจัดการเรื่องสำคัญได้
+leave_room_dialog.room_rejoin_warning	ห้องนี้เป็นห้องส่วนตัว กลับเข้ามาไม่ได้ถ้าไม่ได้รับเชิญ
+leave_room_dialog.room_rejoin_warning_restricted	ห้องนี้จำกัดการเข้าถึง กลับเข้ามาไม่ได้ เว้นแต่อยู่ใน Space ที่ได้รับอนุญาตหรือได้รับเชิญ
+leave_room_dialog.space_rejoin_warning	Space นี้เป็นแบบส่วนตัว กลับเข้ามาไม่ได้ถ้าไม่ได้รับเชิญ
+leave_room_dialog.space_rejoin_warning_restricted	Space นี้จำกัดการเข้าถึง กลับเข้ามาไม่ได้ เว้นแต่อยู่ใน Space ที่ได้รับอนุญาตหรือได้รับเชิญ
+emoji_picker.cancel_search_label	ยกเลิกการค้นหา
+emoji_picker.emoji_picker	เลือกอีโมจิ
+upload_file.cancel_all_button	ยกเลิกทั้งหมด
+upload_file.error_file_too_large	ไฟล์นี้<b>ใหญ่เกินไป</b> จำกัดขนาดไว้ที่ %(limit)s แต่ไฟล์นี้มีขนาด %(sizeOfThisFile)s
+upload_file.error_files_too_large	ไฟล์เหล่านี้<b>ใหญ่เกินไป</b> จำกัดขนาดไว้ที่ %(limit)s
+upload_file.error_some_files_too_large	บางไฟล์<b>ใหญ่เกินไป</b> จำกัดขนาดไว้ที่ %(limit)s
+upload_file.error_title	อัปโหลดไม่สำเร็จ
+upload_file.not_image	ไฟล์ที่เลือกไม่ใช่ไฟล์รูปภาพ
+upload_file.title	อัปโหลดไฟล์
+upload_file.title_progress	อัปโหลดไฟล์ (%(current)s จาก %(total)s)
+upload_file.upload_all_button	อัปโหลดทั้งหมด
+upload_file.upload_n_others_button.one	อัปโหลดไฟล์อื่นอีก %(count)s ไฟล์
+upload_file.upload_n_others_button.other	อัปโหลดไฟล์อื่นอีก %(count)s ไฟล์
+file_panel.empty_description	ใช้ปุ่มแนบไฟล์ในช่องพิมพ์ข้อความ หรือลากไฟล์มาวางในห้อง
+file_panel.empty_heading	ยังไม่มีไฟล์ในห้องนี้
+file_panel.guest_note	ต้อง<a>ลงทะเบียน</a>ก่อนจึงจะใช้ได้
+file_panel.peek_note	ต้องเข้าร่วมห้องก่อนจึงจะดูไฟล์ได้
+theme.light_high_contrast	สว่าง (คอนทราสต์สูง)
+theme.match_system	ตามระบบ
+left_panel.open_dial_pad	เปิดแป้นกดหมายเลข
+left_panel.separator_label	คลิกหรือลากเพื่อขยาย
+spotlight_dialog.cant_find_person_helpful_hint	ถ้าไม่เจอคนที่ต้องการ ส่งลิงก์คำเชิญให้เขาได้
+spotlight_dialog.cant_find_room_helpful_hint	ถ้าไม่เจอห้องที่ต้องการ ขอคำเชิญหรือสร้างห้องใหม่
+spotlight_dialog.copy_link_text	คัดลอกลิงก์คำเชิญ
+spotlight_dialog.count_of_members.one	สมาชิก %(count)s คน
+spotlight_dialog.count_of_members.other	สมาชิก %(count)s คน
+spotlight_dialog.create_new_room_button	สร้างห้องใหม่
+spotlight_dialog.failed_querying_public_rooms	ค้นหาห้องสาธารณะไม่สำเร็จ
+spotlight_dialog.failed_querying_public_spaces	ค้นหา Space สาธารณะไม่สำเร็จ
+spotlight_dialog.group_chat_section_title	ตัวเลือกอื่น
+spotlight_dialog.heading_with_query	ใช้ "%(query)s" ค้นหา
+spotlight_dialog.heading_without_query	ค้นหา
+spotlight_dialog.join_button_text	เข้าร่วม %(roomAddress)s
+spotlight_dialog.keyboard_scroll_hint	ใช้ <arrows/> เพื่อเลื่อน
+spotlight_dialog.messages_label	ข้อความ
+spotlight_dialog.no_results	ไม่พบผลลัพธ์
+spotlight_dialog.other_rooms_in_space	ห้องอื่นใน %(spaceName)s
+spotlight_dialog.public_rooms_label	ห้องสาธารณะ
+spotlight_dialog.public_spaces_label	Space สาธารณะ
+spotlight_dialog.recent_searches_section_title	การค้นหาล่าสุด
+spotlight_dialog.recently_viewed_section_title	ดูล่าสุด
+spotlight_dialog.remove_filter	นำตัวกรอง %(filter)s ออก
+spotlight_dialog.result_may_be_hidden_privacy_warning	ผลลัพธ์บางรายการอาจถูกซ่อนเพื่อความเป็นส่วนตัว
+spotlight_dialog.result_may_be_hidden_warning	ผลลัพธ์บางรายการอาจถูกซ่อน
+spotlight_dialog.search_dialog	หน้าต่างค้นหา
+spotlight_dialog.spaces_title	Space ที่คุณอยู่
+spotlight_dialog.start_group_chat_button	เริ่มแชทกลุ่ม
+forward.filter_placeholder	ค้นหาห้องหรือบุคคล
+forward.message_preview_heading	ตัวอย่างข้อความ
+forward.no_perms_title	คุณไม่มีสิทธิ์ทำรายการนี้
+forward.open_room	เปิดห้อง
+forward.send_label	ส่ง
+forward.sending	กำลังส่ง
+forward.sent	ส่งแล้ว
+redact.confirm_button	ยกเลิกข้อความ
+redact.confirm_description	ยกเลิกข้อความนี้ไหม? ทุกคนในแชทจะไม่เห็นข้อความนี้อีก
+redact.confirm_description_state	การลบการเปลี่ยนแปลงห้องแบบนี้อาจทำให้การเปลี่ยนแปลงนั้นถูกยกเลิก
+redact.error	ยกเลิกข้อความนี้ไม่ได้ (%(code)s)
+redact.ongoing	กำลังยกเลิก…
+redact.reason_label	เหตุผล (ไม่บังคับ)
+time.date_at_time	%(date)s เวลา %(time)s
+time.hours_minutes_seconds_left	เหลือ %(hours)s ชม. %(minutes)s นาที %(seconds)s วินาที
+time.left	เหลือ %(timeRemaining)s
+time.minutes_seconds_left	เหลือ %(minutes)s นาที %(seconds)s วินาที
+time.seconds_left	เหลือ %(seconds)s วินาที
+time.short_days	%(value)s วัน
+time.short_days_hours_minutes_seconds	%(days)s วัน %(hours)s ชม. %(minutes)s นาที %(seconds)s วิ
+time.short_hours	%(value)s ชม.
+time.short_hours_minutes_seconds	%(hours)s ชม. %(minutes)s นาที %(seconds)s วิ
+time.short_minutes	%(value)s นาที
+time.short_minutes_seconds	%(minutes)s นาที %(seconds)s วิ
+time.short_seconds	%(value)s วิ
+time.about_day_ago	ประมาณ 1 วันที่แล้ว
+time.about_hour_ago	ประมาณ 1 ชั่วโมงที่แล้ว
+time.about_minute_ago	ประมาณ 1 นาทีที่แล้ว
+time.few_seconds_ago	เมื่อสักครู่
+time.in_about_day	อีกประมาณ 1 วัน
+time.in_about_hour	อีกประมาณ 1 ชั่วโมง
+time.in_about_minute	อีกประมาณ 1 นาที
+time.in_few_seconds	อีกไม่กี่วินาที
+time.in_n_days	อีก %(num)s วัน
+time.in_n_hours	อีก %(num)s ชั่วโมง
+time.in_n_minutes	อีก %(num)s นาที
+time.n_days_ago	%(num)s วันที่แล้ว
+time.n_hours_ago	%(num)s ชั่วโมงที่แล้ว
+time.n_minutes_ago	%(num)s นาทีที่แล้ว
+user_info.admin_tools_section	เครื่องมือผู้ดูแล
+user_info.ban_button_room	แบนออกจากห้อง
+user_info.ban_button_space	แบนออกจาก Space
+user_info.ban_room_confirm_title	แบนออกจาก %(roomName)s
+user_info.ban_space_everything	แบนจากทุกที่ที่ฉันมีสิทธิ์
+user_info.ban_space_specific	แบนจากบางที่ที่ฉันมีสิทธิ์
+user_info.deactivate_confirm_action	ปิดใช้งานผู้ใช้
+user_info.deactivate_confirm_description	การปิดใช้งานผู้ใช้จะนำอุปกรณ์ทั้งหมดออกและไม่ให้เข้าสู่ระบบได้อีก รวมถึงนำออกจากทุกแชท ย้อนกลับไม่ได้
+user_info.deactivate_confirm_title	ปิดใช้งานผู้ใช้หรือไม่?
+user_info.demote_button	ลดสิทธิ์
+user_info.demote_self_confirm_description_space	คุณกำลังลดสิทธิ์ตัวเองและย้อนกลับไม่ได้ ถ้าคุณเป็นผู้มีสิทธิ์คนสุดท้ายใน Space จะไม่มีทางได้สิทธิ์คืน
+user_info.demote_self_confirm_room	คุณกำลังลดสิทธิ์ตัวเองและย้อนกลับไม่ได้ ถ้าคุณเป็นผู้มีสิทธิ์คนสุดท้ายในห้อง จะไม่มีทางได้สิทธิ์คืน
+user_info.demote_self_confirm_title	ลดสิทธิ์ตัวเองหรือไม่?
+user_info.disinvite_button_room	ยกเลิกคำเชิญเข้าห้อง
+user_info.disinvite_button_room_name	ยกเลิกคำเชิญเข้า %(roomName)s
+user_info.disinvite_button_space	ยกเลิกคำเชิญเข้า Space
+user_info.error_ban_user	แบนผู้ใช้ไม่สำเร็จ
+user_info.error_deactivate	ปิดใช้งานผู้ใช้ไม่สำเร็จ
+user_info.error_kicking_user	นำผู้ใช้ออกไม่สำเร็จ
+user_info.error_mute_user	ปิดเสียงผู้ใช้ไม่สำเร็จ
+user_info.error_revoke_3pid_invite_description	เพิกถอนคำเชิญไม่สำเร็จ เซิร์ฟเวอร์อาจมีปัญหาชั่วคราว หรือคุณไม่มีสิทธิ์เพิกถอน
+user_info.error_revoke_3pid_invite_title	เพิกถอนคำเชิญไม่สำเร็จ
+user_info.ignore_button	เพิกเฉย
+user_info.ignore_confirm_description	ข้อความและคำเชิญทั้งหมดจากผู้ใช้นี้จะถูกซ่อน แน่ใจหรือไม่ว่าต้องการเพิกเฉย?
+user_info.ignore_confirm_title	เพิกเฉย %(user)s

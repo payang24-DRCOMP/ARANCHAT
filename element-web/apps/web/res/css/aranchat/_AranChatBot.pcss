@@ -1,0 +1,127 @@
+/*
+ * AranChat — แถบบอทเหนือช่องพิมพ์ (ปุ่มตอบด่วน + เมนูบอท) · หน้าต่างมินิแอป · หน้าต่างเลือกวันเวลา (src/aranchat/AranBot.tsx)
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+.mx_AranBotBar {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 6px 0 4px;
+
+    button {
+        font: inherit;
+        cursor: pointer;
+    }
+}
+/* ปุ่มตอบด่วน: เลื่อนแนวนอนได้ถ้ายาวเกินจอ */
+.mx_AranBotBar_quick {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    button {
+        flex: none;
+        padding: 6px 14px;
+        border: 1px solid var(--ac-brand, var(--cpd-color-text-action-accent));
+        border-radius: 999px;
+        background: var(--cpd-color-bg-canvas-default);
+        color: var(--ac-brand, var(--cpd-color-text-action-accent));
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+        transition: background-color 150ms;
+
+        &:hover {
+            background: var(--ac-tint, var(--cpd-color-bg-subtle-secondary));
+        }
+    }
+}
+.mx_AranBotBar_toggle {
+    align-self: flex-start;
+    padding: 2px 10px;
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    color: var(--cpd-color-text-secondary);
+    font-size: 12px !important;
+    font-weight: 600;
+
+    &:hover {
+        background: var(--cpd-color-bg-subtle-secondary);
+    }
+}
+/* เมนูบอท: ตาราง 2–4 คอลัมน์ ตามความกว้าง */
+.mx_AranBotBar_menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 6px;
+
+    button {
+        padding: 9px 10px;
+        border: 0;
+        border-radius: 12px;
+        background: var(--ac-tint, var(--cpd-color-bg-subtle-secondary));
+        color: var(--cpd-color-text-primary);
+        font-size: 13px;
+        font-weight: 600;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:hover {
+            filter: brightness(0.97);
+        }
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+}
+
+/* มินิแอป: หน้าต่างใหญ่เกือบเต็มจอ */
+.mx_AranMiniApp_wrapper .mx_Dialog {
+    width: min(960px, 96vw);
+    height: min(820px, 92vh);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.mx_AranMiniApp {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+.mx_AranMiniApp_bar {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 4px 0 8px;
+    color: var(--cpd-color-text-secondary);
+    font-size: 12px;
+}
+.mx_AranMiniApp_frame {
+    flex: 1;
+    width: 100%;
+    min-height: 360px;
+    border: 1px solid var(--cpd-color-border-interactive-secondary);
+    border-radius: 12px;
+    background: #fff;
+}
+.mx_AranMiniApp_error {
+    color: var(--cpd-color-text-critical-primary);
+}
+.mx_AranDateTime_input {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 8px 0 16px;
+    padding: 10px 12px;
+    border: 1px solid var(--cpd-color-border-interactive-primary);
+    border-radius: 10px;
+    background: var(--cpd-color-bg-canvas-default);
+    color: var(--cpd-color-text-primary);
+    font: inherit;
+    font-size: 16px;
+}

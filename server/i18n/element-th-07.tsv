@@ -1,0 +1,152 @@
+timeline.thread_info_basic	จากเธรด
+timeline.summary.banned.one	ถูกแบน
+timeline.summary.banned.other	ถูกแบน %(count)s ครั้ง
+timeline.summary.banned_multiple.one	ถูกแบน
+timeline.summary.banned_multiple.other	ถูกแบน %(count)s ครั้ง
+timeline.summary.changed_avatar.one	%(oneUser)sเปลี่ยนรูปโปรไฟล์
+timeline.summary.changed_avatar.other	%(oneUser)sเปลี่ยนรูปโปรไฟล์ %(count)s ครั้ง
+timeline.summary.changed_avatar_multiple.one	%(severalUsers)sเปลี่ยนรูปโปรไฟล์
+timeline.summary.changed_avatar_multiple.other	%(severalUsers)sเปลี่ยนรูปโปรไฟล์ %(count)s ครั้ง
+timeline.summary.changed_name.one	%(oneUser)sเปลี่ยนชื่อ
+timeline.summary.changed_name.other	%(oneUser)sเปลี่ยนชื่อ %(count)s ครั้ง
+timeline.summary.changed_name_multiple.one	%(severalUsers)sเปลี่ยนชื่อ
+timeline.summary.changed_name_multiple.other	%(severalUsers)sเปลี่ยนชื่อ %(count)s ครั้ง
+timeline.summary.format	%(nameList)s %(transitionList)s
+timeline.summary.hidden_event.one	%(oneUser)sส่งข้อความที่ซ่อนอยู่
+timeline.summary.hidden_event.other	%(oneUser)sส่งข้อความที่ซ่อนอยู่ %(count)s ข้อความ
+timeline.summary.hidden_event_multiple.one	%(severalUsers)sส่งข้อความที่ซ่อนอยู่
+timeline.summary.hidden_event_multiple.other	%(severalUsers)sส่งข้อความที่ซ่อนอยู่ %(count)s ข้อความ
+timeline.summary.invite_withdrawn.one	%(oneUser)sถูกยกเลิกคำเชิญ
+timeline.summary.invite_withdrawn.other	%(oneUser)sถูกยกเลิกคำเชิญ %(count)s ครั้ง
+timeline.summary.invite_withdrawn_multiple.one	%(severalUsers)sถูกยกเลิกคำเชิญ
+timeline.summary.invite_withdrawn_multiple.other	%(severalUsers)sถูกยกเลิกคำเชิญ %(count)s ครั้ง
+timeline.summary.invited.one	ได้รับเชิญ
+timeline.summary.invited.other	ได้รับเชิญ %(count)s ครั้ง
+timeline.summary.invited_multiple.one	ได้รับเชิญ
+timeline.summary.invited_multiple.other	ได้รับเชิญ %(count)s ครั้ง
+timeline.summary.joined.one	%(oneUser)sเข้าร่วม
+timeline.summary.joined.other	%(oneUser)sเข้าร่วม %(count)s ครั้ง
+timeline.summary.joined_and_left.one	%(oneUser)sเข้าร่วมแล้วออก
+timeline.summary.joined_and_left.other	%(oneUser)sเข้าร่วมแล้วออก %(count)s ครั้ง
+timeline.summary.joined_and_left_multiple.one	%(severalUsers)sเข้าร่วมแล้วออก
+timeline.summary.joined_and_left_multiple.other	%(severalUsers)sเข้าร่วมแล้วออก %(count)s ครั้ง
+timeline.summary.joined_multiple.one	%(severalUsers)sเข้าร่วม
+timeline.summary.joined_multiple.other	%(severalUsers)sเข้าร่วม %(count)s ครั้ง
+timeline.summary.kicked.one	ถูกนำออก
+timeline.summary.kicked.other	ถูกนำออก %(count)s ครั้ง
+timeline.summary.kicked_multiple.one	ถูกนำออก
+timeline.summary.kicked_multiple.other	ถูกนำออก %(count)s ครั้ง
+timeline.summary.knock_accepted.one	ได้รับอนุญาตให้เข้าร่วม
+timeline.summary.knock_accepted.other	ได้รับอนุญาตให้เข้าร่วม %(count)s ครั้ง
+timeline.summary.knock_accepted_multiple.one	ได้รับอนุญาตให้เข้าร่วม
+timeline.summary.knock_accepted_multiple.other	ได้รับอนุญาตให้เข้าร่วม %(count)s ครั้ง
+timeline.summary.knock_denied.one	ถูกปฏิเสธคำขอเข้าร่วม
+timeline.summary.knock_denied.other	ถูกปฏิเสธคำขอเข้าร่วม %(count)s ครั้ง
+timeline.summary.knock_denied_multiple.one	ถูกปฏิเสธคำขอเข้าร่วม
+timeline.summary.knock_denied_multiple.other	ถูกปฏิเสธคำขอเข้าร่วม %(count)s ครั้ง
+timeline.summary.knock_retracted.one	%(oneUser)sยกเลิกคำขอเข้าร่วม
+timeline.summary.knock_retracted.other	%(oneUser)sยกเลิกคำขอเข้าร่วม %(count)s ครั้ง
+timeline.summary.knock_retracted_multiple.one	%(severalUsers)sยกเลิกคำขอเข้าร่วม
+timeline.summary.knock_retracted_multiple.other	%(severalUsers)sยกเลิกคำขอเข้าร่วม %(count)s ครั้ง
+timeline.summary.knocked.one	%(oneUser)sขอเข้าร่วม
+timeline.summary.knocked.other	%(oneUser)sขอเข้าร่วม %(count)s ครั้ง
+timeline.summary.knocked_multiple.one	%(severalUsers)sขอเข้าร่วม
+timeline.summary.knocked_multiple.other	%(severalUsers)sขอเข้าร่วม %(count)s ครั้ง
+timeline.summary.left.one	%(oneUser)sออกจากห้อง
+timeline.summary.left.other	%(oneUser)sออกจากห้อง %(count)s ครั้ง
+timeline.summary.left_multiple.one	%(severalUsers)sออกจากห้อง
+timeline.summary.left_multiple.other	%(severalUsers)sออกจากห้อง %(count)s ครั้ง
+timeline.summary.no_change.one	%(oneUser)sไม่ได้เปลี่ยนแปลงอะไร
+timeline.summary.no_change.other	%(oneUser)sไม่ได้เปลี่ยนแปลงอะไร %(count)s ครั้ง
+timeline.summary.no_change_multiple.one	%(severalUsers)sไม่ได้เปลี่ยนแปลงอะไร
+timeline.summary.no_change_multiple.other	%(severalUsers)sไม่ได้เปลี่ยนแปลงอะไร %(count)s ครั้ง
+timeline.summary.pinned_events.one	%(oneUser)sเปลี่ยน<a>ข้อความที่ปักหมุด</a>ของห้อง
+timeline.summary.pinned_events.other	%(oneUser)sเปลี่ยน<a>ข้อความที่ปักหมุด</a>ของห้อง %(count)s ครั้ง
+timeline.summary.pinned_events_multiple.one	%(severalUsers)sเปลี่ยน<a>ข้อความที่ปักหมุด</a>ของห้อง
+timeline.summary.pinned_events_multiple.other	%(severalUsers)sเปลี่ยน<a>ข้อความที่ปักหมุด</a>ของห้อง %(count)s ครั้ง
+timeline.summary.redacted.one	%(oneUser)sลบข้อความ
+timeline.summary.redacted.other	%(oneUser)sลบ %(count)s ข้อความ
+timeline.summary.redacted_multiple.one	%(severalUsers)sลบข้อความ
+timeline.summary.redacted_multiple.other	%(severalUsers)sลบ %(count)s ข้อความ
+timeline.summary.rejected_invite.one	%(oneUser)sปฏิเสธคำเชิญ
+timeline.summary.rejected_invite.other	%(oneUser)sปฏิเสธคำเชิญ %(count)s ครั้ง
+timeline.summary.rejected_invite_multiple.one	%(severalUsers)sปฏิเสธคำเชิญ
+timeline.summary.rejected_invite_multiple.other	%(severalUsers)sปฏิเสธคำเชิญ %(count)s ครั้ง
+timeline.summary.rejoined.one	%(oneUser)sออกแล้วกลับเข้าร่วม
+timeline.summary.rejoined.other	%(oneUser)sออกแล้วกลับเข้าร่วม %(count)s ครั้ง
+timeline.summary.rejoined_multiple.one	%(severalUsers)sออกแล้วกลับเข้าร่วม
+timeline.summary.rejoined_multiple.other	%(severalUsers)sออกแล้วกลับเข้าร่วม %(count)s ครั้ง
+timeline.summary.unbanned.one	ถูกยกเลิกการแบน
+timeline.summary.unbanned.other	ถูกยกเลิกการแบน %(count)s ครั้ง
+timeline.summary.unbanned_multiple.one	ถูกยกเลิกการแบน
+timeline.summary.unbanned_multiple.other	ถูกยกเลิกการแบน %(count)s ครั้ง
+room_settings.general.alias_field_has_domain_invalid	ไม่มีตัวคั่นโดเมน เช่น (:domain.org)
+room_settings.general.alias_field_has_localpart_invalid	ไม่มีชื่อห้องหรือตัวคั่น เช่น (my-room:domain.org)
+room_settings.general.alias_field_matches_invalid	ที่อยู่นี้ไม่ได้ชี้มาที่ห้องนี้
+room_settings.general.alias_field_placeholder_default	เช่น my-room
+room_settings.general.alias_field_required_invalid	โปรดระบุที่อยู่
+room_settings.general.alias_field_safe_localpart_invalid	มีอักขระที่ใช้ไม่ได้
+room_settings.general.alias_field_taken_invalid	ที่อยู่นี้มีเซิร์ฟเวอร์ไม่ถูกต้อง หรือถูกใช้แล้ว
+room_settings.general.alias_field_taken_invalid_domain	ที่อยู่นี้ถูกใช้แล้ว
+room_settings.general.alias_field_taken_valid	ใช้ที่อยู่นี้ได้
+room_settings.general.alias_heading	ที่อยู่ห้อง
+room_settings.general.aliases_items_label	ที่อยู่อื่นที่เผยแพร่:
+room_settings.general.aliases_no_items_label	ยังไม่มีที่อยู่อื่นที่เผยแพร่ เพิ่มได้ด้านล่าง
+room_settings.general.aliases_section	ที่อยู่ห้อง
+room_settings.general.avatar_field_label	รูปห้อง
+room_settings.general.canonical_alias_field_label	ที่อยู่หลัก
+room_settings.general.description_space	แก้ไขการตั้งค่าของ Space
+room_settings.general.error_creating_alias_description	สร้างที่อยู่ไม่สำเร็จ เซิร์ฟเวอร์อาจไม่อนุญาต หรือเกิดข้อผิดพลาดชั่วคราว
+room_settings.general.error_creating_alias_title	สร้างที่อยู่ไม่สำเร็จ
+room_settings.general.error_deleting_alias_description	ลบที่อยู่ไม่สำเร็จ ที่อยู่อาจไม่มีแล้ว หรือเกิดข้อผิดพลาดชั่วคราว
+room_settings.general.error_deleting_alias_description_forbidden	คุณไม่มีสิทธิ์ลบที่อยู่นี้
+room_settings.general.error_deleting_alias_title	ลบที่อยู่ไม่สำเร็จ
+room_settings.general.error_publishing	เผยแพร่ห้องไม่สำเร็จ
+room_settings.general.error_publishing_detail	เกิดข้อผิดพลาดระหว่างเผยแพร่ห้องนี้
+room_settings.general.error_save_space_settings	บันทึกการตั้งค่า Space ไม่สำเร็จ
+room_settings.general.error_updating_alias_description	อัปเดตที่อยู่สำรองของห้องไม่สำเร็จ เซิร์ฟเวอร์อาจไม่อนุญาต หรือเกิดข้อผิดพลาดชั่วคราว
+room_settings.general.error_updating_canonical_alias_description	อัปเดตที่อยู่หลักของห้องไม่สำเร็จ เซิร์ฟเวอร์อาจไม่อนุญาต หรือเกิดข้อผิดพลาดชั่วคราว
+room_settings.general.error_updating_canonical_alias_title	อัปเดตที่อยู่หลักไม่สำเร็จ
+room_settings.general.leave_space	ออกจาก Space
+room_settings.general.local_alias_field_label	ที่อยู่ภายใน
+room_settings.general.local_aliases_explainer_room	ตั้งที่อยู่ให้ห้องนี้ เพื่อให้ผู้ใช้ค้นหาห้องผ่านเซิร์ฟเวอร์ของคุณ (%(localDomain)s) ได้
+room_settings.general.local_aliases_explainer_space	ตั้งที่อยู่ให้ Space นี้ เพื่อให้ผู้ใช้ค้นหา Space ผ่านเซิร์ฟเวอร์ของคุณ (%(localDomain)s) ได้
+room_settings.general.local_aliases_section	ที่อยู่ภายใน
+room_settings.general.name_field_label	ชื่อห้อง
+room_settings.general.new_alias_placeholder	ที่อยู่ใหม่ที่จะเผยแพร่ (เช่น #alias:server)
+room_settings.general.no_aliases_room	ห้องนี้ยังไม่มีที่อยู่ภายใน
+room_settings.general.no_aliases_space	Space นี้ยังไม่มีที่อยู่ภายใน
+room_settings.general.other_section	อื่นๆ
+room_settings.general.publish_toggle	เผยแพร่ห้องนี้ในรายชื่อห้องสาธารณะของ %(domain)s หรือไม่?
+room_settings.general.publish_warn_invite_only	เผยแพร่ห้องที่เข้าได้เฉพาะผู้ได้รับเชิญไม่ได้
+room_settings.general.publish_warn_no_canonical_permission	ต้องมีสิทธิ์ตั้งที่อยู่หลักจึงจะเผยแพร่ห้องนี้ได้
+room_settings.general.published_aliases_description	ต้องตั้งเป็นที่อยู่ภายในก่อน จึงจะเผยแพร่ที่อยู่ได้
+room_settings.general.published_aliases_explainer_room	ทุกคนจากทุกเซิร์ฟเวอร์ใช้ที่อยู่ที่เผยแพร่เพื่อเข้าห้องนี้ได้
+room_settings.general.published_aliases_explainer_space	ทุกคนจากทุกผู้ให้บริการบัญชีใช้ที่อยู่ที่เผยแพร่เพื่อเข้า Space นี้ได้
+room_settings.general.published_aliases_section	ที่อยู่ที่เผยแพร่
+room_settings.general.save	บันทึกการเปลี่ยนแปลง
+room_settings.general.topic_field_label	หัวข้อห้อง
+room_settings.notifications.browse_button	เลือกไฟล์
+room_settings.notifications.custom_sound_prompt	ตั้งเสียงแจ้งเตือนใหม่
+room_settings.notifications.notification_sound	เสียงแจ้งเตือน
+room_settings.notifications.settings_link	รับการแจ้งเตือนตามที่ตั้งไว้ใน<a>การตั้งค่า</a>
+room_settings.notifications.sounds_section	เสียง
+room_settings.notifications.upload_sound_label	อัปโหลดเสียงเอง
+room_settings.notifications.uploaded_sound	เสียงที่อัปโหลด
+room_settings.people.knock_empty	ไม่มีคำขอ
+room_settings.people.knock_section	ขอเข้าร่วม
+room_settings.people.see_less	ดูน้อยลง
+room_settings.people.see_more	ดูเพิ่มเติม
+room_settings.title	การตั้งค่าห้อง - %(roomName)s
+room_settings.visibility.alias_section	ที่อยู่
+room_settings.visibility.error_failed_save	อัปเดตการตั้งค่า Space ไม่สำเร็จ
+room_settings.visibility.error_update_guest_access	อัปเดตการเข้าถึงของผู้เยี่ยมชมไม่สำเร็จ
+room_settings.visibility.error_update_history_visibility	อัปเดตการมองเห็นประวัติไม่สำเร็จ
+room_settings.visibility.guest_access_disabled	คุณไม่มีสิทธิ์เปลี่ยนการเข้าถึงของผู้เยี่ยมชม
+room_settings.visibility.guest_access_explainer	ผู้เยี่ยมชมเข้า Space ได้โดยไม่ต้องมีบัญชี เหมาะกับ Space สาธารณะ
+room_settings.visibility.guest_access_label	เปิดการเข้าถึงของผู้เยี่ยมชม
+room_settings.visibility.history_visibility_anyone_space	ดูตัวอย่าง Space
+room_settings.visibility.history_visibility_anyone_space_description	ให้ผู้อื่นดูตัวอย่าง Space ก่อนเข้าร่วม
+room_settings.visibility.history_visibility_anyone_space_disabled	คุณไม่มีสิทธิ์เปลี่ยนการมองเห็นประวัติ
+room_settings.visibility.history_visibility_anyone_space_recommendation	แนะนำสำหรับ Space สาธารณะ
+room_settings.visibility.title	ความปลอดภัยและความเป็นส่วนตัว

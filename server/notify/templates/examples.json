@@ -1,0 +1,94 @@
+{
+  "_doc": "แม่แบบการ์ด AranChat รุ่น 2 สำหรับงานโรงพยาบาล — ส่งด้วย POST https://chat.arankub.com/api/notify (Authorization: Bearer <key ของระบบ>) · ทดสอบ: node scripts/send-card-examples.mjs",
+  "lab_critical": {
+    "event": "lab.critical",
+    "id": "LAB-26111600123",
+    "priority": "urgent",
+    "title": "ค่าวิกฤต Potassium 2.4 mmol/L",
+    "subtitle": "ต่ำกว่าเกณฑ์วิกฤต — โทรแจ้งแพทย์ภายใน 15 นาที",
+    "fields": [["HN", "0012345"], ["หน่วยงาน", "ER · อายุรกรรม"], ["แพทย์ผู้สั่ง", "นพ.ทดสอบ ระบบ"], ["รายงาน", "09:42 น."]],
+    "sections": [
+      {
+        "type": "table",
+        "title": "ผลแล็บชุดนี้",
+        "columns": ["รายการ", "ผล", "ช่วงปกติ"],
+        "rows": [["Potassium", "2.4", "3.5–5.1"], ["Sodium", "136", "135–145"], ["Creatinine", "1.9", "0.6–1.2"]],
+        "tones": [["", "crit", ""], ["", "ok", ""], ["", "high", ""]]
+      }
+    ],
+    "buttons": [
+      { "type": "copy", "label": "คัดลอก HN", "text": "0012345" },
+      { "type": "link", "label": "เปิดใน AranKub", "url": "https://arankub.com/" }
+    ]
+  },
+  "approval": {
+    "event": "leave.request",
+    "id": "LV-2026-0458",
+    "level": "warning",
+    "title": "ขออนุมัติลาพักผ่อน 3 วัน",
+    "subtitle": "มาลี ทองคำ · พยาบาลวิชาชีพ ER",
+    "fields": [["วันที่", "20–22 พ.ย. 2569"], ["คงเหลือ", "7 วัน"], ["ผู้ปฏิบัติงานแทน", "นก วงศ์ไทย"]],
+    "sections": [{ "type": "text", "text": "เหตุผล: ไปงานบวชน้องชายที่ต่างจังหวัด" }],
+    "buttons": [
+      { "type": "action", "id": "approve", "label": "อนุมัติ", "style": "primary" },
+      { "type": "action", "id": "reject", "label": "ไม่อนุมัติ", "style": "danger", "confirm": "ยืนยันไม่อนุมัติใบลานี้?" },
+      { "type": "link", "label": "ดูใบลาเต็ม", "url": "https://arankub.com/" }
+    ]
+  },
+  "refer": {
+    "event": "refer.status",
+    "id": "RF-26111600031",
+    "level": "info",
+    "title": "ส่งต่อผู้ป่วย → รพ.สระแก้ว",
+    "subtitle": "HN 0012345 · STEMI · ระดับ 1",
+    "sections": [
+      {
+        "type": "steps",
+        "items": [
+          { "label": "ประสานปลายทางแล้ว", "time": "10:05", "state": "done" },
+          { "label": "ปลายทางตอบรับ", "time": "10:12", "state": "done" },
+          { "label": "รถ ALS ออกเดินทาง", "time": "10:20", "state": "current" },
+          { "label": "ถึงปลายทาง", "state": "todo" }
+        ]
+      }
+    ],
+    "buttons": [
+      { "type": "action", "id": "arrived", "label": "แจ้งถึงปลายทาง", "style": "primary" },
+      { "type": "copy", "label": "คัดลอกเลขส่งต่อ", "text": "RF-26111600031" }
+    ]
+  },
+  "system_down": {
+    "event": "system.down",
+    "id": "UP-hosxp-1",
+    "level": "critical",
+    "title": "HOSxP ตอบสนองไม่ได้",
+    "subtitle": "ตรวจพบ 10:31 น. · ล่มต่อเนื่อง 3 นาที",
+    "fields": [["เครื่อง", "hosxp-db01"], ["สถานะ", "ไม่ตอบกลับ", "crit"], ["ผลกระทบ", "OPD · ER · ห้องยา"]],
+    "buttons": [
+      { "type": "action", "id": "taking", "label": "รับเรื่อง กำลังแก้ไข", "style": "primary" },
+      { "type": "link", "label": "หน้าสถานะระบบ", "url": "https://arankub.com/" }
+    ]
+  },
+  "daily_report": {
+    "event": "report.daily",
+    "level": "success",
+    "title": "สรุปบริการวันนี้ 16 พ.ย. 2569",
+    "subtitle": "ข้อมูลถึง 16:00 น.",
+    "sections": [
+      { "type": "stats", "items": [{ "label": "OPD", "value": "412" }, { "label": "ER", "value": "57" }, { "label": "Admit", "value": "18", "tone": "high" }] },
+      { "type": "fields", "title": "เตียง", "items": [["อายุรกรรมชาย", "ว่าง 2 / 30"], ["อายุรกรรมหญิง", "เต็ม", "crit"], ["ศัลยกรรม", "ว่าง 6 / 28", "ok"]] }
+    ],
+    "buttons": [{ "type": "link", "label": "ดูรายงานเต็ม", "url": "https://arankub.com/" }]
+  },
+  "announcement": {
+    "event": "news.meeting",
+    "title": "ประชุมทบทวน RCA ประจำเดือน",
+    "subtitle": "พฤหัสฯ 20 พ.ย. 13:30 น. · ห้องประชุมชั้น 3",
+    "image": "<mxc หรือ https://… รูปประกอบ>",
+    "sections": [{ "type": "text", "text": "ทบทวนเหตุการณ์ไม่พึงประสงค์ 3 เรื่อง ขอเชิญหัวหน้างานทุกหน่วยเข้าร่วม" }],
+    "buttons": [
+      { "type": "action", "id": "join", "label": "เข้าร่วม", "style": "primary" },
+      { "type": "action", "id": "absent", "label": "ไม่สะดวก", "style": "secondary" }
+    ]
+  }
+}

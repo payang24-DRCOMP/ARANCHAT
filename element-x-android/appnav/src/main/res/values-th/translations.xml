@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="banner_migrate_to_native_sliding_sync_action">"ออกจากระบบและอัปเกรด"</string>
+  <string name="banner_migrate_to_native_sliding_sync_app_force_logout_title">"%1$s ไม่รองรับโปรโตคอลเดิมแล้ว โปรดออกจากระบบแล้วเข้าใหม่เพื่อใช้งานต่อ"</string>
+  <string name="banner_migrate_to_native_sliding_sync_force_logout_title">"ผู้ให้บริการบัญชีของคุณไม่รองรับโปรโตคอลเดิมแล้ว โปรดออกจากระบบแล้วเข้าใหม่เพื่อใช้งานต่อ"</string>
+</resources>

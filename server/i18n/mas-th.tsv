@@ -1,0 +1,173 @@
+action.back	ย้อนกลับ
+action.cancel	ยกเลิก
+action.continue	ดำเนินการต่อ
+action.create_account	สร้างบัญชี
+action.sign_in	เข้าสู่ระบบ
+action.sign_out	ออกจากระบบ
+action.skip	ข้าม
+action.start_over	เริ่มใหม่
+app.human_name	AranChat
+app.name	AranChat
+app.technical_description	เอกสาร OpenID Connect discovery: <a class="cpd-link" data-kind="primary" href="%(discovery_url)s">%(discovery_url)s</a>
+branding.privacy_policy.alt	ลิงก์ไปยังนโยบายความเป็นส่วนตัว
+branding.privacy_policy.link	นโยบายความเป็นส่วนตัว
+branding.terms_and_conditions.alt	ลิงก์ไปยังข้อกำหนดและเงื่อนไข
+branding.terms_and_conditions.link	ข้อกำหนดและเงื่อนไข
+common.display_name	ชื่อที่แสดง
+common.email_address	อีเมล
+common.loading	กำลังโหลด…
+common.mxid	Matrix ID
+common.password	รหัสผ่าน
+common.username	ชื่อผู้ใช้
+error.unexpected	เกิดข้อผิดพลาดที่ไม่คาดคิด
+mas.account.deactivated.description	บัญชีนี้ (<em>%(mxid)s</em>) ถูกลบแล้ว หากไม่ได้เป็นไปตามที่คาดไว้ โปรดติดต่อผู้ดูแลระบบ
+mas.account.deactivated.heading	บัญชีถูกลบแล้ว
+mas.account.locked.description	บัญชีนี้ (<em>%(mxid)s</em>) ถูกระงับ หากไม่ได้เป็นไปตามที่คาดไว้ โปรดติดต่อผู้ดูแลระบบ
+mas.account.locked.heading	บัญชีถูกระงับ
+mas.account.logged_out.description	เซสชันนี้สิ้นสุดแล้ว ออกจากระบบแล้วเข้าสู่ระบบใหม่อีกครั้ง
+mas.account.logged_out.heading	เซสชันสิ้นสุดแล้ว
+mas.back_to_homepage	กลับไปหน้าแรก
+mas.change_password.change	เปลี่ยนรหัสผ่าน
+mas.change_password.confirm	ยืนยันรหัสผ่าน
+mas.change_password.current	รหัสผ่านปัจจุบัน
+mas.change_password.heading	เปลี่ยนรหัสผ่านของฉัน
+mas.change_password.new	รหัสผ่านใหม่
+mas.choose_display_name.description	ชื่อนี้คือชื่อที่ผู้อื่นจะเห็น เปลี่ยนได้ทุกเมื่อ
+mas.choose_display_name.headline	เลือกชื่อที่แสดง
+mas.consent.continue_to	ดำเนินการต่อไปยัง <span>%(client_name)s</span> หรือไม่?
+mas.consent.scope_list_preface	เมื่อดำเนินการต่อ คุณอนุญาตให้ <span>%(client_name)s</span>:
+mas.consent.this_will_setup	ระบบจะตั้งค่า %(client_name)s (<span>%(client_uri)s</span>) กับบัญชี <span>%(server_name)s</span> ของคุณ
+mas.consent.use_another_account	ใช้บัญชีอื่น
+mas.device_card.access_requested	ขอสิทธิ์เมื่อ
+mas.device_card.generic_device	อุปกรณ์
+mas.device_card.ip_address	IP address
+mas.device_card.security_code	รหัสความปลอดภัย
+mas.device_code_link.description	กรอกรหัสความปลอดภัยที่แสดงบนอุปกรณ์อีกเครื่องของคุณ
+mas.device_code_link.headline	เชื่อมอุปกรณ์ใหม่กับบัญชีของคุณ
+mas.device_code_link.verification_code	รหัสยืนยัน
+mas.device_consent.confirm_device	ใช่ ฉันยืนยันว่านี่คืออุปกรณ์ของฉัน และต้องการให้เข้าสู่ระบบ
+mas.device_consent.denied.description	คุณปฏิเสธการเข้าถึงของ %(client_name)s แล้ว ปิดหน้าต่างนี้ได้เลย
+mas.device_consent.denied.heading	ปฏิเสธการเข้าถึงแล้ว
+mas.device_consent.description	<strong>อุปกรณ์อีกเครื่อง</strong> ต้องการเชื่อม %(client_name)s กับบัญชี <span>%(server_name)s</span> ของคุณ ตรวจให้แน่ใจว่าคุณรู้จักอุปกรณ์นี้
+mas.device_consent.grant_access	อนุญาต
+mas.device_consent.granted.description	คุณอนุญาตให้ %(client_name)s เข้าถึงแล้ว ปิดหน้าต่างนี้ได้เลย
+mas.device_consent.granted.heading	อนุญาตแล้ว
+mas.device_consent.title	อนุญาตให้เข้าถึงบัญชีของคุณหรือไม่?
+mas.device_consent.warning.description	แน่ใจหรือไม่ว่านี่คืออุปกรณ์ของคุณ ผู้ดูแลระบบหรืองานไอทีจะไม่ขอให้คุณกดยอมรับรายการนี้
+mas.device_consent.warning.title	คุณกำลังจะอนุญาตให้อุปกรณ์ระยะไกลเข้าถึงบัญชีของคุณ
+mas.device_display_name.client_on_device	%(client_name)s บน %(device_name)s
+mas.device_display_name.name_for_platform	%(name)s สำหรับ %(platform)s
+mas.device_display_name.unknown_device	อุปกรณ์ที่ไม่รู้จัก
+mas.email_in_use.description	หากลืมข้อมูลเข้าสู่ระบบ คุณกู้คืนบัญชีได้ หรือเริ่มใหม่แล้วใช้อีเมลอื่น
+mas.email_in_use.title	อีเมล <span>%(email)s</span> ถูกใช้แล้ว
+mas.emails.greeting	สวัสดี %(username)s
+mas.emails.recovery.click_button	กดปุ่มด้านล่างเพื่อตั้งรหัสผ่านใหม่:
+mas.emails.recovery.copy_link	คัดลอกลิงก์ด้านล่างไปวางในเบราว์เซอร์เพื่อตั้งรหัสผ่านใหม่:
+mas.emails.recovery.create_new_password	ตั้งรหัสผ่านใหม่
+mas.emails.recovery.fallback	กดปุ่มไม่ได้ใช่ไหม?
+mas.emails.recovery.headline	คุณขอรีเซ็ตรหัสผ่านของบัญชี %(server_name)s
+mas.emails.recovery.subject	รีเซ็ตรหัสผ่านบัญชี (%(mxid)s)
+mas.emails.recovery.you_can_ignore	หากคุณไม่ได้ขอรหัสผ่านใหม่ ไม่ต้องทำอะไรกับอีเมลนี้ รหัสผ่านเดิมยังใช้ได้ตามปกติ
+mas.emails.verify.body_html	รหัสยืนยันอีเมลของคุณคือ: <strong>%(code)s</strong>
+mas.emails.verify.body_text	รหัสยืนยันอีเมลของคุณคือ: %(code)s
+mas.emails.verify.subject	รหัสยืนยันอีเมลของคุณคือ: %(code)s
+mas.errors.captcha	ยืนยัน CAPTCHA ไม่สำเร็จ โปรดลองอีกครั้ง
+mas.errors.denied_policy	ถูกปฏิเสธตามนโยบาย: %(policy)s
+mas.errors.email_banned	อีเมลนี้ถูกห้ามตามนโยบายของเซิร์ฟเวอร์
+mas.errors.email_domain_banned	โดเมนอีเมลนี้ถูกห้ามตามนโยบายของเซิร์ฟเวอร์
+mas.errors.email_domain_not_allowed	โดเมนอีเมลนี้ไม่ได้รับอนุญาตตามนโยบายของเซิร์ฟเวอร์
+mas.errors.email_not_allowed	อีเมลนี้ไม่ได้รับอนุญาตตามนโยบายของเซิร์ฟเวอร์
+mas.errors.field_required	ต้องกรอกช่องนี้
+mas.errors.invalid_credentials	ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง
+mas.errors.password_mismatch	รหัสผ่านทั้งสองช่องไม่ตรงกัน
+mas.errors.rate_limit_exceeded	คุณส่งคำขอบ่อยเกินไป โปรดรอสักครู่แล้วลองใหม่
+mas.errors.username_all_numeric	ชื่อผู้ใช้เป็นตัวเลขล้วนไม่ได้
+mas.errors.username_banned	ชื่อผู้ใช้นี้ถูกห้ามตามนโยบายของเซิร์ฟเวอร์
+mas.errors.username_invalid_chars	ชื่อผู้ใช้มีอักขระที่ใช้ไม่ได้ ใช้ได้เฉพาะตัวอักษรอังกฤษพิมพ์เล็ก ตัวเลข และ . _ - + / =
+mas.errors.username_not_allowed	ชื่อผู้ใช้นี้ไม่ได้รับอนุญาตตามนโยบายของเซิร์ฟเวอร์
+mas.errors.username_taken	ชื่อผู้ใช้นี้มีคนใช้แล้ว
+mas.errors.username_too_long	ชื่อผู้ใช้ยาวเกินไป
+mas.errors.username_too_short	ชื่อผู้ใช้สั้นเกินไป
+mas.legacy_consent.this_will_setup	ระบบจะตั้งค่า <span>%(client_name)s</span> กับบัญชี <span>%(server_name)s</span> ของคุณ
+mas.loading	กำลังโหลด…
+mas.loading_failed	เกิดข้อผิดพลาดระหว่างโหลดหน้า ลองโหลดใหม่อีกครั้ง
+mas.login.call_to_register	ยังไม่มีบัญชีใช่ไหม?
+mas.login.continue_with_provider	เข้าสู่ระบบด้วย%(provider)s
+mas.login.description	โปรดเข้าสู่ระบบเพื่อดำเนินการต่อ:
+mas.login.forgot_password	ลืมรหัสผ่าน?
+mas.login.headline	เข้าสู่ระบบ
+mas.login.link.description	กำลังเชื่อมบัญชี <span class="break-keep text-links">%(provider)s</span> ของคุณ
+mas.login.link.headline	เข้าสู่ระบบเพื่อเชื่อมบัญชี
+mas.login.no_login_methods	ไม่มีวิธีเข้าสู่ระบบที่ใช้ได้
+mas.login.username_or_email	ชื่อผู้ใช้หรืออีเมล
+mas.navbar.my_account	บัญชีของฉัน
+mas.navbar.register	สร้างบัญชี
+mas.navbar.signed_in_as	เข้าสู่ระบบในชื่อ <span class="font-semibold">%(username)s</span>
+mas.not_found.description	ไม่พบหน้าที่คุณต้องการ หรือหน้านั้นถูกย้ายไปแล้ว
+mas.not_found.heading	ไม่พบหน้านี้
+mas.not_you	ไม่ใช่ %(username)s ใช่ไหม?
+mas.or_separator	หรือ
+mas.policy_violation.admin_scope_not_allowed.description	แอปนี้ต้องใช้สิทธิ์ผู้ดูแลระบบ เข้าสู่ระบบด้วยบัญชีผู้ดูแลระบบเพื่อดำเนินการต่อ
+mas.policy_violation.admin_scope_not_allowed.heading	ต้องใช้สิทธิ์ผู้ดูแลระบบ
+mas.policy_violation.client_not_allowed.description	แอปนี้ไม่ได้รับอนุญาตให้เข้าสู่ระบบนี้
+mas.policy_violation.client_not_allowed.heading	แอปไม่ได้รับอนุญาต
+mas.policy_violation.description	คำขอของคุณถูกปฏิเสธตามนโยบายของระบบ อาจเป็นเพราะแอป บัญชีของคุณ หรือตัวคำขอเอง
+mas.policy_violation.heading	คำขอถูกปฏิเสธ
+mas.policy_violation.logged_as	เข้าสู่ระบบในชื่อ <span class="font-semibold">%(username)s</span>
+mas.policy_violation.too_many_sessions.description	บัญชีของคุณเข้าสู่ระบบครบจำนวนอุปกรณ์สูงสุดแล้ว หากต้องการดำเนินการต่อ <span class="font-semibold">ให้นำอุปกรณ์เดิมออก %(num_devices_to_remove)s เครื่อง</span> แล้วเข้าสู่ระบบใหม่
+mas.policy_violation.too_many_sessions.heading	อุปกรณ์ครบจำนวนแล้ว
+mas.policy_violation.too_many_sessions.manage_devices	จัดการอุปกรณ์
+mas.recovery.consumed.description	หากต้องการตั้งรหัสผ่านใหม่ ให้เริ่มใหม่แล้วเลือก “ลืมรหัสผ่าน”
+mas.recovery.consumed.heading	ลิงก์รีเซ็ตรหัสผ่านนี้ถูกใช้ไปแล้ว
+mas.recovery.disabled.description	หากลืมข้อมูลเข้าสู่ระบบ โปรดติดต่อผู้ดูแลระบบเพื่อกู้คืนบัญชี
+mas.recovery.disabled.heading	ปิดการกู้คืนบัญชีด้วยตนเอง
+mas.recovery.expired.description	ขออีเมลใหม่ ซึ่งจะส่งไปที่: <span>%(email)s</span>
+mas.recovery.expired.heading	ลิงก์รีเซ็ตรหัสผ่านหมดอายุแล้ว
+mas.recovery.expired.resend_email	ส่งอีเมลอีกครั้ง
+mas.recovery.finish.confirm	กรอกรหัสผ่านใหม่อีกครั้ง
+mas.recovery.finish.description	ตั้งรหัสผ่านใหม่สำหรับบัญชีของคุณ
+mas.recovery.finish.heading	รีเซ็ตรหัสผ่าน
+mas.recovery.finish.new	รหัสผ่านใหม่
+mas.recovery.finish.save_and_continue	บันทึกและดำเนินการต่อ
+mas.recovery.progress.change_email	ลองใช้อีเมลอื่น
+mas.recovery.progress.description	หากมีบัญชีที่ใช้อีเมล <span>%(email)s</span> เราได้ส่งลิงก์รีเซ็ตรหัสผ่านไปให้แล้ว
+mas.recovery.progress.heading	ตรวจสอบอีเมลของคุณ
+mas.recovery.progress.resend_email	ส่งอีเมลอีกครั้ง
+mas.recovery.start.description	ระบบจะส่งลิงก์รีเซ็ตรหัสผ่านไปทางอีเมล
+mas.recovery.start.heading	กรอกอีเมลเพื่อดำเนินการต่อ
+mas.register.create_account.heading	สร้างบัญชี
+mas.register.javascript_required	ต้องเปิด JavaScript เพื่อสร้างบัญชี โปรดเปิด JavaScript ในเบราว์เซอร์แล้วโหลดหน้านี้ใหม่
+mas.register.terms_of_service	ฉันยอมรับ<a href="%s" data-kind="primary" class="cpd-link">ข้อกำหนดและเงื่อนไข</a>
+mas.registration_token.description	กรอกโทเค็นลงทะเบียนที่ได้รับจากผู้ดูแลระบบ
+mas.registration_token.field	โทเค็นลงทะเบียน
+mas.registration_token.headline	โทเค็นลงทะเบียน
+mas.scope.edit_profile	แก้ไขโปรไฟล์และข้อมูลติดต่อ
+mas.scope.manage_sessions	จัดการอุปกรณ์และเซสชันของคุณ
+mas.scope.mas_admin	จัดการผู้ใช้ (urn:mas:admin)
+mas.scope.send_messages	ส่งข้อความใหม่ในนามของคุณ
+mas.scope.synapse_admin	ดูแลเซิร์ฟเวอร์ (urn:synapse:admin:*)
+mas.scope.view_messages	ดูข้อความและข้อมูลเดิมของคุณ
+mas.scope.view_profile	ดูข้อมูลโปรไฟล์และข้อมูลติดต่อ
+mas.upstream_oauth2.link_mismatch.heading	บัญชีภายนอกนี้เชื่อมกับบัญชีอื่นอยู่แล้ว
+mas.upstream_oauth2.register.choose_username.description	เปลี่ยนภายหลังไม่ได้
+mas.upstream_oauth2.register.choose_username.heading	ตั้งชื่อผู้ใช้
+mas.upstream_oauth2.register.create_account	สร้างบัญชีใหม่
+mas.upstream_oauth2.register.enforced_by_policy	กำหนดโดยนโยบายของเซิร์ฟเวอร์
+mas.upstream_oauth2.register.forced_display_name	จะใช้ชื่อที่แสดงต่อไปนี้
+mas.upstream_oauth2.register.forced_email	จะใช้อีเมลต่อไปนี้
+mas.upstream_oauth2.register.forced_localpart	จะใช้ชื่อผู้ใช้ต่อไปนี้
+mas.upstream_oauth2.register.import_data.description	ยืนยันข้อมูลที่จะผูกกับบัญชี %(server_name)s ใหม่ของคุณ
+mas.upstream_oauth2.register.import_data.heading	นำเข้าข้อมูลของคุณ
+mas.upstream_oauth2.register.imported_from_upstream	นำเข้าจากบัญชีภายนอกของคุณ
+mas.upstream_oauth2.register.imported_from_upstream_with_name	นำเข้าจาก%(human_name)sของคุณ
+mas.upstream_oauth2.register.link_existing	เชื่อมกับบัญชีที่มีอยู่แล้ว
+mas.upstream_oauth2.register.provider_name	%(human_name)s
+mas.upstream_oauth2.register.signup_with_upstream.heading	สมัครใช้งานต่อด้วย%(human_name)sของคุณ
+mas.upstream_oauth2.register.suggested_display_name	นำเข้าชื่อที่แสดง
+mas.upstream_oauth2.register.suggested_email	นำเข้าอีเมล
+mas.upstream_oauth2.register.use	ใช้
+mas.upstream_oauth2.suggest_link.action	เชื่อม
+mas.upstream_oauth2.suggest_link.heading	เชื่อมกับบัญชีที่มีอยู่แล้ว
+mas.verify_email.6_digit_code	รหัส 6 หลัก
+mas.verify_email.description	กรอกรหัส 6 หลักที่ส่งไปที่: <em>%(email)s</em>
+mas.verify_email.headline	ยืนยันอีเมล

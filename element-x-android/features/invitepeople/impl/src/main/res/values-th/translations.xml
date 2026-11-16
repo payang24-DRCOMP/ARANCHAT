@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_invite_users_already_a_member">"เป็นสมาชิกอยู่แล้ว"</string>
+  <string name="screen_invite_users_already_invited">"เชิญแล้ว"</string>
+  <string name="screen_invite_users_confirm_dialog_subtitle_multiple_users">"คุณยังไม่มีแชทกับรายชื่อเหล่านี้ ยืนยันเชิญเข้าห้องนี้ก่อนดำเนินการต่อ"</string>
+  <string name="screen_invite_users_confirm_dialog_subtitle_one_user">"คุณยังไม่มีแชทกับรายชื่อนี้ ยืนยันเชิญเข้าห้องนี้ก่อนดำเนินการต่อ"</string>
+  <string name="screen_invite_users_confirm_dialog_title_mutiple_users">"เชิญรายชื่อใหม่เข้าห้องนี้ไหม"</string>
+  <string name="screen_invite_users_confirm_dialog_title_one_user">"เชิญรายชื่อใหม่เข้าห้องนี้ไหม"</string>
+</resources>

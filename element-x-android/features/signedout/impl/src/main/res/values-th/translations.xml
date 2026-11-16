@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_signed_out_reason_1">"คุณนำอุปกรณ์นี้ออกจากบัญชีแล้ว"</string>
+  <string name="screen_signed_out_reason_2">"คุณเปลี่ยนรหัสผ่านบนอุปกรณ์อื่น"</string>
+  <string name="screen_signed_out_reason_3">"เซสชันบนเซิร์ฟเวอร์หมดอายุ หรือผู้ดูแลระงับการเข้าถึงของคุณ"</string>
+  <string name="screen_signed_out_subtitle">"คุณอาจถูกออกจากระบบด้วยเหตุผลด้านล่าง โปรดเข้าสู่ระบบอีกครั้งเพื่อใช้ %s ต่อ"</string>
+  <string name="screen_signed_out_subtitle_v2">"อุปกรณ์นี้ถูกนำออกด้วยเหตุผลด้านล่าง โปรดเข้าสู่ระบบอีกครั้งเพื่อเชื่อมอุปกรณ์นี้กับบัญชี"</string>
+  <string name="screen_signed_out_title">"อุปกรณ์ถูกนำออก"</string>
+</resources>

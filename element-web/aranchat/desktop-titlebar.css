@@ -1,0 +1,58 @@
+/*
+ * AranChat Desktop — แถบบนของหน้าต่าง (แทนแถบชื่อ + เมนู File/Edit/View ของระบบ)
+ *   ลากย้ายหน้าต่างได้ · ดับเบิลคลิก = ขยาย/ย่อ · ปุ่มย่อ/ขยาย/ปิด ของระบบอยู่มุมขวา (electron-main.ts: titleBarOverlay สูง 36px)
+ * build-desktop.sh ใส่ไฟล์นี้ลง index.html ของแอปเท่านั้น (เว็บแชทไม่มีแถบนี้)
+ */
+.ac-titlebar {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 36px;
+    padding: 0 148px 0 16px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ece8f6;
+    background: #fff;
+    color: #1e1b4b;
+    font: 600 13px/1 "Inter", "Sarabun", "Noto Sans Thai", system-ui, sans-serif;
+    user-select: none;
+    -webkit-app-region: drag;
+}
+.ac-titlebar img {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+}
+.ac-titlebar .ac-tb-room {
+    overflow: hidden;
+    color: #6b6684;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.ac-titlebar .ac-tb-room::before {
+    content: "·";
+    margin-right: 8px;
+}
+.ac-titlebar .ac-tb-badge {
+    min-width: 18px;
+    padding: 2px 6px;
+    border-radius: 999px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    box-sizing: border-box;
+}
+.ac-titlebar [hidden] {
+    display: none;
+}
+/* ทั้งแอปเลื่อนลงใต้แถบ */
+#matrixchat {
+    position: fixed;
+    inset: 36px 0 0;
+    height: auto !important;
+}

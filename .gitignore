@@ -1,0 +1,23 @@
+# ความลับ / ข้อมูลระบบจริง — ห้ามขึ้น git
+*.env
+.env
+.env.*
+!*.env.example
+secrets.env
+*.pem
+!element-web/apps/desktop/element.io/*.pem
+!element-web/apps/desktop/src/__fixtures__/**/*.pem
+*.key
+!element-web/apps/web/playwright/testcontainers/res/**/*.key
+*.jks
+**/data/
+state.json*
+server/rendered/
+server/doc/
+*.bak
+*.bak-*
+node_modules/
+# ผลการ build
+element-web/apps/desktop/dist/
+element-web/apps/web/webapp/
+element-x-android/**/build/

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_leave_space_choose_owners_action">"เลือกเจ้าของห้อง"</string>
+  <string name="screen_leave_space_last_admin_info">"%1$s (ผู้ดูแล)"</string>
+  <plurals name="screen_leave_space_submit">
+    <item quantity="other">"ออกจาก %1$d ห้องและพื้นที่"</item>
+  </plurals>
+  <string name="screen_leave_space_subtitle">"เลือกห้องที่ต้องการออก (เฉพาะห้องที่คุณไม่ใช่ผู้ดูแลคนเดียว):"</string>
+  <string name="screen_leave_space_subtitle_last_admin">"ต้องแต่งตั้งผู้ดูแลคนอื่นให้พื้นที่นี้ก่อนจึงจะออกได้"</string>
+  <string name="screen_leave_space_subtitle_last_owner">"คุณเป็นเจ้าของ %1$s คนเดียว ต้องโอนสิทธิ์เจ้าของให้คนอื่นก่อนออก"</string>
+  <string name="screen_leave_space_subtitle_only_last_admin">"คุณจะไม่ถูกนำออกจากห้องต่อไปนี้ เพราะคุณเป็นผู้ดูแลคนเดียว:"</string>
+  <string name="screen_leave_space_title">"ออกจาก %1$s ไหม"</string>
+  <string name="screen_leave_space_title_last_admin">"คุณเป็นผู้ดูแล %1$s คนเดียว"</string>
+  <string name="screen_leave_space_title_last_owner">"โอนสิทธิ์เจ้าของ"</string>
+  <string name="screen_space_add_room_action">"ห้อง"</string>
+  <string name="screen_space_add_rooms_room_access_description">"การเพิ่มห้องไม่กระทบการเข้าถึงห้อง เปลี่ยนการเข้าถึงได้ที่ ตั้งค่าห้อง &gt; ความปลอดภัยและความเป็นส่วนตัว"</string>
+  <string name="screen_space_empty_state_title">"เพิ่มห้องแรก"</string>
+  <string name="screen_space_menu_action_members">"ดูสมาชิก"</string>
+  <string name="screen_space_remove_rooms_confirmation_content">"การนำห้องออกไม่กระทบการเข้าถึงห้อง เปลี่ยนการเข้าถึงได้ที่ ข้อมูลห้อง &gt; ความปลอดภัยและความเป็นส่วนตัว"</string>
+  <plurals name="screen_space_remove_rooms_confirmation_title">
+    <item quantity="other">"นำ %1$d ห้องออกจาก %2$s"</item>
+  </plurals>
+  <string name="screen_space_settings_leave_space">"ออกจาก Space"</string>
+  <string name="screen_space_settings_roles_and_permissions">"บทบาทและสิทธิ์"</string>
+  <string name="screen_space_settings_security_and_privacy">"ความปลอดภัยและความเป็นส่วนตัว"</string>
+</resources>

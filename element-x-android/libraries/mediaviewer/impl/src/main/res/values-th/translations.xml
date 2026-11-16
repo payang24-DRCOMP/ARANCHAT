@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_media_browser_delete_confirmation_subtitle">"ไฟล์นี้จะถูกนำออกจากห้อง สมาชิกจะเข้าถึงไม่ได้"</string>
+  <string name="screen_media_browser_delete_confirmation_title">"ลบไฟล์ไหม"</string>
+  <string name="screen_media_browser_download_error_message">"ตรวจการเชื่อมต่ออินเทอร์เน็ตแล้วลองใหม่"</string>
+  <string name="screen_media_browser_files_empty_state_subtitle">"เอกสาร ไฟล์เสียง และข้อความเสียงที่อัปโหลดในห้องนี้จะแสดงที่นี่"</string>
+  <string name="screen_media_browser_files_empty_state_title">"ยังไม่มีไฟล์ที่อัปโหลด"</string>
+  <string name="screen_media_browser_list_loading_files">"กำลังโหลดไฟล์…"</string>
+  <string name="screen_media_browser_list_loading_media">"กำลังโหลดรูป/วิดีโอ…"</string>
+  <string name="screen_media_browser_list_mode_files">"ไฟล์"</string>
+  <string name="screen_media_browser_list_mode_media">"รูปและวิดีโอ"</string>
+  <string name="screen_media_browser_media_empty_state_subtitle">"รูปและวิดีโอที่อัปโหลดในห้องนี้จะแสดงที่นี่"</string>
+  <string name="screen_media_browser_media_empty_state_title">"ยังไม่มีรูปหรือวิดีโอที่อัปโหลด"</string>
+  <string name="screen_media_browser_title">"รูปและไฟล์"</string>
+  <string name="screen_media_details_file_format">"รูปแบบ"</string>
+  <string name="screen_media_details_filename">"ชื่อ"</string>
+  <string name="screen_media_details_no_more_files_to_show">"ไม่มีไฟล์แสดงเพิ่ม"</string>
+  <string name="screen_media_details_no_more_media_to_show">"ไม่มีรูป/วิดีโอแสดงเพิ่ม"</string>
+  <string name="screen_media_details_title">"ข้อมูลไฟล์"</string>
+  <string name="screen_media_details_uploaded_by">"อัปโหลดโดย"</string>
+  <string name="screen_media_details_uploaded_on">"อัปโหลดเมื่อ"</string>
+</resources>

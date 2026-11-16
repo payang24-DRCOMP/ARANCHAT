@@ -1,0 +1,202 @@
+# คำแปลที่ตรงกับเว็บแชท (สร้างอัตโนมัติ — อย่าแก้) อังกฤษ<TAB>ไทย
+New room	ห้องใหม่
+Invite people	เชิญผู้คน
+Private	ส่วนตัว
+Anyone can join, including people outside your organisation.	ทุกคนเข้าร่วมได้
+Public	สาธารณะ
+Ask to join	ขอเข้าร่วม
+Standard	มาตรฐาน
+Address	ที่อยู่
+Room visibility	การมองเห็นห้อง
+Topic (optional)	หัวข้อ (ไม่บังคับ)
+Sign out	ออกจากระบบ
+Chats	แชท
+Search	ค้นหา
+Spaces	Space
+Decline invite	ปฏิเสธคำเชิญ
+Favourites	รายการโปรด
+Invites	คำเชิญ
+Low Priority	ความสำคัญต่ำ
+Mention	แท็ก
+You can deselect filters in order to see your other chats	ยกเลิกตัวกรองเพื่อดูแชทอื่นๆ ได้
+People	บุคคล
+Rooms	ห้อง
+You’re not in any room yet	ยังไม่ได้อยู่ในห้องใด
+Unread	ยังไม่อ่าน
+Request to join sent	ส่งคำขอเข้าร่วมแล้ว
+Mark as read	ทำเครื่องหมายว่าอ่านแล้ว
+Mark as unread	ทำเครื่องหมายว่ายังไม่อ่าน
+Decline and block	ปฏิเสธและบล็อก
+Cancel request	ยกเลิกคำขอ
+Join	เข้าร่วม
+Message (optional)	ข้อความ (ไม่บังคับ)
+View all	ดูทั้งหมด
+Accept	ยอมรับ
+View	ดู
+Try again	ลองอีกครั้ง
+Other	อื่นๆ
+Sign in	เข้าสู่ระบบ
+Create account	สร้างบัญชี
+Account provider	ผู้ให้บริการบัญชี
+Be in your element	ยินดีต้อนรับสู่ AranChat
+Remove this device	นำอุปกรณ์นี้ออก
+Camera	กล้อง
+Attachment	ไฟล์แนบ
+Poll	โพล
+Reason (optional)	เหตุผล (ไม่บังคับ)
+Notify the whole room	แจ้งเตือนทุกคนในห้อง
+Show less	แสดงน้อยลง
+You do not have permission to post to this room	คุณไม่มีสิทธิ์ส่งข้อความในห้องนี้
+Show more	แสดงเพิ่มเติม
+New	ใหม่
+Polls	โพล
+Labs	ฟีเจอร์ทดลอง
+Activity	ความเคลื่อนไหว
+All messages	ทุกข้อความ
+Mentions	ถูกแท็ก
+Notifications	การแจ้งเตือน
+Dark	มืด
+Light	สว่าง
+Report room	รายงานห้อง
+Remove messages	ลบข้อความ
+Demote	ลดสิทธิ์
+You will not be able to undo this change as you are demoting yourself, if you are the last privileged user in the room it will be impossible to regain privileges.	คุณกำลังลดสิทธิ์ตัวเองและย้อนกลับไม่ได้ ถ้าคุณเป็นผู้มีสิทธิ์คนสุดท้ายในห้อง จะไม่มีทางได้สิทธิ์คืน
+Demote yourself?	ลดสิทธิ์ตัวเองหรือไม่?
+Unban	ยกเลิกการแบน
+New members see history	สมาชิกใหม่เห็นประวัติข้อความ
+Anyone can see history	ทุกคนเห็นประวัติข้อความ
+Add topic	เพิ่มหัวข้อ
+Encrypted	เข้ารหัสแล้ว
+Not encrypted	ไม่ได้เข้ารหัส
+Public room	ห้องสาธารณะ
+Invite	เชิญ
+Leave room	ออกจากห้อง
+Default	ค่าเริ่มต้น
+Pinned messages	ข้อความที่ปักหมุด
+Profile	โปรไฟล์
+Name	ชื่อ
+Room info	ข้อมูลห้อง
+Mute	ปิดเสียง
+Enable end-to-end encryption	เปิดการเข้ารหัสต้นทางถึงปลายทาง
+Invite only	เฉพาะผู้ที่ได้รับเชิญ
+Room directory	รายชื่อห้อง
+Remove	นำออก
+Continue	ดำเนินการต่อ
+Delete	ลบ
+Room	ห้อง
+Leave space	ออกจาก Space
+Start a chat with this new contact?	เริ่มแชทกับผู้ติดต่อใหม่นี้หรือไม่?
+Files	ไฟล์
+Call	โทร
+Create a link	สร้างลิงก์
+Edit link	แก้ไขลิงก์
+Link	ลิงก์
+Avatar	รูปโปรไฟล์
+Muted	ปิดเสียง
+Pause	หยุดชั่วคราว
+Play	เล่น
+QR Code	QR Code
+Room avatar	รูปห้อง
+User menu	เมนูผู้ใช้
+Stop recording	หยุดอัด
+Add existing rooms	เพิ่มห้องที่มีอยู่
+Back	ย้อนกลับ
+Cancel	ยกเลิก
+Clear	ล้าง
+Clear all	ล้างทั้งหมด
+Close	ปิด
+Confirm	ยืนยัน
+Copy	คัดลอก
+Copy link	คัดลอกลิงก์
+Create	สร้าง
+Create room	สร้างห้อง
+Decline	ปฏิเสธ
+Deselect all	ยกเลิกการเลือกทั้งหมด
+Disable	ปิด
+Dismiss	ปิด
+Done	เสร็จ
+Download	ดาวน์โหลด
+Edit	แก้ไข
+Enable	เปิด
+Forward	ส่งต่อ
+Go back	ย้อนกลับ
+Ignore	เพิกเฉย
+Learn more	ดูเพิ่มเติม
+Leave	ออก
+Manage account	จัดการบัญชี
+Message	ข้อความ
+Minimise	ย่อเล็กสุด
+Next	ถัดไป
+No	ไม่
+Not now	ไว้ทีหลัง
+OK	ตกลง
+Settings	การตั้งค่า
+Pin	ปักหมุด
+Quote	อ้างอิง
+React	แสดงความรู้สึก
+Reply	ตอบกลับ
+Reply in thread	ตอบในเธรด
+Report	รายงาน
+Reset	รีเซ็ต
+Retry	ลองอีกครั้ง
+Save	บันทึก
+Select all	เลือกทั้งหมด
+Send	ส่ง
+Send message	ส่งข้อความ
+Send voice message	ส่งข้อความเสียง
+Share	แชร์
+Show	แสดง
+Skip	ข้าม
+Start	เริ่ม
+Start chat	เริ่มแชท
+Stop	หยุด
+Unpin	เลิกปักหมุด
+View in timeline	ดูในไทม์ไลน์
+View source	ดูซอร์ส
+Yes	ใช่
+Analytics	การวิเคราะห์
+Appearance	การแสดงผล
+Beta	เบต้า
+Code block	บล็อกโค้ด
+Description	คำอธิบาย
+Encryption enabled	เปิดการเข้ารหัสแล้ว
+Error	ข้อผิดพลาด
+Favourite	รายการโปรด
+Favourited	อยู่ในรายการโปรด
+Forward message	ส่งต่อข้อความ
+Image	รูปภาพ
+Link new device	เชื่อมอุปกรณ์ใหม่
+Loading…	กำลังโหลด…
+Message layout	รูปแบบข้อความ
+Modern	ทันสมัย
+No results	ไม่มีผลลัพธ์
+Offline	ออฟไลน์
+Other options	ตัวเลือกอื่น
+Password	รหัสผ่าน
+Private room	ห้องส่วนตัว
+Private space	Space ส่วนตัว
+Public space	Space สาธารณะ
+Reactions	ความรู้สึก
+Removing…	กำลังลบ…
+Room name	ชื่อห้อง
+Sent	ส่งแล้ว
+Space	Space
+Sticker	สติกเกอร์
+Success	สำเร็จ
+Suggested	แนะนำ
+Suggestions	คำแนะนำ
+Text	ข้อความ
+Thread	เธรด
+Threads	เธรด
+Unmute	เปิดเสียง
+Username	ชื่อผู้ใช้
+Verified	ยืนยันแล้ว
+Warning	คำเตือน
+Options	ตัวเลือก
+Pin important messages so that they can be easily discovered	ปักหมุดข้อความสำคัญไว้ให้หาเจอง่าย
+Expand	ขยาย
+Chat	แชท
+Recent searches	การค้นหาล่าสุด
+Messages	ข้อความ
+Open in OpenStreetMap	เปิดใน OpenStreetMap
+Location	ตำแหน่ง

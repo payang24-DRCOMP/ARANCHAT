@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_edit_room_address_room_address_section_footer">"ต้องมีที่อยู่ห้องก่อน จึงจะแสดงในรายชื่อห้องสาธารณะได้"</string>
+  <string name="screen_edit_room_address_title">"แก้ไขที่อยู่"</string>
+  <string name="screen_manage_authorized_spaces_header">"พื้นที่ที่สมาชิกเข้าห้องได้โดยไม่ต้องรับเชิญ"</string>
+  <string name="screen_manage_authorized_spaces_title">"จัดการพื้นที่"</string>
+  <string name="screen_manage_authorized_spaces_unknown_space">"(พื้นที่ที่ไม่รู้จัก)"</string>
+  <string name="screen_manage_authorized_spaces_unknown_spaces_section_title">"พื้นที่อื่นที่คุณไม่ได้เป็นสมาชิก"</string>
+  <string name="screen_manage_authorized_spaces_your_spaces_section_title">"พื้นที่ของคุณ"</string>
+  <string name="screen_security_and_privacy_add_room_address_action">"เพิ่มที่อยู่"</string>
+  <string name="screen_security_and_privacy_ask_to_join_multiple_spaces_members_option_description">"ทุกคนในพื้นที่ที่อนุญาตเข้าได้ คนอื่นต้องขอเข้าร่วม"</string>
+  <string name="screen_security_and_privacy_ask_to_join_option_description">"ทุกคนต้องขอเข้าร่วม"</string>
+  <string name="screen_security_and_privacy_ask_to_join_option_title">"ขอเข้าร่วม"</string>
+  <string name="screen_security_and_privacy_ask_to_join_single_space_members_option_description">"ทุกคนใน %1$s เข้าได้ คนอื่นต้องขอเข้าร่วม"</string>
+  <string name="screen_security_and_privacy_enable_encryption_alert_confirm_button_title">"ใช่ เปิดการเข้ารหัส"</string>
+  <string name="screen_security_and_privacy_enable_encryption_alert_title">"เปิดการเข้ารหัสไหม"</string>
+  <string name="screen_security_and_privacy_encryption_section_footer">"เมื่อเปิดแล้ว จะปิดการเข้ารหัสไม่ได้"</string>
+  <string name="screen_security_and_privacy_encryption_section_header">"การเข้ารหัส"</string>
+  <string name="screen_security_and_privacy_encryption_toggle_title">"เปิดการเข้ารหัสต้นทางถึงปลายทาง"</string>
+  <string name="screen_security_and_privacy_room_access_anyone_option_description">"ทุกคนเข้าร่วมได้"</string>
+  <string name="screen_security_and_privacy_room_access_anyone_option_title">"ทุกคน"</string>
+  <string name="screen_security_and_privacy_room_access_footer">"เลือกพื้นที่ที่สมาชิกเข้าห้องนี้ได้โดยไม่ต้องรับเชิญ %1$s"</string>
+  <string name="screen_security_and_privacy_room_access_footer_manage_spaces_action">"จัดการพื้นที่"</string>
+  <string name="screen_security_and_privacy_room_access_invite_only_option_description">"เฉพาะคนที่ได้รับเชิญเข้าได้"</string>
+  <string name="screen_security_and_privacy_room_access_invite_only_option_title">"เฉพาะผู้ที่ได้รับเชิญ"</string>
+  <string name="screen_security_and_privacy_room_access_section_header">"การเข้าถึง"</string>
+  <string name="screen_security_and_privacy_room_access_space_members_option_multiple_parents_description">"ทุกคนในพื้นที่ที่อนุญาตเข้าได้"</string>
+  <string name="screen_security_and_privacy_room_access_space_members_option_single_parent_description">"ทุกคนใน %1$s เข้าได้"</string>
+  <string name="screen_security_and_privacy_room_access_space_members_option_title">"สมาชิกพื้นที่"</string>
+  <string name="screen_security_and_privacy_room_access_space_members_option_unavailable_description">"ตอนนี้ยังไม่รองรับพื้นที่"</string>
+  <string name="screen_security_and_privacy_room_address_section_footer">"ต้องมีที่อยู่ห้องก่อน จึงจะแสดงในรายชื่อห้องสาธารณะได้"</string>
+  <string name="screen_security_and_privacy_room_address_section_header">"ที่อยู่"</string>
+  <string name="screen_security_and_privacy_room_directory_visibility_section_footer">"ให้ค้นหาห้องนี้ได้ในรายชื่อห้องสาธารณะของ %1$s"</string>
+  <string name="screen_security_and_privacy_room_directory_visibility_toggle_description">"ให้ค้นหาได้ในรายชื่อห้องสาธารณะ"</string>
+  <string name="screen_security_and_privacy_room_directory_visibility_toggle_title">"แสดงในรายชื่อห้องสาธารณะ"</string>
+  <string name="screen_security_and_privacy_room_history_anyone_option_title">"ทุกคน (ประวัติเป็นสาธารณะ)"</string>
+  <string name="screen_security_and_privacy_room_history_section_footer">"มีผลกับข้อความใหม่เท่านั้น ไม่กระทบข้อความเก่า %1$s"</string>
+  <string name="screen_security_and_privacy_room_history_section_header">"ใครอ่านประวัติได้"</string>
+  <string name="screen_security_and_privacy_room_history_since_invite_option_title">"สมาชิกตั้งแต่ได้รับเชิญ"</string>
+  <string name="screen_security_and_privacy_room_history_since_selecting_option_title">"สมาชิก (ประวัติทั้งหมด)"</string>
+  <string name="screen_security_and_privacy_room_publishing_section_header">"การเผยแพร่ห้อง"</string>
+  <string name="screen_security_and_privacy_room_visibility_section_footer">"ที่อยู่ใช้ค้นหาและเข้าห้องหรือพื้นที่ และแชร์ให้คนอื่นได้ง่าย"</string>
+  <string name="screen_security_and_privacy_room_visibility_section_header">"การมองเห็น"</string>
+  <string name="screen_security_and_privacy_title">"ความปลอดภัยและความเป็นส่วนตัว"</string>
+</resources>

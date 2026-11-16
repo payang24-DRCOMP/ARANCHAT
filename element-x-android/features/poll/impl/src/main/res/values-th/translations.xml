@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_create_poll_add_option_btn">"เพิ่มตัวเลือก"</string>
+  <string name="screen_create_poll_anonymous_desc">"แสดงผลเมื่อปิดโหวตแล้วเท่านั้น"</string>
+  <string name="screen_create_poll_anonymous_headline">"ซ่อนคะแนนโหวต"</string>
+  <string name="screen_create_poll_answer_hint">"ตัวเลือกที่ %1$d"</string>
+  <string name="screen_create_poll_cancel_confirmation_content_android">"ยังไม่ได้บันทึกการเปลี่ยนแปลง ต้องการย้อนกลับใช่ไหม"</string>
+  <string name="screen_create_poll_delete_option_a11y">"ลบตัวเลือก %1$s"</string>
+  <string name="screen_create_poll_question_desc">"คำถามหรือหัวข้อ"</string>
+  <string name="screen_create_poll_question_hint">"โหวตเรื่องอะไร"</string>
+  <string name="screen_create_poll_title">"สร้างโหวต"</string>
+  <string name="screen_edit_poll_delete_confirmation">"ต้องการลบโหวตนี้ใช่ไหม"</string>
+  <string name="screen_edit_poll_delete_confirmation_title">"ลบโหวต"</string>
+  <string name="screen_edit_poll_title">"แก้ไขโหวต"</string>
+  <string name="screen_polls_history_empty_ongoing">"ไม่มีโหวตที่กำลังเปิดอยู่"</string>
+  <string name="screen_polls_history_empty_past">"ไม่มีโหวตที่ผ่านมา"</string>
+  <string name="screen_polls_history_filter_ongoing">"กำลังเปิด"</string>
+  <string name="screen_polls_history_filter_past">"ที่ผ่านมา"</string>
+  <string name="screen_polls_history_title">"โพล"</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_bottom_sheet_manage_room_member_ban">"แบนผู้ใช้"</string>
+  <string name="screen_bottom_sheet_manage_room_member_ban_member_confirmation_action">"แบน"</string>
+  <string name="screen_bottom_sheet_manage_room_member_ban_member_confirmation_description">"ถ้าได้รับเชิญ จะเข้าอีกไม่ได้"</string>
+  <string name="screen_bottom_sheet_manage_room_member_ban_member_confirmation_title">"ต้องการแบนสมาชิกนี้ใช่ไหม"</string>
+  <string name="screen_bottom_sheet_manage_room_member_ban_member_from_space_confirmation_description">"ถ้าได้รับเชิญ จะเข้าพื้นที่นี้อีกไม่ได้ แต่ยังเป็นสมาชิกห้องหรือพื้นที่ย่อยต่างๆ อยู่"</string>
+  <string name="screen_bottom_sheet_manage_room_member_banning_user">"กำลังแบน %1$s"</string>
+  <string name="screen_bottom_sheet_manage_room_member_kick_member_confirmation_action">"นำออก"</string>
+  <string name="screen_bottom_sheet_manage_room_member_kick_member_confirmation_description">"ถ้าได้รับเชิญ จะเข้าห้องนี้ได้อีก"</string>
+  <string name="screen_bottom_sheet_manage_room_member_kick_member_confirmation_title">"ต้องการนำสมาชิกนี้ออกใช่ไหม"</string>
+  <string name="screen_bottom_sheet_manage_room_member_kick_member_from_space_confirmation_description">"ถ้าได้รับเชิญ จะเข้าพื้นที่นี้ได้อีก และยังเป็นสมาชิกห้องหรือพื้นที่ย่อยต่างๆ อยู่"</string>
+  <string name="screen_bottom_sheet_manage_room_member_member_user_info">"ดูโปรไฟล์"</string>
+  <string name="screen_bottom_sheet_manage_room_member_remove">"นำผู้ใช้ออก"</string>
+  <string name="screen_bottom_sheet_manage_room_member_remove_confirmation_title">"นำสมาชิกออกและแบนไม่ให้เข้าอีกไหม"</string>
+  <string name="screen_bottom_sheet_manage_room_member_removing_user">"กำลังนำ %1$s ออก…"</string>
+  <string name="screen_bottom_sheet_manage_room_member_unban">"เลิกแบนผู้ใช้"</string>
+  <string name="screen_bottom_sheet_manage_room_member_unban_member_confirmation_action">"ยกเลิกการแบน"</string>
+  <string name="screen_bottom_sheet_manage_room_member_unban_member_confirmation_description">"ถ้าได้รับเชิญ จะเข้าได้อีก"</string>
+  <string name="screen_bottom_sheet_manage_room_member_unban_member_confirmation_title">"ต้องการเลิกแบนสมาชิกนี้ใช่ไหม"</string>
+  <string name="screen_bottom_sheet_manage_room_member_unbanning_user">"กำลังเลิกแบน %1$s"</string>
+</resources>

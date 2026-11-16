@@ -1,0 +1,190 @@
+composer.placeholder_thread	ตอบในเธรด…
+composer.placeholder_thread_encrypted	ตอบในเธรด…
+composer.poll_button	โพล
+composer.poll_button_no_perms_description	คุณไม่มีสิทธิ์สร้างโพลในห้องนี้
+composer.poll_button_no_perms_title	ต้องมีสิทธิ์
+composer.replying_title	กำลังตอบกลับ
+composer.room_unencrypted	ข้อความในห้องนี้ไม่ได้เข้ารหัสต้นทางถึงปลายทาง
+composer.room_upgraded_link	การสนทนาย้ายไปที่นี่
+composer.room_upgraded_notice	ห้องนี้ถูกแทนที่แล้วและไม่ได้ใช้งานอีก
+composer.send_button_title	ส่งข้อความ
+composer.send_button_voice_message	ส่งข้อความเสียง
+composer.send_voice_message	ส่งข้อความเสียง
+composer.stop_voice_message	หยุดอัด
+composer.voice_message_button	ข้อความเสียง
+composer.url_preview.clear_all	ล้างทั้งหมด
+composer.url_preview.collapse	ย่อตัวอย่างลิงก์
+composer.url_preview.failed	โหลดตัวอย่างไม่สำเร็จ
+composer.url_preview.loading	กำลังโหลดตัวอย่าง…
+composer.url_preview.n_links.one	%(count)s ลิงก์
+composer.url_preview.n_links.other	%(count)s ลิงก์
+composer.url_preview.remove	นำตัวอย่างลิงก์ออก
+user_menu.link_new_device	เชื่อมอุปกรณ์ใหม่
+user_menu.open_feedback	ข้อเสนอแนะ
+user_menu.open_home	หน้าหลัก
+user_menu.open_security	ความปลอดภัยและความเป็นส่วนตัว
+user_menu.open_settings	การตั้งค่าทั้งหมด
+menus.user_menu.clear_status	ล้างสถานะ
+menus.user_menu.create_an_account	สร้างบัญชี
+menus.user_menu.got_an_account	มีบัญชีอยู่แล้วใช่ไหม?
+menus.user_menu.sign_in	เข้าสู่ระบบ
+menus.user_menu.title	เมนูผู้ใช้
+notifications.all_messages	ทุกข้อความ
+notifications.all_messages_description	แจ้งเตือนทุกข้อความ
+notifications.class_global	ทั้งหมด
+notifications.class_other	อื่นๆ
+notifications.default	ค่าเริ่มต้น
+notifications.email_pusher_app_display_name	การแจ้งเตือนทางอีเมล
+notifications.enable_prompt_toast_description	เปิดการแจ้งเตือนบนคอมพิวเตอร์
+notifications.enable_prompt_toast_title	การแจ้งเตือน
+notifications.enable_prompt_toast_title_from_message_send	ไม่พลาดทุกการตอบกลับ
+notifications.error_change_title	เปลี่ยนการตั้งค่าการแจ้งเตือน
+notifications.keyword	คำสำคัญ
+notifications.keyword_new	คำสำคัญใหม่
+notifications.level_activity	ความเคลื่อนไหว
+notifications.level_highlight	ไฮไลต์
+notifications.level_muted	ปิดเสียง
+notifications.level_none	ไม่มี
+notifications.level_notification	การแจ้งเตือน
+notifications.level_unsent	ยังไม่ได้ส่ง
+notifications.mark_all_read	ทำเครื่องหมายว่าอ่านทั้งหมดแล้ว
+notifications.mentions_and_keywords	เฉพาะเมื่อถูก @แท็ก และการตอบกลับ
+notifications.mentions_and_keywords_description	แจ้งเตือนเฉพาะเมื่อถูกแท็ก ตอบกลับ หรือมีคำสำคัญตามที่ตั้งไว้ใน<a>การตั้งค่า</a>
+notifications.mentions_keywords	การแท็กและคำสำคัญ
+notifications.mute_description	คุณจะไม่ได้รับการแจ้งเตือนใดๆ
+notifications.default_settings	ตามค่าเริ่มต้น
+notifications.message_didnt_send	ส่งข้อความไม่สำเร็จ แตะเพื่อดูรายละเอียด
+notifications.mute_room	ปิดเสียงห้อง
+notif_panel.empty_description	ไม่มีการแจ้งเตือน
+notif_panel.empty_heading	คุณอ่านครบทุกอย่างแล้ว
+quick_settings.all_settings	การตั้งค่าทั้งหมด
+quick_settings.sidebar_settings	ตัวเลือกเพิ่มเติม
+quick_settings.title	ตั้งค่าด่วน
+right_panel.add_integrations	เพิ่มส่วนขยาย
+right_panel.add_topic	เพิ่มหัวข้อ
+right_panel.extensions_button	ส่วนขยาย
+right_panel.extensions_empty_description	เลือก “%(addIntegrations)s” เพื่อดูและเพิ่มส่วนขยายในห้องนี้
+right_panel.extensions_empty_title	เพิ่มประสิทธิภาพด้วยเครื่องมือ วิดเจ็ต และบอต
+right_panel.files_button	ไฟล์
+right_panel.pinned_messages.empty_description	เลือกข้อความแล้วกด “%(pinAction)s” เพื่อให้แสดงที่นี่
+right_panel.pinned_messages.empty_title	ปักหมุดข้อความสำคัญไว้ให้หาเจอง่าย
+right_panel.pinned_messages.header.one	ข้อความที่ปักหมุด 1 ข้อความ
+right_panel.pinned_messages.header.other	ข้อความที่ปักหมุด %(count)s ข้อความ
+right_panel.pinned_messages.header.zero	ข้อความที่ปักหมุด
+right_panel.pinned_messages.limits.other	ปักหมุดวิดเจ็ตได้สูงสุด %(count)s รายการ
+right_panel.pinned_messages.menu	เปิดเมนู
+right_panel.pinned_messages.reply_thread	ตอบกลับ<link>ข้อความในเธรด</link>
+right_panel.pinned_messages.unpin_all.button	เลิกปักหมุดทั้งหมด
+right_panel.pinned_messages.unpin_all.content	แน่ใจหรือไม่ว่าต้องการเลิกปักหมุดข้อความทั้งหมด ย้อนกลับไม่ได้
+right_panel.pinned_messages.unpin_all.title	เลิกปักหมุดทั้งหมดหรือไม่?
+right_panel.pinned_messages.view	ดูในไทม์ไลน์
+right_panel.pinned_messages_button	ข้อความที่ปักหมุด
+right_panel.poll.active_heading	โพลที่เปิดอยู่
+right_panel.poll.empty_active	ไม่มีโพลที่เปิดอยู่ในห้องนี้
+right_panel.poll.empty_active_load_more	ไม่มีโพลที่เปิดอยู่ โหลดเพิ่มเพื่อดูโพลของเดือนก่อนๆ
+right_panel.poll.empty_active_load_more_n_days.one	ไม่มีโพลที่เปิดอยู่ในวันที่ผ่านมา โหลดเพิ่มเพื่อดูโพลของเดือนก่อนๆ
+right_panel.poll.empty_active_load_more_n_days.other	ไม่มีโพลที่เปิดอยู่ใน %(count)s วันที่ผ่านมา โหลดเพิ่มเพื่อดูโพลของเดือนก่อนๆ
+right_panel.poll.empty_past	ไม่มีโพลที่ผ่านมาในห้องนี้
+right_panel.poll.empty_past_load_more	ไม่มีโพลที่ผ่านมา โหลดเพิ่มเพื่อดูโพลของเดือนก่อนๆ
+right_panel.poll.empty_past_load_more_n_days.one	ไม่มีโพลในวันที่ผ่านมา โหลดเพิ่มเพื่อดูโพลของเดือนก่อนๆ
+right_panel.poll.empty_past_load_more_n_days.other	ไม่มีโพลใน %(count)s วันที่ผ่านมา โหลดเพิ่มเพื่อดูโพลของเดือนก่อนๆ
+right_panel.poll.final_result.one	ผลสุดท้ายจาก %(count)s เสียง
+right_panel.poll.final_result.other	ผลสุดท้ายจาก %(count)s เสียง
+right_panel.poll.load_more	โหลดโพลเพิ่ม
+right_panel.poll.loading	กำลังโหลดโพล
+right_panel.poll.past_heading	โพลที่ผ่านมา
+right_panel.poll.view_in_timeline	ดูโพลในไทม์ไลน์
+right_panel.poll.view_poll	ดูโพล
+right_panel.polls_button	โพล
+right_panel.room_summary_card.title	ข้อมูลห้อง
+right_panel.thread_list.context_menu_label	ตัวเลือกเธรด
+right_panel.video_room_chat.title	แชท
+space.add_existing_room_space.create	ต้องการเพิ่มห้องใหม่แทนใช่ไหม?
+space.add_existing_room_space.create_prompt	สร้างห้องใหม่
+space.add_existing_room_space.dm_heading	แชทส่วนตัว
+space.add_existing_room_space.error_heading	เพิ่มรายการที่เลือกได้ไม่ครบ
+space.add_existing_room_space.progress_text.one	กำลังเพิ่มห้อง...
+space.add_existing_room_space.progress_text.other	กำลังเพิ่มห้อง... (%(progress)s จาก %(count)s)
+space.add_existing_room_space.space_dropdown_label	เลือก Space
+space.add_existing_room_space.space_dropdown_title	เพิ่มห้องที่มีอยู่
+space.add_existing_room_space.subspace_moved_note	การเพิ่ม Space ย้ายไปที่อื่นแล้ว
+space.add_existing_subspace.create_button	สร้าง Space ใหม่
+space.add_existing_subspace.create_prompt	ต้องการเพิ่ม Space ใหม่แทนใช่ไหม?
+space.add_existing_subspace.filter_placeholder	ค้นหา Space
+space.add_existing_subspace.space_dropdown_title	เพิ่ม Space ที่มีอยู่
+space.context_menu.devtools_open_timeline	ดูไทม์ไลน์ห้อง (devtools)
+space.context_menu.explore	สำรวจห้อง
+space.context_menu.home	หน้าหลักของ Space
+space.context_menu.manage_and_explore	จัดการและสำรวจห้อง
+space.context_menu.options	ตัวเลือก Space
+space.failed_load_rooms	โหลดรายการห้องไม่สำเร็จ
+space.failed_remove_rooms	นำบางห้องออกไม่สำเร็จ ลองใหม่ภายหลัง
+space.incompatible_server_hierarchy	ผู้ให้บริการบัญชีของคุณไม่รองรับการแสดงโครงสร้าง Space
+space.invite	เชิญผู้คน
+space.invite_description	เชิญด้วยอีเมลหรือชื่อผู้ใช้
+space.invite_link	แชร์ลิงก์คำเชิญ
+space.joining_space	กำลังเข้าร่วม
+space.landing_welcome	ยินดีต้อนรับสู่ <name/>
+space.leave_dialog_action	ออกจาก Space
+space.leave_dialog_description	คุณกำลังจะออกจาก <spaceName/>
+space.leave_dialog_only_admin_room_warning	คุณเป็นผู้ดูแลคนเดียวของบางห้องหรือ Space ที่จะออก ถ้าออกไป ห้องเหล่านั้นจะไม่มีผู้ดูแลเหลืออยู่
+space.leave_dialog_only_admin_warning	คุณเป็นผู้ดูแลคนเดียวของ Space นี้ ถ้าออกไปจะไม่มีใครจัดการได้
+space.leave_dialog_option_all	ออกจากทุกห้อง
+space.leave_dialog_option_intro	ต้องการออกจากห้องใน Space นี้ด้วยหรือไม่?
+space.leave_dialog_option_none	ไม่ออกจากห้องใดเลย
+space.leave_dialog_option_specific	ออกจากบางห้อง
+space.leave_dialog_public_rejoin_warning	คุณจะกลับเข้ามาไม่ได้ จนกว่าจะได้รับเชิญอีกครั้ง
+space.leave_dialog_title	ออกจาก %(spaceName)s
+space.mark_suggested	ทำเครื่องหมายว่าแนะนำ
+space.no_search_result_hint	ลองค้นหาด้วยคำอื่น หรือตรวจตัวสะกด
+space.preferences.sections_section	หมวดที่แสดง
+space.preferences.show_people_in_space	จัดกลุ่มแชทของคุณกับสมาชิกใน Space นี้ ถ้าปิด แชทเหล่านั้นจะไม่แสดงในมุมมอง %(spaceName)s
+space.room_filter_placeholder	ค้นหาห้อง
+space.search_children	ค้นหาใน %(spaceName)s
+space.search_placeholder	ค้นหาชื่อและคำอธิบาย
+space.select_room_below	เลือกห้องด้านล่างก่อน
+space.share_public	แชร์ Space สาธารณะของคุณ
+space.suggested	แนะนำ
+space.suggested_tooltip	ห้องนี้แนะนำให้เข้าร่วม
+space.title_when_query_available	ผลลัพธ์
+space.title_when_query_unavailable	ห้องและ Space
+space.unmark_suggested	ยกเลิกการแนะนำ
+space.user_lacks_permission	คุณไม่มีสิทธิ์
+create_room.action_create_room	สร้างห้อง
+create_room.action_create_video_room	สร้างห้องวิดีโอ
+create_room.encrypted_video_room_warning	ปิดภายหลังไม่ได้ ห้องจะถูกเข้ารหัส แต่การโทรในห้องจะไม่เข้ารหัส
+create_room.encrypted_warning	ปิดภายหลังไม่ได้ บริดจ์และบอตส่วนใหญ่จะยังใช้ไม่ได้
+create_room.encryption_forced	เซิร์ฟเวอร์กำหนดให้ห้องส่วนตัวต้องเข้ารหัส
+create_room.encryption_label	เปิดการเข้ารหัสต้นทางถึงปลายทาง
+create_room.error_title	สร้างห้องไม่สำเร็จ
+create_room.generic_error	เซิร์ฟเวอร์อาจไม่พร้อมใช้งาน ทำงานหนักเกินไป หรือพบข้อผิดพลาด
+create_room.join_rule_change_notice	เปลี่ยนได้ทุกเมื่อในการตั้งค่าห้อง
+create_room.join_rule_invite	เฉพาะผู้ที่ได้รับเชิญ
+create_room.join_rule_invite_label	เฉพาะผู้ที่ได้รับเชิญเท่านั้นที่จะค้นหาและเข้าห้องนี้ได้
+create_room.join_rule_knock_label	ทุกคนขอเข้าร่วมได้ แต่ผู้ดูแลหรือผู้ควบคุมต้องอนุมัติ เปลี่ยนภายหลังได้
+create_room.join_rule_public_label	ทุกคนเข้าร่วมได้
+create_room.join_rule_public_parent_space_label	ทุกคนเข้าร่วมได้ ไม่จำกัดเฉพาะสมาชิกของ <SpaceName/>
+create_room.join_rule_restricted	มาตรฐาน
+create_room.join_rule_restricted_label	ทุกคนใน <SpaceName/> เข้าร่วมได้
+create_room.name_validation_required	โปรดตั้งชื่อห้อง
+create_room.room_visibility_label	การมองเห็นห้อง
+create_room.state_encrypted_warning	เปิดการเข้ารหัสข้อมูลสถานะแบบทดลอง ซ่อนข้อมูลอย่างชื่อห้องและหัวข้อจากเซิร์ฟเวอร์ ข้อมูลนี้จะถูกซ่อนจากผู้ที่เข้าห้องภายหลัง และผู้ที่ใช้แอปที่ไม่รองรับ MSC4362 ด้วย
+create_room.state_encryption_label	เข้ารหัสข้อมูลสถานะ
+create_room.title_private_room	สร้างห้องส่วนตัว
+create_room.title_public_room	สร้างห้องสาธารณะ
+create_room.title_video_room	สร้างห้องวิดีโอ
+create_room.topic_label	หัวข้อ (ไม่บังคับ)
+create_room.unfederated	ห้ามผู้ที่ไม่ได้อยู่ใน %(serverName)s เข้าห้องนี้
+create_room.unfederated_label_default_off	เปิดตัวเลือกนี้ถ้าห้องใช้ทำงานร่วมกันภายในหน่วยงานเท่านั้น เปลี่ยนภายหลังไม่ได้
+create_room.unfederated_label_default_on	ปิดตัวเลือกนี้ถ้าห้องใช้ทำงานร่วมกับทีมภายนอกที่มีผู้ให้บริการบัญชีของตนเอง เปลี่ยนภายหลังไม่ได้
+create_room.unsupported_version	เซิร์ฟเวอร์ไม่รองรับเวอร์ชันห้องที่ระบุ
+invite.confirm_unknown_users.invite_subtitle	คุณยังไม่เคยแชทกับผู้ติดต่อเหล่านี้
+invite.confirm_unknown_users.invite_title	เชิญผู้ติดต่อใหม่เข้าแชทนี้หรือไม่?
+invite.confirm_unknown_users.start_chat_subtitle_multiple_users	คุณยังไม่เคยแชทกับผู้ติดต่อเหล่านี้
+invite.confirm_unknown_users.start_chat_subtitle_one_user	คุณยังไม่เคยแชทกับผู้ติดต่อนี้
+invite.confirm_unknown_users.start_chat_title_multiple_users	เริ่มแชทกับผู้ติดต่อใหม่เหล่านี้หรือไม่?
+invite.confirm_unknown_users.start_chat_title_one_user	เริ่มแชทกับผู้ติดต่อใหม่นี้หรือไม่?
+invite.email_caption	เชิญทางอีเมล
+invite.email_limit_one	เชิญทางอีเมลได้ครั้งละหนึ่งคน
+invite.email_use_default_is	ใช้เซิร์ฟเวอร์ยืนยันตัวตนเพื่อเชิญทางอีเมล <default>ใช้ค่าเริ่มต้น (%(defaultIdentityServerName)s)</default> หรือจัดการใน<settings>การตั้งค่า</settings>
+invite.email_use_is	ใช้เซิร์ฟเวอร์ยืนยันตัวตนเพื่อเชิญทางอีเมล จัดการได้ใน<settings>การตั้งค่า</settings>

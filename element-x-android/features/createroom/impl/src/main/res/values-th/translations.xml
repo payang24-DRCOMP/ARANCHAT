@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_create_room_action_create_room">"ห้องใหม่"</string>
+  <string name="screen_create_room_add_people_title">"เชิญผู้คน"</string>
+  <string name="screen_create_room_error_creating_room">"เกิดข้อผิดพลาดขณะสร้างห้อง"</string>
+  <string name="screen_create_room_error_creating_space">"สร้างพื้นที่ไม่ได้ เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ โปรดลองใหม่ภายหลัง"</string>
+  <string name="screen_create_room_name_placeholder">"ตั้งชื่อ…"</string>
+  <string name="screen_create_room_new_room_title">"ห้องใหม่"</string>
+  <string name="screen_create_room_new_space_title">"พื้นที่ใหม่"</string>
+  <string name="screen_create_room_private_option_description">"เฉพาะคนที่ได้รับเชิญเท่านั้นที่เข้าได้"</string>
+  <string name="screen_create_room_private_option_title">"ส่วนตัว"</string>
+  <string name="screen_create_room_public_option_short_description">"ทุกคนเข้าร่วมได้"</string>
+  <string name="screen_create_room_public_option_title">"สาธารณะ"</string>
+  <string name="screen_create_room_room_access_section_knocking_option_description">"ทุกคนขอเข้าร่วมได้ แต่ผู้ดูแลหรือผู้ควบคุมต้องอนุมัติก่อน"</string>
+  <string name="screen_create_room_room_access_section_knocking_option_title">"อนุญาตให้ขอเข้าร่วม"</string>
+  <string name="screen_create_room_room_access_section_knocking_restricted_option_description">"ทุกคนใน %1$s เข้าได้ คนอื่นต้องขอเข้าร่วม"</string>
+  <string name="screen_create_room_room_access_section_knocking_restricted_option_title">"ขอเข้าร่วม"</string>
+  <string name="screen_create_room_room_access_section_private_option_description">"เฉพาะคนที่ได้รับเชิญเท่านั้นที่เข้าได้"</string>
+  <string name="screen_create_room_room_access_section_private_option_title">"ส่วนตัว"</string>
+  <string name="screen_create_room_room_access_section_public_option_description">"ทุกคนเข้าร่วมได้"</string>
+  <string name="screen_create_room_room_access_section_public_option_title">"สาธารณะ"</string>
+  <string name="screen_create_room_room_access_section_restricted_option_description">"ทุกคนใน %1$s เข้าได้"</string>
+  <string name="screen_create_room_room_access_section_restricted_option_title">"มาตรฐาน"</string>
+  <string name="screen_create_room_room_access_section_title">"ใครเข้าได้บ้าง"</string>
+  <string name="screen_create_room_room_address_section_footer">"ต้องมีที่อยู่ห้องก่อน จึงจะแสดงในรายชื่อห้องสาธารณะได้"</string>
+  <string name="screen_create_room_room_address_section_title">"ที่อยู่"</string>
+  <string name="screen_create_room_room_visibility_section_title">"การมองเห็นห้อง"</string>
+  <string name="screen_create_room_space_selection_no_space_description">"(ไม่มีพื้นที่)"</string>
+  <string name="screen_create_room_space_selection_no_space_option">"ไม่เพิ่มในพื้นที่"</string>
+  <string name="screen_create_room_space_selection_no_space_title">"ยังไม่ได้เลือกพื้นที่"</string>
+  <string name="screen_create_room_space_selection_sheet_title">"เพิ่มในพื้นที่"</string>
+  <string name="screen_create_room_topic_label">"หัวข้อ (ไม่บังคับ)"</string>
+  <string name="screen_create_room_topic_placeholder">"เพิ่มคำอธิบาย…"</string>
+</resources>

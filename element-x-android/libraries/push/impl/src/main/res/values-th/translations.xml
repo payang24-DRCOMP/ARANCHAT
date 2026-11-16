@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="notification_channel_call">"โทร"</string>
+  <string name="notification_channel_listening_for_events">"รอฟังเหตุการณ์"</string>
+  <string name="notification_channel_noisy">"การแจ้งเตือนแบบมีเสียง"</string>
+  <string name="notification_channel_ringing_calls">"สายเรียกเข้า"</string>
+  <string name="notification_channel_silent">"การแจ้งเตือนแบบเงียบ"</string>
+  <plurals name="notification_compat_summary_line_for_room">
+    <item quantity="other">"%1$s: %2$d ข้อความ"</item>
+  </plurals>
+  <plurals name="notification_compat_summary_title">
+    <item quantity="other">"%d การแจ้งเตือน"</item>
+  </plurals>
+  <string name="notification_error_unified_push_unregistered_android">"ลงทะเบียนตัวส่งการแจ้งเตือน UnifiedPush ไม่ได้ จะไม่ได้รับการแจ้งเตือนอีก โปรดตรวจตั้งค่าการแจ้งเตือนของแอปและสถานะตัวส่งการแจ้งเตือน"</string>
+  <string name="notification_fallback_content">"คุณมีข้อความใหม่"</string>
+  <plurals name="notification_fallback_n_content">
+    <item quantity="other">"คุณมีข้อความใหม่ %d ข้อความ"</item>
+  </plurals>
+  <plurals name="notification_gallery_body">
+    <item quantity="other">"แชร์ไฟล์แนบ %1$d รายการ"</item>
+  </plurals>
+  <string name="notification_incoming_audio_call">"📞 สายเรียกเข้า"</string>
+  <string name="notification_incoming_call">"📹 วิดีโอคอลเข้า"</string>
+  <string name="notification_inline_reply_failed">"** ส่งไม่สำเร็จ โปรดเปิดห้อง"</string>
+  <string name="notification_invitation_action_join">"เข้าร่วม"</string>
+  <string name="notification_invitation_action_reject">"ปฏิเสธ"</string>
+  <plurals name="notification_invitations">
+    <item quantity="other">"%d คำเชิญ"</item>
+  </plurals>
+  <string name="notification_invite_body">"เชิญคุณแชท"</string>
+  <string name="notification_invite_body_with_sender">"%1$s เชิญคุณแชท"</string>
+  <string name="notification_knock_request_body">"ขอเข้าร่วม"</string>
+  <string name="notification_live_location_started_body">"เริ่มแชร์ตำแหน่งสด"</string>
+  <string name="notification_mentioned_you_body">"กล่าวถึงคุณ: %1$s"</string>
+  <string name="notification_new_messages">"ข้อความใหม่"</string>
+  <plurals name="notification_new_messages_for_room">
+    <item quantity="other">"%d ข้อความใหม่"</item>
+  </plurals>
+  <string name="notification_reaction_body">"ตอบกลับด้วย %1$s"</string>
+  <string name="notification_room_action_mark_as_read">"ทำเครื่องหมายว่าอ่านแล้ว"</string>
+  <string name="notification_room_action_quick_reply">"ตอบกลับด่วน"</string>
+  <string name="notification_room_invite_body">"เชิญคุณเข้าห้อง"</string>
+  <string name="notification_room_invite_body_with_sender">"%1$s เชิญคุณเข้าห้อง"</string>
+  <string name="notification_sender_me">"ฉัน"</string>
+  <string name="notification_sender_mention_reply">"%1$s กล่าวถึงหรือตอบกลับ"</string>
+  <string name="notification_space_invite_body">"เชิญคุณเข้าพื้นที่"</string>
+  <string name="notification_space_invite_body_with_sender">"%1$s เชิญคุณเข้าพื้นที่"</string>
+  <string name="notification_test_push_notification_content">"คุณกำลังดูการแจ้งเตือนอยู่ แตะที่นี่"</string>
+  <string name="notification_thread_in_room">"เธรดใน %1$s"</string>
+  <string name="notification_ticker_text_dm">"%1$s: %2$s"</string>
+  <string name="notification_ticker_text_group">"%1$s: %2$s %3$s"</string>
+  <plurals name="notification_unread_notified_messages">
+    <item quantity="other">"%d ข้อความที่แจ้งเตือนแต่ยังไม่อ่าน"</item>
+  </plurals>
+  <string name="notification_unread_notified_messages_and_invitation">"%1$s และ %2$s"</string>
+  <string name="notification_unread_notified_messages_in_room">"%1$s ใน %2$s"</string>
+  <string name="notification_unread_notified_messages_in_room_and_invitation">"%1$s ใน %2$s และ %3$s"</string>
+  <plurals name="notification_unread_notified_messages_in_room_rooms">
+    <item quantity="other">"%d ห้อง"</item>
+  </plurals>
+  <string name="push_distributor_background_sync_android">"ซิงก์เบื้องหลัง"</string>
+  <string name="push_distributor_firebase_android">"บริการ Google"</string>
+  <string name="push_no_valid_google_play_services_apk_android">"ไม่พบ Google Play Services ที่ใช้งานได้ การแจ้งเตือนอาจทำงานไม่ถูกต้อง"</string>
+  <string name="troubleshoot_notifications_test_blocked_users_description">"กำลังตรวจผู้ใช้ที่ถูกบล็อก"</string>
+  <string name="troubleshoot_notifications_test_blocked_users_quick_fix">"ดูผู้ใช้ที่ถูกบล็อก"</string>
+  <string name="troubleshoot_notifications_test_blocked_users_result_none">"ไม่มีผู้ใช้ที่ถูกบล็อก"</string>
+  <plurals name="troubleshoot_notifications_test_blocked_users_result_some">
+    <item quantity="other">"คุณบล็อกผู้ใช้ %1$d คน จะไม่ได้รับการแจ้งเตือนจากผู้ใช้เหล่านี้"</item>
+  </plurals>
+  <string name="troubleshoot_notifications_test_blocked_users_title">"ผู้ใช้ที่ถูกบล็อก"</string>
+  <string name="troubleshoot_notifications_test_current_push_provider_description">"ดูชื่อผู้ให้บริการปัจจุบัน"</string>
+  <string name="troubleshoot_notifications_test_current_push_provider_failure">"ยังไม่ได้เลือกผู้ให้บริการการแจ้งเตือน"</string>
+  <string name="troubleshoot_notifications_test_current_push_provider_failure_distributor_not_found">"ผู้ให้บริการการแจ้งเตือนปัจจุบัน: %1$s ตัวส่ง: %2$s แต่ไม่พบตัวส่ง %3$s อาจถูกถอนการติดตั้งไปแล้ว"</string>
+  <string name="troubleshoot_notifications_test_current_push_provider_failure_no_distributor">"ผู้ให้บริการการแจ้งเตือนปัจจุบัน: %1$s แต่ยังไม่ได้ตั้งค่าตัวส่ง"</string>
+  <string name="troubleshoot_notifications_test_current_push_provider_success">"ผู้ให้บริการการแจ้งเตือนปัจจุบัน: %1$s"</string>
+  <string name="troubleshoot_notifications_test_current_push_provider_success_with_distributor">"ผู้ให้บริการการแจ้งเตือนปัจจุบัน: %1$s (%2$s)"</string>
+  <string name="troubleshoot_notifications_test_current_push_provider_title">"ผู้ให้บริการการแจ้งเตือนปัจจุบัน"</string>
+  <string name="troubleshoot_notifications_test_detect_push_provider_description">"ตรวจว่าแอปรองรับผู้ให้บริการการแจ้งเตือนอย่างน้อยหนึ่งราย"</string>
+  <string name="troubleshoot_notifications_test_detect_push_provider_failure">"ไม่พบผู้ให้บริการการแจ้งเตือนที่รองรับ"</string>
+  <plurals name="troubleshoot_notifications_test_detect_push_provider_success">
+    <item quantity="other">"พบผู้ให้บริการการแจ้งเตือน %1$d ราย: %2$s"</item>
+  </plurals>
+  <string name="troubleshoot_notifications_test_detect_push_provider_success_2">"แอปนี้รองรับ: %1$s"</string>
+  <string name="troubleshoot_notifications_test_detect_push_provider_title">"การรองรับผู้ให้บริการการแจ้งเตือน"</string>
+  <string name="troubleshoot_notifications_test_display_notification_description">"ตรวจว่าแอปแสดงการแจ้งเตือนได้"</string>
+  <string name="troubleshoot_notifications_test_display_notification_failure">"ยังไม่ได้แตะการแจ้งเตือน"</string>
+  <string name="troubleshoot_notifications_test_display_notification_permission_failure">"แสดงการแจ้งเตือนไม่ได้"</string>
+  <string name="troubleshoot_notifications_test_display_notification_success">"แตะการแจ้งเตือนแล้ว"</string>
+  <string name="troubleshoot_notifications_test_display_notification_title">"แสดงการแจ้งเตือน"</string>
+  <string name="troubleshoot_notifications_test_display_notification_waiting">"โปรดแตะการแจ้งเตือนเพื่อทดสอบต่อ"</string>
+  <string name="troubleshoot_notifications_test_push_loop_back_description">"ตรวจว่าแอปได้รับการแจ้งเตือนแบบ push"</string>
+  <string name="troubleshoot_notifications_test_push_loop_back_failure_1">"ผิดพลาด: ตัวส่งปฏิเสธคำขอ"</string>
+  <string name="troubleshoot_notifications_test_push_loop_back_failure_2">"ผิดพลาด: %1$s"</string>
+  <string name="troubleshoot_notifications_test_push_loop_back_failure_3">"ผิดพลาด ทดสอบการแจ้งเตือนไม่ได้"</string>
+  <string name="troubleshoot_notifications_test_push_loop_back_failure_4">"ผิดพลาด รอการแจ้งเตือนจนหมดเวลา"</string>
+  <string name="troubleshoot_notifications_test_push_loop_back_failure_rate_limit">"ผิดพลาด: เกตเวย์แจ้งเตือนจำกัดความถี่ของอุปกรณ์นี้ การแจ้งเตือนจะไม่เสถียร โปรดตั้งเกตเวย์อื่น"</string>
+  <string name="troubleshoot_notifications_test_push_loop_back_success">"การแจ้งเตือนวนกลับใช้เวลา %1$d มิลลิวินาที"</string>
+  <string name="troubleshoot_notifications_test_push_loop_back_title">"ทดสอบการแจ้งเตือนวนกลับ"</string>
+</resources>

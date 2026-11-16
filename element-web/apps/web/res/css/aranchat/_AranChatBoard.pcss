@@ -1,0 +1,352 @@
+/* AranChat — โน้ต / อัลบั้มของกลุ่ม (src/aranchat/AranBoard.tsx) */
+
+.mx_AranBoard {
+    width: min(560px, calc(100vw - 32px));
+    .mx_Dialog_title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+.mx_AranBoard_tabs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--cpd-color-border-interactive-secondary);
+}
+.mx_AranBoard_tab {
+    padding: 8px 14px;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    background: none;
+    color: var(--cpd-color-text-secondary);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    &[aria-selected="true"] {
+        color: #5b3fd9;
+        border-bottom-color: #5b3fd9;
+    }
+}
+.mx_AranBoard_new {
+    margin-left: auto;
+    padding: 6px 14px;
+    border: 0;
+    border-radius: 999px;
+    background: #5b3fd9;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.mx_AranBoard_body {
+    min-height: 200px;
+    max-height: min(62vh, 640px);
+    overflow-y: auto;
+}
+.mx_AranBoard_empty,
+.mx_AranBoard_hint {
+    color: var(--cpd-color-text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+.mx_AranBoard_empty {
+    padding: 32px 12px;
+    text-align: center;
+}
+.mx_AranBoard_error {
+    color: var(--cpd-color-text-critical-primary);
+    font-size: 14px;
+}
+
+/* ปุ่ม */
+.mx_AranBoard_actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+}
+.mx_AranBoard_btn {
+    padding: 8px 16px;
+    border: 1.5px solid #d9d0f5;
+    border-radius: 999px;
+    background: none;
+    color: #5b3fd9;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+}
+.mx_AranBoard_primary {
+    background: #5b3fd9;
+    border-color: #5b3fd9;
+    color: #fff;
+}
+.mx_AranBoard_danger {
+    margin-left: auto;
+    border-color: transparent;
+    color: var(--cpd-color-text-critical-primary);
+}
+.mx_AranBoard_back {
+    padding: 4px 0;
+    margin-bottom: 8px;
+    border: 0;
+    background: none;
+    color: #5b3fd9;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* โน้ต */
+.mx_AranBoard_notes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.mx_AranBoard_noteRow {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 14px;
+    border: 1px solid var(--cpd-color-border-interactive-secondary);
+    border-left: 4px solid #f59e0b;
+    border-radius: 12px;
+    background: var(--cpd-color-bg-canvas-default);
+    color: var(--cpd-color-text-primary);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    &:hover {
+        background: var(--cpd-color-bg-subtle-secondary);
+    }
+    b {
+        font-size: 15px;
+    }
+    small {
+        color: var(--cpd-color-text-secondary);
+    }
+}
+.mx_AranBoard_preview {
+    color: var(--cpd-color-text-secondary);
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mx_AranBoard_noteText {
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: #fffbeb;
+    color: #1e1350;
+    font-size: 15px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+    &::first-line {
+        font-size: 17px;
+        font-weight: 700;
+    }
+}
+.mx_AranBoard_meta {
+    display: block;
+    margin-top: 8px;
+    color: var(--cpd-color-text-secondary);
+}
+.mx_AranBoard_editor {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.mx_AranBoard_textarea,
+.mx_AranBoard_input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1.5px solid #d9d0f5;
+    border-radius: 12px;
+    background: var(--cpd-color-bg-canvas-default);
+    color: var(--cpd-color-text-primary);
+    font: inherit;
+    font-size: 15px;
+    line-height: 1.6;
+    &:focus {
+        outline: none;
+        border-color: #5b3fd9;
+    }
+}
+.mx_AranBoard_textarea {
+    min-height: 240px;
+    resize: vertical;
+}
+
+/* อัลบั้ม */
+.mx_AranBoard_albums {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+}
+.mx_AranBoard_albumTile {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--cpd-color-text-primary);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    b {
+        margin-top: 6px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    small {
+        color: var(--cpd-color-text-secondary);
+    }
+}
+.mx_AranBoard_cover {
+    aspect-ratio: 1;
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    font-size: 40px;
+    .mx_AranBoard_thumb {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+.mx_AranBoard_albumName {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-size: 18px;
+    small {
+        font-size: 13px;
+        font-weight: normal;
+        color: var(--cpd-color-text-secondary);
+    }
+}
+.mx_AranBoard_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 4px;
+}
+.mx_AranBoard_grid_small {
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+}
+.mx_AranBoard_thumb {
+    position: relative;
+    display: block;
+    aspect-ratio: 1;
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--cpd-color-bg-subtle-secondary);
+    cursor: pointer;
+    &:disabled {
+        cursor: inherit;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+.mx_AranBoard_play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 28px;
+    text-shadow: 0 1px 6px rgb(0 0 0 / 50%);
+}
+
+/* การ์ดในแชท */
+.mx_AranBoardCard {
+    width: 260px;
+    max-width: 100%;
+    background: #fff;
+    color: #1e1350;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgb(46 31 122 / 12%);
+}
+.mx_AranBoardCard_head {
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #f59e0b, #ea580c);
+}
+.mx_AranBoardCard_title {
+    display: block;
+    padding: 12px 14px 4px;
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mx_AranBoardCard_preview {
+    padding: 0 14px 10px;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.mx_AranBoardCard_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    padding: 6px 14px 12px;
+    .mx_AranBoard_thumb {
+        border-radius: 4px;
+    }
+}
+.mx_AranBoardCard_cell {
+    position: relative;
+}
+.mx_AranBoardCard_more {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0 0 0 / 45%);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 4px;
+}
+.mx_AranBoardCard_btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    border-top: 1px solid #eee;
+    background: none;
+    color: #5b3fd9;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+        background: #f6f3ff;
+    }
+}

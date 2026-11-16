@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat: aranchat/i18n/apply-th.py (อย่าแก้ไฟล์นี้ตรงๆ) -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="screen_deactivate_account_confirmation_dialog_content">"ยืนยันว่าต้องการลบบัญชี การกระทำนี้ย้อนกลับไม่ได้"</string>
+  <string name="screen_deactivate_account_delete_all_messages">"ลบข้อความทั้งหมดของฉัน"</string>
+  <string name="screen_deactivate_account_delete_all_messages_notice">"คำเตือน: ผู้ใช้ในอนาคตอาจเห็นบทสนทนาไม่ครบ"</string>
+  <string name="screen_deactivate_account_description">"การลบบัญชีเป็นการกระทำที่%1$s และจะ:"</string>
+  <string name="screen_deactivate_account_description_bold_part">"ย้อนกลับไม่ได้"</string>
+  <string name="screen_deactivate_account_list_item_1">"%1$s บัญชีของคุณ (เข้าสู่ระบบอีกไม่ได้ และใช้ ID เดิมซ้ำไม่ได้)"</string>
+  <string name="screen_deactivate_account_list_item_1_bold_part">"ปิดใช้งานถาวร"</string>
+  <string name="screen_deactivate_account_list_item_2">"นำคุณออกจากห้องแชททั้งหมด"</string>
+  <string name="screen_deactivate_account_list_item_3">"ลบข้อมูลบัญชีของคุณออกจากเซิร์ฟเวอร์ระบุตัวตน"</string>
+  <string name="screen_deactivate_account_list_item_4">"ผู้ใช้ที่ลงทะเบียนแล้วยังเห็นข้อความของคุณ แต่ผู้ใช้ใหม่หรือผู้ไม่ได้ลงทะเบียนจะไม่เห็น หากคุณเลือกลบข้อความ"</string>
+  <string name="screen_deactivate_account_title">"ลบบัญชี"</string>
+</resources>
