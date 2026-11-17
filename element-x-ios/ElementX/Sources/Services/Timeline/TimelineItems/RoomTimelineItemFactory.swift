@@ -198,14 +198,20 @@ nonisolated struct RoomTimelineItemFactory: RoomTimelineItemFactoryProtocol {
                                        _ messageContent: MessageContent,
                                        _ textMessageContent: TextMessageContent,
                                        _ isOutgoing: Bool) -> RoomTimelineItemProtocol {
-        TextRoomTimelineItem(id: eventItemProxy.id,
+        var content = buildTextTimelineItemContent(textMessageContent)
+        // AranChat: the SDK drops custom content keys, so the card is read from the event's raw JSON (bot messages only).
+        if AranCard.isCardSender(eventItemProxy.sender.id) {
+            let debugInfo = eventItemProxy.debugInfo
+            content.aranCard = AranCard.from(originalJSON: debugInfo.originalJSON, latestEditJSON: debugInfo.latestEditJSON)
+        }
+        return TextRoomTimelineItem(id: eventItemProxy.id,
                              timestamp: eventItemProxy.timestamp,
                              isOutgoing: isOutgoing,
                              isEditable: eventItemProxy.isEditable,
                              canBeRepliedTo: eventItemProxy.canBeRepliedTo,
                              shouldBoost: eventItemProxy.shouldBoost,
                              sender: eventItemProxy.sender,
-                             content: buildTextTimelineItemContent(textMessageContent),
+                             content: content,
                              properties: .init(replyDetails: buildTimelineItemReplyDetails(messageLikeContent.inReplyTo),
                                                isThreaded: messageLikeContent.threadRoot != nil,
                                                threadSummary: buildTimelineItemThreadSummary(messageLikeContent.threadSummary),

@@ -125,6 +125,47 @@ function critical(item, sex) {
   return null;
 }
 
+/** ผลทุกรายการของใบสั่ง (แสดงเป็นตารางในการ์ดค่าวิกฤต) — ช่วงปกติ + เกณฑ์วิกฤตตามเพศ */
+const SQL_ORDER_ITEMS = `
+    SELECT o.lab_order_number no, i.lab_items_code code, COALESCE(NULLIF(i.lab_items_display_name, ''), i.lab_items_name) name,
+           i.lab_items_unit unit, o.lab_order_result result,
+           COALESCE(NULLIF(o.lab_items_normal_value_ref, ''), i.lab_items_normal_value) normal,
+           i.range_check_min nmin_m, i.range_check_max nmax_m, i.range_check_min_female nmin_f, i.range_check_max_female nmax_f,
+           i.critical_range_min_male min_m, i.critical_range_max_male max_m, i.critical_range_min_female min_f, i.critical_range_max_female max_f
+      FROM lab_order o JOIN lab_items i ON i.lab_items_code = o.lab_items_code
+     WHERE o.lab_order_number = ? AND o.lab_order_result IS NOT NULL AND o.lab_order_result <> ''
+     ORDER BY i.lab_items_code LIMIT 20`;
+const orderItemsCache = new Map();   // ใบสั่ง → รายการ (ค่าวิกฤตหลายรายการในใบเดียวกัน ดึงครั้งเดียว)
+async function orderItems(no) {
+  if (!orderItemsCache.has(no)) orderItemsCache.set(no, await query(SQL_ORDER_ITEMS, [no]).catch((e) => { log("order items:", e.message); return []; }));
+  if (orderItemsCache.size > 200) orderItemsCache.delete(orderItemsCache.keys().next().value);
+  return orderItemsCache.get(no);
+}
+
+/** โทนสีของผล: วิกฤต = crit · นอกช่วงปกติ = high/low · ปกติ = ok · ผลไม่ใช่ตัวเลข = ไม่ใส่สี */
+function toneOf(item, sex) {
+  if (critical(item, sex)) return "crit";
+  const v = String(item.result ?? "").trim();
+  if (!/^-?\d+(\.\d+)?$/.test(v)) return "";
+  const x = Number(v), f = String(sex) === "2";
+  const min = f ? (item.nmin_f ?? item.nmin_m) : item.nmin_m, max = f ? (item.nmax_f ?? item.nmax_m) : item.nmax_m;
+  if (min != null && x < min) return "low";
+  if (max != null && x > max) return "high";
+  return min != null || max != null ? "ok" : "";
+}
+
+/** ตารางผลแล็บทั้งใบ (การ์ดรุ่น 2 · notify/cardkit.mjs) — ไม่มีชื่อผู้ป่วย (PDPA) */
+async function labTable(h) {
+  const rows = (await orderItems(h.no)).slice(0, 12);
+  if (rows.length < 2) return [];   // ใบที่มีรายการเดียว: ข้อมูลอยู่ในหัวการ์ดแล้ว
+  return [{
+    type: "table", title: `ผลแล็บใบนี้${h.form ? ` · ${h.form}` : ""}`,
+    columns: ["รายการ", "ผล", "ช่วงปกติ"],
+    rows: rows.map((r) => [r.name, `${r.result}${r.unit && r.unit !== "-" ? ` ${r.unit}` : ""}`, String(r.normal ?? "").slice(0, 30)]),
+    tones: rows.map((r) => ["", toneOf(r, h.sex), ""]),
+  }];
+}
+
 const where = (h) => [h.dep, h.unit].filter(Boolean).join(" · ");
 const rangeText = ([min, max]) => min != null && max != null ? `${min}–${max}` : min != null ? `≥ ${min}` : `≤ ${max}`;
 
@@ -142,8 +183,15 @@ async function checkLab(since) {
     await notify({
       event: "lab.critical", priority: "urgent", id: `labcrit:${it.no}:${it.code}`,
       title: `ค่าวิกฤต ${it.name} ${c.x}${it.unit && it.unit !== "-" ? " " + it.unit : ""} (${c.dir})`,
-      fields: [["HN", h.hn], ["หน่วยงาน", where(h) || "-"], ["เกณฑ์วิกฤต", `นอกช่วง ${rangeText(c.range)}`],
-        ["แพทย์ผู้สั่ง", h.doctor ?? "-"], ["รายงาน", `${fmtTime(h.rt)} น.`]],
+      // การ์ดรุ่น 2: บรรทัดรอง + ค่าวิกฤตสีแดง + ตารางผลทั้งใบ + ปุ่มคัดลอก HN / รับเคส (รับเคส = ปิดเรื่อง หยุดเตือนซ้ำ/ส่งต่อ)
+      subtitle: `${c.dir === "ต่ำ" ? "ต่ำกว่า" : "สูงกว่า"}เกณฑ์วิกฤต — แจ้งแพทย์ผู้รักษาโดยเร็ว`,
+      fields: [["HN", h.hn], ["ผล", `${c.x}${it.unit && it.unit !== "-" ? " " + it.unit : ""}`, "crit"], ["เกณฑ์วิกฤต", `นอกช่วง ${rangeText(c.range)}`],
+        ["หน่วยงาน", where(h) || "-"], ["แพทย์ผู้สั่ง", h.doctor ?? "-"], ["รายงาน", `${fmtTime(h.rt)} น.`]],
+      sections: await labTable(h),
+      buttons: [
+        { type: "action", id: "take", label: "รับเคส", style: "primary" },
+        { type: "copy", label: "คัดลอก HN", text: String(h.hn) },
+      ],
       to: [...LAB_CRITICAL_TO, ...(doc ? [`cidhash:${doc}`] : [])],
     });
   }
@@ -210,7 +258,12 @@ async function checkCulture(since) {
       if (to.length) await notify({
         event: "lab.culture_positive", priority: "urgent", id: `labcx:${r.no}:${r.code}`,
         title: `${hemo ? "เพาะเชื้อในเลือดขึ้น" : "พบเชื้อ AFB"} — ${r.name}`,
-        fields: [["ผล", result.slice(0, 120)], ...base],
+        subtitle: hemo ? "แจ้งแพทย์ผู้รักษา · พิจารณาเริ่มยาต้านจุลชีพ" : "แจ้งแพทย์ผู้รักษา · งานควบคุมการติดเชื้อ",
+        fields: [["ผล", result.slice(0, 120), "crit"], ...base],
+        buttons: [
+          { type: "action", id: "take", label: "รับเคส", style: "primary" },
+          { type: "copy", label: "คัดลอก HN", text: String(r.hn) },
+        ],
         to,
       });
     }

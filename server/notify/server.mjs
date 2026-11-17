@@ -17,6 +17,7 @@ import pg from "pg";
 import { EVENTS } from "./events.mjs";
 import { renderCard } from "./card.mjs";
 import { createInvites, templateReader } from "./invites.mjs";
+import { transcribe, transcriptText, summarize, ASR_MAX_BYTES } from "./asr.mjs";
 import { cardExtras, cleanFields, sectionsText, imageToMxc, newSecret, callWebhook, cleanStatus, isActionButton, DT_MODES, cleanQuickReplies } from "./cardkit.mjs";
 
 const run = promisify(execFile);
@@ -226,9 +227,11 @@ async function onFileMessage(roomId, ev) {
   });
   const name = String(c.filename ?? c.body ?? "file");
   const mime = String(c.info?.mimetype ?? "");
+  // เสียง/วิดีโอ (ข้อความเสียง ไฟล์บันทึกประชุม) → ถอดเสียง + สรุป
+  if (c.msgtype === "m.audio" || c.msgtype === "m.video" || /^(audio|video)\//.test(mime)) return onAudioMessage(roomId, ev, reply);
   const isPdf = c.msgtype === "m.file" && (mime === "application/pdf" || /\.pdf$/i.test(name));
   const isImg = c.msgtype === "m.image" || (c.msgtype === "m.file" && /^image\//.test(mime));
-  if (!isImg && !isPdf) return reply("📄 อ่านข้อความได้จากรูปภาพ (JPG/PNG/TIFF) หรือไฟล์ PDF เท่านั้นครับ");
+  if (!isImg && !isPdf) return reply("📄 อ่านข้อความได้จากรูปภาพ (JPG/PNG/TIFF) หรือไฟล์ PDF · 🎙 ถอดเสียงได้จากไฟล์เสียง/วิดีโอครับ");
   if (!c.url) return reply("🔒 ไฟล์นี้ถูกเข้ารหัส bot เปิดอ่านไม่ได้ — ลองส่งในห้องแชทกับ \"AranChat แจ้งเตือน\" ที่ไม่ได้เข้ารหัส");
   if ((c.info?.size ?? 0) > OCR_MAX_BYTES) return reply("ไฟล์ใหญ่เกิน 25 MB — แบ่งส่งทีละส่วนครับ");
 
@@ -269,6 +272,59 @@ async function onFileMessage(roomId, ev) {
   const preview = text.slice(0, 1200);
   return reply(`${head} — ข้อความยาว ${text.length.toLocaleString()} ตัวอักษร แนบเป็นไฟล์ด้านบน\n\n${preview}\n…\n\n— ${OCR_NOTE}`,
     `<p><b>${esc(head)}</b> — ข้อความยาว ${text.length.toLocaleString()} ตัวอักษร แนบเป็นไฟล์ด้านบน</p><pre>${esc(preview)}\n…</pre><p><sub>${esc(OCR_NOTE)}</sub></p>`);
+}
+
+// ── ถอดเสียง + สรุปประชุม (asr.mjs) ─────────────────────────────────────────────────
+const ASR_NOTE = "ถอดเสียงอัตโนมัติ อาจมีคำผิด · ตรวจทานก่อนใช้ · ไฟล์ประมวลผลบนเครื่องของ รพ.";
+async function uploadText(name, text) {
+  const buf = Buffer.from(text, "utf8");
+  const up = await fetch(`${MATRIX}/_matrix/media/v3/upload?filename=${encodeURIComponent(name)}`, {
+    method: "POST", headers: { Authorization: `Bearer ${TOKEN}`, "Content-Type": "text/plain; charset=utf-8" }, body: buf,
+  });
+  const { content_uri } = await up.json().catch(() => ({}));
+  return up.ok && content_uri ? { url: content_uri, size: buf.length } : null;
+}
+const asrBusy = new Set();   // ผู้ใช้ที่กำลังถอดไฟล์อยู่ (ทีละไฟล์ต่อคน)
+async function onAudioMessage(roomId, ev, reply) {
+  const c = ev.content;
+  if (!c.url) return reply("🔒 ไฟล์นี้ถูกเข้ารหัส บอทเปิดไม่ได้ — ส่งไฟล์ในแชทนี้ (ไม่เข้ารหัส) หรือกด \"ถอดเป็นข้อความ\" ที่ข้อความเสียงในแอป");
+  if ((c.info?.size ?? 0) > ASR_MAX_BYTES) return reply("ไฟล์ใหญ่เกิน 200 MB — ส่งเป็นไฟล์เสียง (m4a/mp3) แทนวิดีโอ หรือแบ่งเป็นช่วงครับ");
+  if (asrBusy.has(ev.sender)) return reply("⏳ กำลังถอดไฟล์ก่อนหน้าอยู่ รอสักครู่ครับ");
+  asrBusy.add(ev.sender);
+  const durationS = Math.round((c.info?.duration ?? 0) / 1000);
+  const name = String(c.filename ?? c.body ?? "audio");
+  try {
+    if (durationS === 0 || durationS > 60) {
+      await reply(`🎙 กำลังถอดเสียง${durationS ? ` (${Math.ceil(durationS / 60)} นาที — ใช้เวลาประมาณ ${Math.max(1, Math.ceil(durationS / 420))} นาที)` : "…"}`).catch(() => {});
+    }
+    const buf = await downloadMxc(c.url);
+    const res = await transcribe(buf, { name, mime: c.info?.mimetype || "application/octet-stream", durationS });
+    const transcript = transcriptText(res);
+    log("asr", ev.sender, `${Math.round(res.duration_s ?? 0)}s`, res.mode, `chars=${transcript.length}`, `proc=${res.processing_s}s`);
+    if (!transcript) return reply("🎙 ไม่พบเสียงพูดที่ถอดได้ในไฟล์นี้");
+    const dur = res.duration_s ? `${Math.floor(res.duration_s / 60)}:${String(Math.round(res.duration_s % 60)).padStart(2, "0")} นาที` : "";
+    // สั้น: ตอบข้อความเลย · ยาว: แนบบทถอดเป็นไฟล์ + สรุปประชุม
+    if (transcript.length <= 1500) {
+      await reply(`🎙 ถอดเสียง${dur ? ` (${dur})` : ""}\n\n${transcript}\n\n— ${ASR_NOTE}`,
+        `<p><b>🎙 ถอดเสียง${dur ? ` (${esc(dur)})` : ""}</b></p><blockquote>${esc(transcript).replace(/\n/g, "<br>")}</blockquote><p><sub>${esc(ASR_NOTE)}</sub></p>`);
+    } else {
+      const fname = `${name.replace(/\.[^.]+$/, "")}-บทถอดเสียง.txt`;
+      const file = await uploadText(fname, `${transcript}\n\n— ${ASR_NOTE}\n`);
+      if (file) await sendMsg(roomId, { msgtype: "m.file", body: fname, filename: fname, url: file.url, info: { mimetype: "text/plain", size: file.size } });
+    }
+    const summary = await summarize(transcript).catch((e) => { log("summary error:", e.message); return null; });
+    if (summary) {
+      await reply(`📝 สรุปการประชุม${dur ? ` (${dur})` : ""}\n\n${summary}\n\n— สรุปโดย AI ในเครื่องของ รพ. · ตรวจทานก่อนใช้`,
+        `<p><b>📝 สรุปการประชุม${dur ? ` (${esc(dur)})` : ""}</b></p><p>${esc(summary).replace(/\n/g, "<br>")}</p><p><sub>สรุปโดย AI ในเครื่องของ รพ. · ตรวจทานก่อนใช้</sub></p>`);
+    } else if (transcript.length > 1500) {
+      await reply(`🎙 ถอดเสียงแล้ว${dur ? ` (${dur})` : ""} — บทถอดเต็มแนบเป็นไฟล์ด้านบน\n\n${transcript.slice(0, 800)}…`);
+    }
+  } catch (e) {
+    log("asr error:", e.message);
+    await reply(e.status === 415 ? "เปิดไฟล์เสียงนี้ไม่ได้ — ลองส่งเป็น m4a / mp3 / wav ครับ" : "ระบบถอดเสียงไม่ว่างหรือขัดข้อง ลองใหม่อีกครั้งครับ");
+  } finally {
+    asrBusy.delete(ev.sender);
+  }
 }
 
 async function dmRoom(mxid) {
@@ -373,7 +429,9 @@ async function sayNativeCard(roomId, ev, n, inChannel) {
     msgtype: "m.text", body: text, format: "org.matrix.custom.html", formatted_body: html,
     "com.arankub.card": {
       v: 2, system: sys.name, topic, icon: ev.icon ?? "🔔", title: n.title, urgent, fields, lines,
-      link: n.link, link_label: n.link ? (n.link_label ?? `เปิดใน ${openIn}`) : undefined, ack: urgent, note: note || undefined, color,
+      link: n.link, link_label: n.link ? (n.link_label ?? `เปิดใน ${openIn}`) : undefined,
+      // มีปุ่มสั่งงาน (เช่น "รับเคส") = กดแล้วปิดเรื่องแทนปุ่มรับทราบ — ไม่แสดงสองปุ่มที่ทำเหมือนกัน
+      ack: urgent && !x.buttons?.some(isActionButton), note: note || undefined, color,
       // รุ่น 2 (cardkit.mjs) — แอปรุ่นเก่าไม่รู้จักช่องเหล่านี้ ก็ยังแสดงส่วนรุ่นแรกได้
       level: x.level, subtitle: x.subtitle, image: x.image,
       sections: x.sections?.length ? x.sections : undefined,
@@ -591,7 +649,8 @@ async function onMessage(roomId, sender, body) {
     await say(roomId, done.length ? `${on ? "เปิด" : "ปิด"}แล้ว:\n${done.join("\n")}` : "ไม่พบหมายเลขนี้ — พิมพ์ \"ตั้งค่า\" เพื่อดูรายการ");
     return;
   }
-  await say(roomId, settingsText(sender) + "\n\n📄 ส่งรูปหรือ PDF เอกสารมาที่ห้องนี้ ผมจะอ่านข้อความออกมาให้");
+  await say(roomId, settingsText(sender) + "\n\n📄 ส่งรูปหรือ PDF เอกสารมาที่ห้องนี้ ผมจะอ่านข้อความออกมาให้"
+    + "\n🎙 ส่งไฟล์เสียง/วิดีโอบันทึกประชุมมา ผมจะถอดเป็นข้อความพร้อมสรุปประเด็น มติ และงานที่ต้องทำ");
 }
 
 let since = state.since ?? null;
@@ -1503,6 +1562,35 @@ const publicApi = http.createServer(async (req, res) => {
       if (req.method === "OPTIONS") { res.writeHead(204, { "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Max-Age": "86400" }); return res.end(); }
     }
     if (await invites.handle(req, res, path, reply, readBody)) return;
+    // ปุ่ม "ถอดเป็นข้อความ" ที่ข้อความเสียงในแอป: แอปถอดรหัสเสียงในเครื่องผู้ใช้แล้วส่งมาถอดบนเครื่องของ รพ.
+    //   POST /api/notify/asr  body = ไฟล์เสียง (≤ 25 MB) · header X-AranChat-OpenID: <openid access_token> → { text, duration_s }
+    //   ไม่เก็บไฟล์/ข้อความ · ทีละไฟล์ต่อผู้ใช้
+    if (path === "/api/notify/asr") {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Access-Control-Allow-Headers", "Content-Type, X-AranChat-OpenID");
+      if (req.method === "OPTIONS") { res.writeHead(204, { "Access-Control-Allow-Methods": "POST, OPTIONS", "Access-Control-Max-Age": "86400" }); return res.end(); }
+      if (req.method !== "POST") return reply(405, { error: "ใช้ POST" });
+      const token = String(req.headers["x-aranchat-openid"] ?? "");
+      if (!/^[\w\-.~+/=]{8,256}$/.test(token)) return reply(401, { error: "ต้องเข้าระบบ" });
+      const who = await fetch(`${MATRIX}/_matrix/federation/v1/openid/userinfo?access_token=${encodeURIComponent(token)}`, { signal: AbortSignal.timeout(10_000) })
+        .then((r) => (r.ok ? r.json() : null)).catch(() => null);
+      if (!who?.sub) return reply(401, { error: "token ไม่ถูกต้องหรือหมดอายุ" });
+      if (asrBusy.has(who.sub)) return reply(429, { error: "กำลังถอดไฟล์ก่อนหน้าอยู่" });
+      const chunks = []; let size = 0;
+      for await (const c of req) { size += c.length; if (size > 25 * 1024 * 1024) return reply(413, { error: "ไฟล์ใหญ่เกิน 25 MB" }); chunks.push(c); }
+      if (!size) return reply(400, { error: "ไม่มีไฟล์เสียง" });
+      asrBusy.add(who.sub);
+      try {
+        const r = await transcribe(Buffer.concat(chunks), { name: "voice", mime: String(req.headers["content-type"] ?? "application/octet-stream"), meeting: false });
+        log("asr app", who.sub, `${Math.round(r.duration_s ?? 0)}s`, `chars=${r.text.length}`);
+        return reply(200, { text: r.text, duration_s: r.duration_s ?? null });
+      } catch (e) {
+        log("asr app error:", e.message);
+        return reply(e.status === 415 ? 415 : 503, { error: e.status === 415 ? "เปิดไฟล์เสียงนี้ไม่ได้" : "ระบบถอดเสียงไม่ว่าง ลองใหม่อีกครั้ง" });
+      } finally {
+        asrBusy.delete(who.sub);
+      }
+    }
     // รายการคำสั่ง + เมนูบอท (แอปอ่าน ไม่ต้องมี key) — ไม่มีข้อมูลส่วนบุคคล
     if (req.method === "GET" && path === "/api/notify/bot" && !req.headers.authorization) {
       res.setHeader("Access-Control-Allow-Origin", "*");

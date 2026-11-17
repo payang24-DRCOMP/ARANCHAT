@@ -13,4 +13,6 @@ nonisolated struct TextRoomTimelineItemContent: Hashable {
     var formattedBody: AttributedString?
     /// The original textual representation of the formatted body directly from the event (usually HTML code)
     var formattedBodyHTMLString: String?
+    /// AranChat: card from the notification bot (`com.arankub.card`), shown instead of the text.
+    var aranCard: AranCard?
 }

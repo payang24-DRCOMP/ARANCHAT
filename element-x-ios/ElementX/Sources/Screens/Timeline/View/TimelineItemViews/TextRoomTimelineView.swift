@@ -24,6 +24,17 @@ struct TextRoomTimelineView: View, TextBasedRoomTimelineViewProtocol {
     }
     
     var body: some View {
+        if let card = timelineItem.content.aranCard {
+            // AranChat: notification card replaces the bubble text (see AranCardView).
+            TimelineStyler(timelineItem: timelineItem) {
+                AranCardView(card: card, itemID: timelineItem.id, reactions: timelineItem.properties.reactions)
+            }
+        } else {
+            textBody
+        }
+    }
+
+    private var textBody: some View {
         TimelineStyler(timelineItem: timelineItem) {
             VStack(alignment: .leading, spacing: 8) {
                 if let attributedString = timelineItem.content.formattedBody {

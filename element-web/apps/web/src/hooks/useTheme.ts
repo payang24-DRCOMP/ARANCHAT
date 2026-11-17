@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { SettingLevel } from "../settings/SettingLevel";
 import ThemeWatcher, { ThemeWatcherEvent } from "../settings/watchers/ThemeWatcher";
 import { useSettingValue, useSettingValueAt } from "./useSettings";
+import { aranChatConfig } from "../aranchat/config";
 
 interface ThemeState {
     /** The theme the user chose in the settings, which is not what is shown when system theme matching is on. */
@@ -32,7 +33,11 @@ export function useTheme(): ThemeState {
 
     const themeChoice = useSettingValue("theme");
     const systemThemeExplicit = useSettingValueAt(SettingLevel.DEVICE, "use_system_theme", null, false, true);
-    const themeExplicit = useSettingValueAt(SettingLevel.DEVICE, "theme", null, false, true);
+    // AranChat: ตรงกับ ThemeWatcher — default_theme ใน config ไม่นับเป็นการเลือกเอง
+    const themeExplicitAny = useSettingValueAt(SettingLevel.DEVICE, "theme", null, false, true);
+    const themeDevice = useSettingValueAt(SettingLevel.DEVICE, "theme", null, true, true);
+    const themeAccount = useSettingValueAt(SettingLevel.ACCOUNT, "theme", null, true, true);
+    const themeExplicit = aranChatConfig() ? (themeDevice ?? themeAccount) : themeExplicitAny;
     const systemThemeActivated = useSettingValue("use_system_theme");
 
     // The effective theme also depends on the system's preference, which the settings alone cannot tell us.

@@ -16,6 +16,8 @@ import { Action } from "../../dispatcher/actions";
 import { findHighContrastTheme, getCustomTheme } from "../../theme";
 import { type ActionPayload } from "../../dispatcher/payloads";
 import { SettingLevel } from "../SettingLevel";
+import { aranChatConfig } from "../../aranchat/config";
+import SdkConfig from "../../SdkConfig";
 
 export enum ThemeWatcherEvent {
     Change = "change",
@@ -108,7 +110,12 @@ export default class ThemeWatcher extends TypedEventEmitter<ThemeWatcherEvent, T
         // If the user has specifically enabled the theme (without the system matching option being
         // enabled specifically and excluding the default), use that theme. We pick the lowest possible
         // level for the setting to ensure the ordering otherwise works.
-        const themeExplicit = SettingsStore.getValueAt(SettingLevel.DEVICE, "theme", null, false, true);
+        // AranChat: default_theme ใน config ไม่นับเป็น "ผู้ใช้เลือกเอง" (ไม่งั้นไม่ตามโหมดสว่าง/มืดของเครื่องเลย)
+        // นับเฉพาะที่ผู้ใช้กดเลือกในตั้งค่า (ระดับเครื่อง/บัญชี)
+        const themeExplicit = aranChatConfig()
+            ? (SettingsStore.getValueAt(SettingLevel.DEVICE, "theme", null, true, true) ??
+              SettingsStore.getValueAt(SettingLevel.ACCOUNT, "theme", null, true, true))
+            : SettingsStore.getValueAt(SettingLevel.DEVICE, "theme", null, false, true);
         if (themeExplicit) {
             logger.log("returning explicit theme: " + themeExplicit);
             return themeExplicit;
@@ -148,6 +155,12 @@ export default class ThemeWatcher extends TypedEventEmitter<ThemeWatcherEvent, T
             if (hcTheme) {
                 newTheme = hcTheme;
             }
+        }
+        // AranChat: เครื่องโหมดสว่าง → ธีมแบรนด์ (default_theme เช่น custom-AranChat) แทนธีมสว่างพื้นฐานของ Element
+        // เครื่องโหมดมืด → ธีมมืดของ Element ที่ _AranChat.pcss ใส่ชุดสีของเราไว้ (body.cpd-theme-dark)
+        if (newTheme === "light" && aranChatConfig()) {
+            const brand = SdkConfig.get().default_theme;
+            if (brand) newTheme = brand;
         }
         return newTheme;
     }

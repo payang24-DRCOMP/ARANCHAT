@@ -125,3 +125,67 @@
     font: inherit;
     font-size: 16px;
 }
+
+/* ปุ่ม "ถอดเป็นข้อความ" ใต้ข้อความเสียง (src/aranchat/AranTranscribe.tsx) */
+.mx_AranTranscribe {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+
+    button {
+        padding: 4px 12px;
+        border: 0;
+        border-radius: 999px;
+        background: rgb(255 255 255 / 70%);
+        color: var(--ac-brand, var(--cpd-color-text-action-accent));
+        font: inherit;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:disabled {
+            opacity: 0.7;
+            cursor: default;
+        }
+    }
+}
+.mx_AranTranscribe_error {
+    color: var(--cpd-color-text-critical-primary);
+    font-size: 12px;
+}
+.mx_AranTranscribe_result {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    max-width: 360px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: rgb(255 255 255 / 75%);
+    color: var(--ac-ink, var(--cpd-color-text-primary));
+
+    p {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+    small {
+        color: var(--ac-muted, var(--cpd-color-text-secondary));
+        font-size: 11px;
+    }
+}
+.mx_AranTranscribe_label {
+    font-size: 12px;
+    font-weight: 700;
+}
+body.cpd-theme-dark .mx_AranTranscribe button,
+body.cpd-theme-dark .mx_AranTranscribe_result {
+    background: rgb(255 255 255 / 10%);
+}
+.mx_AranAudioWithTranscript {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+[class*="_stateOwnEvent_"] .mx_AranAudioWithTranscript {
+    align-items: flex-end;
+}
