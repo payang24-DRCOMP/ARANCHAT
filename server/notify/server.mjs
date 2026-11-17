@@ -346,6 +346,17 @@ async function dmRoom(mxid) {
   return room_id;
 }
 
+async function moveEncryptedDm(mxid, oldRoom) {
+  delete state.dm[mxid];
+  save();
+  const room = await dmRoom(mxid);
+  // ข้อความแจ้งในห้องเดิม — ห้องเข้ารหัสแล้วบอทส่งได้แค่ข้อความไม่เข้ารหัส บางแอปอาจไม่แสดง
+  await say(oldRoom, "ห้องนี้เปิดการเข้ารหัสไว้ บอทจึงอ่านข้อความที่ส่งมาไม่ได้ — ย้ายไปแชท \"AranChat แจ้งเตือน\" ห้องใหม่แล้ว กรุณาส่งอีกครั้งที่นั่นครับ").catch(() => {});
+  await mx("POST", `/_matrix/client/v3/rooms/${encodeURIComponent(oldRoom)}/leave`, {}).catch(() => {});
+  await say(room, "📌 ย้ายมาห้องนี้แทนห้องเดิมที่เปิดการเข้ารหัสไว้ (บอทอ่านข้อความในห้องเข้ารหัสไม่ได้) — ส่งไฟล์เสียง/รูป/คำสั่งที่นี่ได้เลยครับ");
+  log("dm moved (encrypted)", mxid);
+}
+
 // รูปแบบข้อความ: ใช้เฉพาะ HTML ที่ทุกแอปแสดงได้ (ตัวหนา/quote/ลิงก์/emoji) — สีตัวอักษรขึ้นเฉพาะบนเว็บ ไม่ใช้สื่อความหมาย
 // บรรทัดแรกของ text = ข้อความที่เด้งบนจอมือถือ → ต้องเป็นหัวข้อ ไม่ใช่ชื่อระบบ
 const SYSTEMS = { arankub: ["🏥", "AranKub"], p4p: ["📊", "P4P"], api: ["🔔", "AranChat"] };
@@ -656,7 +667,7 @@ async function onMessage(roomId, sender, body) {
 let since = state.since ?? null;
 const SYNC_FILTER = encodeURIComponent(JSON.stringify({
   presence: { types: [] }, account_data: { types: [] },
-  room: { timeline: { limit: 50, types: ["m.room.message", "m.room.member", "m.reaction"] }, state: { types: [] }, ephemeral: { types: [] } },
+  room: { timeline: { limit: 50, types: ["m.room.message", "m.room.member", "m.reaction", "m.room.encrypted"] }, state: { types: [] }, ephemeral: { types: [] } },
 }));
 async function syncLoop() {
   try {
@@ -679,6 +690,11 @@ async function syncLoop() {
       for (const [roomId, room] of Object.entries(r.rooms?.join ?? {})) {
         for (const ev of room.timeline?.events ?? []) {
           if (ev.sender === me) continue;
+          // ผู้ใช้เปิดเข้ารหัสในแชทกับบอท → บอทอ่านไม่ได้ (ไม่มีกุญแจ) · ปิดเข้ารหัสย้อนหลังไม่ได้ → ย้ายไปห้องใหม่
+          if (ev.type === "m.room.encrypted") {
+            if (state.dm[ev.sender] === roomId) await moveEncryptedDm(ev.sender, roomId).catch((e) => log("move dm error:", e.message));
+            continue;
+          }
           // กดปุ่มสั่งงานบนการ์ด (ไม่ await — webhook ของระบบต้นทางอาจช้า อย่าให้ข้อความอื่นค้าง)
           if (isCardAction(ev)) { onCardAction(roomId, ev).catch((e) => log("card action error:", e.message)); continue; }
           // คำสั่ง /… (ไม่ await — รอ webhook ของระบบเจ้าของคำสั่ง)
