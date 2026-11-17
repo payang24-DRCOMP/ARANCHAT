@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat — คำแปลไทยที่ Element X (Localazy) ยังไม่มี · แยกตามโมดูลเจ้าของข้อความ (lint ExtraTranslation)
+     ไม่แก้ translations.xml ที่ Localazy สร้าง · SPDX-License-Identifier: AGPL-3.0-only -->
+<resources>
+    <string name="slash_command_error">คำสั่งผิดพลาด</string>
+    <string name="slash_command_unrecognized">ไม่รู้จักคำสั่ง: %1$s</string>
+    <string name="slash_command_parameters_error">คำสั่ง \"%1$s\" ต้องใส่ค่าเพิ่ม หรือค่าที่ใส่ไม่ถูกต้อง วิธีใช้คือ\n\n%2$s</string>
+    <string name="slash_command_not_supported_in_threads">รู้จักคำสั่ง \"%1$s\" แต่ใช้ในเธรดไม่ได้</string>
+    <string name="slash_command_description_emote">แสดงเป็นการกระทำ</string>
+    <string name="slash_command_description_crash_application">ทำให้แอปหยุดทำงาน (ทดสอบ)</string>
+    <string name="slash_command_description_ban_user">แบนผู้ใช้ตามรหัสที่ระบุ</string>
+    <string name="slash_command_description_unban_user">ยกเลิกแบนผู้ใช้ตามรหัสที่ระบุ</string>
+    <string name="slash_command_description_ignore_user">ไม่สนใจผู้ใช้ ซ่อนข้อความของเขา</string>
+    <string name="slash_command_description_unignore_user">เลิกไม่สนใจผู้ใช้ แสดงข้อความของเขาตามปกติ</string>
+    <string name="slash_command_description_op_user">ตั้งระดับสิทธิ์ของผู้ใช้</string>
+    <string name="slash_command_description_deop_user">ถอดสิทธิ์ผู้ใช้ตามรหัสที่ระบุ</string>
+    <string name="slash_command_description_room_name">ตั้งชื่อห้อง</string>
+    <string name="slash_command_description_rainbow">ส่งข้อความเป็นสีรุ้ง</string>
+    <string name="slash_command_description_rainbow_emote">ส่งการกระทำเป็นสีรุ้ง</string>
+    <string name="slash_command_description_invite_user">เชิญผู้ใช้ตามรหัสที่ระบุเข้าห้องนี้</string>
+    <string name="slash_command_description_join_room">เข้าห้องตามที่อยู่ที่ระบุ</string>
+    <string name="slash_command_description_spoiler">ส่งข้อความแบบซ่อน (แตะเพื่อดู)</string>
+    <string name="slash_command_description_topic">ตั้งหัวข้อห้อง</string>
+    <string name="slash_command_description_remove_user">นำผู้ใช้ตามรหัสที่ระบุออกจากห้อง</string>
+    <string name="slash_command_description_nick">เปลี่ยนชื่อที่แสดง</string>
+    <string name="slash_command_description_avatar">เปลี่ยนรูปโปรไฟล์ทุกห้อง</string>
+    <string name="slash_command_confetti">ส่งข้อความพร้อมกระดาษสีโปรย</string>
+    <string name="slash_command_snow">ส่งข้อความพร้อมหิมะตก</string>
+    <string name="slash_command_description_plain">ส่งเป็นข้อความธรรมดา ไม่แปลง markdown</string>
+    <string name="slash_command_description_nick_for_room">เปลี่ยนชื่อที่แสดงเฉพาะห้องนี้</string>
+    <string name="slash_command_description_room_avatar">เปลี่ยนรูปห้องนี้</string>
+    <string name="slash_command_description_avatar_for_room">เปลี่ยนรูปโปรไฟล์เฉพาะห้องนี้</string>
+    <string name="slash_command_description_devtools">เปิดเครื่องมือนักพัฒนา</string>
+    <string name="slash_command_description_whois">แสดงข้อมูลผู้ใช้</string>
+    <string name="slash_command_description_shrug">เติม ¯\\_(ツ)_/¯ หน้าข้อความ</string>
+    <string name="slash_command_description_lenny">เติม ( ͡° ͜ʖ ͡°) หน้าข้อความ</string>
+    <string name="slash_command_description_table_flip">เติม (╯°□°）╯︵ ┻━┻ หน้าข้อความ</string>
+    <string name="slash_command_description_unflip">เติม ┬──┬ ノ( ゜-゜ノ) หน้าข้อความ</string>
+    <string name="slash_command_description_discard_session">บังคับเปลี่ยนกุญแจการส่งของห้องเข้ารหัสนี้</string>
+    <string name="slash_command_description_discard_session_not_handled">ใช้ได้เฉพาะห้องที่เข้ารหัส</string>
+    <string name="slash_command_description_leave_room">ออกจากห้องนี้</string>
+    <string name="slash_command_description_upgrade_room">อัปเกรดห้องเป็นรุ่นใหม่</string>
+    <string name="common_spoiler">ข้อความซ่อน</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat — คำแปลไทยที่ Element X (Localazy) ยังไม่มี · แยกตามโมดูลเจ้าของข้อความ (lint ExtraTranslation)
+     ไม่แก้ translations.xml ที่ Localazy สร้าง · SPDX-License-Identifier: AGPL-3.0-only -->
+<resources>
+    <string name="common_error_registering_pusher_android">เกิดข้อผิดพลาด คุณอาจไม่ได้รับแจ้งเตือนข้อความใหม่ ลองตรวจการแจ้งเตือนในตั้งค่า\n\nสาเหตุ: %1$s</string>
+    <string name="dialog_confirm_link_message">ลิงก์ %1$s จะพาไปยังเว็บไซต์อื่น %2$s\n\nไปต่อใช่ไหม?</string>
+    <string name="a11y_state_expanded">ขยายอยู่</string>
+    <string name="a11y_state_collapsed">ย่ออยู่</string>
+    <string name="a11y_active">ใช้งานอยู่</string>
+    <string name="a11y_inactive">ไม่ได้ใช้งาน</string>
+    <string name="common_switch_account">สลับบัญชี</string>
+</resources>

@@ -1,0 +1,16 @@
+settings:
+  # AranChat (รพ.อรัญ) — ค่าเดียวกับ Android: element-x-android/aranchat/brand.env
+  APP_DISPLAY_NAME: AranChat
+  PRODUCTION_APP_NAME: AranChat
+  APP_GROUP_IDENTIFIER: group.com.arankub.aranchat
+  BASE_BUNDLE_IDENTIFIER: com.arankub.aranchat
+  ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: "colors/accent-color"
+  # ใส่ Team ID ของบัญชี Apple Developer ของหน่วยงาน (ของ Element ใช้แทนไม่ได้)
+  DEVELOPMENT_TEAM: CHANGE_ME
+  IS_NIGHTLY_BUILD: false
+
+  # Optional configuration to load accounts from Element Classic.
+  CLASSIC_APP_GROUP_IDENTIFIER: group.im.vector
+  CLASSIC_APP_KEYCHAIN_SERVICE_IDENTIFIER: im.vector.app.encryption-manager-service
+  CLASSIC_APP_KEYCHAIN_ACCESS_GROUP_IDENTIFIER: "$(DEVELOPMENT_TEAM).im.vector.app.keychain.shared"
+  CLASSIC_APP_DEEP_LINK_URL: "element://open"

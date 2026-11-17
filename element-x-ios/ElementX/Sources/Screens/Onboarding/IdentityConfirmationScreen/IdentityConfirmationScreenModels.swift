@@ -1,0 +1,39 @@
+//
+// Copyright 2025 Element Creations Ltd.
+// Copyright 2022-2025 New Vector Ltd.
+//
+// SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-Element-Commercial
+// Please see LICENSE files in the repository root for full details.
+//
+
+import Foundation
+
+enum IdentityConfirmationScreenViewModelAction: Equatable {
+    case otherDevice
+    case recoveryKey
+    /// Only possible in debug builds.
+    case skip
+    case reset(hasConfirmationOptions: Bool)
+    case logoutWithoutConfirmation
+}
+
+struct IdentityConfirmationScreenViewState: BindableState {
+    enum AvailableActions {
+        case recovery
+        case interactiveVerification
+    }
+    
+    var availableActions: [AvailableActions]?
+    /// Until then only a loading indicator is shown, so the screen doesn't flash for sessions that turn out to be verified.
+    var isUnverified: Bool
+    let learnMoreURL: URL
+}
+
+enum IdentityConfirmationScreenViewAction {
+    case otherDevice
+    case recoveryKey
+    /// Only possible in debug builds.
+    case skip
+    case reset
+    case logout
+}

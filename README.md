@@ -7,6 +7,8 @@
 | `server/` | ติดตั้งและดูแลเซิร์ฟเวอร์ (Matrix / ESS บน K3s), `notify/` บอทแจ้งเตือน + การ์ด + คำสั่ง / + webhook, `keyvault/`, `hosxp-bridge/`, แบรนด์, หน้าเอกสาร (`docs-site/`) — ดู `server/README.md` |
 | `element-web/` | เว็บแชท + แอป Desktop (fork ของ [element-hq/element-web](https://github.com/element-hq/element-web)) — โค้ดของเราอยู่ที่ `apps/web/src/aranchat/`, `apps/web/res/css/aranchat/`, `aranchat/` |
 | `element-x-android/` | แอป Android (fork ของ [element-hq/element-x-android](https://github.com/element-hq/element-x-android)) — โค้ดของเราอยู่ในไฟล์/โฟลเดอร์ชื่อ `aranchat` / `Aran*` |
+| `element-x-ios/` | แอป iOS (ฐาน [element-hq/element-x-ios](https://github.com/element-hq/element-x-ios)) — ตั้งชื่อแอป/เซิร์ฟเวอร์ AranChat แล้ว ฟีเจอร์ยังต้อง port ตาม `element-x-ios/aranchat/PORTING.md` |
+| `docs/DEVELOPMENT.md` | **คู่มือนักพัฒนา** — ภาพรวมระบบ สเปกข้อความที่ทุกแอปต้องรองรับ วิธี build/ปล่อย ข้อควรระวัง |
 
 ## ไม่อยู่ใน repo นี้ (ตั้งใจ)
 

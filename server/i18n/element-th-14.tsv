@@ -1,0 +1,150 @@
+settings.key_export_import.export_description_1	ส่งออกกุญแจของข้อความที่ได้รับในห้องเข้ารหัสเป็นไฟล์ในเครื่อง แล้วนำเข้าในแอป Matrix อื่นภายหลัง เพื่อให้แอปนั้นถอดรหัสข้อความเหล่านี้ได้ด้วย
+settings.key_export_import.export_description_2	ใครที่อ่านไฟล์นี้ได้จะถอดรหัสข้อความที่คุณเห็นได้ทั้งหมด ต้องเก็บไว้ให้ปลอดภัย ตั้งรหัสผ่านเฉพาะด้านล่างเพื่อเข้ารหัสไฟล์ และต้องใช้รหัสผ่านเดียวกันตอนนำเข้า
+settings.key_export_import.export_title	ส่งออกกุญแจห้อง
+settings.key_export_import.file_to_import	ไฟล์ที่จะนำเข้า
+settings.key_export_import.import_description_1	นำเข้ากุญแจเข้ารหัสที่เคยส่งออกจากแอป Matrix อื่น เพื่อถอดรหัสข้อความที่แอปนั้นถอดได้
+settings.key_export_import.import_description_2	ไฟล์ส่งออกป้องกันด้วยรหัสผ่าน ใส่รหัสผ่านที่นี่เพื่อถอดรหัสไฟล์
+settings.key_export_import.import_title	นำเข้ากุญแจห้อง
+settings.key_export_import.phrase_cannot_be_empty	ต้องใส่รหัสผ่าน
+settings.key_export_import.phrase_must_match	รหัสผ่านต้องตรงกัน
+settings.key_export_import.phrase_strong_enough	ดีมาก! รหัสผ่านนี้ปลอดภัยพอ
+settings.keyboard.dialog_title	<strong>ตั้งค่า:</strong> แป้นพิมพ์
+settings.keyboard.title	แป้นพิมพ์
+settings.labs.dialog_title	<strong>ตั้งค่า:</strong> ฟีเจอร์ทดลอง
+settings.labs_mjolnir.dialog_title	<strong>ตั้งค่า:</strong> ผู้ใช้ที่ไม่สนใจ
+settings.media_preview.hide_avatars	ซ่อนรูปห้องและรูปผู้เชิญ
+settings.media_preview.hide_media	ซ่อนเสมอ
+settings.media_preview.media_preview_description	รูปที่ซ่อนไว้ กดเพื่อดูได้ทุกเมื่อ
+settings.media_preview.media_preview_label	แสดงรูปและวิดีโอในแชท
+settings.media_preview.show_in_private	ในห้องส่วนตัว
+settings.media_preview.show_media	แสดงเสมอ
+settings.security.analytics_description	ส่งข้อมูลการใช้งานแบบไม่ระบุตัวตนเพื่อช่วยหาปัญหา ไม่มีข้อมูลส่วนตัว ไม่ส่งให้บุคคลภายนอก
+settings.security.bulk_options_accept_all_invites	รับคำเชิญทั้งหมด %(invitedRooms)s รายการ
+settings.security.bulk_options_reject_all_invites	ปฏิเสธคำเชิญทั้งหมด %(invitedRooms)s รายการ
+settings.security.bulk_options_section	จัดการทีละหลายรายการ
+settings.security.dehydrated_device_description	อุปกรณ์ออฟไลน์ช่วยให้รับข้อความเข้ารหัสได้แม้ไม่ได้เข้าระบบอยู่บนเครื่องใดเลย
+settings.security.dehydrated_device_enabled	เปิดอุปกรณ์ออฟไลน์แล้ว
+settings.security.dialog_title	<strong>ตั้งค่า:</strong> ความปลอดภัยและความเป็นส่วนตัว
+settings.security.e2ee_default_disabled_warning	ผู้ดูแลระบบปิดการเข้ารหัสต้นทางถึงปลายทางเป็นค่าเริ่มต้นในห้องส่วนตัวและแชทส่วนตัว
+settings.security.enable_message_search	เปิดการค้นหาข้อความในห้องเข้ารหัส
+settings.security.encryption_section	การเข้ารหัส
+settings.security.ignore_users_empty	ไม่มีผู้ใช้ที่ไม่สนใจ
+settings.security.ignore_users_section	ผู้ใช้ที่ไม่สนใจ
+settings.security.key_backup_algorithm	อัลกอริทึม:
+settings.security.message_search_disable_warning	ถ้าปิด ข้อความจากห้องเข้ารหัสจะไม่ขึ้นในผลการค้นหา
+settings.security.message_search_disabled	เก็บข้อความเข้ารหัสไว้ในเครื่องอย่างปลอดภัย เพื่อให้ค้นหาได้
+settings.security.message_search_enabled.one	เก็บข้อความเข้ารหัสไว้ในเครื่องอย่างปลอดภัยเพื่อให้ค้นหาได้ ใช้พื้นที่ %(size)s สำหรับ %(rooms)s ห้อง
+settings.security.message_search_enabled.other	เก็บข้อความเข้ารหัสไว้ในเครื่องอย่างปลอดภัยเพื่อให้ค้นหาได้ ใช้พื้นที่ %(size)s สำหรับ %(rooms)s ห้อง
+settings.security.message_search_failed	เริ่มระบบค้นหาข้อความไม่สำเร็จ
+settings.security.message_search_indexed_messages	ข้อความที่จัดทำดัชนีแล้ว:
+settings.security.message_search_indexed_rooms	ห้องที่จัดทำดัชนีแล้ว:
+settings.security.message_search_indexing	กำลังจัดทำดัชนี: %(currentRoom)s
+settings.security.message_search_indexing_idle	ตอนนี้ไม่ได้จัดทำดัชนีห้องใด
+settings.security.message_search_intro	%(brand)s กำลังเก็บข้อความเข้ารหัสไว้ในเครื่องอย่างปลอดภัย เพื่อให้ค้นหาได้:
+settings.security.message_search_pending_rooms	ห้องที่รอจัดทำดัชนี: %(pendingRooms)s
+settings.security.message_search_room_progress	%(doneRooms)s จาก %(totalRooms)s
+settings.security.message_search_section	ค้นหาข้อความ
+settings.security.message_search_sleep_time	ความเร็วในการดาวน์โหลดข้อความ
+settings.security.message_search_space_used	พื้นที่ที่ใช้:
+settings.security.message_search_unsupported	%(brand)s ขาดส่วนประกอบสำหรับเก็บข้อความเข้ารหัสไว้ค้นหาในเครื่อง ถ้าต้องการลอง ให้ build %(brand)s Desktop แบบ<nativeLink>เพิ่มส่วนค้นหา</nativeLink>
+settings.security.message_search_unsupported_web	%(brand)s บนเว็บเบราว์เซอร์เก็บข้อความเข้ารหัสไว้ค้นหาไม่ได้ ใช้ <desktopLink>%(brand)s Desktop</desktopLink> เพื่อให้ค้นหาข้อความเข้ารหัสได้
+settings.security.record_session_details	บันทึกชื่อแอป รุ่น และที่อยู่ เพื่อให้แยกอุปกรณ์ในรายการได้ง่ายขึ้น
+settings.security.send_analytics	ส่งข้อมูลการใช้งาน
+settings.security.strict_encryption	ส่งข้อความถึงผู้ใช้ที่ยืนยันแล้วเท่านั้น
+settings.security.tokenizer_mode	วิธีตัดคำสำหรับค้นหา
+settings.security.tokenizer_mode_change_warning	การเปลี่ยนวิธีตัดคำต้องลบดัชนีค้นหาเดิม ระบบจะสร้างใหม่ให้อัตโนมัติ ทำต่อไหม?
+settings.security.tokenizer_mode_language	ตามภาษา
+settings.security.tokenizer_mode_language_description	รองรับภาษาเดียวตามภาษาของแอป ใช้ได้บางภาษา (อังกฤษ เยอรมัน ฯลฯ)
+settings.security.tokenizer_mode_ngram	N-gram (แนะนำสำหรับภาษาไทย)
+settings.security.tokenizer_mode_ngram_description	รองรับทุกภาษา รวมภาษาที่ไม่เว้นวรรคระหว่างคำอย่างภาษาไทย ใช้กับหลายภาษาปนกันได้
+settings.sessions.best_security_note	ยืนยันอุปกรณ์ของคุณ และนำอุปกรณ์ที่ไม่รู้จักหรือเลิกใช้แล้วออก
+settings.sessions.confirm_sign_out.one	ยืนยันการนำอุปกรณ์นี้ออก
+settings.sessions.confirm_sign_out.other	ยืนยันการนำอุปกรณ์เหล่านี้ออก
+settings.sessions.confirm_sign_out_body.one	กดปุ่มด้านล่างเพื่อยืนยันการนำอุปกรณ์นี้ออก
+settings.sessions.confirm_sign_out_body.other	กดปุ่มด้านล่างเพื่อยืนยันการนำอุปกรณ์เหล่านี้ออก
+settings.sessions.confirm_sign_out_continue.one	นำอุปกรณ์ออก
+settings.sessions.confirm_sign_out_continue.other	นำอุปกรณ์ออก
+settings.sessions.confirm_sign_out_sso.one	ยืนยันการนำอุปกรณ์นี้ออกโดยเข้าระบบเพื่อยืนยันตัวตน
+settings.sessions.confirm_sign_out_sso.other	ยืนยันการนำอุปกรณ์เหล่านี้ออกโดยเข้าระบบเพื่อยืนยันตัวตน
+settings.sessions.current_session	อุปกรณ์นี้
+settings.sessions.desktop_session	แอปคอมพิวเตอร์
+settings.sessions.details_heading	รายละเอียดอุปกรณ์
+settings.sessions.device_unverified_description	ยืนยันอุปกรณ์นี้ หรือนำออกถ้าไม่รู้จัก
+settings.sessions.device_unverified_description_current	ยืนยันอุปกรณ์นี้เพื่อความปลอดภัยในการส่งข้อความ
+settings.sessions.device_verified_description	อุปกรณ์นี้พร้อมส่งข้อความแบบปลอดภัย
+settings.sessions.device_verified_description_current	อุปกรณ์นี้พร้อมส่งข้อความแบบปลอดภัย
+settings.sessions.dialog_title	<strong>ตั้งค่า:</strong> อุปกรณ์
+settings.sessions.error_pusher_state	ตั้งค่าการแจ้งเตือนไม่สำเร็จ
+settings.sessions.error_set_name	ตั้งชื่ออุปกรณ์ไม่สำเร็จ
+settings.sessions.filter_all	ทั้งหมด
+settings.sessions.filter_inactive	ไม่ได้ใช้งาน
+settings.sessions.filter_inactive_description	ไม่ได้ใช้งาน %(inactiveAgeDays)s วันขึ้นไป
+settings.sessions.filter_label	กรองอุปกรณ์
+settings.sessions.filter_unverified_description	ยังไม่พร้อมส่งข้อความแบบปลอดภัย
+settings.sessions.filter_verified_description	พร้อมส่งข้อความแบบปลอดภัย
+settings.sessions.hide_details	ซ่อนรายละเอียด
+settings.sessions.inactive_days	ไม่ได้ใช้งาน %(inactiveAgeDays)s+ วัน
+settings.sessions.inactive_sessions	อุปกรณ์ที่ไม่ได้ใช้งาน
+settings.sessions.inactive_sessions_explainer_1	อุปกรณ์ที่ไม่ได้ใช้งานคืออุปกรณ์ที่ไม่ได้ใช้มาสักพัก แต่ยังรับกุญแจเข้ารหัสอยู่
+settings.sessions.inactive_sessions_explainer_2	นำอุปกรณ์ที่ไม่ได้ใช้ออกช่วยให้ปลอดภัยและเร็วขึ้น และสังเกตอุปกรณ์แปลกปลอมได้ง่ายขึ้น
+settings.sessions.inactive_sessions_list_description	นำอุปกรณ์ที่ไม่ได้ใช้ %(inactiveAgeDays)s วันขึ้นไปออก
+settings.sessions.ip	ที่อยู่ IP
+settings.sessions.last_activity	ใช้งานล่าสุด
+settings.sessions.manage	จัดการอุปกรณ์นี้
+settings.sessions.mobile_session	แอปมือถือ
+settings.sessions.n_sessions_selected.one	เลือก %(count)s อุปกรณ์
+settings.sessions.n_sessions_selected.other	เลือก %(count)s อุปกรณ์
+settings.sessions.no_inactive_sessions	ไม่มีอุปกรณ์ที่ไม่ได้ใช้งาน
+settings.sessions.no_sessions	ไม่พบอุปกรณ์
+settings.sessions.no_unverified_sessions	ไม่มีอุปกรณ์ที่ยังไม่ได้ยืนยัน
+settings.sessions.no_verified_sessions	ไม่มีอุปกรณ์ที่ยืนยันแล้ว
+settings.sessions.other_sessions_heading	อุปกรณ์อื่น
+settings.sessions.push_heading	การแจ้งเตือนแบบพุช
+settings.sessions.push_subheading	รับการแจ้งเตือนบนอุปกรณ์นี้
+settings.sessions.push_toggle	เปิด/ปิดการแจ้งเตือนบนอุปกรณ์นี้
+settings.sessions.rename_form_caption	คนที่คุยด้วยจะเห็นชื่ออุปกรณ์ด้วย
+settings.sessions.rename_form_heading	เปลี่ยนชื่ออุปกรณ์
+settings.sessions.rename_form_learn_more	การเปลี่ยนชื่ออุปกรณ์
+settings.sessions.rename_form_learn_more_description_1	ผู้ใช้อื่นในแชทส่วนตัวและห้องที่คุณอยู่ เห็นรายการอุปกรณ์ทั้งหมดของคุณได้
+settings.sessions.rename_form_learn_more_description_2	ช่วยให้เขามั่นใจว่ากำลังคุยกับคุณจริง แต่ก็จะเห็นชื่ออุปกรณ์ที่ตั้งไว้ด้วย
+settings.sessions.security_recommendations	คำแนะนำด้านความปลอดภัย
+settings.sessions.security_recommendations_description	ทำตามคำแนะนำเหล่านี้เพื่อให้บัญชีปลอดภัยขึ้น
+settings.sessions.session_id	รหัสอุปกรณ์
+settings.sessions.show_details	แสดงรายละเอียด
+settings.sessions.sign_in_with_qr	เพิ่มอุปกรณ์ใหม่
+settings.sessions.sign_in_with_qr_button	แสดง QR โค้ด
+settings.sessions.sign_in_with_qr_description	ใช้ QR โค้ดเข้าระบบบนอุปกรณ์อื่นและตั้งค่าการส่งข้อความแบบปลอดภัย
+settings.sessions.sign_in_with_qr_unsupported	เซิร์ฟเวอร์ยังไม่รองรับ
+settings.sessions.sign_out	นำอุปกรณ์นี้ออก
+settings.sessions.sign_out_all_other_sessions	นำอุปกรณ์อื่นออกทั้งหมด (%(otherSessionsCount)s)
+settings.sessions.sign_out_confirm_description.one	นำ %(count)s อุปกรณ์ออกใช่ไหม?
+settings.sessions.sign_out_confirm_description.other	นำ %(count)s อุปกรณ์ออกใช่ไหม?
+settings.sessions.sign_out_n_sessions.one	นำ %(count)s อุปกรณ์ออก
+settings.sessions.sign_out_n_sessions.other	นำ %(count)s อุปกรณ์ออก
+settings.sessions.title	อุปกรณ์
+settings.sessions.unknown_session	แอปที่ไม่รู้จัก
+settings.sessions.unverified_session	อุปกรณ์ที่ยังไม่ได้ยืนยัน
+settings.sessions.unverified_session_explainer_1	อุปกรณ์นี้ไม่รองรับการเข้ารหัส จึงยืนยันไม่ได้
+settings.sessions.unverified_session_explainer_2	อุปกรณ์นี้จะใช้ห้องที่เปิดการเข้ารหัสไม่ได้
+settings.sessions.unverified_session_explainer_3	เพื่อความปลอดภัยและความเป็นส่วนตัว แนะนำให้ใช้แอปที่รองรับการเข้ารหัส
+settings.sessions.unverified_sessions	อุปกรณ์ที่ยังไม่ได้ยืนยัน
+settings.sessions.unverified_sessions_explainer_1	อุปกรณ์ที่ยังไม่ได้ยืนยัน คืออุปกรณ์ที่เข้าระบบด้วยบัญชีของคุณแต่ยังไม่ได้ยืนยันตัวตน
+settings.sessions.unverified_sessions_explainer_2	ตรวจให้แน่ใจว่ารู้จักอุปกรณ์เหล่านี้ เพราะอาจมีคนแอบใช้บัญชีของคุณ
+settings.sessions.unverified_sessions_list_description	ยืนยันอุปกรณ์เพื่อความปลอดภัย หรือนำอุปกรณ์ที่ไม่รู้จักหรือเลิกใช้ออก
+settings.sessions.url	ที่อยู่ URL
+settings.sessions.verified_session	อุปกรณ์ที่ยืนยันแล้ว
+settings.sessions.verified_sessions	อุปกรณ์ที่ยืนยันแล้ว
+settings.sessions.verified_sessions_explainer_1	อุปกรณ์ที่ยืนยันแล้ว คืออุปกรณ์ที่ยืนยันตัวตนแล้ว
+settings.sessions.verified_sessions_explainer_2	มีกุญแจครบสำหรับเปิดข้อความเข้ารหัส และผู้ใช้อื่นเชื่อถืออุปกรณ์นี้ได้
+settings.sessions.verified_sessions_list_description	นำอุปกรณ์ที่ไม่รู้จักหรือเลิกใช้แล้วออก
+settings.sessions.verify_session	ยืนยันอุปกรณ์
+settings.sessions.web_session	เบราว์เซอร์
+settings.start_automatically.disabled	ไม่
+settings.start_automatically.enabled	ใช่
+settings.start_automatically.label	เปิด %(brand)s อัตโนมัติเมื่อเปิดคอมพิวเตอร์
+settings.start_automatically.minimised	ย่อหน้าต่างไว้
+settings.voip.allow_p2p	ใช้การเชื่อมต่อตรงสำหรับโทรสองคน
+settings.voip.allow_p2p_description	ถ้าเปิด อีกฝ่ายอาจเห็นที่อยู่ IP ของคุณ
+settings.voip.audio_input_empty	ไม่พบไมโครโฟน
+settings.voip.audio_output	ลำโพง
+settings.voip.audio_output_empty	ไม่พบลำโพง

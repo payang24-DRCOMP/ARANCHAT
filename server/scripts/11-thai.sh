@@ -23,8 +23,17 @@ langs = json.load(open(sys.argv[1]))
 langs["th"] = sys.argv[3]
 json.dump(langs, open(sys.argv[2], "w"), indent=1)
 EOF
-kubectl -n "$NAMESPACE" create configmap aranchat-i18n-web --from-file="$OUT/web" \
-  --dry-run=client -o yaml | kubectl apply -f -
+# ไม่ใช้ apply: apply เก็บสำเนาทั้งไฟล์ไว้ใน annotation (จำกัด 256 KB) — ไฟล์ภาษาไทยใหญ่เกินแล้ว
+# ลบสำเนาเก่าที่ apply เคยเขียนไว้ก่อน (ไม่งั้น replace จะเขียนสำเนาใหม่ทับให้อีก) แล้วค่อย replace / create
+put_configmap() {   # put_configmap <ชื่อ> <โฟลเดอร์>
+  if kubectl -n "$NAMESPACE" get configmap "$1" >/dev/null 2>&1; then
+    kubectl -n "$NAMESPACE" annotate configmap "$1" kubectl.kubernetes.io/last-applied-configuration- >/dev/null 2>&1 || true
+    kubectl -n "$NAMESPACE" create configmap "$1" --from-file="$2" --dry-run=client -o yaml | kubectl replace -f -
+  else
+    kubectl -n "$NAMESPACE" create configmap "$1" --from-file="$2"
+  fi
+}
+put_configmap aranchat-i18n-web "$OUT/web"
 
 info "หน้า login: ไฟล์ภาษาต้นฉบับของ MAS เวอร์ชันที่ติดตั้งอยู่"
 MAS_VER=$(kubectl -n "$NAMESPACE" get deploy ess-matrix-authentication-service \
@@ -39,8 +48,7 @@ d["app"]["name"] = d["app"]["human_name"] = sys.argv[2]
 json.dump(d, open(sys.argv[1], "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 EOF
 python3 "$BUILD" "$OUT/mas/en.json" "$OUT/mas/th.json" "${ROOT_DIR}/i18n/mas-th.tsv"
-kubectl -n "$NAMESPACE" create configmap aranchat-i18n-mas --from-file="$OUT/mas" \
-  --dry-run=client -o yaml | kubectl apply -f -
+put_configmap aranchat-i18n-mas "$OUT/mas"
 
 info "ติดตั้ง (เสิร์ฟไฟล์ภาษา + ตั้งภาษาไทยเป็นค่าเริ่มต้น)"
 "${ROOT_DIR}/scripts/09-branding.sh"

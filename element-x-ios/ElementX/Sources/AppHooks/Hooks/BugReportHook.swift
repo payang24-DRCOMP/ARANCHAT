@@ -1,0 +1,24 @@
+//
+// Copyright 2025 Element Creations Ltd.
+// Copyright 2024-2025 New Vector Ltd.
+//
+// SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-Element-Commercial.
+// Please see LICENSE files in the repository root for full details.
+//
+
+import Foundation
+
+nonisolated protocol BugReportHookProtocol: Sendable {
+    @MainActor func update(_ viewState: BugReportScreenViewState, for flow: BugReportService.Flow) -> BugReportScreenViewState
+    @MainActor func update(_ bugReport: BugReport, for flow: BugReportService.Flow) -> BugReport
+}
+
+struct DefaultBugReportHook: BugReportHookProtocol {
+    func update(_ viewState: BugReportScreenViewState, for flow: BugReportService.Flow) -> BugReportScreenViewState {
+        viewState
+    }
+    
+    func update(_ bugReport: BugReport, for flow: BugReportService.Flow) -> BugReport {
+        bugReport
+    }
+}

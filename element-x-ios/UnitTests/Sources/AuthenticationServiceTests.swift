@@ -1,0 +1,206 @@
+//
+// Copyright 2025 Element Creations Ltd.
+// Copyright 2024-2025 New Vector Ltd.
+//
+// SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-Element-Commercial.
+// Please see LICENSE files in the repository root for full details.
+//
+
+@testable import ElementX
+import Foundation
+import MatrixRustSDK
+import MatrixRustSDKMocks
+import Testing
+
+@MainActor
+struct AuthenticationServiceTests {
+    var client: ClientSDKMock!
+    var encryption: EncryptionSDKMock!
+    var userSessionManager: UserSessionManagerMock!
+    var encryptionKeyProvider: MockEncryptionKeyProvider!
+    var targetContext: Target.Context!
+    var service: AuthenticationService!
+    
+    @Test("A server without OAuth can be logged in to with a password")
+    mutating func passwordLogin() async throws {
+        try await setup(serverNameOrBaseURL: "example.com")
+        
+        switch await service.configure(for: "example.com", flow: .login) {
+        case .success:
+            break
+        case .failure(let error):
+            Issue.record("Unexpected failure: \(error)")
+        }
+        
+        #expect(service.flow == .login)
+        #expect(service.homeserver.value == .mockBasicServer)
+        
+        switch await service.login(username: "alice", password: "12345678", initialDeviceName: nil, deviceID: nil) {
+        case .success:
+            #expect(client.loginUsernamePasswordInitialDeviceNameDeviceIdCallsCount == 1)
+            #expect(userSessionManager.userSessionForSessionDirectoriesPassphraseCallsCount == 1)
+            #expect(userSessionManager.userSessionForSessionDirectoriesPassphraseReceivedArguments?.passphrase == encryptionKeyProvider.generateKey())
+        case .failure(let error):
+            Issue.record("Unexpected failure: \(error)")
+        }
+    }
+    
+    @Test("Configuring a server that supports OAuth for login")
+    mutating func configureLoginWithOAuth() async throws {
+        try await setup()
+        
+        try await service.configure(for: "matrix.org", flow: .login).get()
+        
+        #expect(service.flow == .login)
+        #expect(service.homeserver.value == .mockMatrixDotOrg)
+    }
+    
+    @Test("Configuring a server that supports OAuth for registration")
+    mutating func configureRegisterWithOAuth() async throws {
+        try await setup()
+        
+        try await service.configure(for: "matrix.org", flow: .register).get()
+        
+        #expect(service.flow == .register)
+        #expect(service.homeserver.value == .mockMatrixDotOrg)
+    }
+    
+    @Test("Configuring a server that doesn't support registration fails and keeps the default login state")
+    mutating func configureRegisterNoSupport() async throws {
+        let serverNameOrBaseURL = "example.com"
+        try await setup(serverNameOrBaseURL: serverNameOrBaseURL)
+        
+        try await #require(throws: AuthenticationServiceError.registrationNotSupported) {
+            try await service.configure(for: serverNameOrBaseURL, flow: .register).get()
+        }
+        
+        #expect(service.flow == .login)
+        #expect(service.homeserver.value == .init(accountProvider: .managed(serverName: "matrix.org", baseURL: "https://matrix-client.matrix.org"),
+                                                  loginMode: .unknown))
+    }
+    
+    @Test("The OAuth prompt depends on the server and the authentication flow",
+          arguments: [("matrix.org", AuthenticationFlow.login, OAuthPrompt.consent),
+                      ("matrix.org", .register, .create),
+                      ("company.com", .register, .consent)])
+    mutating func oAuthPrompt(serverName: String, flow: AuthenticationFlow, expectedPrompt: OAuthPrompt) async throws {
+        try await setup(serverNameOrBaseURL: serverName)
+        try await service.configure(for: serverName, flow: flow).get()
+        
+        _ = try await service.urlForOAuthLogin(loginHint: nil).get()
+        
+        #expect(client.urlForOauthOauthConfigurationPromptLoginHintDeviceIdAdditionalScopesReceivedArguments?.prompt == expectedPrompt)
+    }
+    
+    @Test("Resetting the service restores the default login state")
+    mutating func reset() async throws {
+        // Given an authentication service configured with a custom account provider.
+        try await setup(serverNameOrBaseURL: "company.com")
+        try await service.configure(for: "company.com", flow: .register).get()
+        
+        #expect(service.flow == .register)
+        #expect(service.homeserver.value == .mockOAuth)
+        #expect(targetContext.statePublisher.value.authenticationHomeserver == .discovered("https://matrix.company.com"))
+        
+        // When resetting the service.
+        service.reset()
+        
+        // Then the default state should be restored.
+        #expect(service.flow == .login)
+        #expect(service.homeserver.value == .init(accountProvider: .managed(serverName: "matrix.org", baseURL: "https://matrix-client.matrix.org"),
+                                                  loginMode: .unknown))
+        #expect(targetContext.statePublisher.value.authenticationHomeserver == .undiscovered)
+    }
+    
+    @Test("A Classic app account's secrets are imported when logging in as that user")
+    mutating func classicAppAccountSecretsBundleIsUsed() async throws {
+        // Given an authentication service with an Element Classic account for Alice.
+        try await setup(classicAppAccounts: [.mockAlice])
+        try await service.configure(for: "matrix.org", flow: .login).get()
+        #expect(service.flow == .login)
+        #expect(service.classicAppAccount?.state.availableSecrets == .complete)
+        
+        // When logging in as Alice.
+        _ = try await service.login(username: "alice", password: "12345678", initialDeviceName: nil, deviceID: nil).get()
+        #expect(client.loginUsernamePasswordInitialDeviceNameDeviceIdCallsCount == 1)
+        
+        // Then Alice's secrets from Element Classic should be imported.
+        #expect(encryption.importSecretsBundleSecretsBundleCalled)
+    }
+    
+    @Test("A Classic app account's secrets aren't imported when they're unavailable")
+    mutating func classicAppAccountSecretsBundleIsIgnoredWhenUnavailable() async throws {
+        // Given an authentication service with an Element Classic account for Alice
+        // which isn't configured with any available secrets.
+        try await setup(classicAppAccounts: [.mockAlice], availableSecrets: .unavailable)
+        try await service.configure(for: "matrix.org", flow: .login).get()
+        #expect(service.flow == .login)
+        #expect(service.classicAppAccount?.state.availableSecrets == .unavailable)
+        
+        // When logging in as Alice.
+        _ = try await service.login(username: "alice", password: "12345678", initialDeviceName: nil, deviceID: nil).get()
+        #expect(client.loginUsernamePasswordInitialDeviceNameDeviceIdCallsCount == 1)
+        
+        // Then an attempt to import Alice's secrets from Element Classic must not be made.
+        #expect(!encryption.importSecretsBundleSecretsBundleCalled)
+    }
+    
+    @Test("A Classic app account's secrets aren't imported when logging in as a different user")
+    mutating func classicAppAccountSecretsBundleIsIgnoredForDifferentUser() async throws {
+        // Given an authentication service with an Element Classic account for Dan.
+        try await setup(classicAppAccounts: [.mockDan])
+        try await service.configure(for: "matrix.org", flow: .login).get()
+        #expect(service.flow == .login)
+        #expect(service.classicAppAccount?.state.availableSecrets == .complete)
+        
+        // When logging in as Alice
+        _ = try await service.login(username: "alice", password: "12345678", initialDeviceName: nil, deviceID: nil).get()
+        #expect(client.loginUsernamePasswordInitialDeviceNameDeviceIdCallsCount == 1)
+        
+        // Then Dan's secrets from Element Calssic should not be imported into Alice's client.
+        #expect(!encryption.importSecretsBundleSecretsBundleCalled)
+    }
+    
+    // MARK: - Helpers
+    
+    private mutating func setup(serverNameOrBaseURL: String = "matrix.org",
+                                classicAppAccounts: [ClassicAppAccount] = [],
+                                availableSecrets: ClassicAppAccount.AvailableSecrets = .complete) async throws {
+        let configuration: ClientFactoryMock.Configuration = .init()
+        let clientFactory = ClientFactoryMock(configuration)
+        
+        client = configuration.homeserverClients[serverNameOrBaseURL]
+        encryption = EncryptionSDKMock()
+        client.encryptionReturnValue = encryption
+        
+        userSessionManager = UserSessionManagerMock(.init())
+        encryptionKeyProvider = MockEncryptionKeyProvider()
+        targetContext = .mock
+        
+        let classicAppManager = ClassicAppManagerMock(.init(accounts: classicAppAccounts,
+                                                            availableSecrets: availableSecrets,
+                                                            secretsBundle: SecretsBundleWithUserIdSDKMock()))
+        
+        service = AuthenticationService(userSessionManager: userSessionManager,
+                                        encryptionKeyProvider: encryptionKeyProvider,
+                                        classicAppManager: classicAppManager,
+                                        clientFactory: clientFactory,
+                                        appSettings: .volatile(),
+                                        appHooks: AppHooks(),
+                                        targetContext: targetContext)
+        
+        if let classicAppAccount = service.classicAppAccount {
+            await service.setupClassicAppAccountState()
+            try #require(classicAppAccount.state.isServerSupported == true)
+            try #require(classicAppAccount.state.availableSecrets == availableSecrets)
+        }
+    }
+}
+
+struct MockEncryptionKeyProvider: EncryptionKeyProviderProtocol {
+    private let key = "12345678"
+    
+    func generateKey() -> Data {
+        Data(key.utf8)
+    }
+}

@@ -19,13 +19,64 @@
     --ac-field: #f4f2f8;
     --ac-ease: cubic-bezier(0.22, 1, 0.36, 1);
     --ac-bar: 64px;
+    --ac-surface: #fff;
+    --ac-surface-2: #f7f5fc;
+    --ac-border: #d9d0f5;
+    --ac-border-strong: #c4b5fd;
+    --ac-note-bg: #fffbeb;
+}
+
+/* ฟอนต์ไทยทุกธีม: Element ใช้ --font-family เป็นฟอนต์หลัก ธีม AranChat ใส่ Sarabun ไว้ แต่ธีมสว่าง/มืดของ Element ไม่มี
+ * (เลือกธีมมืดแล้วตัวอักษรไทยกลายเป็นสี่เหลี่ยมบนเครื่องที่ไม่มีฟอนต์ไทย) */
+html:root,
+html:root body[class*="cpd-theme-"] {
+    --font-family: Inter, Sarabun, "Noto Sans Thai", Twemoji, "Apple Color Emoji", "Segoe UI Emoji", Arial, sans-serif, "Noto Color Emoji";
+    --cpd-font-family-sans: "Inter", "Sarabun", "Noto Sans Thai", Twemoji, "Apple Color Emoji", "Segoe UI Emoji", system-ui,
+        sans-serif, "Noto Color Emoji";
+}
+
+/* ---------- โหมดมืด (ผู้ใช้เลือกธีมมืดในตั้งค่า → การแสดงผล) ----------
+ * สีม่วงแบรนด์เดิม ปรับให้สว่างขึ้นเล็กน้อยบนพื้นมืด · พื้นห้องแชทมืดอมม่วง · ฟองข้อความขาเข้าเป็นเทาเข้ม */
+body.cpd-theme-dark {
+    --ac-ink: #ece9ff;
+    --ac-muted: #a9a4c7;
+    --ac-line: #2e2a44;
+    --ac-brand: #8f7bff;
+    --ac-tint: #262240;
+    --ac-tint-2: #2d2850;
+    --ac-field: #1f1c32;
+    --ac-surface: #16141f;
+    --ac-surface-2: #1d1a2b;
+    --ac-border: #3a3458;
+    --ac-border-strong: #5a4fa0;
+    --ac-note-bg: #2a2412;
+    --ac-tl-bg: #0f0e18;
+    --ac-bubble-in: #252235;
+    --ac-bubble-in-ink: #ece9ff;
+    --ac-bubble-out: #6b54e6;
+    --ac-bubble-out-ink: #ffffff;
+    --ac-side-ink: #b7b2d6;
+    --ac-pill: rgba(255, 255, 255, 0.14);
+}
+/* สีค่าบนการ์ด (วิกฤต/สูง/ต่ำ/ปกติ) สว่างขึ้นให้อ่านออกบนพื้นมืด */
+body.cpd-theme-dark .mx_AranCard {
+    --ac-crit: #f87171;
+    --ac-high: #fb923c;
+    --ac-low: #60a5fa;
+    --ac-ok: #34d399;
+}
+/* brand/aranchat.css ตั้งพื้นห้องแชทเป็นสีฟ้าอ่อนตรงๆ — โหมดมืดใช้พื้นมืด */
+body.cpd-theme-dark .mx_RoomView_body .mx_RoomView_timeline,
+body.cpd-theme-dark .mx_RoomView_messagePanel {
+    background-color: var(--ac-tl-bg) !important;
+    background-image: none !important;
 }
 
 /* ---------- แถบเมนู ---------- */
 .mx_SpacePanel.mx_SpacePanel_aranchat {
     width: 80px;
     padding-top: var(--cpd-space-3x);
-    background: #fff;
+    background: var(--ac-surface);
     border-right: 1px solid var(--ac-line);
     gap: 2px;
 
@@ -132,7 +183,7 @@
 .mx_AranChat {
     .mx_LeftPanel,
     .mx_RoomListPanel {
-        background: #fff;
+        background: var(--ac-surface);
     }
     [data-testid="room-list-header"] h1 {
         font-size: 24px;
@@ -168,7 +219,7 @@
         transition: background-color 300ms var(--ac-ease);
 
         &:hover {
-            background: #f7f5fc;
+            background: var(--ac-surface-2);
         }
         &[aria-selected="true"] {
             background: var(--ac-tint-2);
@@ -181,7 +232,7 @@
 
     /* ---------- ห้องแชท ---------- */
     .mx_RoomHeader {
-        background: #fff;
+        background: var(--ac-surface);
         min-height: 64px;
         border-bottom: 1px solid var(--ac-line);
     }
@@ -190,13 +241,13 @@
         font-weight: 700;
     }
     .mx_RoomView_body .mx_RoomView_timeline {
-        background: #f3f0fb url("/res/img/aranchat/waves.svg") center bottom / 100% 55% no-repeat;
+        background: var(--ac-surface-2) url("/res/img/aranchat/waves.svg") center bottom / 100% 55% no-repeat;
     }
     .mx_RoomView_body .mx_RoomView_messagePanel {
         background: transparent;
     }
     .mx_MImageBody .mx_MImageBody_thumbnail_container {
-        border: 2px solid #fff;
+        border: 2px solid var(--ac-surface);
         border-radius: 16px;
         box-shadow: 0 2px 8px rgb(46 31 122 / 12%);
     }
@@ -211,7 +262,7 @@
 
     /* ---------- ช่องพิมพ์ ---------- */
     .mx_MessageComposer.mx_MessageComposer {
-        background: #fff;
+        background: var(--ac-surface);
         border-top: 1px solid var(--ac-line);
         padding: 8px 0;
     }
@@ -277,7 +328,7 @@
     box-sizing: border-box;
     padding: 16px;
     border-radius: 24px;
-    background: #fff;
+    background: var(--ac-surface);
     box-shadow: 0 16px 48px rgb(26 15 77 / 22%);
     font-family: var(--cpd-font-family-sans);
     animation: mx_AranChat_pop 500ms var(--ac-ease);
@@ -325,8 +376,8 @@
         transform 300ms var(--ac-ease);
 
     &:hover {
-        background: #f7f5fc;
-        border-color: #c4b5fd;
+        background: var(--ac-surface-2);
+        border-color: var(--ac-border-strong);
         text-decoration: none;
     }
     &:active {
@@ -366,7 +417,7 @@
     inset: 0 0 0 80px;
     display: flex;
     flex-direction: column;
-    background: #fff;
+    background: var(--ac-surface);
     border-left: 1px solid var(--ac-line);
 
     iframe {
@@ -400,8 +451,8 @@
     }
 }
 .mx_AranChatView_btn {
-    border: 1px solid #d9d0f5;
-    background: #fff;
+    border: 1px solid var(--ac-border);
+    background: var(--ac-surface);
     color: var(--ac-brand);
     border-radius: 999px;
     padding: 8px 12px;
@@ -450,7 +501,7 @@
         gap: 0;
         height: calc(var(--ac-bar) + env(safe-area-inset-bottom));
         padding: 4px 4px env(safe-area-inset-bottom);
-        background: #fff;
+        background: var(--ac-surface);
         border-top: 1px solid var(--ac-line);
     }
     .mx_AranChatRail_logo {
@@ -568,7 +619,7 @@
     display: block;
 }
 .mx_AranChatRail_item_active .mx_BaseAvatar {
-    box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--ac-brand);
+    box-shadow: 0 0 0 2px var(--ac-surface), 0 0 0 4px var(--ac-brand);
     border-radius: 999px;
 }
 
@@ -578,7 +629,7 @@
     flex-direction: column;
     height: 100%;
     min-height: 0;
-    background: #fff;
+    background: var(--ac-surface);
 }
 .mx_AranChatFriends_head {
     display: flex;
@@ -603,8 +654,8 @@
     }
 }
 .mx_AranChatFriends_add {
-    border: 1px solid #d9d0f5;
-    background: #fff;
+    border: 1px solid var(--ac-border);
+    background: var(--ac-surface);
     color: var(--ac-brand);
     border-radius: 999px;
     padding: 8px 12px;
@@ -632,7 +683,7 @@
     outline: none;
 
     &:focus {
-        box-shadow: 0 0 0 2px #c4b5fd;
+        box-shadow: 0 0 0 2px var(--ac-border-strong);
     }
 }
 .mx_AranChatFriends_list {
@@ -649,7 +700,7 @@
 
         span {
             margin-left: 4px;
-            color: #9b95b5;
+            color: var(--ac-muted);
         }
     }
 }
@@ -668,7 +719,7 @@
     transition: background-color 300ms var(--ac-ease);
 
     &:hover {
-        background: #f7f5fc;
+        background: var(--ac-surface-2);
     }
     &:active {
         transform: scale(0.98);

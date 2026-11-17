@@ -1,0 +1,100 @@
+setting.help_about.access_token_detail	access token เข้าถึงบัญชีของคุณได้ทั้งหมด ห้ามให้ใครเด็ดขาด
+setting.help_about.brand_version	รุ่น %(brand)s:
+setting.help_about.clear_cache_reload	ล้างแคชแล้วโหลดใหม่
+setting.help_about.crypto_version	รุ่นระบบเข้ารหัส:
+setting.help_about.dialog_title	<strong>ตั้งค่า:</strong> ช่วยเหลือและเกี่ยวกับ
+setting.help_about.help_link	ดูวิธีใช้ %(brand)s ได้<a>ที่นี่</a>
+setting.help_about.homeserver	เซิร์ฟเวอร์: <code>%(homeserverUrl)s</code>
+setting.help_about.identity_server	เซิร์ฟเวอร์ยืนยันตัวตน: <code>%(identityServerUrl)s</code>
+setting.help_about.title	ช่วยเหลือและเกี่ยวกับ
+setting.help_about.versions	รุ่นของระบบ
+slash_command.addwidget	เพิ่มวิดเจ็ตจาก URL เข้าห้อง
+slash_command.addwidget_iframe_missing_src	iframe ไม่มี src
+slash_command.addwidget_invalid_protocol	ใส่ URL วิดเจ็ตที่ขึ้นต้นด้วย https:// หรือ http://
+slash_command.addwidget_missing_url	ใส่ URL วิดเจ็ตหรือโค้ดฝัง
+slash_command.addwidget_no_permissions	คุณแก้วิดเจ็ตในห้องนี้ไม่ได้
+slash_command.ban	แบนผู้ใช้ตามรหัสที่ระบุ
+slash_command.category_actions	การกระทำ
+slash_command.category_admin	ผู้ดูแล
+slash_command.category_advanced	ขั้นสูง
+slash_command.category_effects	เอฟเฟกต์
+slash_command.category_messages	ข้อความ
+slash_command.category_other	อื่นๆ
+slash_command.command_error	คำสั่งผิดพลาด
+slash_command.converttodm	เปลี่ยนห้องเป็นแชทส่วนตัว
+slash_command.converttoroom	เปลี่ยนแชทส่วนตัวเป็นห้อง
+slash_command.could_not_find_room	ไม่พบห้อง
+slash_command.deop	ถอดสิทธิ์ผู้ใช้ตามรหัสที่ระบุ
+slash_command.devtools	เปิดเครื่องมือนักพัฒนา
+slash_command.discardsession	บังคับเปลี่ยนกุญแจการส่งของห้องเข้ารหัสนี้
+slash_command.error_invalid_rendering_type	คำสั่งผิดพลาด: ไม่พบรูปแบบการแสดงผล (%(renderingType)s)
+slash_command.error_invalid_room	คำสั่งล้มเหลว: ไม่พบห้อง (%(roomId)s)
+slash_command.error_invalid_runfn	คำสั่งผิดพลาด: จัดการคำสั่งนี้ไม่ได้
+slash_command.error_invalid_user_in_room	ไม่พบผู้ใช้ในห้อง
+slash_command.help	แสดงรายการคำสั่งพร้อมวิธีใช้
+slash_command.help_dialog_title	วิธีใช้คำสั่ง
+slash_command.holdcall	พักสายในห้องนี้
+slash_command.html	ส่งข้อความเป็น HTML ไม่แปลง markdown
+slash_command.ignore	ไม่สนใจผู้ใช้ ซ่อนข้อความของเขา
+slash_command.ignore_dialog_description	ตอนนี้คุณไม่สนใจ %(userId)s แล้ว
+slash_command.ignore_dialog_title	ไม่สนใจผู้ใช้
+slash_command.invite	เชิญผู้ใช้ตามรหัสที่ระบุเข้าห้องนี้
+slash_command.invite_3pid_needs_is_error	ต้องใช้เซิร์ฟเวอร์ยืนยันตัวตนจึงจะเชิญด้วยอีเมลได้ ตั้งค่าได้ในตั้งค่า
+slash_command.invite_3pid_use_default_is_title	ใช้เซิร์ฟเวอร์ยืนยันตัวตน
+slash_command.invite_3pid_use_default_is_title_description	ต้องใช้เซิร์ฟเวอร์ยืนยันตัวตนจึงจะเชิญด้วยอีเมลได้ กด "ต่อไป" เพื่อใช้เซิร์ฟเวอร์เริ่มต้น (%(defaultIdentityServerName)s) หรือตั้งค่าเองในตั้งค่า
+slash_command.invite_failed	ผู้ใช้ (%(user)s) ไม่ได้ถูกเชิญเข้า %(roomId)s และไม่มีข้อความผิดพลาด
+slash_command.join	เข้าห้องตามที่อยู่ที่ระบุ
+slash_command.jumptodate	ไปยังวันที่ที่ระบุในแชท
+slash_command.jumptodate_invalid_input	อ่านวันที่ (%(inputDate)s) ไม่ได้ ลองใช้รูปแบบ ปปปป-ดด-วว
+slash_command.lenny	เติม ( ͡° ͜ʖ ͡°) หน้าข้อความ
+slash_command.manual_device_verification_confirm_description	อุปกรณ์นั้นจะส่งและรับข้อความในชื่อคุณได้ ถ้ามีคนบอกให้วางอะไรตรงนี้ มีโอกาสสูงว่าคุณกำลังถูกหลอก! ยืนยันอุปกรณ์นี้ใช่ไหม?
+slash_command.manual_device_verification_confirm_title	ระวัง: ยืนยันอุปกรณ์ด้วยตัวเอง
+slash_command.me	แสดงเป็นการกระทำ
+slash_command.msg	ส่งข้อความหาผู้ใช้ที่ระบุ
+slash_command.myavatar	เปลี่ยนรูปโปรไฟล์ทุกห้อง
+slash_command.myroomavatar	เปลี่ยนรูปโปรไฟล์เฉพาะห้องนี้
+slash_command.myroomnick	เปลี่ยนชื่อที่แสดงเฉพาะห้องนี้
+slash_command.nick	เปลี่ยนชื่อที่แสดง
+slash_command.no_active_call	ไม่มีการโทรในห้องนี้
+slash_command.op	ตั้งระดับสิทธิ์ของผู้ใช้
+slash_command.part_unknown_alias	ไม่รู้จักที่อยู่ห้อง: %(roomAlias)s
+slash_command.plain	ส่งเป็นข้อความธรรมดา ไม่แปลง markdown
+slash_command.query	เปิดแชทกับผู้ใช้ที่ระบุ
+slash_command.query_not_found_phone_number	ไม่พบบัญชีของเบอร์โทรนี้
+slash_command.rageshake	ส่งรายงานปัญหาพร้อมบันทึกการทำงาน
+slash_command.rainbow	ส่งข้อความเป็นสีรุ้ง
+slash_command.rainbowme	ส่งการกระทำเป็นสีรุ้ง
+slash_command.remove	นำผู้ใช้ตามรหัสที่ระบุออกจากห้อง
+slash_command.roomavatar	เปลี่ยนรูปห้องนี้
+slash_command.roomname	ตั้งชื่อห้อง
+slash_command.server_error	เซิร์ฟเวอร์ผิดพลาด
+slash_command.server_error_detail	เซิร์ฟเวอร์ไม่พร้อม ทำงานหนักเกินไป หรือเกิดข้อผิดพลาดอื่น
+slash_command.shrug	เติม ¯\_(ツ)_/¯ หน้าข้อความ
+slash_command.spoiler	ส่งข้อความแบบซ่อน (กดเพื่อดู)
+slash_command.status.description	ตั้งสถานะของคุณ
+slash_command.status.no_args	ยังไม่ได้ใส่ค่า ใส่อีโมจิและข้อความ (ถ้ามี)
+slash_command.status.no_emoji	ยังไม่ได้ใส่อีโมจิ
+slash_command.status.no_text	ยังไม่ได้ใส่ข้อความสถานะ
+slash_command.status.too_long_emoji	ค่าแรกต้องเป็นอีโมจิ
+slash_command.status.too_long_text	ข้อความยาวเกินไป
+slash_command.tableflip	เติม (╯°□°）╯︵ ┻━┻ หน้าข้อความ
+slash_command.topic	ดูหรือตั้งหัวข้อห้อง
+slash_command.topic_none	ห้องนี้ไม่มีหัวข้อ
+slash_command.topic_room_error	ดูหัวข้อห้องไม่ได้: ไม่พบห้อง (%(roomId)s)
+slash_command.unban	ยกเลิกแบนผู้ใช้ตามรหัสที่ระบุ
+slash_command.unflip	เติม ┬──┬ ノ( ゜-゜ノ) หน้าข้อความ
+slash_command.unholdcall	กลับมาคุยสายที่พักไว้ในห้องนี้
+slash_command.unignore	เลิกไม่สนใจผู้ใช้ แสดงข้อความของเขาตามปกติ
+slash_command.unignore_dialog_description	เลิกไม่สนใจ %(userId)s แล้ว
+slash_command.unignore_dialog_title	เลิกไม่สนใจผู้ใช้
+slash_command.unknown_command	ไม่รู้จักคำสั่ง
+slash_command.unknown_command_button	ส่งเป็นข้อความ
+slash_command.unknown_command_detail	ไม่รู้จักคำสั่ง: %(commandText)s
+slash_command.unknown_command_help	พิมพ์ <code>/help</code> เพื่อดูคำสั่งทั้งหมด หรือจะส่งเป็นข้อความธรรมดา?
+slash_command.unknown_command_hint	เคล็ดลับ: ขึ้นต้นด้วย <code>//</code> ถ้าต้องการให้ข้อความเริ่มด้วยเครื่องหมาย /
+slash_command.upgraderoom	อัปเกรดห้องเป็นรุ่นใหม่
+slash_command.upgraderoom_permission_error	คุณไม่มีสิทธิ์ใช้คำสั่งนี้
+slash_command.usage	วิธีใช้
+slash_command.verify	ยืนยันอุปกรณ์ของตัวเองด้วยตนเอง
+slash_command.view	ดูห้องตามที่อยู่ที่ระบุ
+slash_command.whois	แสดงข้อมูลผู้ใช้

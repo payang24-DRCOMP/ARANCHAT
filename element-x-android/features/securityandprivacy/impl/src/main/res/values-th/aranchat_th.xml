@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat — คำแปลไทยที่ Element X (Localazy) ยังไม่มี · แยกตามโมดูลเจ้าของข้อความ (lint ExtraTranslation)
+     ไม่แก้ translations.xml ที่ Localazy สร้าง · SPDX-License-Identifier: AGPL-3.0-only -->
+<resources>
+    <string name="screen_security_and_privacy_enable_encryption_alert_description">เปิดการเข้ารหัสแล้วปิดไม่ได้ สมาชิกจะเห็นประวัติข้อความตั้งแต่ได้รับเชิญหรือเข้าร่วมเท่านั้น คนนอกห้องอ่านข้อความไม่ได้ และบอทบางตัวอาจทำงานไม่ได้ ไม่แนะนำให้เข้ารหัสห้องที่ใครก็ค้นหาและเข้าได้</string>
+    <string name="screen_security_and_privacy_room_publishing_section_footer">ที่อยู่ห้องใช้ค้นหาและเข้าห้อง ช่วยให้แชร์ห้องได้ง่าย เลือกแสดงห้องในรายชื่อห้องสาธารณะของเซิร์ฟเวอร์ได้</string>
+</resources>

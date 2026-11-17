@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat — คำแปลไทยที่ Element X (Localazy) ยังไม่มี · แยกตามโมดูลเจ้าของข้อความ (lint ExtraTranslation)
+     ไม่แก้ translations.xml ที่ Localazy สร้าง · SPDX-License-Identifier: AGPL-3.0-only -->
+<resources>
+    <string name="screen_qr_code_login_error_linking_not_suported_subtitle">อุปกรณ์อีกเครื่องไม่รองรับการเข้าระบบ %s ด้วย QR โค้ด\n\nลองเข้าระบบเอง หรือสแกน QR โค้ดด้วยอุปกรณ์อื่น</string>
+</resources>

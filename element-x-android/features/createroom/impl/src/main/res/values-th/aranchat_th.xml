@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat — คำแปลไทยที่ Element X (Localazy) ยังไม่มี · แยกตามโมดูลเจ้าของข้อความ (lint ExtraTranslation)
+     ไม่แก้ translations.xml ที่ Localazy สร้าง · SPDX-License-Identifier: AGPL-3.0-only -->
+<resources>
+    <string name="screen_create_room_public_option_description">ทุกคนค้นหาห้องนี้ได้ เปลี่ยนได้ทุกเมื่อในตั้งค่าห้อง</string>
+</resources>

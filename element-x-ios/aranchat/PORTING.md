@@ -1,0 +1,94 @@
+# AranChat iOS — คู่มือ port จาก Android
+
+ฐานโค้ด: Element X iOS (`element-hq/element-x-ios`, commit `93b0747` "Update the SDK to 26.11.16") — ฐานเดียวกับแอป Android (`element-x-android`)
+ทั้งสองใช้ `matrix-rust-sdk` ชุดเดียวกัน ฟีเจอร์ AranChat จึง port ได้ตรงตัว: ทุกอย่างเป็น **รูปแบบข้อความ Matrix + HTTP API ของเซิร์ฟเวอร์เรา** ไม่มีอะไรผูกกับ Android
+
+> build ต้องใช้ Mac + Xcode (เครื่องเซิร์ฟเวอร์ Linux ของ รพ. build iOS ไม่ได้) · ดู `README.md` ของ Element X iOS สำหรับ XcodeGen / SPM
+
+## ทำไว้แล้วในโฟลเดอร์นี้
+
+| ไฟล์ | ค่า |
+| --- | --- |
+| `app.yml` | `APP_DISPLAY_NAME`/`PRODUCTION_APP_NAME` = AranChat · `BASE_BUNDLE_IDENTIFIER` = `com.arankub.aranchat` · `APP_GROUP_IDENTIFIER` = `group.com.arankub.aranchat` · **`DEVELOPMENT_TEAM` = `CHANGE_ME` (ใส่ Team ID ของหน่วยงาน)** |
+| `ElementX/Sources/Application/Settings/AppSettings.swift` | ล็อกเซิร์ฟเวอร์ `arankub.com` / `https://matrix.arankub.com` · ห้ามเลือกเซิร์ฟเวอร์อื่น · push gateway `https://matrix.arankub.com` |
+
+ค่าแบรนด์ทั้งหมดอยู่ที่ `element-x-android/aranchat/brand.env` (ชื่อแอป สี `#5B3FD9` ไอคอน `aranchat/icon.png` ลิงก์ข้อตกลง/นโยบาย) — ใช้ชุดเดียวกัน
+
+## ลำดับที่แนะนำ
+
+1. **เข้าระบบได้ + แจ้งเตือนเด้ง** (ข้อ A, B) — ใช้งานพื้นฐานได้ทันที
+2. **กุญแจแชท keyvault** (ข้อ C) — สำคัญมาก: ไม่ทำ = ผู้ใช้เปลี่ยนเครื่องแล้วอ่านแชทเข้ารหัสเก่าไม่ได้
+3. **การ์ดแจ้งเตือน + ปุ่ม** (ข้อ D) — งานหลักของ รพ. (ค่าวิกฤตแล็บ อนุมัติงาน)
+4. ที่เหลือ (E–J) ตามความสำคัญ
+
+---
+
+### A. เข้าระบบ (OIDC ผ่าน MAS → AranKub)
+- Element X iOS รองรับ OIDC อยู่แล้ว — ตั้ง client metadata ให้ตรงกับ Android: `WEBSITE_URL=https://arankub.com`, `TERMS_URL`, `PRIVACY_URL` (MAS บังคับให้อยู่โดเมนเดียวกัน ไม่งั้น "client registration denied by the policy")
+- redirect URI ต้องขึ้นต้นด้วยโดเมนกลับด้าน (`com.arankub.aranchat:/…`)
+
+### B. แจ้งเตือน (APNs ผ่าน Sygnal ของเรา)
+- `pusherAppID` = `com.arankub.aranchat.ios.prod` (ดู `AppSettings.pusherAppID`)
+- เพิ่ม app นี้ใน Sygnal (`aranchat-ess/sygnal`, `scripts/16-push.sh`) แบบ `type: apns` พร้อมกุญแจ APNs (.p8) จากบัญชี Apple Developer
+- NSE (Notification Service Extension) ของ Element X ถอดรหัสข้อความเข้ารหัสให้อยู่แล้ว — ตั้ง App Group ให้ตรงกับ `app.yml`
+
+### C. ฝากกุญแจกู้คืนแชท (keyvault) — Android: `features/enterprise/impl-foss/.../AranKeyvault.kt`
+หลังเข้าระบบสำเร็จ แอปจัดการกุญแจกู้คืนให้เองโดยผู้ใช้ไม่ต้องจด:
+- ที่อยู่: `.well-known/matrix/client` → `com.arankub.keyvault.url` (ค่าปัจจุบัน `https://chat.arankub.com/api/keyvault`)
+- ทุกคำขอส่ง `{"openid": <ผลจาก POST /_matrix/client/v3/user/{userId}/openid/request_token>}`
+- `POST …/get` → `200 {recovery_key}` = กู้คืนด้วยกุญแจนี้ · **`404` ที่ body เป็น `{"error":"none"}` เท่านั้น = ยังไม่มีกุญแจ** (404 แบบอื่น = ระบบยังไม่พร้อม ห้ามตีความว่าไม่มีกุญแจ ไม่งั้นจะรีเซ็ตตัวตนผิด)
+- ยังไม่มีกุญแจ → เปิด backup/recovery ด้วย SDK → `POST …/put {recovery_key}`
+- กุญแจใช้ไม่ได้ / ตัวตนเก่าไม่มีใครถือกุญแจ → `POST …/allow-reset` → รีเซ็ตตัวตน → `put {recovery_key, replace: true}`
+- ซ่อนหน้าจอ "ตั้งกุญแจกู้คืน / ยืนยันอุปกรณ์" ที่ไม่จำเป็น (Android ทำใน `DefaultSessionEnterpriseService.kt`)
+
+### D. การ์ดแจ้งเตือน — Android: `timeline/model/event/AranCard.kt`, `TimelineItemAranCardView.kt`, `aranchat/AranCardSender.kt`
+- ข้อความ `m.text` จากบอท `@aranchat:arankub.com` ที่มี `content["com.arankub.card"]` → แสดงเป็นการ์ดแทนข้อความ (อ่านการ์ดเฉพาะข้อความจากบอท)
+- รูปแบบเต็ม + ตัวอย่าง: `server/notify/cardkit.mjs` และหน้าเอกสาร https://chat.arankub.com/connect/bot/ · แม่แบบ: `server/notify/templates/examples.json`
+- ช่องหลัก: `system topic icon title subtitle urgent level color image(mxc) fields[[k,v,tone]] lines sections[] buttons[] status{text,tone} closed note`
+- `sections`: `text` · `fields` · `table{columns,rows,tones}` · `steps{items[{label,time,state}]}` · `stats{items[{label,value,tone}]}`
+- โทนสี: `crit` แดง ‼ · `high` ส้ม ↑ · `low` น้ำเงิน ↓ · `ok` เขียว · `muted` · ระดับหัวการ์ด: `info` `success` `warning` `critical` (`urgent` = แดง + ป้าย "ด่วน")
+- **บอทแก้การ์ด (m.replace) เมื่อมีคนกดปุ่ม** → อ่านจาก `m.new_content` ของการแก้ไขล่าสุด (Android ใช้ `latestEditedJson`)
+- ปุ่ม:
+  - `link` เปิด URL · `copy` คัดลอก `text`
+  - **รับทราบ** (`ack: true`): ส่ง reaction key `"✅ รับทราบ"` ที่ข้อความนั้น · แสดง "รับทราบแล้ว: ชื่อ…" จาก reaction
+  - `action` (มี `confirm` = ถามยืนยันก่อน) และ `datetime` (`mode` date/time/datetime, `min` `max` `initial`): ส่ง
+    ```json
+    { "msgtype": "m.text", "body": "<label>[: <value>]",
+      "m.relates_to": { "m.in_reply_to": { "event_id": "<การ์ด>" } },
+      "com.arankub.card_action": { "event_id": "<การ์ด>", "id": "<button id>", "value": "2026-11-20T08:30" } }
+    ```
+  - `app` มินิแอป → ข้อ F
+- ซ่อนปุ่ม action/datetime เมื่อ `closed: true` · การ์ดพื้นขาวเสมอ (ทั้งธีมสว่าง/มืด)
+
+### E. บอท: คำสั่ง / · เมนู · ปุ่มตอบด่วน — Android: `aranchat/AranBot.kt`
+- รายการคำสั่ง + เมนู: `GET https://chat.arankub.com/api/notify/bot` (สาธารณะ) → `{commands:[{command,description,usage}], menu:[{label,type:text|link|app,text,url,prefill}]}`
+- ใช้เฉพาะห้องที่บอทเป็นสมาชิก (แชทกับ "AranChat แจ้งเตือน" / ห้องแจ้งเตือน — ห้องเหล่านี้ไม่เข้ารหัส)
+- พิมพ์ `/lab 0012345` ในห้องบอท → **ส่งเป็นข้อความธรรมดา** (อย่าให้ตัวแยกคำสั่งของแอปตีว่าไม่รู้จักคำสั่ง)
+- ปุ่มตอบด่วน: ข้อความล่าสุดในห้องมาจากบอทและมี `content["com.arankub.quick_replies"] = [{label,text,prefill}]` → แสดงชิปเหนือช่องพิมพ์ · `prefill` = ใส่ลงช่องพิมพ์แทนการส่ง
+
+### F. มินิแอป
+- เปิด `url` ในเบราว์เซอร์ในแอป (SFSafariViewController) พร้อม fragment `#aranchat_openid=<openid access_token>&aranchat_server=<matrix_server_name>`
+- ระบบหลังบ้านตรวจด้วย `POST /api/notify/miniapp/whoami` (ใช้ key ของระบบ) — แอปไม่ต้องทำอะไรเพิ่ม
+
+### G. สติกเกอร์ — Android: `messagecomposer/AranStickers.kt`
+- ชุดสติกเกอร์: `GET https://chat.arankub.com/stickers/index.json` (แคชไว้ใช้ออฟไลน์) + ชุดพื้นฐานในแอป (`res/aranchat-stickers` ของเว็บ)
+- ส่งเป็น `m.sticker` มาตรฐาน · ภาพเคลื่อนไหวใส่ `info["org.matrix.msc4230.is_animated"] = true`
+- อัปโหลดครั้งแรกแล้วจำ mxc ใน account data `com.arankub.stickers` = `{ mxc: {"<id>@<size>" หรือ "<ชุด>/<id>@<size>": mxc}, recent: ["<ชุด>/<id>"] }` (ใช้ร่วมกับเว็บ/Android — อ่านซ้ำก่อนเขียนทุกครั้ง)
+
+### H. โน้ต / อัลบั้มในกลุ่ม — Android: `aranchat/AranBoard.kt`, `AranBoardSheet.kt`
+- ดัชนี: state event `com.arankub.note` / `com.arankub.album` (`state_key` = id, content `{event_id, created_by, created_ts, updated_ts}` · ลบ = `{}`)
+- เนื้อหาอยู่ในข้อความเข้ารหัส: โน้ต = body `"📝 โน้ต\n<ข้อความ>"` + `{"com.arankub.note": {"id"}}` (แก้ไข = m.replace body เต็ม) · อัลบั้ม = body `"🖼 อัลบั้ม: <ชื่อ>"` + `{"com.arankub.album": {"id"}}` · รูปในอัลบั้ม = ส่งในเธรดของข้อความอัลบั้ม
+
+### I. เพื่อน / ข้อมูลติดต่อ / ลิงก์ชวน — Android: `home/.../friends/AranFriends.kt`, `AranContact.kt`, `libraries/matrixui/.../aranchat/AranInviteLink.kt`
+- การ์ดแนะนำเพื่อน: body ขึ้นต้น `"👤 "` + `content["com.arankub.contact"]`
+- ลิงก์ชวน `https://chat.arankub.com/i/<รหัส 8 ตัว>` (Universal Link — เพิ่ม `apple-app-site-association` ที่ `chat.arankub.com/.well-known/` คู่กับ `assetlinks.json` ของ Android) → `POST https://chat.arankub.com/api/notify/invite/<รหัส>/accept {openid}` → เข้าห้อง/เพิ่มเพื่อน
+- QR โค้ดของฉัน (ตั้งค่า): `POST …/api/notify/invite {openid}` → ลิงก์ชวนส่วนตัว
+
+### J. อื่นๆ
+- ภาษาไทย: Element X iOS มีคำแปลไทยจาก Localazy อยู่แล้ว · ข้อความใหม่ของ AranChat ใช้ชุดคำเดียวกับ Android (`values-th/aranchat_th.xml`) และเว็บ
+- อัปเดตแอป: iOS ใช้ TestFlight / App Store (Android ใช้ `latest.json` + ดาวน์โหลด APK เอง — ไม่ใช้กับ iOS)
+- ปิดการส่งข้อมูลการใช้งานไป Element (Posthog/Sentry) เหมือน Android (`appconfig/ApplicationConfig.kt`)
+- ข้อมูลผู้ป่วย: แสดง HN ไม่แสดงชื่อ (PDPA) — แอปแค่แสดงตามที่เซิร์ฟเวอร์ส่ง ไม่ต้องทำอะไรเพิ่ม
+
+## อ้างอิงฝั่งเว็บ (ทำครบทุกฟีเจอร์ — ใช้เทียบพฤติกรรม)
+`element-web/apps/web/src/aranchat/` — `AranCardBody.tsx` · `bot.ts` + `AranBot.tsx` · `stickers.ts` · `groupBoard.ts` + `AranBoard.tsx` · `AranContact.tsx` · `keyvault.ts`

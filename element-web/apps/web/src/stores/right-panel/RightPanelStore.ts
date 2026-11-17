@@ -29,6 +29,7 @@ import { type ActiveRoomChangedPayload } from "../../dispatcher/payloads/ActiveR
 import { type OpenDocumentViewerPayload } from "../../dispatcher/payloads/OpenDocumentViewerPayload";
 import { SDKContextClass } from "../../contexts/SDKContextClass";
 import { MatrixClientPeg } from "../../MatrixClientPeg";
+import { aranChatConfig } from "../../aranchat/config";
 
 /**
  * @see RightPanelStore#generateHistoryForPhase
@@ -78,6 +79,7 @@ export default class RightPanelStore extends ReadyWatchingStore {
         this.viewedRoomId = SDKContextClass.instance.roomViewStore.getRoomId();
         this.matrixClient?.on(CryptoEvent.VerificationRequestReceived, this.onVerificationRequestUpdate);
         this.loadCacheFromSettings();
+        this.closeOnSmallScreen();
         this.emitAndUpdateSettings();
     }
 
@@ -450,6 +452,7 @@ export default class RightPanelStore extends ReadyWatchingStore {
         this.viewedRoomId = newRoomId;
         // load values from byRoomCache with the viewedRoomId.
         this.loadCacheFromSettings();
+        this.closeOnSmallScreen();
 
         // when we're switching to a room, clear out any stale MemberInfo cards
         // in order to fix https://github.com/vector-im/element-web/issues/21487
@@ -471,6 +474,16 @@ export default class RightPanelStore extends ReadyWatchingStore {
         }
 
         this.emitAndUpdateSettings();
+    }
+
+    /**
+     * AranChat: บนจอมือถือ แผงขวาเปิดทับหน้าแชททั้งหน้า — เปิดห้อง/เปิดแอปใหม่ให้เห็นแชทก่อนเสมอ
+     * (ค่าที่จำไว้จากจอคอมจะไม่ทำให้มือถือเปิดมาเจอแผงข้อมูลห้องค้าง)
+     */
+    private closeOnSmallScreen(): void {
+        if (!aranChatConfig() || window.innerWidth > 768) return;
+        const panel = this.byRoom[this.viewedRoomId ?? ""];
+        if (panel?.isOpen) panel.isOpen = false;
     }
 
     public static get instance(): RightPanelStore {

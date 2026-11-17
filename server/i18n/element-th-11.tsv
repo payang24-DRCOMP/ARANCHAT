@@ -1,0 +1,150 @@
+export_chat.json	JSON
+export_chat.media_omitted	ไม่รวมไฟล์สื่อ
+export_chat.media_omitted_file_size	ไม่รวมไฟล์สื่อ - ไฟล์ใหญ่เกินกำหนด
+export_chat.messages	ข้อความ
+export_chat.next_page	ข้อความชุดถัดไป
+export_chat.num_messages	จำนวนข้อความ
+export_chat.num_messages_min_max	จำนวนข้อความต้องอยู่ระหว่าง %(min)s ถึง %(max)s
+export_chat.number_of_messages	ระบุจำนวนข้อความ
+export_chat.previous_page	ข้อความชุดก่อนหน้า
+export_chat.processing	กำลังประมวลผล…
+export_chat.processing_event_n	กำลังประมวลผลรายการที่ %(number)s จาก %(total)s
+export_chat.select_option	เลือกตัวเลือกด้านล่างเพื่อส่งออกแชท
+export_chat.size_limit	ขนาดสูงสุด
+export_chat.size_limit_min_max	ขนาดต้องอยู่ระหว่าง %(min)s MB ถึง %(max)s MB
+export_chat.size_limit_postfix	MB
+export_chat.starting_export	กำลังเริ่มส่งออก…
+export_chat.successful	ส่งออกสำเร็จ
+export_chat.successful_detail	ส่งออกสำเร็จแล้ว ไฟล์อยู่ในโฟลเดอร์ดาวน์โหลด
+export_chat.text	ข้อความธรรมดา
+export_chat.title	ส่งออกแชท
+export_chat.topic	หัวข้อ: %(topic)s
+export_chat.unload_confirm	ออกระหว่างส่งออกใช่ไหม?
+failed_load_async_component	โหลดไม่ได้! ตรวจสอบอินเทอร์เน็ตแล้วลองใหม่
+feedback.can_contact_label	ติดต่อกลับได้ถ้ามีคำถามเพิ่มเติม
+feedback.comment_label	ความคิดเห็น
+feedback.existing_issue_link	ดู<existingIssuesLink>ปัญหาที่มีคนแจ้งไว้แล้วบน Github</existingIssuesLink>ก่อน ไม่พบ? <newIssueLink>แจ้งปัญหาใหม่</newIssueLink>
+feedback.may_contact_label	ติดต่อกลับได้ เพื่อสอบถามหรือให้ลองฟีเจอร์ใหม่
+feedback.platform_username	ระบบจะบันทึกอุปกรณ์และชื่อผู้ใช้ของคุณไว้ เพื่อใช้ความคิดเห็นให้เป็นประโยชน์ที่สุด
+feedback.pro_type	เคล็ดลับ: ถ้าแจ้งปัญหา ส่ง<debugLogsLink>บันทึกการทำงาน</debugLogsLink>มาด้วยจะช่วยหาสาเหตุได้เร็วขึ้น
+feedback.send_feedback_action	ส่งความคิดเห็น
+feedback.sent	ส่งความคิดเห็นแล้ว ขอบคุณมาก!
+in_space	ใน %(spaceName)s
+in_space1_and_space2	ใน %(space1Name)s และ %(space2Name)s
+in_space_and_n_other_spaces.one	ใน %(spaceName)s และอีก 1 แห่ง
+in_space_and_n_other_spaces.other	ใน %(spaceName)s และอีก %(count)s แห่ง
+integrations.disabled_dialog_description	เปิด '%(manageIntegrations)s' ในตั้งค่าก่อน
+integrations.disabled_dialog_title	ปิดการเชื่อมต่อส่วนเสริมอยู่
+integrations.impossible_dialog_description	%(brand)s ของคุณไม่อนุญาตให้ใช้ตัวจัดการส่วนเสริม ติดต่อผู้ดูแลระบบ
+integrations.impossible_dialog_title	ไม่อนุญาตส่วนเสริม
+inviting_user1_and_user2	กำลังเชิญ %(user1)s และ %(user2)s
+lightbox.rotate_left	หมุนซ้าย
+lightbox.rotate_right	หมุนขวา
+lightbox.title	ดูรูปภาพ
+location_sharing.MapStyleUrlNotConfigured	เซิร์ฟเวอร์ยังไม่ได้เปิดใช้แผนที่
+location_sharing.MapStyleUrlNotReachable	ตั้งค่าการแสดงแผนที่ไม่ถูกต้อง หรือเชื่อมต่อเซิร์ฟเวอร์แผนที่ไม่ได้
+location_sharing.WebGLNotEnabled	ต้องเปิด WebGL ในเบราว์เซอร์เพื่อแสดงแผนที่
+location_sharing.click_drop_pin	เลือกตำแหน่ง
+location_sharing.click_move_pin	เลือกตำแหน่งใหม่
+location_sharing.close_sidebar	ปิดแถบด้านข้าง
+location_sharing.error_fetch_location	หาตำแหน่งไม่ได้
+location_sharing.error_no_perms_description	คุณต้องมีสิทธิ์ก่อนจึงจะแชร์ตำแหน่งในห้องนี้ได้
+location_sharing.error_no_perms_title	คุณไม่มีสิทธิ์แชร์ตำแหน่ง
+location_sharing.error_send_description	%(brand)s ส่งตำแหน่งของคุณไม่ได้ ลองใหม่ภายหลัง
+location_sharing.error_send_title	ส่งตำแหน่งไม่สำเร็จ
+location_sharing.error_sharing_live_location	เกิดข้อผิดพลาดขณะแชร์ตำแหน่งแบบสด
+location_sharing.error_stopping_live_location	เกิดข้อผิดพลาดขณะหยุดแชร์ตำแหน่งแบบสด
+location_sharing.expand_map	ขยายแผนที่
+location_sharing.failed_generic	หาตำแหน่งของคุณไม่ได้ ลองใหม่ภายหลัง
+location_sharing.failed_load_map	โหลดแผนที่ไม่ได้
+location_sharing.failed_permission	%(brand)s ไม่ได้รับอนุญาตให้ใช้ตำแหน่ง เปิดสิทธิ์ตำแหน่งในตั้งค่าเบราว์เซอร์
+location_sharing.failed_timeout	หาตำแหน่งนานเกินไป ลองใหม่ภายหลัง
+location_sharing.failed_unknown	หาตำแหน่งไม่ได้ ลองใหม่ภายหลัง
+location_sharing.find_my_location	หาตำแหน่งของฉัน
+location_sharing.live_description	ตำแหน่งสดของ %(displayName)s
+location_sharing.live_enable_description	หมายเหตุ: เป็นฟีเจอร์ทดลอง ลบประวัติตำแหน่งไม่ได้ และผู้ใช้ที่รู้วิธีอาจเห็นประวัติตำแหน่งแม้หยุดแชร์แล้ว
+location_sharing.live_enable_heading	แชร์ตำแหน่งแบบสด
+location_sharing.live_location_active	คุณกำลังแชร์ตำแหน่งแบบสด
+location_sharing.live_location_enabled	เปิดตำแหน่งแบบสดแล้ว
+location_sharing.live_location_ended	หยุดแชร์ตำแหน่งแบบสดแล้ว
+location_sharing.live_location_error	ตำแหน่งแบบสดมีข้อผิดพลาด
+location_sharing.live_locations_empty	ไม่มีใครแชร์ตำแหน่งแบบสด
+location_sharing.live_share_button	แชร์ %(duration)s
+location_sharing.live_toggle_label	เปิดการแชร์ตำแหน่งแบบสด
+location_sharing.live_until	แชร์ถึง %(expiryTime)s
+location_sharing.live_update_time	อัปเดต %(humanizedUpdateTime)s
+location_sharing.loading_live_location	กำลังโหลดตำแหน่งแบบสด…
+location_sharing.location_not_available	ไม่มีข้อมูลตำแหน่ง
+location_sharing.map_feedback	แจ้งปัญหาแผนที่
+location_sharing.map_marker	หมุดบนแผนที่
+location_sharing.mapbox_logo	โลโก้ Mapbox
+location_sharing.reset_bearing	หันแผนที่กลับทิศเหนือ
+location_sharing.share_button	แชร์ตำแหน่ง
+location_sharing.share_type_live	ตำแหน่งสดของฉัน
+location_sharing.share_type_own	ตำแหน่งปัจจุบันของฉัน
+location_sharing.share_type_pin	ปักหมุด
+location_sharing.share_type_prompt	จะแชร์ตำแหน่งแบบไหน?
+location_sharing.toggle_attribution	แสดง/ซ่อนที่มาของแผนที่
+markdown_viewer.open	เปิด Markdown
+member_list_back_action_label	สมาชิกในห้อง
+mobile_guide.toast_accept	ใช้แอป
+mobile_guide.toast_description	เว็บบนมือถือยังเป็นรุ่นทดลอง ติดตั้งแอป %(brand)s ฟรี เพื่อใช้งานได้ลื่นและได้ฟีเจอร์ล่าสุด
+mobile_guide.toast_title	ใช้แอปเพื่อประสบการณ์ที่ดีกว่า
+name_and_id	%(name)s (%(userId)s)
+no_more_results	ไม่มีผลลัพธ์เพิ่ม
+pdf_viewer.open	เปิด PDF
+pdf_viewer.title	PDF
+pdf_viewer.page_label	หน้า %(page)s จาก %(total)s
+pdf_viewer.page_number	เลขหน้า
+pdf_viewer.zoom	ซูม
+pdf_viewer.zoom_in	ขยาย
+pdf_viewer.zoom_out	ย่อ
+pill.permalink_other_room	ข้อความใน %(room)s
+pill.permalink_this_room	ข้อความจาก %(user)s
+poll.create_poll_action	สร้างโพล
+poll.create_poll_title	สร้างโพล
+poll.disclosed_notes	ผู้โหวตเห็นผลทันทีหลังโหวต
+poll.edit_poll_title	แก้ไขโพล
+poll.end_description	ปิดโพลนี้ใช่ไหม? จะแสดงผลสุดท้าย และโหวตเพิ่มไม่ได้อีก
+poll.end_message	ปิดโพลแล้ว คำตอบที่ได้คะแนนสูงสุด: %(topAnswer)s
+poll.end_message_no_votes	ปิดโพลแล้ว ไม่มีใครโหวต
+poll.end_title	ปิดโพล
+poll.ended_poll_label	ปิดโพลแล้ว
+poll.error_ending_description	ปิดโพลไม่สำเร็จ ลองใหม่อีกครั้ง
+poll.error_ending_title	ปิดโพลไม่สำเร็จ
+poll.error_voting_description	บันทึกโหวตไม่สำเร็จ ลองใหม่อีกครั้ง
+poll.error_voting_title	บันทึกโหวตไม่สำเร็จ
+poll.failed_send_poll_description	ส่งโพลที่สร้างไม่สำเร็จ
+poll.failed_send_poll_title	ส่งโพลไม่สำเร็จ
+poll.notes	เห็นผลเมื่อปิดโพลแล้วเท่านั้น
+poll.option_label	ตัวเลือก %(number)s, %(answer)s
+poll.option_label_winning_with_total.one	ตัวเลือก %(number)s, %(answer)s, คะแนนสูงสุด, %(count)s โหวต
+poll.option_label_winning_with_total.other	ตัวเลือก %(number)s, %(answer)s, คะแนนสูงสุด, %(count)s โหวต
+poll.option_label_with_total.one	ตัวเลือก %(number)s, %(answer)s, %(count)s โหวต
+poll.option_label_with_total.other	ตัวเลือก %(number)s, %(answer)s, %(count)s โหวต
+poll.options_add_button	เพิ่มตัวเลือก
+poll.options_heading	ตัวเลือก
+poll.options_label	ตัวเลือก %(number)s
+poll.options_placeholder	พิมพ์ตัวเลือก
+poll.poll_label	โพล
+poll.topic_heading	คำถามหรือหัวข้อโพล
+poll.topic_label	คำถามหรือหัวข้อ
+poll.topic_placeholder	พิมพ์คำถาม…
+poll.total_decryption_errors	ถอดรหัสบางโหวตไม่ได้ จึงอาจนับไม่ครบ
+poll.total_n_votes.one	มี %(count)s โหวต โหวตเพื่อดูผล
+poll.total_n_votes.other	มี %(count)s โหวต โหวตเพื่อดูผล
+poll.total_n_votes_voted.one	จาก %(count)s โหวต
+poll.total_n_votes_voted.other	จาก %(count)s โหวต
+poll.total_no_votes	ยังไม่มีใครโหวต
+poll.total_not_ended	เห็นผลเมื่อปิดโพลแล้ว
+poll.type_closed	โพลปิด (ซ่อนผล)
+poll.type_heading	ประเภทโพล
+poll.type_open	โพลเปิด (เห็นผลทันที)
+poll.unable_edit_description	แก้ไขโพลไม่ได้เมื่อมีคนโหวตแล้ว
+poll.unable_edit_title	แก้ไขโพลไม่ได้
+power_level.admin	ผู้ดูแล
+power_level.creator	เจ้าของ
+power_level.custom	กำหนดเอง (%(level)s)
+power_level.custom_level	ระดับที่กำหนดเอง
+power_level.default	ทั่วไป
+power_level.label	ระดับสิทธิ์

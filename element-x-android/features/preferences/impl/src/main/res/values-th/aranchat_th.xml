@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat — คำแปลไทยที่ Element X (Localazy) ยังไม่มี · แยกตามโมดูลเจ้าของข้อความ (lint ExtraTranslation)
+     ไม่แก้ translations.xml ที่ Localazy สร้าง · SPDX-License-Identifier: AGPL-3.0-only -->
+<resources>
+    <string name="screen_notification_settings_configuration_mismatch_description">เราปรับหน้าตั้งค่าการแจ้งเตือนให้หาง่ายขึ้น ค่าที่คุณเคยตั้งเองบางอย่างไม่แสดงที่นี่ แต่ยังใช้งานอยู่\n\nถ้าทำต่อ ค่าบางอย่างอาจเปลี่ยน</string>
+</resources>

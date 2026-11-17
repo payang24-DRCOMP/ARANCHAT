@@ -1,0 +1,150 @@
+a11y.jump_first_invite	ไปที่คำเชิญแรก
+a11y.message_composer	ช่องพิมพ์ข้อความ
+a11y.n_unread_messages.one	ข้อความยังไม่อ่าน 1 ข้อความ
+a11y.n_unread_messages.other	ข้อความยังไม่อ่าน %(count)s ข้อความ
+a11y.n_unread_messages_mentions.one	มีคนกล่าวถึงคุณ 1 ข้อความ
+a11y.n_unread_messages_mentions.other	ข้อความยังไม่อ่าน %(count)s ข้อความ รวมที่มีคนกล่าวถึงคุณ
+a11y.room_status_bar	แถบสถานะห้อง
+a11y.seek_bar_label	แถบเลื่อนเสียง
+a11y.unread_messages	ข้อความยังไม่อ่าน
+a11y_jump_first_unread_room	ไปที่ห้องแรกที่ยังไม่อ่าน
+cannot_invite_without_identity_server	เชิญด้วยอีเมลไม่ได้ เพราะยังไม่ได้เชื่อมเซิร์ฟเวอร์ยืนยันตัวตน ตั้งได้ที่ "ตั้งค่า"
+cannot_reach_homeserver	เชื่อมต่อไม่ได้
+cannot_reach_homeserver_detail	ตรวจสอบว่าอินเทอร์เน็ตใช้งานได้ หรือติดต่อผู้ดูแลระบบ
+cant_load_page	โหลดหน้านี้ไม่ได้
+chat_card_back_action_label	กลับไปที่แชท
+chat_effects.confetti_description	ส่งข้อความพร้อมกระดาษสีโปรย
+chat_effects.confetti_message	โปรยกระดาษสี
+chat_effects.fireworks_description	ส่งข้อความพร้อมพลุ
+chat_effects.fireworks_message	จุดพลุ
+chat_effects.hearts_description	ส่งข้อความพร้อมหัวใจ
+chat_effects.hearts_message	ส่งหัวใจ
+chat_effects.rainfall_description	ส่งข้อความพร้อมสายฝน
+chat_effects.rainfall_message	ส่งสายฝน
+chat_effects.snowfall_description	ส่งข้อความพร้อมหิมะตก
+chat_effects.snowfall_message	ส่งหิมะ
+chat_effects.spaceinvaders_description	ส่งข้อความพร้อมเอฟเฟกต์อวกาศ
+chat_effects.spaceinvaders_message	ส่งยานอวกาศ
+console_dev_note	ถ้าคุณรู้ว่ากำลังทำอะไร: แอปนี้พัฒนาจาก Element ซึ่งเป็นโอเพนซอร์ส ดูได้ที่ GitHub (https://github.com/vector-im/element-web/)
+console_scam_warning	ถ้ามีคนบอกให้คัดลอก/วางอะไรตรงนี้ มีโอกาสสูงมากว่าคุณกำลังถูกหลอก!
+console_wait	หยุดก่อน!
+create_section_dialog.add_rooms	เพิ่มแชท
+create_section_dialog.create_section	สร้างหมวด
+create_section_dialog.empty_list_text	ไม่พบแชท
+create_section_dialog.list_title	แนะนำ
+create_section_dialog.placeholder	ค้นหาแชทของคุณ
+create_section_dialog.title	สร้างหมวด
+create_section_dialog.title_add_rooms	เพิ่มแชทเข้า %(section)s
+create_section_dialog.title_edition	แก้ไขหมวด
+credits.default_cover_photo	<photo>ภาพปกเริ่มต้น</photo> © <author>Jesús Roncero</author> ใช้ภายใต้สัญญาอนุญาต <terms>CC-BY-SA 4.0</terms>
+credits.twemoji	ภาพอีโมจิ <twemoji>Twemoji</twemoji> © <author>Twitter, Inc และผู้ร่วมพัฒนา</author> ใช้ภายใต้สัญญาอนุญาต <terms>CC-BY 4.0</terms>
+credits.twemoji_colr	ฟอนต์ <colr>twemoji-colr</colr> © <author>Mozilla Foundation</author> ใช้ภายใต้สัญญาอนุญาต <terms>Apache 2.0</terms>
+decline_invitation_dialog.confirm	ปฏิเสธคำเชิญเข้า "%(roomName)s" ใช่ไหม?
+decline_invitation_dialog.ignore_user_help	คุณจะไม่เห็นข้อความหรือคำเชิญจากผู้ใช้นี้อีก
+decline_invitation_dialog.reason_description	บอกเหตุผลที่รายงานห้องนี้
+decline_invitation_dialog.report_room_description	รายงานแชทนี้ให้ผู้ดูแลระบบ
+decline_invitation_dialog.title	ปฏิเสธคำเชิญ
+desktop_default_device_name	%(brand)s Desktop: %(platformName)s
+document_viewer.title	เอกสาร
+document_viewer.error_load	เปิดไฟล์นี้ไม่ได้
+document_viewer.loading	กำลังโหลดเอกสาร…
+download_completed	ดาวน์โหลดเสร็จแล้ว
+empty_room_was_name	ห้องว่าง (เดิมชื่อ %(oldName)s)
+encryption.access_secret_storage_dialog.alternatives	ใช้กุญแจหรือวลีความปลอดภัยแบบเดิมก็ได้
+encryption.access_secret_storage_dialog.key_validation_text.wrong_security_key	กุญแจกู้คืนไม่ถูกต้อง
+encryption.access_secret_storage_dialog.privacy_warning	ระวังอย่าให้ใครเห็นหน้าจอนี้!
+encryption.access_secret_storage_dialog.restoring	กำลังกู้คืนกุญแจจากข้อมูลสำรอง
+encryption.access_secret_storage_dialog.security_key_label	กุญแจกู้คืน
+encryption.access_secret_storage_dialog.security_key_title	ใส่กุญแจกู้คืน
+encryption.bootstrap_title	กำลังตั้งค่ากุญแจ
+encryption.confirm_encryption_setup_body	กดปุ่มด้านล่างเพื่อยืนยันการตั้งค่าการเข้ารหัส
+encryption.confirm_encryption_setup_title	ยืนยันการตั้งค่าการเข้ารหัส
+encryption.continue_with_reset	รีเซ็ตต่อ
+encryption.create_recovery_key	สร้างกุญแจกู้คืน
+encryption.cross_signing_room_normal	ห้องนี้เข้ารหัสต้นทางถึงปลายทาง
+encryption.cross_signing_room_verified	ทุกคนในห้องนี้ยืนยันตัวตนแล้ว
+encryption.cross_signing_room_warning	มีคนใช้อุปกรณ์ที่ยังไม่ได้ยืนยัน
+encryption.cross_signing_user_normal	คุณยังไม่ได้ยืนยันตัวตนผู้ใช้นี้
+encryption.cross_signing_user_verified	คุณยืนยันผู้ใช้นี้แล้ว และผู้ใช้นี้ยืนยันอุปกรณ์ของตัวเองครบทุกเครื่อง
+encryption.cross_signing_user_warning	ผู้ใช้นี้ยังยืนยันอุปกรณ์ของตัวเองไม่ครบ
+encryption.enter_recovery_key	ใส่กุญแจกู้คืน
+encryption.event_shield_reason_authenticity_not_guaranteed	ยืนยันความถูกต้องของข้อความเข้ารหัสนี้บนอุปกรณ์นี้ไม่ได้
+encryption.event_shield_reason_mismatched_sender	ผู้ส่งไม่ตรงกับเจ้าของอุปกรณ์ที่ส่งข้อความนี้
+encryption.event_shield_reason_mismatched_sender_key	เข้ารหัสจากอุปกรณ์ที่ยังไม่ได้ยืนยัน
+encryption.event_shield_reason_unknown_device	เข้ารหัสจากอุปกรณ์ที่ไม่รู้จักหรือถูกลบไปแล้ว
+encryption.event_shield_reason_unsigned_device	เข้ารหัสจากอุปกรณ์ที่เจ้าของยังไม่ได้ยืนยัน
+encryption.event_shield_reason_unverified_identity	เข้ารหัสจากผู้ใช้ที่ยังไม่ได้ยืนยันตัวตน
+encryption.export_unsupported	เบราว์เซอร์นี้ไม่รองรับการเข้ารหัสที่จำเป็น
+encryption.forgot_recovery_key	ลืมกุญแจกู้คืน?
+encryption.identity_needs_reset_description	ต้องตั้งค่ากุญแจยืนยันตัวตนใหม่ เพื่อให้ยังเปิดดูประวัติแชทได้
+encryption.import_invalid_keyfile	ไม่ใช่ไฟล์กุญแจของ %(brand)s
+encryption.import_invalid_passphrase	ตรวจสอบไม่ผ่าน: รหัสผ่านอาจไม่ถูกต้อง
+encryption.key_storage_out_of_sync	ที่เก็บกุญแจไม่ตรงกับเครื่องนี้
+encryption.key_storage_out_of_sync_description	ยืนยันกุญแจกู้คืน เพื่อให้ยังเข้าถึงที่เก็บกุญแจและประวัติแชทได้
+encryption.messages_not_secure.cause_1	ผู้ให้บริการบัญชีของคุณ
+encryption.messages_not_secure.cause_2	ผู้ให้บริการบัญชีของผู้ใช้ที่คุณกำลังยืนยัน
+encryption.messages_not_secure.cause_3	อินเทอร์เน็ตของคุณหรือของอีกฝ่าย
+encryption.messages_not_secure.cause_4	อุปกรณ์ของคุณหรือของอีกฝ่าย
+encryption.messages_not_secure.heading	อาจมีจุดใดจุดหนึ่งต่อไปนี้ถูกเจาะ:
+encryption.messages_not_secure.title	ข้อความของคุณไม่ปลอดภัย
+encryption.new_recovery_method_detected.description_1	พบวลีความปลอดภัยและกุญแจกู้คืนชุดใหม่
+encryption.new_recovery_method_detected.description_2	อุปกรณ์นี้กำลังเข้ารหัสประวัติด้วยวิธีกู้คืนแบบใหม่
+encryption.new_recovery_method_detected.title	วิธีกู้คืนแบบใหม่
+encryption.new_recovery_method_detected.warning	ถ้าคุณไม่ได้ตั้งวิธีกู้คืนใหม่เอง อาจมีคนพยายามเข้าบัญชีของคุณ ให้เปลี่ยนรหัสผ่านและตั้งวิธีกู้คืนใหม่ในตั้งค่าทันที
+encryption.pinned_identity_changed	%(displayName)s (<b>%(userId)s</b>) ตั้งกุญแจยืนยันตัวตนใหม่ (มักเกิดจากเปลี่ยนเครื่องหรือเข้าระบบใหม่) <a>ดูเพิ่มเติม</a>
+encryption.pinned_identity_changed_no_displayname	<b>%(userId)s</b> ตั้งกุญแจยืนยันตัวตนใหม่ (มักเกิดจากเปลี่ยนเครื่องหรือเข้าระบบใหม่) <a>ดูเพิ่มเติม</a>
+encryption.recovery_key_description	แชทของคุณสำรองแบบเข้ารหัสให้อัตโนมัติ ถ้าเครื่องหายหรือเปลี่ยนเครื่องทั้งหมด ต้องใช้กุญแจกู้คืนเพื่อเปิดประวัติแชทเดิม
+encryption.recovery_method_removed.description_1	อุปกรณ์นี้พบว่าวลีความปลอดภัยและกุญแจกู้คืนถูกลบไปแล้ว
+encryption.recovery_method_removed.description_2	ถ้าลบโดยไม่ตั้งใจ ตั้งค่าใหม่บนอุปกรณ์นี้ได้ ประวัติแชทจะถูกเข้ารหัสใหม่ด้วยวิธีกู้คืนแบบใหม่
+encryption.recovery_method_removed.title	วิธีกู้คืนถูกลบ
+encryption.recovery_method_removed.warning	ถ้าคุณไม่ได้ลบวิธีกู้คืนเอง อาจมีคนพยายามเข้าบัญชีของคุณ ให้เปลี่ยนรหัสผ่านและตั้งวิธีกู้คืนใหม่ในตั้งค่าทันที
+encryption.set_up_recovery	สำรองแชทของคุณ
+encryption.set_up_toast_title	ตั้งค่าการสำรองแบบปลอดภัย
+encryption.turn_on_key_storage	เปิดที่เก็บกุญแจ
+encryption.turn_on_key_storage_description	ช่วยให้เปิดดูประวัติแชทบนเครื่องใหม่ได้ และจำเป็นสำหรับการสำรองแชท
+encryption.unable_to_setup_keys_error	ตั้งค่ากุญแจไม่สำเร็จ
+encryption.verification.accepting	กำลังรับ…
+encryption.verification.after_new_login.device_verified	ยืนยันอุปกรณ์แล้ว
+encryption.verification.after_new_login.skip_verification	ข้ามการยืนยันไปก่อน
+encryption.verification.after_new_login.verify_this_device	ยืนยันอุปกรณ์นี้
+encryption.verification.cancelled_verification	คำขอหมดเวลา ถูกปฏิเสธ หรือข้อมูลยืนยันไม่ตรงกัน
+encryption.verification.cancelling	กำลังยกเลิก…
+encryption.verification.cant_confirm	ยืนยันไม่ได้?
+encryption.verification.complete_action	เข้าใจแล้ว
+encryption.verification.complete_description	ยืนยันผู้ใช้นี้สำเร็จแล้ว
+encryption.verification.complete_title	ยืนยันแล้ว!
+encryption.verification.confirm_identity_description	เลือกวิธียืนยันเพื่อเปิดการส่งข้อความแบบปลอดภัย
+encryption.verification.confirm_identity_title	ยืนยันตัวตนของคุณ
+encryption.verification.confirm_the_emojis	ตรวจว่าอีโมจิด้านล่างตรงกับที่แสดงบนอุปกรณ์อีกเครื่อง
+encryption.verification.error_starting_description	เริ่มแชทกับผู้ใช้อีกฝ่ายไม่ได้
+encryption.verification.error_starting_title	เริ่มการยืนยันไม่สำเร็จ
+encryption.verification.explainer	ข้อความกับผู้ใช้นี้เข้ารหัสต้นทางถึงปลายทาง บุคคลอื่นอ่านไม่ได้
+encryption.verification.in_person	เพื่อความปลอดภัย ควรยืนยันต่อหน้ากัน หรือผ่านช่องทางที่ไว้ใจได้
+encryption.verification.incoming_sas_device_dialog_text_1	ยืนยันอุปกรณ์นี้เพื่อตั้งเป็นอุปกรณ์ที่เชื่อถือได้ ช่วยให้คุณและคนอื่นมั่นใจขึ้นเมื่อส่งข้อความเข้ารหัส
+encryption.verification.incoming_sas_device_dialog_text_2	เมื่อยืนยันแล้ว อุปกรณ์นี้จะเป็นที่เชื่อถือ และผู้ที่เคยยืนยันกับคุณจะเชื่อถืออุปกรณ์นี้ด้วย
+encryption.verification.incoming_sas_dialog_title	มีคำขอยืนยันตัวตน
+encryption.verification.incoming_sas_dialog_waiting	รออีกฝ่ายยืนยัน…
+encryption.verification.incoming_sas_user_dialog_text_1	ยืนยันผู้ใช้นี้เพื่อตั้งเป็นผู้ที่เชื่อถือได้ ช่วยให้มั่นใจขึ้นเมื่อส่งข้อความเข้ารหัส
+encryption.verification.incoming_sas_user_dialog_text_2	เมื่อยืนยันแล้ว อุปกรณ์ของอีกฝ่ายจะเป็นที่เชื่อถือของคุณ และอุปกรณ์ของคุณจะเป็นที่เชื่อถือของเขาด้วย
+encryption.verification.manual.already_verified	อุปกรณ์นี้ยืนยันแล้ว
+encryption.verification.manual.already_verified_and_wrong_fingerprint	ลายนิ้วมือกุญแจไม่ตรง แต่อุปกรณ์นี้ยืนยันไว้แล้ว!
+encryption.verification.manual.device_id	รหัสอุปกรณ์
+encryption.verification.manual.failure_description	ยืนยัน '%(deviceId)s' ไม่สำเร็จ: %(error)s
+encryption.verification.manual.failure_title	ยืนยันไม่สำเร็จ
+encryption.verification.manual.fingerprint	ลายนิ้วมือกุญแจ (session key)
+encryption.verification.manual.no_crypto	ยืนยันอุปกรณ์ไม่ได้ - ยังไม่ได้เปิดการเข้ารหัส
+encryption.verification.manual.no_device	ยืนยันอุปกรณ์ไม่ได้ - ไม่พบอุปกรณ์ '%(deviceId)s'
+encryption.verification.manual.no_userid	ยืนยันอุปกรณ์ไม่ได้ - ไม่พบรหัสผู้ใช้ของเรา
+encryption.verification.manual.success_description	อุปกรณ์ (%(deviceId)s) ยืนยันแล้ว
+encryption.verification.manual.success_title	ยืนยันสำเร็จ
+encryption.verification.manual.text	ใส่รหัสและลายนิ้วมือกุญแจของอุปกรณ์ของคุณเองเพื่อยืนยัน ข้อควรระวัง: อุปกรณ์นั้นจะส่งและรับข้อความในชื่อคุณได้ ถ้ามีคนบอกให้วางอะไรตรงนี้ มีโอกาสสูงว่าคุณกำลังถูกหลอก!
+encryption.verification.manual.wrong_fingerprint	ยืนยันอุปกรณ์ '%(deviceId)s' ไม่ได้ - ลายนิ้วมือ '%(fingerprint)s' ไม่ตรงกับของอุปกรณ์ '%(fprint)s'
+encryption.verification.no_other_devices	ใช้วิธีนี้ไม่ได้ เพราะคุณไม่มีอุปกรณ์อื่น
+encryption.verification.no_recovery_key	ใช้วิธีนี้ไม่ได้ เพราะยังไม่ได้ตั้งกุญแจกู้คืน
+encryption.verification.no_support_qr_emoji	อุปกรณ์ที่คุณจะยืนยันไม่รองรับการสแกน QR หรือเทียบอีโมจิที่ %(brand)s ใช้ ลองใช้แอปอื่น
+encryption.verification.now_you_can	ตอนนี้อ่านและส่งข้อความได้อย่างปลอดภัย และคนที่คุณคุยด้วยเชื่อถืออุปกรณ์นี้ได้
+encryption.verification.once_accepted_can_continue	เมื่ออีกฝ่ายรับแล้ว จะยืนยันต่อได้
+encryption.verification.other_party_cancelled	อีกฝ่ายยกเลิกการยืนยัน
+encryption.verification.prompt_encrypted	ยืนยันทุกคนในห้องเพื่อความปลอดภัย
+encryption.verification.prompt_unencrypted	ในห้องที่เข้ารหัส ให้ยืนยันทุกคนเพื่อความปลอดภัย
+encryption.verification.qr_or_sas	%(qrCode)s หรือ %(emojiCompare)s

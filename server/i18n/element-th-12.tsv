@@ -1,0 +1,150 @@
+power_level.moderator	ผู้ช่วยดูแล
+power_level.restricted	ถูกจำกัด
+powered_by_matrix	ขับเคลื่อนด้วย Matrix
+presence.away	ไม่อยู่
+presence.busy	ไม่ว่าง
+presence.idle	ไม่ได้ใช้งาน
+presence.idle_for	ไม่ได้ใช้งาน %(duration)s
+presence.offline	ออฟไลน์
+presence.offline_for	ออฟไลน์ %(duration)s
+presence.online	ออนไลน์
+presence.online_for	ออนไลน์ %(duration)s
+presence.unknown	ไม่ทราบ
+presence.unknown_for	ไม่ทราบสถานะ %(duration)s
+presence.unreachable	เชื่อมต่อเซิร์ฟเวอร์ของผู้ใช้นี้ไม่ได้
+quit_warning.call_in_progress	กำลังโทรอยู่ ออกจากแอปใช่ไหม?
+quit_warning.file_upload_in_progress	กำลังอัปโหลดไฟล์ ออกจากแอปใช่ไหม?
+remove_section_dialog.confirmation	ลบหมวดนี้ใช่ไหม?
+remove_section_dialog.description	แชทในหมวดนี้ยังอยู่ในรายการแชทตามเดิม
+remove_section_dialog.remove_section	ลบหมวด
+remove_section_dialog.title	ลบหมวด?
+report_content.description	การรายงานจะส่งรหัสของข้อความนี้ให้ผู้ดูแลระบบ ถ้าแชทนี้เข้ารหัส ผู้ดูแลจะอ่านข้อความหรือเปิดไฟล์/รูปไม่ได้
+report_content.hide_messages_from_user	เลือกเพื่อซ่อนข้อความทั้งหมดจากผู้ใช้นี้ ทั้งตอนนี้และต่อไป
+report_content.ignore_user	ไม่สนใจผู้ใช้นี้
+report_content.missing_reason	กรุณาระบุเหตุผลที่รายงาน
+report_content.report_content_to_homeserver	รายงานเนื้อหาให้ผู้ดูแลระบบ
+report_room.description	รายงานแชทนี้ให้ผู้ดูแลระบบ ถ้าข้อความเข้ารหัส ผู้ดูแลจะอ่านไม่ได้
+report_room.reason_label	บอกเหตุผล
+restore_key_backup_dialog.count_of_decryption_failures	ถอดรหัส %(failedCount)s รายการไม่สำเร็จ!
+restore_key_backup_dialog.count_of_successfully_restored_keys	กู้คืนกุญแจสำเร็จ %(sessionCount)s ดอก
+restore_key_backup_dialog.enter_key_description	ใส่กุญแจกู้คืนเพื่อเปิดประวัติแชทที่เข้ารหัสและเปิดการส่งข้อความแบบปลอดภัย
+restore_key_backup_dialog.enter_key_title	ใส่กุญแจกู้คืน
+restore_key_backup_dialog.enter_phrase_description	ใส่วลีความปลอดภัยเพื่อเปิดประวัติแชทที่เข้ารหัสและเปิดการส่งข้อความแบบปลอดภัย
+restore_key_backup_dialog.enter_phrase_title	ใส่วลีความปลอดภัย
+restore_key_backup_dialog.incorrect_security_phrase_dialog	ถอดรหัสข้อมูลสำรองด้วยวลีนี้ไม่ได้ ตรวจว่าพิมพ์วลีถูกต้อง
+restore_key_backup_dialog.incorrect_security_phrase_title	วลีความปลอดภัยไม่ถูกต้อง
+restore_key_backup_dialog.key_backup_warning	<b>คำเตือน</b>: ตั้งค่าการสำรองกุญแจเฉพาะบนคอมพิวเตอร์ที่ไว้ใจได้เท่านั้น
+restore_key_backup_dialog.key_fetch_in_progress	กำลังดึงกุญแจจากเซิร์ฟเวอร์…
+restore_key_backup_dialog.key_forgotten_text	ถ้าลืมกุญแจกู้คืน <button>ตั้งวิธีกู้คืนใหม่</button>ได้
+restore_key_backup_dialog.key_is_invalid	กุญแจกู้คืนไม่ถูกต้อง
+restore_key_backup_dialog.key_is_valid	กุญแจกู้คืนดูถูกต้อง!
+restore_key_backup_dialog.keys_restored_title	กู้คืนกุญแจแล้ว
+restore_key_backup_dialog.load_error_content	โหลดสถานะข้อมูลสำรองไม่ได้
+restore_key_backup_dialog.load_keys_progress	กู้คืนกุญแจแล้ว %(completed)s จาก %(total)s
+restore_key_backup_dialog.no_backup_error	ไม่พบข้อมูลสำรอง!
+restore_key_backup_dialog.phrase_forgotten_text	ถ้าลืมวลีความปลอดภัย <button1>ใช้กุญแจกู้คืน</button1> หรือ <button2>ตั้งวิธีกู้คืนใหม่</button2>ได้
+restore_key_backup_dialog.recovery_key_mismatch_description	ถอดรหัสข้อมูลสำรองด้วยกุญแจนี้ไม่ได้ ตรวจว่าใส่กุญแจกู้คืนถูกต้อง
+restore_key_backup_dialog.recovery_key_mismatch_title	กุญแจกู้คืนไม่ตรง
+restore_key_backup_dialog.restore_failed_error	กู้คืนข้อมูลสำรองไม่สำเร็จ
+room_settings.access.description_space	กำหนดว่าใครดูและเข้าร่วม %(spaceName)s ได้
+room_settings.access.title	การเข้าถึง
+room_settings.advanced.error_upgrade_description	อัปเกรดห้องไม่สำเร็จ
+room_settings.advanced.error_upgrade_title	อัปเกรดห้องไม่สำเร็จ
+room_settings.advanced.information_section_room	ข้อมูลห้อง
+room_settings.advanced.information_section_space	ข้อมูลพื้นที่
+room_settings.advanced.room_id	รหัสห้อง (ภายใน)
+room_settings.advanced.room_predecessor	ดูข้อความเก่าใน %(roomName)s
+room_settings.advanced.room_upgrade_button	อัปเกรดห้องเป็นรุ่นที่แนะนำ
+room_settings.advanced.room_upgrade_warning	<b>คำเตือน</b>: การอัปเกรดห้อง<i>จะไม่ย้ายสมาชิกไปห้องรุ่นใหม่ให้อัตโนมัติ</i> ระบบจะโพสต์ลิงก์ห้องใหม่ไว้ในห้องเดิม สมาชิกต้องกดลิงก์เพื่อเข้าห้องใหม่เอง
+room_settings.advanced.room_version	รุ่นห้อง:
+room_settings.advanced.room_version_section	รุ่นห้อง
+room_settings.advanced.space_predecessor	ดูพื้นที่ %(spaceName)s รุ่นเก่า
+room_settings.advanced.space_upgrade_button	อัปเกรดพื้นที่เป็นรุ่นที่แนะนำ
+room_settings.advanced.unfederated	เซิร์ฟเวอร์ภายนอกเข้าถึงห้องนี้ไม่ได้
+room_settings.advanced.upgrade_button	อัปเกรดห้องเป็นรุ่น %(version)s
+room_settings.advanced.upgrade_dialog_description	การอัปเกรดต้องปิดห้องนี้และสร้างห้องใหม่แทน เพื่อให้สมาชิกใช้งานต่อได้ราบรื่น ระบบจะ:
+room_settings.advanced.upgrade_dialog_description_1	สร้างห้องใหม่ชื่อ คำอธิบาย และรูปเดิม
+room_settings.advanced.upgrade_dialog_description_2	เปลี่ยนชื่อเรียกห้องให้ชี้ไปห้องใหม่
+room_settings.advanced.upgrade_dialog_description_3	ปิดการส่งข้อความในห้องเดิม และโพสต์บอกให้ย้ายไปห้องใหม่
+room_settings.advanced.upgrade_dialog_description_4	ใส่ลิงก์กลับห้องเดิมไว้ต้นห้องใหม่ เพื่อดูข้อความเก่าได้
+room_settings.advanced.upgrade_dialog_title	อัปเกรดรุ่นห้อง
+room_settings.advanced.upgrade_dwarning_ialog_title_public	อัปเกรดห้องสาธารณะ
+room_settings.advanced.upgrade_warning_dialog_description	การอัปเกรดห้องเป็นการทำขั้นสูง มักใช้เมื่อห้องมีปัญหา ขาดฟีเจอร์ หรือมีช่องโหว่ความปลอดภัย
+room_settings.advanced.upgrade_warning_dialog_explainer	<b>การอัปเกรดจะสร้างห้องรุ่นใหม่</b> ข้อความเดิมทั้งหมดจะอยู่ในห้องเดิมที่ถูกเก็บไว้
+room_settings.advanced.upgrade_warning_dialog_footer	คุณจะอัปเกรดห้องนี้จาก <oldVersion /> เป็น <newVersion />
+room_settings.advanced.upgrade_warning_dialog_invite_label	เชิญสมาชิกห้องนี้เข้าห้องใหม่ให้อัตโนมัติ
+room_settings.advanced.upgrade_warning_dialog_report_bug_prompt	ปกติมีผลแค่การทำงานของห้องบนเซิร์ฟเวอร์ ถ้า %(brand)s มีปัญหา กรุณาแจ้งผู้ดูแลระบบ
+room_settings.advanced.upgrade_warning_dialog_report_bug_prompt_link	ปกติมีผลแค่การทำงานของห้องบนเซิร์ฟเวอร์ ถ้า %(brand)s มีปัญหา กรุณา<a>แจ้งปัญหา</a>
+room_settings.advanced.upgrade_warning_dialog_title	อัปเกรดห้อง
+room_settings.advanced.upgrade_warning_dialog_title_private	อัปเกรดห้องส่วนตัว
+room_settings.alias_not_specified	ไม่ได้ระบุ
+room_settings.bridges.description	ห้องนี้เชื่อมข้อความไปยังแพลตฟอร์มต่อไปนี้ <a>ดูเพิ่มเติม</a>
+room_settings.bridges.empty	ห้องนี้ไม่ได้เชื่อมข้อความไปแพลตฟอร์มอื่น <a>ดูเพิ่มเติม</a>
+room_settings.bridges.title	การเชื่อมต่อ
+room_settings.delete_avatar_label	ลบรูปห้อง
+room_settings.permissions.add_privileged_user_description	ให้สิทธิ์เพิ่มแก่สมาชิกในห้องนี้
+room_settings.permissions.add_privileged_user_filter_placeholder	ค้นหาสมาชิกในห้อง…
+room_settings.permissions.add_privileged_user_heading	เพิ่มผู้มีสิทธิ์พิเศษ
+room_settings.permissions.ban	แบนผู้ใช้
+room_settings.permissions.ban_reason	เหตุผล
+room_settings.permissions.banned_by	แบนโดย %(displayName)s
+room_settings.permissions.banned_users_section	ผู้ใช้ที่ถูกแบน
+room_settings.permissions.error_changing_pl_description	เปลี่ยนระดับสิทธิ์ของผู้ใช้ไม่สำเร็จ ตรวจว่าคุณมีสิทธิ์พอแล้วลองใหม่
+room_settings.permissions.error_changing_pl_reqs_description	เปลี่ยนสิทธิ์ของห้องไม่สำเร็จ ตรวจว่าคุณมีสิทธิ์พอแล้วลองใหม่
+room_settings.permissions.error_changing_pl_reqs_title	เปลี่ยนสิทธิ์ไม่สำเร็จ
+room_settings.permissions.error_changing_pl_title	เปลี่ยนระดับสิทธิ์ไม่สำเร็จ
+room_settings.permissions.error_unbanning	ยกเลิกแบนไม่สำเร็จ
+room_settings.permissions.events_default	ส่งข้อความ
+room_settings.permissions.invite	เชิญสมาชิก
+room_settings.permissions.kick	นำสมาชิกออก
+room_settings.permissions.m.call	เริ่มการโทร %(brand)s
+room_settings.permissions.m.call.member	เข้าร่วมการโทร %(brand)s
+room_settings.permissions.m.reaction	ส่งรีแอคชัน
+room_settings.permissions.m.room.avatar	เปลี่ยนรูปห้อง
+room_settings.permissions.m.room.avatar_space	เปลี่ยนรูปพื้นที่
+room_settings.permissions.m.room.canonical_alias	เปลี่ยนที่อยู่หลักของห้อง
+room_settings.permissions.m.room.canonical_alias_space	เปลี่ยนที่อยู่หลักของพื้นที่
+room_settings.permissions.m.room.encryption	เปิดการเข้ารหัสห้อง
+room_settings.permissions.m.room.history_visibility	เปลี่ยนการมองเห็นประวัติ
+room_settings.permissions.m.room.name	เปลี่ยนชื่อห้อง
+room_settings.permissions.m.room.name_space	เปลี่ยนชื่อพื้นที่
+room_settings.permissions.m.room.pinned_events	จัดการข้อความปักหมุด
+room_settings.permissions.m.room.power_levels	เปลี่ยนสิทธิ์
+room_settings.permissions.m.room.redaction	ลบข้อความของตัวเอง
+room_settings.permissions.m.room.server_acl	เปลี่ยนการอนุญาตเซิร์ฟเวอร์
+room_settings.permissions.m.room.tombstone	อัปเกรดห้อง
+room_settings.permissions.m.room.topic	เปลี่ยนหัวข้อ
+room_settings.permissions.m.room.topic_space	เปลี่ยนคำอธิบาย
+room_settings.permissions.m.space.child	จัดการห้องในพื้นที่นี้
+room_settings.permissions.m.widget	แก้ไขวิดเจ็ต
+room_settings.permissions.muted_users_section	ผู้ใช้ที่ถูกปิดเสียง
+room_settings.permissions.no_privileged_users	ไม่มีผู้ใช้ที่มีสิทธิ์พิเศษในห้องนี้
+room_settings.permissions.notifications.room	แจ้งเตือนทุกคน (@room)
+room_settings.permissions.permissions_section	สิทธิ์
+room_settings.permissions.permissions_section_description_room	เลือกบทบาทที่ทำแต่ละอย่างในห้องได้
+room_settings.permissions.permissions_section_description_space	เลือกบทบาทที่ทำแต่ละอย่างในพื้นที่ได้
+room_settings.permissions.privileged_users_section	ผู้มีสิทธิ์พิเศษ
+room_settings.permissions.redact	ลบข้อความของคนอื่น
+room_settings.permissions.send_event_type	ส่งเหตุการณ์ %(eventType)s
+room_settings.permissions.state_default	เปลี่ยนการตั้งค่า
+room_settings.permissions.title	บทบาทและสิทธิ์
+room_settings.permissions.users_default	บทบาทเริ่มต้น
+room_settings.security.cannot_change_to_private_due_to_missing_history_visiblity_permissions.description	คุณไม่มีสิทธิ์เปลี่ยนการมองเห็นประวัติของห้อง ถ้าเปลี่ยนเป็นห้องส่วนตัวอาจทำให้คนที่ไม่ได้อยู่ในห้องอ่านข้อความได้
+room_settings.security.cannot_change_to_private_due_to_missing_history_visiblity_permissions.title	เปลี่ยนเป็นห้องส่วนตัวไม่ได้
+room_settings.security.enable_encryption_confirm_description	เปิดการเข้ารหัสแล้วปิดไม่ได้ ข้อความในห้องเข้ารหัสเซิร์ฟเวอร์อ่านไม่ได้ เห็นเฉพาะสมาชิกในห้อง การเข้ารหัสอาจทำให้บอทบางตัวทำงานไม่ได้ <a>ดูเพิ่มเติมเรื่องการเข้ารหัส</a>
+room_settings.security.enable_encryption_confirm_title	เปิดการเข้ารหัส?
+room_settings.security.enable_encryption_public_room_confirm_description_1	<b>ไม่แนะนำให้เข้ารหัสห้องสาธารณะ</b> ใครก็ค้นหาและเข้าห้องสาธารณะได้ จึงอ่านข้อความได้อยู่ดี ไม่ได้ประโยชน์จากการเข้ารหัส ปิดภายหลังไม่ได้ และทำให้รับส่งข้อความช้าลง
+room_settings.security.enable_encryption_public_room_confirm_description_2	เพื่อหลีกเลี่ยงปัญหานี้ ให้สร้าง<a>ห้องเข้ารหัสใหม่</a>สำหรับเรื่องที่จะคุย
+room_settings.security.enable_encryption_public_room_confirm_title	เข้ารหัสห้องสาธารณะนี้ใช่ไหม?
+room_settings.security.encrypted_room_public_confirm_description_1	<b>ไม่แนะนำให้เปลี่ยนห้องเข้ารหัสเป็นห้องสาธารณะ</b> ใครก็ค้นหาและเข้าห้องได้ จึงอ่านข้อความได้ ไม่ได้ประโยชน์จากการเข้ารหัส และทำให้รับส่งข้อความช้าลง
+room_settings.security.encrypted_room_public_confirm_description_2	เพื่อหลีกเลี่ยงปัญหานี้ ให้สร้าง<a>ห้องสาธารณะใหม่</a>สำหรับเรื่องที่จะคุย
+room_settings.security.encrypted_room_public_confirm_title	เปลี่ยนห้องเข้ารหัสนี้เป็นห้องสาธารณะใช่ไหม?
+room_settings.security.encryption_forced	เซิร์ฟเวอร์กำหนดให้ปิดการเข้ารหัส
+room_settings.security.encryption_permanent	เปิดการเข้ารหัสแล้วปิดไม่ได้
+room_settings.security.error_join_rule_change_title	เปลี่ยนเงื่อนไขการเข้าห้องไม่สำเร็จ
+room_settings.security.error_join_rule_change_unknown	ไม่ทราบสาเหตุ
+room_settings.security.guest_access_warning	ผู้ที่ใช้แอปที่รองรับจะเข้าห้องได้โดยไม่ต้องมีบัญชี
+room_settings.security.history_visibility_invited	สมาชิก ตั้งแต่ได้รับเชิญ
+room_settings.security.history_visibility_legend	ใครอ่านประวัติได้?
+room_settings.security.history_visibility_shared	สมาชิก (ประวัติทั้งหมด)
+room_settings.security.history_visibility_warning	การเปลี่ยนมีผลกับข้อความใหม่เท่านั้น ไม่มีผลกับข้อความเก่า <a>ดูเพิ่มเติม</a>

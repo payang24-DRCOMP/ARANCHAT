@@ -1,0 +1,72 @@
+voip.misconfigured_server	โทรไม่สำเร็จ เพราะเซิร์ฟเวอร์ตั้งค่าไม่ถูกต้อง
+voip.misconfigured_server_description	กรุณาแจ้งผู้ดูแลระบบ (<code>%(homeserverDomain)s</code>) ให้ตั้งเซิร์ฟเวอร์ TURN เพื่อให้โทรได้เสถียร
+voip.misconfigured_server_fallback	หรือลองใช้เซิร์ฟเวอร์สาธารณะ <server/> ซึ่งเสถียรน้อยกว่าและจะแชร์ที่อยู่ IP ของคุณให้เซิร์ฟเวอร์นั้น ตั้งค่านี้ได้ในตั้งค่า
+voip.misconfigured_server_fallback_accept	ลองใช้ %(server)s
+voip.more_button	เพิ่มเติม
+voip.msisdn_lookup_failed	ค้นหาเบอร์โทรไม่ได้
+voip.msisdn_lookup_failed_description	เกิดข้อผิดพลาดขณะค้นหาเบอร์โทร
+voip.msisdn_transfer_failed	โอนสายไม่ได้
+voip.no_audio_input_description	ไม่พบไมโครโฟนในเครื่อง ตรวจการตั้งค่าแล้วลองใหม่
+voip.no_audio_input_title	ไม่พบไมโครโฟน
+voip.no_media_perms_description	อาจต้องอนุญาตให้ %(brand)s ใช้ไมโครโฟน/กล้องเอง
+voip.no_media_perms_title	ไม่มีสิทธิ์ใช้ไมโครโฟน/กล้อง
+voip.no_permission_conference	ต้องมีสิทธิ์
+voip.no_permission_conference_description	คุณไม่มีสิทธิ์เริ่มประชุมในห้องนี้
+voip.on_hold	%(name)s พักสาย
+voip.open_slot_failed_title	เปิดการโทรในห้องนี้ไม่สำเร็จ
+voip.output_devices	อุปกรณ์เสียงออก
+voip.screenshare_monitor	แชร์ทั้งหน้าจอ
+voip.screenshare_title	แชร์หน้าจอ
+voip.screenshare_window	หน้าต่างโปรแกรม
+voip.show_sidebar_button	แสดงแถบด้านข้าง
+voip.silence	ปิดเสียงเรียก
+voip.silenced	ปิดเสียงแจ้งเตือนแล้ว
+voip.start_screenshare	เริ่มแชร์หน้าจอ
+voip.stop_screenshare	หยุดแชร์หน้าจอ
+voip.too_many_calls	สายมากเกินไป
+voip.too_many_calls_description	โทรพร้อมกันได้ครบจำนวนสูงสุดแล้ว
+voip.transfer_consult_first_label	ปรึกษาก่อน
+voip.transfer_failed	โอนสายไม่สำเร็จ
+voip.transfer_failed_description	โอนสายไม่สำเร็จ
+voip.unable_to_access_audio_input_description	ใช้ไมโครโฟนไม่ได้ ตรวจการตั้งค่าเบราว์เซอร์แล้วลองใหม่
+voip.unable_to_access_audio_input_title	ใช้ไมโครโฟนไม่ได้
+voip.unable_to_access_media	ใช้กล้อง/ไมโครโฟนไม่ได้
+voip.unable_to_access_microphone	ใช้ไมโครโฟนไม่ได้
+voip.unknown_caller	ผู้โทรที่ไม่รู้จัก
+voip.unknown_person	ไม่ทราบชื่อ
+voip.unsilence	เปิดเสียง
+voip.unsupported	ไม่รองรับการโทร
+voip.unsupported_browser	เบราว์เซอร์นี้โทรไม่ได้
+voip.user_busy	ผู้ใช้ไม่ว่าง
+voip.user_busy_description	คนที่คุณโทรหาไม่ว่าง
+voip.user_is_presenting	%(sharerName)s กำลังแชร์หน้าจอ
+voip.video_call	วิดีโอคอล
+voip.video_call_incoming	มีวิดีโอคอลเข้า
+voip.video_call_using	วิดีโอคอลด้วย:
+voip.voice_call	โทรเสียง
+voip.voice_call_incoming	มีสายเข้า
+voip.voice_call_using	โทรเสียงด้วย:
+voip.you_are_presenting	คุณกำลังแชร์หน้าจอ
+web_default_device_name	%(appName)s: %(browserName)s บน %(osName)s
+emoji.categories	หมวดหมู่
+emoji.category_activities	กิจกรรม
+emoji.category_animals_nature	สัตว์และธรรมชาติ
+emoji.category_flags	ธง
+emoji.category_food_drink	อาหารและเครื่องดื่ม
+emoji.category_frequently_used	ใช้บ่อย
+emoji.category_objects	สิ่งของ
+emoji.category_smileys_people	หน้ายิ้มและผู้คน
+emoji.category_symbols	สัญลักษณ์
+emoji.category_travel_places	การเดินทางและสถานที่
+emoji.quick_reactions	รีแอคชันด่วน
+release_announcement.room_list_section_close	ตกลง
+release_announcement.room_list_section_description	จัดแชทเป็นหมวด เพื่อให้หาบทสนทนาได้ง่าย
+release_announcement.room_list_section_title	ใหม่: จัดแชทเป็นหมวด
+status.set_status.away	ไม่อยู่
+status.set_status.be_right_back	เดี๋ยวกลับมา
+status.set_status.choose_emoji	เลือกอีโมจิ
+status.set_status.custom	กำหนดเอง…
+status.set_status.focus_time	ขอสมาธิ
+status.set_status.in_a_meeting	ติดประชุม
+status.set_status.on_the_road	อยู่ระหว่างเดินทาง
+status.set_status.set_status_prompt	สถานะของคุณ?

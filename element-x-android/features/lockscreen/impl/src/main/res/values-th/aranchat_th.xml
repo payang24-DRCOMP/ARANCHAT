@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AranChat — คำแปลไทยที่ Element X (Localazy) ยังไม่มี · แยกตามโมดูลเจ้าของข้อความ (lint ExtraTranslation)
+     ไม่แก้ translations.xml ที่ Localazy สร้าง · SPDX-License-Identifier: AGPL-3.0-only -->
+<resources>
+    <string name="screen_app_lock_setup_pin_context">ล็อก %1$s เพื่อเพิ่มความปลอดภัยให้แชท\n\nเลือกรหัสที่จำได้ ถ้าลืม PIN จะถูกออกจากระบบ</string>
+</resources>

@@ -1,0 +1,150 @@
+settings.voip.auto_gain_control	ปรับระดับเสียงอัตโนมัติ
+settings.voip.dialog_title	<strong>ตั้งค่า:</strong> เสียงและวิดีโอ
+settings.voip.echo_cancellation	ตัดเสียงสะท้อน
+settings.voip.echo_cancellation_description	ตัดเสียงสะท้อนจากไมโครโฟนระหว่างโทร ใช้กับวิดีโอคอลด้วย
+settings.voip.enable_fallback_ice_server	อนุญาตเซิร์ฟเวอร์ช่วยโทรสำรอง (%(server)s)
+settings.voip.enable_fallback_ice_server_description	ใช้เฉพาะเมื่อเซิร์ฟเวอร์ของหน่วยงานไม่มีให้ ที่อยู่ IP ของคุณจะถูกแชร์ระหว่างโทร
+settings.voip.enable_legacy_calls	เปิดการโทรเสียง/วิดีโอแบบเดิม
+settings.voip.enable_legacy_calls_description	ใช้กับ Jitsi และการโทร WebRTC แบบสองคน
+settings.voip.mirror_local_feed	กลับด้านภาพวิดีโอของตัวเอง
+settings.voip.missing_permissions_prompt	อนุญาตให้ %(brand)s ใช้ไมโครโฟนและกล้องก่อนจึงจะโทรได้
+settings.voip.noise_suppression	ลดเสียงรบกวน
+settings.voip.noise_suppression_description	ลดเสียงรบกวนรอบข้างจากไมโครโฟนระหว่างโทร ใช้กับวิดีโอคอลด้วย
+settings.voip.permissions	อนุญาตไมโครโฟนและกล้อง
+settings.voip.request_permissions	ขอสิทธิ์
+settings.voip.title	เสียงและวิดีโอ
+settings.voip.video_input_empty	ไม่พบกล้อง
+settings.voip.video_section	ตั้งค่าวิดีโอ
+settings.voip.voice_agc	ปรับเสียงไมโครโฟนอัตโนมัติ
+settings.voip.voice_input_description	ไมโครโฟนที่ตั้งที่นี่ใช้กับข้อความเสียงและการโทรแบบเดิม
+settings.voip.voice_input_section	ไมโครโฟน
+settings.voip.voice_processing	การประมวลผลเสียง
+settings.voip.voice_section	ตั้งค่าเสียง
+share.link_copied	คัดลอกลิงก์แล้ว
+share.permalink_message	ลิงก์ไปข้อความที่เลือก
+share.permalink_most_recent	ลิงก์ไปข้อความล่าสุด
+share.share_call	ลิงก์เชิญเข้าประชุม
+share.share_call_subtitle	ลิงก์ให้คนนอกเข้าร่วมสายได้โดยไม่ต้องมีบัญชี:
+share.title_link	แชร์ลิงก์
+share.title_message	แชร์ข้อความ
+share.title_room	แชร์ห้อง
+share.title_user	แชร์ผู้ใช้
+sliding_sync_legacy_no_longer_supported	ไม่รองรับการซิงก์แบบเดิมแล้ว กรุณาเข้าระบบใหม่
+space_settings.title	ตั้งค่า - %(spaceName)s
+spotlight.public_rooms.network_dropdown_add_dialog_description	ใส่ชื่อเซิร์ฟเวอร์ที่ต้องการดู
+spotlight.public_rooms.network_dropdown_add_dialog_placeholder	ชื่อเซิร์ฟเวอร์
+spotlight.public_rooms.network_dropdown_add_dialog_title	เพิ่มเซิร์ฟเวอร์
+spotlight.public_rooms.network_dropdown_add_server_option	เพิ่มเซิร์ฟเวอร์…
+spotlight.public_rooms.network_dropdown_available_invalid	ไม่พบเซิร์ฟเวอร์นี้หรือรายชื่อห้อง
+spotlight.public_rooms.network_dropdown_available_invalid_forbidden	คุณไม่มีสิทธิ์ดูรายชื่อห้องของเซิร์ฟเวอร์นี้
+spotlight.public_rooms.network_dropdown_available_valid	ใช้ได้
+spotlight.public_rooms.network_dropdown_remove_server_adornment	ลบเซิร์ฟเวอร์ “%(roomServer)s”
+spotlight.public_rooms.network_dropdown_required_invalid	ใส่ชื่อเซิร์ฟเวอร์
+spotlight.public_rooms.network_dropdown_selected_label	แสดง: ห้อง Matrix
+spotlight.public_rooms.network_dropdown_selected_label_instance	แสดง: ห้อง %(instance)s (%(server)s)
+spotlight.public_rooms.network_dropdown_your_server_description	เซิร์ฟเวอร์ของคุณ
+stickers.empty	ยังไม่ได้เปิดชุดสติกเกอร์
+stickers.empty_add_prompt	เพิ่มเลย
+thread_view_back_action_label	กลับไปที่เธรด
+timeline.decryption_failure.sender_identity_previously_verified	ผู้ส่งตั้งกุญแจยืนยันตัวตนใหม่
+timeline.decryption_failure.unable_to_decrypt	ถอดรหัสข้อความไม่ได้
+timeline.decryption_failure.blocked	ผู้ส่งไม่ส่งข้อความนี้ให้ เพราะอุปกรณ์ของคุณยังไม่ได้ยืนยัน
+timeline.decryption_failure.historical_event_no_key_backup	ข้อความเก่าไม่มีในอุปกรณ์นี้
+timeline.decryption_failure.historical_event_unverified_device	ยืนยันอุปกรณ์นี้ก่อนจึงจะเห็นข้อความเก่า
+timeline.decryption_failure.historical_event_user_not_joined	คุณไม่มีสิทธิ์เห็นข้อความนี้
+timeline.decryption_failure.sender_unsigned_device	ส่งจากอุปกรณ์ที่ยังไม่ได้ยืนยัน
+timeline.disambiguated_profile	%(displayName)s (%(matrixId)s)
+timeline.download_action_downloading	กำลังดาวน์โหลด
+timeline.download_failed	ดาวน์โหลดไม่สำเร็จ
+timeline.download_failed_description	เกิดข้อผิดพลาดขณะดาวน์โหลดไฟล์นี้
+timeline.error_no_renderer	แสดงรายการนี้ไม่ได้
+timeline.error_rendering_message	โหลดข้อความนี้ไม่ได้
+timeline.historical_messages_unavailable	คุณไม่เห็นข้อความก่อนหน้านี้
+timeline.in_room_name	 ใน <strong>%(room)s</strong>
+timeline.io.element.widgets.layout	%(senderName)s เปลี่ยนการจัดวางห้อง
+timeline.late_event_separator	ส่งจริงเมื่อ %(dateTime)s
+timeline.load_error.no_permission	พยายามเปิดข้อความที่ระบุในห้องนี้ แต่คุณไม่มีสิทธิ์ดูข้อความนั้น
+timeline.load_error.title	เปิดตำแหน่งข้อความไม่ได้
+timeline.load_error.unable_to_find	พยายามเปิดข้อความที่ระบุในห้องนี้ แต่ไม่พบข้อความนั้น
+timeline.m.beacon_info.view_live_location	ดูตำแหน่งสด
+timeline.m.call.video_call_ended	วิดีโอคอลจบแล้ว
+timeline.m.call.video_call_started	เริ่มวิดีโอคอลใน %(roomName)s
+timeline.m.call.video_call_started_text	%(name)s เริ่มวิดีโอคอล
+timeline.m.call.video_call_started_unsupported	เริ่มวิดีโอคอลใน %(roomName)s (เบราว์เซอร์นี้ไม่รองรับ)
+timeline.m.call.hangup.dm	วางสายแล้ว
+timeline.m.call.invite.answered_elsewhere	รับสายจากเครื่องอื่น
+timeline.m.call.invite.call_back_prompt	โทรกลับ
+timeline.m.call.invite.declined	ปฏิเสธสาย
+timeline.m.call.invite.failed_connect_media	เชื่อมต่อเสียง/ภาพไม่ได้
+timeline.m.call.invite.failed_connection	เชื่อมต่อไม่สำเร็จ
+timeline.m.call.invite.failed_opponent_media	เครื่องของอีกฝ่ายเปิดกล้องหรือไมโครโฟนไม่ได้
+timeline.m.call.invite.missed_call	สายที่ไม่ได้รับ
+timeline.m.call.invite.no_answer	ไม่มีคนรับสาย
+timeline.m.call.invite.unknown_error	เกิดข้อผิดพลาดที่ไม่รู้จัก
+timeline.m.call.invite.unknown_failure	ล้มเหลว: %(reason)s
+timeline.m.call.invite.unknown_state	สถานะการโทรไม่ทราบ!
+timeline.m.call.invite.video_call	%(senderName)s วิดีโอคอล
+timeline.m.call.invite.video_call_unsupported	%(senderName)s วิดีโอคอล (เบราว์เซอร์นี้ไม่รองรับ)
+timeline.m.call.invite.voice_call	%(senderName)s โทรเสียง
+timeline.m.call.invite.voice_call_unsupported	%(senderName)s โทรเสียง (เบราว์เซอร์นี้ไม่รองรับ)
+timeline.m.key.verification.request.user_wants_to_verify	%(name)s ขอยืนยันตัวตน
+timeline.m.key.verification.request.you_started	คุณส่งคำขอยืนยันตัวตน
+timeline.m.location.full	%(senderName)s แชร์ตำแหน่ง
+timeline.m.location.location	แชร์ตำแหน่ง:
+timeline.m.location.self_location	แชร์ตำแหน่งของตัวเอง:
+timeline.m.poll.count_of_votes.one	%(count)s โหวต
+timeline.m.poll.count_of_votes.other	%(count)s โหวต
+timeline.m.poll.end.sender_ended	%(senderName)s ปิดโพล
+timeline.m.poll.start	%(senderName)s สร้างโพล - %(pollQuestion)s
+timeline.m.room.canonical_alias.alt_added.one	%(senderName)s เพิ่มที่อยู่สำรอง %(addresses)s ให้แชทนี้
+timeline.m.room.canonical_alias.alt_added.other	%(senderName)s เพิ่มที่อยู่สำรอง %(addresses)s ให้แชทนี้
+timeline.m.room.canonical_alias.alt_removed.one	%(senderName)s ลบที่อยู่สำรอง %(addresses)s ของแชทนี้
+timeline.m.room.canonical_alias.alt_removed.other	%(senderName)s ลบที่อยู่สำรอง %(addresses)s ของแชทนี้
+timeline.m.room.canonical_alias.changed	%(senderName)s เปลี่ยนที่อยู่ของแชทนี้
+timeline.m.room.canonical_alias.changed_alternative	%(senderName)s เปลี่ยนที่อยู่สำรองของแชทนี้
+timeline.m.room.canonical_alias.changed_main_and_alternative	%(senderName)s เปลี่ยนที่อยู่หลักและที่อยู่สำรองของแชทนี้
+timeline.m.room.canonical_alias.removed	%(senderName)s ลบที่อยู่หลักของแชทนี้
+timeline.m.room.canonical_alias.set	%(senderName)s ตั้งที่อยู่หลักของแชทนี้เป็น %(address)s
+timeline.m.room.guest_access.can_join	%(senderDisplayName)s อนุญาตให้ผู้เยี่ยมชมเข้าห้อง
+timeline.m.room.guest_access.forbidden	%(senderDisplayName)s ไม่ให้ผู้เยี่ยมชมเข้าห้อง
+timeline.m.room.guest_access.unknown	%(senderDisplayName)s เปลี่ยนการเข้าถึงของผู้เยี่ยมชมเป็น %(rule)s
+timeline.m.room.history_visibility.invited	%(senderName)s ตั้งให้สมาชิกเห็นประวัติห้องตั้งแต่ตอนได้รับเชิญ
+timeline.m.room.history_visibility.joined	%(senderName)s ตั้งให้สมาชิกเห็นประวัติห้องตั้งแต่ตอนเข้าร่วม
+timeline.m.room.history_visibility.shared	%(senderName)s ตั้งให้สมาชิกทุกคนเห็นประวัติห้องทั้งหมด
+timeline.m.room.history_visibility.unknown	%(senderName)s ตั้งการมองเห็นประวัติห้องเป็น (%(visibility)s)
+timeline.m.room.history_visibility.world_readable	%(senderName)s ตั้งให้ทุกคนเห็นประวัติห้อง
+timeline.m.room.join_rules.knock	%(senderDisplayName)s เปลี่ยนเป็นต้องขอเข้าร่วม
+timeline.m.room.join_rules.restricted	%(senderDisplayName)s เปลี่ยนว่าใครเข้าห้องนี้ได้
+timeline.m.room.join_rules.restricted_settings	%(senderDisplayName)s เปลี่ยนว่าใครเข้าห้องนี้ได้ <a>ดูการตั้งค่า</a>
+timeline.m.room.join_rules.unknown	%(senderDisplayName)s เปลี่ยนเงื่อนไขการเข้าห้องเป็น %(rule)s
+timeline.m.room.pinned_events.changed	%(senderName)s เปลี่ยนข้อความปักหมุดของห้อง
+timeline.m.room.pinned_events.changed_link	%(senderName)s เปลี่ยน<a>ข้อความปักหมุด</a>ของห้อง
+timeline.m.room.pinned_events.pinned	%(senderName)s ปักหมุดข้อความในห้องนี้ ดูข้อความปักหมุดทั้งหมด
+timeline.m.room.pinned_events.pinned_link	%(senderName)s ปักหมุด<a>ข้อความ</a>ในห้องนี้ ดู<b>ข้อความปักหมุด</b>ทั้งหมด
+timeline.m.room.pinned_events.unpinned	%(senderName)s เลิกปักหมุดข้อความในห้องนี้ ดูข้อความปักหมุดทั้งหมด
+timeline.m.room.pinned_events.unpinned_link	%(senderName)s เลิกปักหมุด<a>ข้อความ</a>ในห้องนี้ ดู<b>ข้อความปักหมุด</b>ทั้งหมด
+timeline.m.room.power_levels.changed	%(senderName)s เปลี่ยนระดับสิทธิ์ของ %(powerLevelDiffText)s
+timeline.m.room.power_levels.user_from_to	%(userId)s จาก %(fromPowerLevel)s เป็น %(toPowerLevel)s
+timeline.m.room.third_party_invite.revoked	%(senderName)s ยกเลิกคำเชิญ %(targetDisplayName)s เข้าห้อง
+timeline.m.room.third_party_invite.sent	%(senderName)s เชิญ %(targetDisplayName)s เข้าห้อง
+timeline.m.room.tombstone	%(senderDisplayName)s อัปเกรดห้องนี้
+timeline.m.sticker	%(senderDisplayName)s ส่งสติกเกอร์
+timeline.m.widget.added	%(senderName)s เพิ่มวิดเจ็ต %(widgetName)s
+timeline.m.widget.jitsi_ended	%(senderName)s จบการประชุมวิดีโอ
+timeline.m.widget.jitsi_join_right_prompt	เข้าร่วมประชุมจากแผงข้อมูลห้องทางขวา
+timeline.m.widget.jitsi_join_top_prompt	เข้าร่วมประชุมที่ด้านบนของห้อง
+timeline.m.widget.jitsi_started	%(senderName)s เริ่มการประชุมวิดีโอ
+timeline.m.widget.jitsi_updated	%(senderName)s อัปเดตการประชุมวิดีโอ
+timeline.m.widget.modified	%(senderName)s แก้ไขวิดเจ็ต %(widgetName)s
+timeline.m.widget.removed	%(senderName)s ลบวิดเจ็ต %(widgetName)s
+timeline.mab.copy_link_thread	คัดลอกลิงก์เธรด
+timeline.mab.view_in_room	ดูในห้อง
+timeline.mab.collapse_reply_chain	ย่อข้อความที่ตอบกลับ
+timeline.mab.expand_reply_chain	ขยายข้อความที่ตอบกลับ
+timeline.mab.label	เมนูข้อความ
+timeline.mjolnir.changed_rule_glob	%(senderName)s เปลี่ยนกฎแบนจาก %(oldGlob)s เป็น %(newGlob)s เหตุผล %(reason)s
+timeline.mjolnir.changed_rule_rooms	%(senderName)s เปลี่ยนกฎแบนห้องจาก %(oldGlob)s เป็น %(newGlob)s เหตุผล %(reason)s
+timeline.mjolnir.changed_rule_servers	%(senderName)s เปลี่ยนกฎแบนเซิร์ฟเวอร์จาก %(oldGlob)s เป็น %(newGlob)s เหตุผล %(reason)s
+timeline.mjolnir.changed_rule_users	%(senderName)s เปลี่ยนกฎแบนผู้ใช้จาก %(oldGlob)s เป็น %(newGlob)s เหตุผล %(reason)s
+timeline.mjolnir.created_rule	%(senderName)s สร้างกฎแบน %(glob)s เหตุผล %(reason)s
+timeline.mjolnir.created_rule_rooms	%(senderName)s สร้างกฎแบนห้อง %(glob)s เหตุผล %(reason)s

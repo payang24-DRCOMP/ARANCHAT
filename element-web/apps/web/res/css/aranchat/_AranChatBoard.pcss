@@ -25,8 +25,8 @@
     font-weight: 600;
     cursor: pointer;
     &[aria-selected="true"] {
-        color: #5b3fd9;
-        border-bottom-color: #5b3fd9;
+        color: var(--ac-brand);
+        border-bottom-color: var(--ac-brand);
     }
 }
 .mx_AranBoard_new {
@@ -69,10 +69,10 @@
 }
 .mx_AranBoard_btn {
     padding: 8px 16px;
-    border: 1.5px solid #d9d0f5;
+    border: 1.5px solid var(--ac-border);
     border-radius: 999px;
     background: none;
-    color: #5b3fd9;
+    color: var(--ac-brand);
     font: inherit;
     font-weight: 600;
     cursor: pointer;
@@ -83,7 +83,7 @@
 }
 .mx_AranBoard_primary {
     background: #5b3fd9;
-    border-color: #5b3fd9;
+    border-color: var(--ac-brand);
     color: #fff;
 }
 .mx_AranBoard_danger {
@@ -96,7 +96,7 @@
     margin-bottom: 8px;
     border: 0;
     background: none;
-    color: #5b3fd9;
+    color: var(--ac-brand);
     font: inherit;
     cursor: pointer;
 }
@@ -140,8 +140,8 @@
 .mx_AranBoard_noteText {
     padding: 14px 16px;
     border-radius: 12px;
-    background: #fffbeb;
-    color: #1e1350;
+    background: var(--ac-note-bg);
+    color: var(--ac-ink);
     font-size: 15px;
     line-height: 1.7;
     white-space: pre-wrap;
@@ -166,7 +166,7 @@
     width: 100%;
     box-sizing: border-box;
     padding: 12px 14px;
-    border: 1.5px solid #d9d0f5;
+    border: 1.5px solid var(--ac-border);
     border-radius: 12px;
     background: var(--cpd-color-bg-canvas-default);
     color: var(--cpd-color-text-primary);
@@ -175,7 +175,7 @@
     line-height: 1.6;
     &:focus {
         outline: none;
-        border-color: #5b3fd9;
+        border-color: var(--ac-brand);
     }
 }
 .mx_AranBoard_textarea {
@@ -279,8 +279,8 @@
 .mx_AranBoardCard {
     width: 260px;
     max-width: 100%;
-    background: #fff;
-    color: #1e1350;
+    background: var(--ac-surface);
+    color: var(--ac-ink);
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgb(46 31 122 / 12%);
@@ -302,7 +302,7 @@
 }
 .mx_AranBoardCard_preview {
     padding: 0 14px 10px;
-    color: #64748b;
+    color: var(--ac-muted);
     font-size: 14px;
     line-height: 1.5;
     white-space: pre-wrap;
@@ -340,13 +340,13 @@
     width: 100%;
     padding: 10px;
     border: 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--ac-line);
     background: none;
-    color: #5b3fd9;
+    color: var(--ac-brand);
     font: inherit;
     font-weight: 600;
     cursor: pointer;
     &:hover {
-        background: #f6f3ff;
+        background: var(--ac-surface-2);
     }
 }

@@ -1,0 +1,131 @@
+timeline.mjolnir.created_rule_servers	%(senderName)s สร้างกฎแบนเซิร์ฟเวอร์ %(glob)s เหตุผล %(reason)s
+timeline.mjolnir.created_rule_users	%(senderName)s สร้างกฎแบนผู้ใช้ %(glob)s เหตุผล %(reason)s
+timeline.mjolnir.removed_rule	%(senderName)s ลบกฎแบน %(glob)s
+timeline.mjolnir.removed_rule_rooms	%(senderName)s ลบกฎแบนห้อง %(glob)s
+timeline.mjolnir.removed_rule_servers	%(senderName)s ลบกฎแบนเซิร์ฟเวอร์ %(glob)s
+timeline.mjolnir.removed_rule_users	%(senderName)s ลบกฎแบนผู้ใช้ %(glob)s
+timeline.mjolnir.updated_invalid_rule	%(senderName)s แก้กฎแบนที่ไม่ถูกต้อง
+timeline.mjolnir.updated_rule	%(senderName)s แก้กฎแบน %(glob)s เหตุผล %(reason)s
+timeline.mjolnir.updated_rule_rooms	%(senderName)s แก้กฎแบนห้อง %(glob)s เหตุผล %(reason)s
+timeline.mjolnir.updated_rule_servers	%(senderName)s แก้กฎแบนเซิร์ฟเวอร์ %(glob)s เหตุผล %(reason)s
+timeline.mjolnir.updated_rule_users	%(senderName)s แก้กฎแบนผู้ใช้ %(glob)s เหตุผล %(reason)s
+timeline.mjolnir.message_hidden	คุณไม่สนใจผู้ใช้นี้ จึงซ่อนข้อความไว้ <a>แสดงอยู่ดี</a>
+timeline.no_permission_messages_before_invite	คุณไม่มีสิทธิ์ดูข้อความก่อนที่คุณจะได้รับเชิญ
+timeline.no_permission_messages_before_join	คุณไม่มีสิทธิ์ดูข้อความก่อนที่คุณจะเข้าร่วม
+timeline.pending_moderation	ข้อความรอตรวจสอบ
+timeline.pending_moderation_reason	ข้อความรอตรวจสอบ: %(reason)s
+timeline.read_receipt_title.one	อ่านแล้ว %(count)s คน
+timeline.read_receipt_title.other	อ่านแล้ว %(count)s คน
+timeline.read_receipts_label	คนที่อ่านแล้ว
+timeline.undecryptable_tooltip	ถอดรหัสข้อความนี้ไม่ได้
+timeline.url_preview.open_link	เปิดลิงก์
+timeline.url_preview.show_n_more.one	แสดงตัวอย่างอีก %(count)s รายการ
+timeline.url_preview.show_n_more.other	แสดงตัวอย่างอีก %(count)s รายการ
+timeline.url_preview.view_audio	ฟังเสียง
+timeline.url_preview.view_file	ดูไฟล์
+timeline.url_preview.view_image	ดูรูป
+timeline.url_preview.view_video	ดูวิดีโอ
+timeline.call_tile.declined.call_declined	ปฏิเสธสาย
+timeline.call_tile.declined.call_declined_by_us	คุณปฏิเสธสาย
+timeline.call_tile.ongoing.common.call_started_by	%(startedByDisplayName)s เริ่มการโทร
+timeline.call_tile.ongoing.common.join_button	เข้าร่วม
+timeline.call_tile.ongoing.dm.call_started	เริ่มโทรแล้ว
+timeline.call_tile.ongoing.dm.title	กำลังโทร
+timeline.call_tile.ongoing.room.join_count.one	เข้าร่วม %(count)s คน
+timeline.call_tile.ongoing.room.join_count.other	เข้าร่วม %(count)s คน
+timeline.call_tile.ongoing.room.title	กำลังโทรกลุ่ม
+timeline.call_tile.tombstone.room.title	โทรกลุ่มจบแล้ว
+timeline.call_tile.video_call_title	วิดีโอคอล
+timeline.call_tile.voice_call_title	โทรเสียง
+timeline.download_action_decrypting	กำลังถอดรหัส
+timeline.e2e_state	สถานะการเข้ารหัส
+timeline.m.room.encryption.disable_attempt	ไม่ยอมให้ปิดการเข้ารหัส
+timeline.m.room.encryption.disabled	ยังไม่ได้เปิดการเข้ารหัส
+timeline.m.room.encryption.enabled	ข้อความในห้องนี้เข้ารหัสต้นทางถึงปลายทาง ยืนยันตัวตนสมาชิกได้ที่โปรไฟล์ของเขา (กดที่รูปโปรไฟล์)
+timeline.m.room.encryption.enabled_dm	ข้อความที่นี่เข้ารหัสต้นทางถึงปลายทาง ยืนยัน %(displayName)s ได้ที่โปรไฟล์ — กดที่รูปโปรไฟล์
+timeline.m.room.encryption.enabled_local	ข้อความในแชทนี้จะเข้ารหัสต้นทางถึงปลายทาง
+timeline.m.room.encryption.parameters_changed	ค่าการเข้ารหัสบางอย่างถูกเปลี่ยน
+timeline.m.room.encryption.state_enabled	ข้อความและการตั้งค่าในห้องนี้เข้ารหัสต้นทางถึงปลายทาง ยืนยันตัวตนสมาชิกได้ที่โปรไฟล์ของเขา (กดที่รูปโปรไฟล์)
+timeline.m.room.encryption.unsupported	ไม่รองรับการเข้ารหัสแบบที่ห้องนี้ใช้
+timeline.message_shared_by	%(displayName)s (%(userId)s) แชร์ข้อความนี้ให้ เพราะตอนส่งคุณยังไม่ได้อยู่ในห้อง
+timeline.message_timestamp_received_at	ได้รับเมื่อ: %(dateTime)s
+timeline.message_timestamp_sent_at	ส่งเมื่อ: %(dateTime)s
+truncated_list_n_more.other	และอีก %(count)s...
+unsupported_browser.description	ถ้าใช้ต่อ บางฟีเจอร์อาจใช้ไม่ได้ และอาจเสียข้อมูลภายหลัง อัปเดตเบราว์เซอร์เพื่อใช้ %(brand)s ต่อ
+unsupported_browser.title	%(brand)s ไม่รองรับเบราว์เซอร์นี้
+unsupported_server_description	เซิร์ฟเวอร์ใช้ Matrix รุ่นเก่า อัปเกรดเป็น Matrix %(version)s เพื่อใช้ %(brand)s ได้ไม่มีปัญหา
+unsupported_server_title	ไม่รองรับเซิร์ฟเวอร์นี้
+update.changelog	รายการเปลี่ยนแปลง
+update.check_action	ตรวจหาอัปเดต
+update.checking	กำลังตรวจหาอัปเดต…
+update.downloading	กำลังดาวน์โหลดอัปเดต…
+update.error_encountered	เกิดข้อผิดพลาด (%(errorDetail)s)
+update.error_unable_load_commit	โหลดรายละเอียดไม่ได้: %(msg)s
+update.new_version_available	มีรุ่นใหม่ <a>อัปเดตเลย</a>
+update.no_update	ใช้รุ่นล่าสุดอยู่แล้ว
+update.release_notes_toast_title	มีอะไรใหม่
+update.see_changes_button	มีอะไรใหม่?
+update.toast_description	%(brand)s มีรุ่นใหม่
+update.toast_title	อัปเดต %(brand)s
+update.unavailable	ไม่พร้อมใช้งาน
+update_room_access_modal.description	ต้องตั้งห้องเป็น<b>สาธารณะ</b>หรือเปิดให้<b>ขอเข้าร่วม</b>ก่อน จึงจะสร้างลิงก์แชร์ได้ ผู้เยี่ยมชมจะเข้าได้โดยไม่ต้องเชิญ
+update_room_access_modal.dont_change_description	ถ้าไม่อยากเปลี่ยนการเข้าถึงห้องนี้ สร้างห้องใหม่สำหรับลิงก์โทรได้
+update_room_access_modal.no_change	ไม่ต้องการเปลี่ยนการเข้าถึง
+update_room_access_modal.revert_access_description	(เปลี่ยนกลับได้ที่ตั้งค่าห้อง: <b>ความปลอดภัยและความเป็นส่วนตัว</b> / <b>การเข้าถึง</b>)
+update_room_access_modal.title	อนุญาตให้ผู้เยี่ยมชมเข้าห้องนี้
+upload_failed_generic	อัปโหลดไฟล์ '%(fileName)s' ไม่สำเร็จ
+upload_failed_size	ไฟล์ '%(fileName)s' ใหญ่เกินกำหนด
+upload_failed_title	อัปโหลดไม่สำเร็จ
+user_status.on_a_call	กำลังโทร
+voip.already_in_call	กำลังโทรอยู่
+voip.already_in_call_person	คุณกำลังโทรกับคนนี้อยู่แล้ว
+voip.answered_elsewhere	รับสายจากที่อื่น
+voip.answered_elsewhere_description	รับสายจากอุปกรณ์อื่นแล้ว
+voip.call_failed	โทรไม่สำเร็จ
+voip.call_failed_description	เชื่อมต่อสายไม่ได้
+voip.call_failed_media	โทรไม่สำเร็จ เพราะใช้กล้องหรือไมโครโฟนไม่ได้ ตรวจสอบว่า:
+voip.call_failed_media_applications	ไม่มีโปรแกรมอื่นใช้กล้องอยู่
+voip.call_failed_media_connected	เสียบไมโครโฟนและกล้อง และตั้งค่าถูกต้อง
+voip.call_failed_media_permissions	อนุญาตให้ใช้กล้องแล้ว
+voip.call_failed_microphone	โทรไม่สำเร็จ เพราะใช้ไมโครโฟนไม่ได้ ตรวจว่าเสียบไมโครโฟนและตั้งค่าถูกต้อง
+voip.call_held	%(peerName)s พักสาย
+voip.call_held_resume	คุณพักสาย <a>กลับมาคุย</a>
+voip.call_held_switch	คุณพักสาย <a>สลับสาย</a>
+voip.call_members.exhaustive.one	<avatars/> อยู่ในสาย
+voip.call_members.exhaustive.other	<avatars/> อยู่ในสาย
+voip.call_members.overflow.one	<avatars/> +%(overflowCount)s อยู่ในสาย
+voip.call_members.overflow.other	<avatars/> +%(overflowCount)s อยู่ในสาย
+voip.call_toast_unknown_room	ห้องที่ไม่รู้จัก
+voip.camera_disabled	ปิดกล้องอยู่
+voip.camera_enabled	กล้องยังเปิดอยู่
+voip.cannot_call_yourself_description	โทรหาตัวเองไม่ได้
+voip.close_lobby	ปิดห้องรอ
+voip.close_slot_failed_title	ปิดการโทรในห้องนี้ไม่สำเร็จ
+voip.connecting	กำลังเชื่อมต่อ
+voip.connection_lost	ขาดการเชื่อมต่อกับเซิร์ฟเวอร์
+voip.connection_lost_description	โทรไม่ได้ถ้าไม่ได้เชื่อมต่อเซิร์ฟเวอร์
+voip.consulting	กำลังปรึกษา %(transferTarget)s <a>โอนสายให้ %(transferee)s</a>
+voip.default_device	อุปกรณ์เริ่มต้น
+voip.dial	โทร
+voip.dialpad	แป้นโทรศัพท์
+voip.disable_camera	ปิดกล้อง
+voip.disable_microphone	ปิดไมโครโฟน
+voip.disabled_no_perms_start_video_call	คุณไม่มีสิทธิ์เริ่มวิดีโอคอล
+voip.disabled_no_perms_start_voice_call	คุณไม่มีสิทธิ์เริ่มโทรเสียง
+voip.disabled_ongoing_call	กำลังโทรอยู่
+voip.element_call	วิดีโอคอล
+voip.enable_camera	เปิดกล้อง
+voip.enable_microphone	เปิดไมโครโฟน
+voip.expand	กลับไปที่สาย
+voip.get_call_link	แชร์ลิงก์โทร
+voip.group_call_started	เริ่มโทรกลุ่มแล้ว
+voip.hangup	วางสาย
+voip.hide_sidebar_button	ซ่อนแถบด้านข้าง
+voip.input_devices	อุปกรณ์รับเสียง/ภาพ
+voip.jitsi_call	ประชุม Jitsi
+voip.join_with_video	เข้าร่วมแบบเปิดกล้อง
+voip.legacy_call	การโทรแบบเดิม
+voip.maximise	เต็มจอ
+voip.maximise_call	ขยายหน้าต่างโทร
+voip.metaspace_video_rooms.conference_room_section	ห้องประชุม
+voip.minimise_call	ย่อหน้าต่างโทร

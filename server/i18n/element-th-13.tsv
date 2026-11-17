@@ -1,0 +1,150 @@
+room_settings.security.history_visibility_world_readable	ทุกคน (ประวัติเป็นสาธารณะ)
+room_settings.security.join_rule_description	กำหนดว่าใครเข้าร่วม %(roomName)s ได้
+room_settings.security.join_rule_invite	เฉพาะคนที่ได้รับเชิญ
+room_settings.security.join_rule_invite_description	เข้าได้เฉพาะคนที่ได้รับเชิญ
+room_settings.security.join_rule_knock	ขอเข้าร่วม
+room_settings.security.join_rule_knock_description	ต้องได้รับอนุมัติก่อนจึงจะเข้าได้
+room_settings.security.join_rule_public	ทุกคน
+room_settings.security.join_rule_public_description	ใครก็เข้าได้ รวมถึงคนนอกหน่วยงาน
+room_settings.security.join_rule_restricted	สมาชิกพื้นที่
+room_settings.security.join_rule_restricted_description	ทุกคนในพื้นที่ที่อนุญาตเข้าได้โดยไม่ต้องเชิญ <a>จัดการพื้นที่</a>
+room_settings.security.join_rule_restricted_description_active_space	ทุกคนใน <spaceName/> เข้าได้
+room_settings.security.join_rule_restricted_description_prompt	ทุกคนในพื้นที่เข้าได้
+room_settings.security.join_rule_restricted_description_spaces	พื้นที่ที่อนุญาต
+room_settings.security.join_rule_restricted_dialog_description	พื้นที่ที่สมาชิกเข้า <RoomName/> ได้โดยไม่ต้องเชิญ
+room_settings.security.join_rule_restricted_dialog_empty_warning	คุณกำลังลบพื้นที่ที่อนุญาตทั้งหมด การเข้าห้องจะเป็นแบบเชิญเท่านั้น
+room_settings.security.join_rule_restricted_dialog_filter_placeholder	ค้นหาพื้นที่
+room_settings.security.join_rule_restricted_dialog_heading_known	พื้นที่ของคุณที่ไม่มีแชทนี้
+room_settings.security.join_rule_restricted_dialog_heading_other	พื้นที่อื่นที่คุณไม่ได้เป็นสมาชิก
+room_settings.security.join_rule_restricted_dialog_heading_room	พื้นที่ของคุณที่มีแชทนี้
+room_settings.security.join_rule_restricted_dialog_heading_space	พื้นที่ที่คุณรู้จักซึ่งมีพื้นที่นี้
+room_settings.security.join_rule_restricted_dialog_heading_unknown	น่าจะเป็นพื้นที่ที่ผู้ดูแลคนอื่นเป็นสมาชิก
+room_settings.security.join_rule_restricted_dialog_title	จัดการพื้นที่
+room_settings.security.join_rule_restricted_n_more.one	และอีก %(count)s แห่ง
+room_settings.security.join_rule_restricted_n_more.other	และอีก %(count)s แห่ง
+room_settings.security.join_rule_restricted_summary.one	ตอนนี้อนุญาต 1 พื้นที่
+room_settings.security.join_rule_restricted_summary.other	ตอนนี้อนุญาต %(count)s พื้นที่
+room_settings.security.join_rule_restricted_upgrade_description	การอัปเกรดนี้จะให้สมาชิกของพื้นที่ที่เลือกเข้าแชทนี้ได้โดยไม่ต้องเชิญ
+room_settings.security.join_rule_restricted_upgrade_warning	แชทนี้อยู่ในบางพื้นที่ที่คุณไม่ได้เป็นผู้ดูแล ในพื้นที่เหล่านั้นจะยังเห็นแชทเดิม แต่จะมีข้อความชวนให้เข้าแชทใหม่
+room_settings.security.join_rule_upgrade_awaiting_room	กำลังโหลดห้องใหม่
+room_settings.security.join_rule_upgrade_required	ต้องอัปเกรดห้อง
+room_settings.security.join_rule_upgrade_sending_invites.one	กำลังส่งคำเชิญ...
+room_settings.security.join_rule_upgrade_sending_invites.other	กำลังส่งคำเชิญ... (%(progress)s จาก %(count)s)
+room_settings.security.join_rule_upgrade_updating_spaces.one	กำลังอัปเดตพื้นที่...
+room_settings.security.join_rule_upgrade_updating_spaces.other	กำลังอัปเดตพื้นที่... (%(progress)s จาก %(count)s)
+room_settings.security.join_rule_upgrade_upgrading_room	กำลังอัปเกรดห้อง
+room_settings.security.join_rule_world_readable_description	การเปลี่ยนว่าใครเข้าห้องได้ จะเปลี่ยนการมองเห็นข้อความใหม่ด้วย
+room_settings.security.public_without_alias_warning	ต้องตั้งที่อยู่ห้องก่อนจึงจะลิงก์มาห้องนี้ได้
+room_settings.security.publish_room	แสดงห้องนี้ในรายชื่อห้องสาธารณะ
+room_settings.security.publish_space	แสดงพื้นที่นี้ในรายชื่อห้องสาธารณะ
+room_settings.security.strict_encryption	ส่งข้อความถึงผู้ใช้ที่ยืนยันแล้วเท่านั้น
+room_settings.security.title	ความปลอดภัยและความเป็นส่วนตัว
+room_settings.upload_avatar_label	อัปโหลดรูปห้อง
+room_settings.voip.call_type_section	ประเภทการโทร
+room_settings.voip.enable_element_call_caption	%(brand)s เข้ารหัสต้นทางถึงปลายทาง แต่ตอนนี้รองรับผู้ร่วมสายจำนวนไม่มาก
+room_settings.voip.enable_element_call_label	เปิด %(brand)s เป็นอีกทางเลือกในการโทรในห้องนี้
+room_settings.voip.enable_element_call_no_permissions_tooltip	คุณไม่มีสิทธิ์เปลี่ยนค่านี้
+room_summary_card_back_action_label	ข้อมูลห้อง
+scalar.error_create	สร้างวิดเจ็ตไม่สำเร็จ
+scalar.error_membership	คุณไม่ได้อยู่ในห้องนี้
+scalar.error_missing_room_id	ไม่มี roomId
+scalar.error_missing_room_id_request	คำขอไม่มี room_id
+scalar.error_missing_user_id_request	คำขอไม่มี user_id
+scalar.error_permission	คุณไม่มีสิทธิ์ทำสิ่งนี้ในห้องนี้
+scalar.error_power_level_invalid	ระดับสิทธิ์ต้องเป็นจำนวนเต็มบวก
+scalar.error_room_not_visible	มองไม่เห็นห้อง %(roomId)s
+scalar.error_room_unknown	ไม่รู้จักห้องนี้
+scalar.error_send_request	ส่งคำขอไม่สำเร็จ
+scalar.failed_read_event	อ่านข้อมูลไม่สำเร็จ
+scalar.failed_send_event	ส่งข้อมูลไม่สำเร็จ
+service_worker_error.description	%(brand)s ต้องใช้ service worker เพื่อโหลดรูปและไฟล์ที่ต้องยืนยันตัวตน เบราว์เซอร์นี้ไม่รองรับ รูปและไฟล์บางส่วนอาจโหลดไม่ขึ้น
+service_worker_error.title	โหลด service worker ไม่สำเร็จ
+settings.discovery.title	ให้คนอื่นค้นหาคุณได้อย่างไร
+settings.encryption.advanced.breadcrumb_alert_cant_confirm	รีเซ็ตกุญแจยืนยันตัวตนเฉพาะเมื่อไม่มีอุปกรณ์อื่นที่ยืนยันแล้ว และไม่มีกุญแจกู้คืน
+settings.encryption.advanced.breadcrumb_description	ถ้าไม่มีอุปกรณ์อื่นที่ยืนยันแล้ว และไม่มีกุญแจกู้คืน ต้องรีเซ็ตกุญแจยืนยันตัวตนจึงจะใช้แอปต่อได้
+settings.encryption.advanced.breadcrumb_description_no_verification_method	คุณไม่มีอุปกรณ์อื่นที่ยืนยันแล้วหรือกุญแจกู้คืน จึงต้องรีเซ็ตกุญแจยืนยันตัวตนเพื่อใช้แอปต่อ
+settings.encryption.advanced.breadcrumb_first_description	ข้อมูลบัญชี รายชื่อ การตั้งค่า และรายการแชทยังอยู่ครบ
+settings.encryption.advanced.breadcrumb_page	รีเซ็ตการเข้ารหัส
+settings.encryption.advanced.breadcrumb_second_description	ประวัติแชทเข้ารหัสที่เก็บไว้บนเซิร์ฟเวอร์อย่างเดียวจะเปิดไม่ได้อีก
+settings.encryption.advanced.breadcrumb_third_description	คนอื่นจะเห็นว่าคุณตั้งกุญแจยืนยันตัวตนใหม่
+settings.encryption.advanced.breadcrumb_title	ยืนยันไม่ได้? ต้องรีเซ็ตกุญแจยืนยันตัวตน
+settings.encryption.advanced.breadcrumb_title_cant_confirm	ต้องรีเซ็ตกุญแจยืนยันตัวตน
+settings.encryption.advanced.breadcrumb_title_compromised	รีเซ็ตกุญแจยืนยันตัวตนใช่ไหม?
+settings.encryption.advanced.breadcrumb_title_forgot	ลืมกุญแจกู้คืน? ต้องรีเซ็ตกุญแจยืนยันตัวตน
+settings.encryption.advanced.breadcrumb_title_sync_failed	ซิงก์ที่เก็บกุญแจไม่สำเร็จ ต้องรีเซ็ตกุญแจยืนยันตัวตน
+settings.encryption.advanced.breadcrumb_warning	ทำเฉพาะเมื่อคิดว่าบัญชีของคุณถูกเจาะ
+settings.encryption.advanced.details_title	รายละเอียดการเข้ารหัส
+settings.encryption.advanced.do_not_close_warning	อย่าปิดหน้าต่างนี้จนกว่าจะรีเซ็ตเสร็จ
+settings.encryption.advanced.export_keys	ส่งออกกุญแจ
+settings.encryption.advanced.import_keys	นำเข้ากุญแจ
+settings.encryption.advanced.other_people_device_description	คำเตือน: ผู้ใช้ที่ยังไม่ได้ยืนยันกับคุณ (เช่น เทียบอีโมจิ) จะไม่ได้รับข้อความเข้ารหัสของคุณ และอุปกรณ์ที่ยังไม่ยืนยันของผู้ใช้ที่ยืนยันแล้วก็จะไม่ได้รับด้วย ต้องเปิดแอปใหม่จึงจะมีผล
+settings.encryption.advanced.other_people_device_label	ในห้องเข้ารหัส ส่งข้อความถึงผู้ใช้ที่ยืนยันแล้วเท่านั้น
+settings.encryption.advanced.other_people_device_title	อุปกรณ์ของคนอื่น
+settings.encryption.advanced.reset_identity	รีเซ็ตกุญแจยืนยันตัวตน
+settings.encryption.advanced.reset_in_progress	กำลังรีเซ็ต...
+settings.encryption.advanced.session_id	รหัสเซสชัน:
+settings.encryption.advanced.session_key	กุญแจเซสชัน:
+settings.encryption.advanced.title	ขั้นสูง
+settings.encryption.confirm_key_storage_off	ปิดที่เก็บกุญแจไว้ต่อใช่ไหม?
+settings.encryption.confirm_key_storage_off_description	ถ้าออกจากระบบทุกเครื่อง ประวัติแชทจะหายและต้องยืนยันรายชื่อทั้งหมดใหม่ <a>ดูเพิ่มเติม</a>
+settings.encryption.delete_key_storage.breadcrumb_page	ลบที่เก็บกุญแจ
+settings.encryption.delete_key_storage.confirm	ลบที่เก็บกุญแจ
+settings.encryption.delete_key_storage.description	การลบที่เก็บกุญแจจะลบกุญแจยืนยันตัวตนและกุญแจข้อความออกจากเซิร์ฟเวอร์ และปิดความปลอดภัยต่อไปนี้:
+settings.encryption.delete_key_storage.list_first	เครื่องใหม่จะไม่มีประวัติแชทเข้ารหัส
+settings.encryption.delete_key_storage.list_second	ถ้าไม่ได้เข้าระบบอยู่สักเครื่อง จะเปิดข้อความเข้ารหัสไม่ได้อีก
+settings.encryption.delete_key_storage.title	ปิดและลบที่เก็บกุญแจ?
+settings.encryption.device_not_verified_button	ยืนยันอุปกรณ์นี้
+settings.encryption.device_not_verified_description	ต้องยืนยันอุปกรณ์นี้ก่อนจึงจะดูการตั้งค่าการเข้ารหัสได้
+settings.encryption.device_not_verified_title	อุปกรณ์ยังไม่ได้ยืนยัน
+settings.encryption.dialog_title	<strong>ตั้งค่า:</strong> การเข้ารหัส
+settings.encryption.key_storage.allow_key_storage	อนุญาตที่เก็บกุญแจ
+settings.encryption.key_storage.description	ช่วยให้เปิดประวัติแชทบนเครื่องใหม่ได้ และจำเป็นสำหรับการสำรองแชท <a>ดูเพิ่มเติม</a>
+settings.encryption.key_storage.recovery_requires_key_storage	ต้องเปิดที่เก็บกุญแจก่อนจึงจะตั้งการกู้คืนได้
+settings.encryption.key_storage.title	ที่เก็บกุญแจ
+settings.encryption.recovery.change_recovery_confirm_button	ยืนยันกุญแจกู้คืนใหม่
+settings.encryption.recovery.change_recovery_confirm_description	ใส่กุญแจกู้คืนใหม่ด้านล่างเพื่อเสร็จสิ้น กุญแจเดิมจะใช้ไม่ได้อีก
+settings.encryption.recovery.change_recovery_confirm_title	ใส่กุญแจกู้คืนใหม่
+settings.encryption.recovery.change_recovery_key	เปลี่ยนกุญแจกู้คืน
+settings.encryption.recovery.change_recovery_key_description	จดกุญแจกู้คืนใหม่นี้ไว้ในที่ปลอดภัย แล้วกด "ต่อไป" เพื่อยืนยัน
+settings.encryption.recovery.change_recovery_key_title	เปลี่ยนกุญแจกู้คืน?
+settings.encryption.recovery.enter_key_error	กุญแจกู้คืนไม่ถูกต้อง
+settings.encryption.recovery.enter_recovery_key	ใส่กุญแจกู้คืน
+settings.encryption.recovery.forgot_recovery_key	ลืมกุญแจกู้คืน?
+settings.encryption.recovery.key_storage_warning	ที่เก็บกุญแจไม่ตรงกับเครื่องนี้ กดปุ่มด้านล่างเพื่อแก้ไข
+settings.encryption.recovery.save_key_description	ห้ามให้ใครเด็ดขาด!
+settings.encryption.recovery.save_key_title	กุญแจกู้คืน
+settings.encryption.recovery.set_up_recovery	รับกุญแจกู้คืน
+settings.encryption.recovery.set_up_recovery_confirm_button	เสร็จสิ้น
+settings.encryption.recovery.set_up_recovery_confirm_description	ใส่กุญแจกู้คืนที่แสดงในหน้าก่อนเพื่อตั้งค่าให้เสร็จ
+settings.encryption.recovery.set_up_recovery_confirm_title	ใส่กุญแจกู้คืนเพื่อยืนยัน
+settings.encryption.recovery.set_up_recovery_save_key_description	จดกุญแจกู้คืนนี้ไว้ในที่ปลอดภัย เช่น โปรแกรมจัดการรหัสผ่าน หรือที่เก็บเอกสารสำคัญ
+settings.encryption.recovery.set_up_recovery_save_key_title	เก็บกุญแจกู้คืนไว้ในที่ปลอดภัย
+settings.encryption.recovery.title	สำรองข้อมูล
+settings.encryption.title	การเข้ารหัส
+settings.invite_controls.default_label	อนุญาตให้คนอื่นเชิญคุณเข้าห้อง
+settings.key_backup.setup_secure_backup.backup_setup_success_description	กำลังสำรองกุญแจจากอุปกรณ์นี้
+settings.key_backup.setup_secure_backup.backup_setup_success_title	ตั้งค่าการสำรองสำเร็จ
+settings.key_backup.setup_secure_backup.cancel_warning	ถ้ายกเลิกตอนนี้ อาจเสียข้อความเข้ารหัสถ้าเข้าระบบไม่ได้อีก
+settings.key_backup.setup_secure_backup.confirm_security_phrase	ยืนยันวลีความปลอดภัย
+settings.key_backup.setup_secure_backup.description	สำรองกุญแจเข้ารหัสไว้บนเซิร์ฟเวอร์ ป้องกันการเปิดข้อความเข้ารหัสไม่ได้
+settings.key_backup.setup_secure_backup.download_or_copy	%(downloadButton)s หรือ %(copyButton)s
+settings.key_backup.setup_secure_backup.enter_phrase_description	ตั้งวลีความปลอดภัยที่รู้คนเดียว ใช้ปกป้องข้อมูลของคุณ ไม่ควรใช้ซ้ำกับรหัสผ่านบัญชี
+settings.key_backup.setup_secure_backup.enter_phrase_title	ตั้งวลีความปลอดภัย
+settings.key_backup.setup_secure_backup.enter_phrase_to_confirm	พิมพ์วลีความปลอดภัยอีกครั้งเพื่อยืนยัน
+settings.key_backup.setup_secure_backup.generate_security_key_description	ระบบจะสร้างกุญแจกู้คืนให้ เก็บไว้ในที่ปลอดภัย เช่น โปรแกรมจัดการรหัสผ่าน
+settings.key_backup.setup_secure_backup.generate_security_key_title	สร้างกุญแจกู้คืน
+settings.key_backup.setup_secure_backup.pass_phrase_match_failed	ไม่ตรงกัน
+settings.key_backup.setup_secure_backup.pass_phrase_match_success	ตรงกันแล้ว!
+settings.key_backup.setup_secure_backup.phrase_strong_enough	ดีมาก! วลีนี้ปลอดภัยพอ
+settings.key_backup.setup_secure_backup.secret_storage_query_failure	ตรวจสถานะที่เก็บกุญแจไม่ได้
+settings.key_backup.setup_secure_backup.security_key_safety_reminder	เก็บกุญแจกู้คืนไว้ในที่ปลอดภัย เช่น โปรแกรมจัดการรหัสผ่าน เพราะใช้ปกป้องข้อมูลเข้ารหัสของคุณ
+settings.key_backup.setup_secure_backup.set_phrase_again	กลับไปตั้งใหม่
+settings.key_backup.setup_secure_backup.settings_reminder	ตั้งการสำรองและจัดการกุญแจได้ในตั้งค่าด้วย
+settings.key_backup.setup_secure_backup.title_confirm_phrase	ยืนยันวลีความปลอดภัย
+settings.key_backup.setup_secure_backup.title_save_key	เก็บกุญแจกู้คืน
+settings.key_backup.setup_secure_backup.title_set_phrase	ตั้งวลีความปลอดภัย
+settings.key_backup.setup_secure_backup.unable_to_setup	ตั้งค่าที่เก็บกุญแจไม่สำเร็จ
+settings.key_backup.setup_secure_backup.use_different_passphrase	ใช้วลีอื่น?
+settings.key_backup.setup_secure_backup.use_phrase_only_you_know	ใช้วลีลับที่รู้คนเดียว และจะเก็บกุญแจกู้คืนไว้สำรองด้วยก็ได้
+settings.key_export_import.confirm_passphrase	ยืนยันรหัสผ่าน
+settings.key_export_import.enter_passphrase	ใส่รหัสผ่าน

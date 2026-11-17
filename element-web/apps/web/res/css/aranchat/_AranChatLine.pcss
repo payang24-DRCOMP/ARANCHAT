@@ -151,6 +151,25 @@
             color: inherit;
             text-decoration: underline;
         }
+        /* ข้อความที่ตอบกลับ (อ้างถึง) ในฟองม่วงของเรา: กล่องโปร่งขาว ตัวอักษรขาว ไม่ขีดเส้นใต้ — เดิมม่วงเข้มบนม่วงอ่านไม่ออก */
+        .mx_ReplyChain {
+            margin-bottom: 6px;
+            padding: 4px 8px;
+            border-inline-start: 3px solid rgb(255 255 255 / 70%) !important;
+            border-radius: 8px;
+            background: rgb(255 255 255 / 14%);
+        }
+        .mx_ReplyChain,
+        .mx_ReplyChain *:not(.mx_BaseAvatar, .mx_BaseAvatar *) {
+            color: rgb(255 255 255 / 92%) !important;
+        }
+        .mx_ReplyChain a,
+        .mx_ReplyChain .mx_ReplyTile > a {
+            text-decoration: none !important;
+        }
+        .mx_ReplyChain .mx_DisambiguatedProfile_displayName {
+            font-weight: 700;
+        }
         > [data-testid="event-tile-slot-avatar"] {
             display: none;
         }
@@ -744,4 +763,42 @@
     display: inline-flex;
     flex-direction: column;
     align-items: flex-end;
+}
+
+/* ---------- จอมือถือ: หัวห้องเห็นชื่อห้องเสมอ ----------
+ * ไอคอนหัวห้องเบียดจนชื่อห้องหาย → ซ่อนรูปสมาชิก (ดูได้ในข้อมูลห้อง) และไอคอนเธรด/ประวัติ เหลือ โทร + ข้อมูลห้อง */
+@media (max-width: 480px) {
+    .mx_AranChat .mx_RoomHeader {
+        .mx_RoomHeader_members,
+        > div:last-child,
+        .mx_RoomHeader_infoWrapper ~ button[aria-label="เธรด"],
+        .mx_RoomHeader_infoWrapper ~ button[aria-label="Threads"],
+        .mx_RoomHeader_info .mx_RoomHeader_icon {
+            display: none !important;
+        }
+        .mx_RoomHeader_heading {
+            font-size: 16px;
+        }
+    }
+}
+
+/* ---------- แถบเตือนกุญแจยืนยันตัวตนของเพื่อนร่วมห้อง ----------
+ * เกิดบ่อยเมื่อเพื่อนเปลี่ยนเครื่อง/เข้าระบบใหม่ — แสดงแบบข้อมูล (ไม่ใช่สีแดงเต็มแถบ) และปุ่มไม่ตกบรรทัด */
+/* ซ้ำ class เพื่อให้ชนะ .mx_UserIdentityWarning.critical ของต้นฉบับ (โหลดทีหลัง) */
+.mx_AranChat .mx_UserIdentityWarning.mx_UserIdentityWarning {
+    margin: 0 0 6px;
+    padding: 8px 12px;
+    border-radius: 14px;
+    background: var(--cpd-color-bg-subtle-secondary);
+
+    .mx_UserIdentityWarning_main {
+        font-size: 13px;
+        line-height: 1.45;
+    }
+    button {
+        flex: none;
+        white-space: nowrap;
+        min-width: auto;
+        padding-inline: 14px;
+    }
 }

@@ -1,0 +1,149 @@
+//
+// Copyright 2026 Element Creations Ltd.
+//
+// SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-Element-Commercial.
+// Please see LICENSE files in the repository root for full details.
+//
+
+import Combine
+@testable import ElementX
+import Testing
+
+@MainActor
+struct IdentityConfirmationScreenViewModelTests {
+    var securityStateSubject: CurrentValueSubject<SessionSecurityState, Never>!
+    
+    var viewModel: IdentityConfirmationScreenViewModel!
+    var context: IdentityConfirmationScreenViewModel.Context {
+        viewModel.context
+    }
+    
+    @Test
+    mutating func logoutSignsOutWithoutConfirmation() async throws {
+        setupViewModel()
+        
+        let deferred = deferFulfillment(viewModel.actionsPublisher) { $0 == .logoutWithoutConfirmation }
+        context.send(viewAction: .logout)
+        try await deferred.fulfill()
+    }
+    
+    @Test
+    mutating func isUnverifiedListensToSecurityState() async throws {
+        setupViewModel(verificationState: .unknown)
+        #expect(!context.viewState.isUnverified)
+        
+        let deferredFailure = deferFailure(context.observe(\.viewState.isUnverified), timeout: .milliseconds(300)) { $0 }
+        securityStateSubject.send(.init(verificationState: .verified, recoveryState: .unknown))
+        try await deferredFailure.fulfill()
+        
+        let deferred = deferFulfillment(context.observe(\.viewState.isUnverified)) { $0 }
+        securityStateSubject.send(.init(verificationState: .unverified, recoveryState: .disabled))
+        try await deferred.fulfill()
+    }
+    
+    // MARK: - Available Actions
+    
+    @Test
+    mutating func availableActionsWithDevicesAndRecovery() async throws {
+        setupViewModel(hasDevicesToVerifyAgainst: true)
+        #expect(context.viewState.availableActions == nil)
+        
+        let deferred = deferFulfillment(context.observe(\.viewState.availableActions)) { $0 != nil }
+        securityStateSubject.send(.init(verificationState: .unverified, recoveryState: .enabled))
+        try await deferred.fulfill()
+        
+        let availableActions = try #require(context.viewState.availableActions)
+        #expect(availableActions == [.interactiveVerification, .recovery])
+    }
+    
+    @Test
+    mutating func availableActionsWithDevices() async throws {
+        setupViewModel(hasDevicesToVerifyAgainst: true)
+        #expect(context.viewState.availableActions == nil)
+        
+        let deferred = deferFulfillment(context.observe(\.viewState.availableActions)) { $0 != nil }
+        securityStateSubject.send(.init(verificationState: .unverified, recoveryState: .disabled))
+        try await deferred.fulfill()
+        
+        let availableActions = try #require(context.viewState.availableActions)
+        #expect(availableActions == [.interactiveVerification])
+    }
+    
+    @Test
+    mutating func availableActionsWithRecovery() async throws {
+        setupViewModel(hasDevicesToVerifyAgainst: false)
+        #expect(context.viewState.availableActions == nil)
+        
+        let deferred = deferFulfillment(context.observe(\.viewState.availableActions)) { $0 != nil }
+        securityStateSubject.send(.init(verificationState: .unverified, recoveryState: .enabled))
+        try await deferred.fulfill()
+        
+        let availableActions = try #require(context.viewState.availableActions)
+        #expect(availableActions == [.recovery])
+    }
+    
+    @Test
+    mutating func availableActionsWithoutDevicesOrRecovery() async throws {
+        setupViewModel(hasDevicesToVerifyAgainst: false)
+        #expect(context.viewState.availableActions == nil)
+        
+        let deferred = deferFulfillment(context.observe(\.viewState.availableActions)) { $0 != nil }
+        securityStateSubject.send(.init(verificationState: .unverified, recoveryState: .disabled))
+        try await deferred.fulfill()
+        
+        let availableActions = try #require(context.viewState.availableActions)
+        #expect(availableActions.isEmpty)
+    }
+    
+    @Test
+    mutating func availableActionsWhileSecurityStateIsPending() async throws {
+        setupViewModel(hasDevicesToVerifyAgainst: true)
+        
+        let deferred = deferFailure(context.observe(\.viewState.availableActions), timeout: .milliseconds(300)) { $0 != nil }
+        try await deferred.fulfill()
+        
+        #expect(context.viewState.availableActions == nil)
+    }
+    
+    // MARK: - Reset
+    
+    @Test
+    mutating func resetWithoutOptions() async throws {
+        setupViewModel(hasDevicesToVerifyAgainst: false)
+        
+        let loaded = deferFulfillment(context.observe(\.viewState.availableActions)) { $0 != nil }
+        securityStateSubject.send(.init(verificationState: .unverified, recoveryState: .disabled))
+        try await loaded.fulfill()
+        
+        let deferred = deferFulfillment(viewModel.actionsPublisher) { $0 == .reset(hasConfirmationOptions: false) }
+        context.send(viewAction: .reset)
+        try await deferred.fulfill()
+    }
+    
+    @Test
+    mutating func resetWithOptions() async throws {
+        setupViewModel(hasDevicesToVerifyAgainst: true)
+        
+        let loaded = deferFulfillment(context.observe(\.viewState.availableActions)) { $0 != nil }
+        securityStateSubject.send(.init(verificationState: .unverified, recoveryState: .enabled))
+        try await loaded.fulfill()
+        
+        let deferred = deferFulfillment(viewModel.actionsPublisher) { $0 == .reset(hasConfirmationOptions: true) }
+        context.send(viewAction: .reset)
+        try await deferred.fulfill()
+    }
+    
+    // MARK: - Private
+    
+    mutating func setupViewModel(verificationState: SessionVerificationState = .unverified, hasDevicesToVerifyAgainst: Bool = true) {
+        let initialState = SessionSecurityState(verificationState: verificationState, recoveryState: .unknown)
+        securityStateSubject = CurrentValueSubject<SessionSecurityState, Never>(initialState)
+        
+        let clientProxy = ClientProxyMock(.init())
+        clientProxy.hasDevicesToVerifyAgainstReturnValue = .success(hasDevicesToVerifyAgainst)
+        let userSession = UserSessionMock(.init(clientProxy: clientProxy))
+        userSession.sessionSecurityStatePublisher = securityStateSubject.asCurrentValuePublisher()
+        
+        viewModel = IdentityConfirmationScreenViewModel(userSession: userSession, userSettings: .mock())
+    }
+}

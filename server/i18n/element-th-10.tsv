@@ -1,0 +1,150 @@
+encryption.verification.qr_prompt	สแกนโค้ดนี้
+encryption.verification.qr_reciprocate_check_again_device	ดูที่อุปกรณ์อีกเครื่องอีกครั้งเพื่อยืนยันให้เสร็จ
+encryption.verification.qr_reciprocate_no	ไม่ ไม่เห็นโล่สีเขียว
+encryption.verification.qr_reciprocate_same_shield_user	ใกล้เสร็จแล้ว! เครื่องของ %(displayName)s แสดงโล่แบบเดียวกันไหม?
+encryption.verification.qr_reciprocate_yes	ใช่ เห็นโล่สีเขียว
+encryption.verification.request_toast_accept_user	ยืนยันผู้ใช้
+encryption.verification.request_toast_decline_counter	ไม่สนใจ (%(counter)s)
+encryption.verification.request_toast_detail	%(deviceId)s จาก %(ip)s
+encryption.verification.request_toast_start_verification	เริ่มยืนยัน
+encryption.verification.sas_caption_self	ยืนยันอุปกรณ์นี้โดยตรวจว่าตัวเลขต่อไปนี้ขึ้นบนหน้าจอของอุปกรณ์นั้น
+encryption.verification.sas_caption_user	ยืนยันผู้ใช้นี้โดยตรวจว่าตัวเลขต่อไปนี้ขึ้นบนหน้าจอของเขา
+encryption.verification.sas_description	เทียบชุดอีโมจิ ถ้าทั้งสองเครื่องไม่มีกล้อง
+encryption.verification.sas_emoji_caption_user	ยืนยันผู้ใช้นี้โดยตรวจว่าอีโมจิต่อไปนี้ขึ้นบนหน้าจอของเขา
+encryption.verification.sas_match	ตรงกัน
+encryption.verification.sas_no_match	ไม่ตรงกัน
+encryption.verification.sas_prompt	เทียบอีโมจิ
+encryption.verification.scan_qr	ยืนยันด้วยการสแกน
+encryption.verification.scan_qr_explainer	ให้ %(displayName)s สแกนโค้ดของคุณ:
+encryption.verification.start_button	เริ่มยืนยัน
+encryption.verification.successful_user	ยืนยัน %(displayName)s สำเร็จแล้ว!
+encryption.verification.unsupported_method	ไม่พบวิธียืนยันที่ใช้ได้
+encryption.verification.unverified_session_toast_accept	ใช่ ฉันเอง
+encryption.verification.unverified_session_toast_title	มีการเข้าระบบใหม่ ใช่คุณไหม?
+encryption.verification.unverified_sessions_toast_description	ตรวจสอบเพื่อให้บัญชีของคุณปลอดภัย
+encryption.verification.unverified_sessions_toast_reject	ไว้ทีหลัง
+encryption.verification.unverified_sessions_toast_title	มีอุปกรณ์ที่ยังไม่ได้ยืนยัน
+encryption.verification.use_another_device	ใช้อุปกรณ์อื่น
+encryption.verification.use_recovery_key	ใช้กุญแจกู้คืน
+encryption.verification.verification_dialog_title_choose	เลือกวิธียืนยัน
+encryption.verification.verification_dialog_title_compare_emojis	เทียบอีโมจิ
+encryption.verification.verification_dialog_title_confirm_green_shield	ยืนยันว่าเห็นโล่สีเขียวบนอุปกรณ์อีกเครื่อง
+encryption.verification.verification_dialog_title_device	ยืนยันอุปกรณ์อื่น
+encryption.verification.verification_dialog_title_failed	ยืนยันไม่สำเร็จ
+encryption.verification.verification_dialog_title_start_on_other_device	เริ่มยืนยันบนอุปกรณ์อีกเครื่อง
+encryption.verification.verification_dialog_title_user	คำขอยืนยันตัวตน
+encryption.verification.verification_dialog_title_verified	ยืนยันอุปกรณ์แล้ว
+encryption.verification.verification_skip_warning	ถ้าไม่ยืนยัน จะเปิดข้อความเก่าบางส่วนไม่ได้ และคนอื่นอาจเห็นว่าอุปกรณ์นี้ไม่น่าเชื่อถือ
+encryption.verification.verification_success_with_backup	ยืนยันอุปกรณ์ใหม่แล้ว เปิดข้อความเข้ารหัสได้ และคนอื่นจะเห็นว่าเชื่อถือได้
+encryption.verification.verification_success_without_backup	ยืนยันอุปกรณ์ใหม่แล้ว คนอื่นจะเห็นว่าเชื่อถือได้
+encryption.verification.verify_by_completing_one_of	ยืนยันด้วยวิธีใดวิธีหนึ่ง:
+encryption.verification.verify_emoji	ยืนยันด้วยอีโมจิ
+encryption.verification.verify_emoji_prompt	ยืนยันด้วยการเทียบอีโมจิ
+encryption.verification.verify_emoji_prompt_qr	ถ้าสแกนโค้ดด้านบนไม่ได้ ให้ยืนยันด้วยการเทียบอีโมจิ
+encryption.verification.verify_later	ไว้ยืนยันทีหลัง
+encryption.verification.waiting_for_user_accept	รอ %(displayName)s รับคำขอ…
+encryption.verification.waiting_other_device	รอคุณยืนยันบนอุปกรณ์อีกเครื่อง…
+encryption.verification.waiting_other_device_details	รอคุณยืนยันบนอุปกรณ์อีกเครื่อง %(deviceName)s (%(deviceId)s)…
+encryption.verification.waiting_other_user	รอ %(displayName)s ยืนยัน…
+encryption.verification_requested_toast_title	มีคำขอยืนยันตัวตน
+encryption.verified_identity_changed	%(displayName)s (<b>%(userId)s</b>) ตั้งกุญแจยืนยันตัวตนใหม่ (มักเกิดจากเปลี่ยนเครื่องหรือเข้าระบบใหม่) <a>ดูเพิ่มเติม</a>
+encryption.verified_identity_changed_no_displayname	<b>%(userId)s</b> ตั้งกุญแจยืนยันตัวตนใหม่ (มักเกิดจากเปลี่ยนเครื่องหรือเข้าระบบใหม่) <a>ดูเพิ่มเติม</a>
+encryption.verify_toast_description	อีกไม่นาน อุปกรณ์ที่ยังไม่ได้ยืนยันจะส่งและรับข้อความไม่ได้ <a>ดูเพิ่มเติม</a>
+encryption.verify_toast_title	ยืนยันอุปกรณ์นี้
+encryption.withdraw_verification_action	ถอนการยืนยัน
+error.admin_contact	กรุณา<a>ติดต่อผู้ดูแลระบบ</a>เพื่อใช้งานต่อ
+error.admin_contact_short	ติดต่อ<a>ผู้ดูแลระบบ</a>
+error.app_launch_unexpected_error	เปิดแอปไม่สำเร็จ ดูรายละเอียดในคอนโซล
+error.cannot_load_config	โหลดไฟล์ตั้งค่าไม่ได้ ลองรีเฟรชหน้าใหม่
+error.connection	เกิดข้อผิดพลาด ลองใหม่อีกครั้งภายหลัง
+error.dialog_description_default	เกิดข้อผิดพลาด
+error.download_media	ดาวน์โหลดไฟล์ไม่ได้ ไม่พบที่อยู่ไฟล์ต้นฉบับ
+error.edit_history_unsupported	เซิร์ฟเวอร์ยังไม่รองรับฟีเจอร์นี้
+error.failed_copy	คัดลอกไม่สำเร็จ
+error.hs_blocked	บริการนี้ถูกผู้ดูแลระบบระงับไว้
+error.invalid_configuration_mixed_server	ตั้งค่าไม่ถูกต้อง: ใส่ default_hs_url พร้อมกับ default_server_name หรือ default_server_config ไม่ได้
+error.invalid_configuration_no_server	ตั้งค่าไม่ถูกต้อง: ไม่ได้ระบุเซิร์ฟเวอร์
+error.invalid_json	ไฟล์ตั้งค่ามี JSON ไม่ถูกต้อง แก้แล้วรีเฟรชหน้าใหม่
+error.invalid_json_detail	ข้อความจากตัวอ่าน: %(message)s
+error.invalid_json_generic	JSON ไม่ถูกต้อง
+error.mau	บริการนี้มีผู้ใช้ครบจำนวนที่กำหนดต่อเดือนแล้ว
+error.misconfigured	แอปตั้งค่าไม่ถูกต้อง
+error.mixed_content	เชื่อมต่อเซิร์ฟเวอร์ผ่าน HTTP ไม่ได้ขณะเปิดหน้าเว็บแบบ HTTPS ให้ใช้ HTTPS หรือ<a>อนุญาตสคริปต์ที่ไม่ปลอดภัย</a>
+error.non_urgent_echo_failure_toast	เซิร์ฟเวอร์ไม่ตอบ<a>คำขอ</a>บางรายการ
+error.resource_limits	บริการนี้ใช้ทรัพยากรเกินขีดจำกัด
+error.session_restore.clear_storage_button	นำอุปกรณ์นี้ออก
+error.session_restore.clear_storage_description	นำอุปกรณ์นี้ออกพร้อมกุญแจเข้ารหัสใช่ไหม?
+error.session_restore.description_1	กู้คืนการเข้าระบบที่บันทึกไว้ไม่ได้
+error.session_restore.description_2	ถ้าเคยใช้ %(brand)s รุ่นใหม่กว่านี้ ข้อมูลที่บันทึกไว้อาจใช้กับรุ่นนี้ไม่ได้ ให้ปิดหน้าต่างนี้แล้วกลับไปใช้รุ่นที่ใหม่กว่า
+error.session_restore.description_3	ล้างข้อมูลเบราว์เซอร์อาจแก้ได้ แต่จะนำอุปกรณ์นี้ออก และอ่านประวัติแชทที่เข้ารหัสไม่ได้
+error.session_restore.title	กู้คืนการเข้าระบบไม่ได้
+error.something_went_wrong	เกิดข้อผิดพลาด!
+error.storage_evicted_description_1	ข้อมูลบางส่วนในเครื่องนี้หายไป ข้อความเก่าอาจเปิดไม่ได้ ให้นำอุปกรณ์นี้ออกแล้วเข้าระบบใหม่ — ถ้าตั้งการกู้คืนไว้ ข้อความจะกลับมา
+error.storage_evicted_description_2	เบราว์เซอร์อาจลบข้อมูลนี้เมื่อพื้นที่ดิสก์ใกล้เต็ม
+error.storage_evicted_title	ข้อมูลที่บันทึกไว้หายไป
+error.sync	เชื่อมต่อไม่ได้ กำลังลองใหม่…
+error.tls	เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ ตรวจสอบอินเทอร์เน็ต <a>ใบรับรอง SSL ของเซิร์ฟเวอร์</a> และส่วนขยายเบราว์เซอร์ที่อาจบล็อกการเชื่อมต่อ
+error.unknown	ข้อผิดพลาดที่ไม่รู้จัก
+error.unknown_error_code	รหัสข้อผิดพลาดที่ไม่รู้จัก
+error.update_history_visibility	เปลี่ยนการมองเห็นประวัติไม่สำเร็จ
+error.update_power_level	เปลี่ยนระดับสิทธิ์ไม่สำเร็จ
+error.legacy_crypto_unsupported.actions	ให้กลับไปใช้รุ่น <b>%(version)s</b> ก่อน หรือนำอุปกรณ์นี้ออก
+error.legacy_crypto_unsupported.description	%(brand)s อัปเดตจากรุ่นที่เก่ามาก ย้ายข้อมูลการเข้ารหัสไปรูปแบบใหม่ไม่ได้
+error.legacy_crypto_unsupported.title	ใช้อุปกรณ์นี้ไม่ได้
+error_app_open_in_another_tab	สลับไปแท็บอื่นเพื่อใช้ %(brand)s ปิดแท็บนี้ได้เลย
+error_app_open_in_another_tab_title	%(brand)s เปิดอยู่ในแท็บอื่น
+error_app_opened_in_another_window	%(brand)s เปิดอยู่ในหน้าต่างอื่น กด "%(label)s" เพื่อใช้ %(brand)s ที่นี่และตัดการเชื่อมต่อหน้าต่างนั้น
+error_database_closed_description.for_desktop	ดิสก์อาจเต็ม ลบไฟล์ให้มีที่ว่างแล้วเปิดใหม่
+error_database_closed_description.for_web	ถ้าเพิ่งล้างข้อมูลเบราว์เซอร์ ข้อความนี้เป็นเรื่องปกติ หรือ %(brand)s อาจเปิดอยู่ในแท็บอื่น หรือดิสก์เต็ม ลบไฟล์ให้มีที่ว่างแล้วรีเฟรช
+error_database_closed_title	%(brand)s หยุดทำงาน
+error_dialog.copy_room_link_failed.description	คัดลอกลิงก์ห้องไม่สำเร็จ
+error_dialog.copy_room_link_failed.title	คัดลอกลิงก์ห้องไม่ได้
+error_dialog.error_loading_user_profile	โหลดโปรไฟล์ผู้ใช้ไม่ได้
+error_dialog.forget_room_failed	ลบห้องออกจากรายการไม่สำเร็จ %(errCode)s
+error_user_not_logged_in	ยังไม่ได้เข้าระบบ
+event_preview.m.call.answer.dm	กำลังโทร
+event_preview.m.call.answer.user	%(senderName)s เข้าร่วมการโทร
+event_preview.m.call.answer.you	คุณเข้าร่วมการโทร
+event_preview.m.call.hangup.user	%(senderName)s วางสาย
+event_preview.m.call.hangup.you	คุณวางสาย
+event_preview.m.call.invite.dm_receive	%(senderName)s กำลังโทรหา
+event_preview.m.call.invite.dm_send	รอรับสาย
+event_preview.m.call.invite.user	%(senderName)s เริ่มการโทร
+event_preview.m.call.invite.you	คุณเริ่มการโทร
+event_preview.m.emote	* %(senderName)s %(emote)s
+event_preview.m.sticker	%(senderName)s: %(stickerName)s
+event_preview.m.text	%(senderName)s: %(message)s
+event_preview.prefix.audio	เสียง
+event_preview.prefix.file	ไฟล์
+event_preview.prefix.image	รูปภาพ
+event_preview.prefix.poll	โพล
+event_preview.prefix.video	วิดีโอ
+event_preview.preview	<bold>%(prefix)s:</bold> %(preview)s
+export_chat.cancelled	ยกเลิกการส่งออก
+export_chat.cancelled_detail	ยกเลิกการส่งออกแล้ว
+export_chat.confirm_stop	หยุดส่งออกข้อมูลใช่ไหม? ถ้าหยุด ต้องเริ่มใหม่ทั้งหมด
+export_chat.creating_html	กำลังสร้าง HTML…
+export_chat.creating_output	กำลังสร้างไฟล์…
+export_chat.creator_summary	%(creatorName)s สร้างห้องนี้
+export_chat.current_timeline	ข้อความที่แสดงอยู่
+export_chat.enter_number_between_min_max	ใส่ตัวเลขระหว่าง %(min)s ถึง %(max)s
+export_chat.error_fetching_file	ดึงไฟล์ไม่สำเร็จ
+export_chat.export_info	เริ่มต้นข้อมูลส่งออกของ <roomName/> ส่งออกโดย <exporterDetails/> เมื่อ %(exportDate)s
+export_chat.export_successful	ส่งออกสำเร็จ!
+export_chat.exported_n_events_in_time.one	ส่งออก %(count)s รายการ ใน %(seconds)s วินาที
+export_chat.exported_n_events_in_time.other	ส่งออก %(count)s รายการ ใน %(seconds)s วินาที
+export_chat.exporting_your_data	กำลังส่งออกข้อมูล
+export_chat.fetched_n_events.one	ดึงแล้ว %(count)s รายการ
+export_chat.fetched_n_events.other	ดึงแล้ว %(count)s รายการ
+export_chat.fetched_n_events_in_time.one	ดึงแล้ว %(count)s รายการ ใน %(seconds)s วินาที
+export_chat.fetched_n_events_in_time.other	ดึงแล้ว %(count)s รายการ ใน %(seconds)s วินาที
+export_chat.fetched_n_events_with_total.one	ดึงแล้ว %(count)s จาก %(total)s รายการ
+export_chat.fetched_n_events_with_total.other	ดึงแล้ว %(count)s จาก %(total)s รายการ
+export_chat.fetching_events	กำลังดึงข้อความ…
+export_chat.file_attached	แนบไฟล์
+export_chat.format	รูปแบบ
+export_chat.from_the_beginning	ตั้งแต่เริ่มต้น
+export_chat.generating_zip	กำลังสร้างไฟล์ ZIP
+export_chat.html	HTML
+export_chat.html_title	ข้อมูลที่ส่งออก
+export_chat.include_attachments	รวมไฟล์แนบ
