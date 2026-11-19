@@ -70,7 +70,8 @@ struct ComposerToolbar: View {
             AranBoardSheet(roomID: context.viewState.aranRoomID, kind: kind)
         }
         .safeAreaInset(edge: .top) {
-            if !context.viewState.isRoomEncrypted {
+            // AranChat: ไม่แสดงป้าย "ไม่ได้เข้ารหัส" เหนือช่องพิมพ์ — ห้องบอท/ห้องแจ้งเตือนไม่เข้ารหัสโดยตั้งใจ ป้ายนี้กินที่และบังข้อความ
+            if false, !context.viewState.isRoomEncrypted {
                 Label {
                     Text(L10n.commonNotEncrypted)
                         .font(.compound.bodySM)

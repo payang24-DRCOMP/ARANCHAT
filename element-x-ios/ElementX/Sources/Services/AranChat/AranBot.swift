@@ -92,7 +92,6 @@ final class AranBotBarModel {
     private(set) var isBotRoom = false
     private(set) var menu: [AranBotMenuItem] = []
     private(set) var quickReplies: [AranQuickReply] = []
-    var isMenuOpen = true
 
     @ObservationIgnored private let roomProxy: JoinedRoomProxyProtocol
     @ObservationIgnored private let prefill: @MainActor (String) -> Void
@@ -165,63 +164,44 @@ final class AranBotBarModel {
     }
 }
 
-/// แถบเหนือช่องพิมพ์ในห้องบอท: ปุ่มตอบด่วน (จากข้อความล่าสุดของบอท) + เมนูบอท
+/// แถบเหนือช่องพิมพ์ในห้องบอท: แถวเดียวเลื่อนซ้าย-ขวา — ปุ่มตอบด่วน (ขอบม่วง จากข้อความล่าสุดของบอท) ตามด้วยเมนูบอท (พื้นเทา)
+/// แถวเดียวเพื่อไม่ให้กินที่/บังข้อความล่างสุด (เดิมเป็นตาราง + ปุ่มเปิด/ปิดเมนู)
 struct AranBotBar: View {
     @Bindable var model: AranBotBarModel
     @Environment(\.openURL) private var openURL
 
     var body: some View {
         if model.isBotRoom, !(model.quickReplies.isEmpty && model.menu.isEmpty) {
-            VStack(alignment: .leading, spacing: 6) {
-                if !model.quickReplies.isEmpty {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 6) {
-                            ForEach(model.quickReplies, id: \.self) { reply in
-                                Button { model.run(text: reply.text, prefill: reply.prefill) } label: {
-                                    Text(reply.label)
-                                        .font(.compound.bodySMSemibold)
-                                        .foregroundStyle(.compound.textActionAccent)
-                                        .lineLimit(1)
-                                        .padding(.horizontal, 14)
-                                        .padding(.vertical, 6)
-                                        .overlay(Capsule().stroke(Color.compound.textActionAccent, lineWidth: 1))
-                                }
-                            }
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 6) {
+                    ForEach(model.quickReplies, id: \.self) { reply in
+                        Button { model.run(text: reply.text, prefill: reply.prefill) } label: {
+                            chip(reply.label, accent: true)
                         }
-                        .padding(.vertical, 1)
                     }
-                }
-                if !model.menu.isEmpty {
-                    Button { withAnimation(.easeInOut(duration: 0.2)) { model.isMenuOpen.toggle() } } label: {
-                        Text(model.isMenuOpen ? "▾ ซ่อนเมนู" : "☰ เมนู")
-                            .font(.compound.bodyXSSemibold)
-                            .foregroundStyle(.compound.textSecondary)
-                            .padding(.horizontal, 4)
-                            .padding(.vertical, 2)
-                    }
-                    if model.isMenuOpen {
-                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: min(3, model.menu.count)), spacing: 6) {
-                            ForEach(model.menu, id: \.self) { item in
-                                Button { model.open(item, openURL: openURL) } label: {
-                                    Text(item.label + (item.type == "text" ? "" : " ↗"))
-                                        .font(.compound.bodySMSemibold)
-                                        .foregroundStyle(.compound.textPrimary)
-                                        .lineLimit(1)
-                                        .truncationMode(.tail)
-                                        .frame(maxWidth: .infinity)
-                                        .padding(.horizontal, 8)
-                                        .padding(.vertical, 9)
-                                        .background(Color.compound.bgSubtleSecondary, in: RoundedRectangle(cornerRadius: 12))
-                                }
-                            }
+                    ForEach(model.menu, id: \.self) { item in
+                        Button { model.open(item, openURL: openURL) } label: {
+                            chip(item.label + (item.type == "text" ? "" : " ↗"), accent: false)
                         }
                     }
                 }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 1)
             }
             .buttonStyle(.plain)
-            .padding(.horizontal, 12)
-            .padding(.top, 6)
+            .padding(.top, 4)
             .padding(.bottom, 2)
         }
+    }
+
+    private func chip(_ text: String, accent: Bool) -> some View {
+        Text(text)
+            .font(.compound.bodySMSemibold)
+            .foregroundStyle(accent ? .compound.textActionAccent : .compound.textPrimary)
+            .lineLimit(1)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .background(accent ? Color.clear : Color.compound.bgSubtleSecondary, in: Capsule())
+            .overlay { if accent { Capsule().stroke(Color.compound.textActionAccent, lineWidth: 1) } }
     }
 }
