@@ -30,6 +30,8 @@ type Props = Omit<ILocationPickerProps, "onChoose" | "shareType"> & {
 };
 
 const getEnabledShareTypes = (relation?: IEventRelation): LocationShareType[] => {
+    // AranChat Desktop: หาตำแหน่งเครื่องไม่ได้ (Electron ต้องใช้กุญแจ Google) → ปักหมุดอย่างเดียว
+    if (window.electron) return [LocationShareType.Pin];
     const enabledShareTypes = [LocationShareType.Own];
 
     // live locations cannot have a relation
@@ -51,7 +53,7 @@ const LocationShareMenu: React.FC<Props> = ({ menuPosition, onFinished, sender, 
     const multipleShareTypesEnabled = enabledShareTypes.length > 1;
 
     const [shareType, setShareType] = useState<LocationShareType | undefined>(
-        multipleShareTypesEnabled ? undefined : LocationShareType.Own,
+        multipleShareTypesEnabled ? undefined : enabledShareTypes[0],
     );
 
     const displayName = OwnProfileStore.instance.displayName;

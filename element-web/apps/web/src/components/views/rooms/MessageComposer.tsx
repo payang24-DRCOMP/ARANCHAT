@@ -736,7 +736,9 @@ export class MessageComposer extends React.Component<IProps, IState> {
                                     onRecordStartEndClick={this.onRecordStartEndClick}
                                     setStickerPickerOpen={this.setStickerPickerOpen}
                                     showLocationButton={
-                                        !window.electron && SettingsStore.getValue(UIFeature.LocationSharing)
+                                        // AranChat: Desktop แชร์ได้แบบปักหมุด (หาตำแหน่งเครื่องไม่ได้ — ไม่มีกุญแจ Google) · LocationShareMenu
+                                        (!window.electron || !!aranChatConfig()) &&
+                                        SettingsStore.getValue(UIFeature.LocationSharing)
                                     }
                                     showPollsButton={this.state.showPollsButton}
                                     showStickersButton={this.showStickersButton}

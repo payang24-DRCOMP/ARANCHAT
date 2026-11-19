@@ -28,6 +28,8 @@ find "$W" -name "*.map" -delete
 curl -fsSL "$CHAT_URL/config.json" | python3 -c '
 import json, sys
 c = json.load(sys.stdin)
+# จุดเริ่มแผนที่ตอนปักหมุด: ค่าจากเว็บจริง (14-web-beta.sh) หรือ MAP_CENTER ใน config.env ถ้าเว็บยังไม่มี
+map_center = (c.get("aranchat") or {}).get("map_center") or ([float(v) for v in sys.argv[4].split(",")] if sys.argv[4] else None)
 c.pop("update_base_url", None)          # ไม่ใช้ระบบอัปเดตของ Element
 c["bug_report_endpoint_url"] = None
 # แถบเมนู/หน้าเพื่อน/หน้ามือถือของ AranChat (src/aranchat) — ค่าเดียวกับเว็บแชท /beta/ (scripts/14-web-beta.sh)
@@ -41,8 +43,9 @@ c["aranchat"]["invite_api"] = sys.argv[2] + "/api/notify"
 c.setdefault("features", {})["feature_ask_to_join"] = True
 # ชุดสติกเกอร์บน server (aranchat-ess/scripts/24-stickers.py) + สติกเกอร์เคลื่อนไหวเล่นเองแบบ LINE
 c["aranchat"]["stickers_url"] = sys.argv[2] + "/stickers/index.json"
+if map_center: c["aranchat"]["map_center"] = map_center
 c.setdefault("setting_defaults", {})["autoplayGifs"] = True
-print(json.dumps(c, ensure_ascii=False, indent=1))' "$ESS_DIR/rendered/brand/apps.json" "$CHAT_URL" "$SERVER_NAME" > "$W/config.json"
+print(json.dumps(c, ensure_ascii=False, indent=1))' "$ESS_DIR/rendered/brand/apps.json" "$CHAT_URL" "$SERVER_NAME" "${MAP_CENTER:-}" > "$W/config.json"
 #    หน้าตา (CSS/ฟอนต์) — เว็บแชทใส่ผ่าน nginx แต่แอปโหลดจากไฟล์ในเครื่อง จึงต้องใส่ลง index.html เอง
 mkdir -p "$W/branding"
 cp "$ESS_DIR"/brand/aranchat.css "$ESS_DIR"/brand/Sarabun-*.ttf "$ESS_DIR"/brand/icon-120.png "$W/branding/"

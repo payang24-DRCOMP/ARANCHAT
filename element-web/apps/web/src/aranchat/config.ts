@@ -32,6 +32,8 @@ export interface AranChatConfig {
     /** รายการคำสั่ง/เมนูบอท (ค่าเริ่มต้น <invite_api>/bot หรือ /api/notify/bot — Desktop ต้องเป็น URL เต็ม) */
     bot_api?: string;
     apps?: AranChatApp[];
+    /** จุดเริ่มของแผนที่ตอนปักหมุดแชร์ตำแหน่ง [ลองจิจูด, ละติจูด, ซูม] — ใช้เมื่อหาตำแหน่งเครื่องไม่ได้ (เช่น Desktop) */
+    map_center?: [number, number, number];
 }
 
 export function aranChatConfig(): AranChatConfig | undefined {

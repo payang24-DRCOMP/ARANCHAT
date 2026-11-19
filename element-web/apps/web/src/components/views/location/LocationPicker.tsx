@@ -22,6 +22,7 @@ import AccessibleButton from "../elements/AccessibleButton";
 import { MapError } from "./MapError";
 import LiveDurationDropdown, { DEFAULT_DURATION_MS } from "./LiveDurationDropdown";
 import { LocationShareType, type ShareLocationFn } from "./shareLocation";
+import { aranChatConfig } from "../../../aranchat/config";
 import Marker from "./Marker";
 
 export interface ILocationPickerProps {
@@ -64,12 +65,14 @@ class LocationPicker extends React.Component<ILocationPickerProps, IState> {
     public componentDidMount(): void {
         this.context.on(ClientEvent.ClientWellKnown, this.updateStyleUrl);
 
+        // AranChat: เริ่มที่พื้นที่ของหน่วยงาน (config aranchat.map_center) แทนแผนที่โลก
+        const [lon, lat, zoom] = aranChatConfig()?.map_center ?? [0, 0, 1];
         try {
             this.map = new maplibregl.Map({
                 container: "mx_LocationPicker_map",
                 style: findMapStyleUrl(this.context),
-                center: [0, 0],
-                zoom: 1,
+                center: [lon, lat],
+                zoom,
             });
 
             // Add geolocate control to the map.

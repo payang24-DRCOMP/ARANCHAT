@@ -19,8 +19,8 @@ find "$OUT.new/bundles" -mindepth 1 -maxdepth 1 ! -name "$KEEP" -exec rm -rf {} 
 find "$OUT.new" -name "*.map" -delete
 
 # ค่าตั้ง = ตัวเดียวกับ Element Web เดิม (ConfigMap ที่ 04-install.sh สร้าง) + แถบเมนู AranChat (config คีย์ "aranchat")
-kubectl -n "$NAMESPACE" get configmap ess-element-web -o jsonpath='{.data.config\.json}' | python3 -c '
-import json, sys
+kubectl -n "$NAMESPACE" get configmap ess-element-web -o jsonpath='{.data.config\.json}' | MAP_CENTER="${MAP_CENTER:-}" python3 -c '
+import json, os, sys
 c = json.load(sys.stdin)
 apps = json.load(open(sys.argv[1]))
 c["aranchat"] = {"logo": "/branding/icon-120.png", "bot_user": "@aranchat:" + sys.argv[2],
@@ -37,6 +37,8 @@ except FileNotFoundError: pass
 c.setdefault("setting_defaults", {}).update({"alwaysShowTimestamps": True, "showTwelveHourTimestamps": False, "RoomList.showSections": True, "RoomList.showPeopleSection": False, "autoplayGifs": True})  # autoplayGifs: สติกเกอร์เคลื่อนไหวเล่นเองแบบ LINE
 # แชร์ตำแหน่ง: แผนที่จาก server ของเราเอง (maps/server.mjs · scripts/28-maps.sh) แทนกุญแจตัวอย่างของ MapTiler
 c["map_style_url"] = "https://chat." + sys.argv[2] + "/maps/light/style.json"
+# จุดเริ่มแผนที่ตอนปักหมุด (Desktop หาตำแหน่งเครื่องไม่ได้) — MAP_CENTER ใน config.env = "ลองจิจูด,ละติจูด,ซูม"
+c["aranchat"]["map_center"] = [float(v) for v in (os.environ.get("MAP_CENTER") or "100.99,13.0,5").split(",")]
 print(json.dumps(c, ensure_ascii=False, indent=1))' "${RENDER_DIR}/brand/apps.json" "$SERVER_NAME" > "$OUT.new/config.json"
 
 # ภาษาไทย (scripts/11-thai.sh)
