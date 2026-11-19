@@ -27,6 +27,10 @@ struct FileRoomTimelineView: View {
                 context?.send(viewAction: .mediaTapped(itemID: timelineItem.id))
             }
             .accessibilityLabel(L10n.commonFile)
+            // AranChat: ไฟล์เสียงที่ส่งเป็นไฟล์ → ถอดเป็นข้อความได้ (เห็นเฉพาะเครื่องนี้)
+            if AranTranscribeView.isAudio(timelineItem.content) {
+                AranTranscribeView(itemID: timelineItem.id, file: timelineItem.content)
+            }
         }
     }
 }

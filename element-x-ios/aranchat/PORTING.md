@@ -33,7 +33,7 @@
 | ซ่อนหน้า "ยืนยันตัวตน" หลังล็อกอิน + แถบตั้งกุญแจกู้คืน | ✅ | `OnboardingFlowCoordinator.requiresVerification`, `HomeScreenViewModel` (เหมือน Android — keyvault จัดการให้) |
 | ภาษาไทย | ✅ | `th.lproj` จาก Android (`aranchat/i18n-th.py`) · ตั้งค่า > ภาษา / Language → หน้า iOS ของแอป (เลือกภาษาต่อแอป) |
 | โน้ต/อัลบั้มในกลุ่ม | ✅ build ผ่าน (รอทดสอบ) | `Services/AranChat/AranBoard.swift`, `Screens/AranBoard/AranBoardSheet.swift` · เมนู + → โน้ต / อัลบั้ม · การ์ดในแชท · เพิ่มรูปในแผงได้ · แตะรูป = เปิดเธรดของอัลบั้ม (ดูรูปเต็ม) |
-| ถอดเสียง | ✅ build ผ่าน (รอทดสอบ) | `Screens/Timeline/View/TimelineItemViews/AranTranscribeView.swift` · ปุ่ม "🎙 ถอดเป็นข้อความ" ใต้ข้อความเสียง/ไฟล์เสียง · `POST /api/notify/asr` + header `X-AranChat-OpenID` (เหมือนเว็บ — Android ยังไม่มี) |
+| ถอดเสียง | ✅ build ผ่าน (รอทดสอบ) | `Screens/Timeline/View/TimelineItemViews/AranTranscribeView.swift` · ปุ่ม "🎙 ถอดเป็นข้อความ" ใต้ข้อความเสียง/ไฟล์เสียง (รวมไฟล์เสียงที่ส่งเป็น m.file) · ≤ 25 MB: `POST /api/notify/asr` + header `X-AranChat-OpenID` · > 25 MB (ประชุม): ปุ่ม "📝 ส่งให้บอทถอด + สรุปประชุม" → ถอดรหัสในเครื่องแล้วส่ง m.audio (มี duration) เข้าแชทบอท (ไม่เข้ารหัส, ≤ 200 MB) |
 
 ## ลำดับที่แนะนำ
 
