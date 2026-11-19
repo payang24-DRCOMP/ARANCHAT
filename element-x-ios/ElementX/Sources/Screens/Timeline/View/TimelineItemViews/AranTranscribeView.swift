@@ -47,11 +47,18 @@ nonisolated enum AranTranscribe {
     static func sendToBot(fileURL: URL, filename: String, mimeType: String) async throws {
         guard let client = AranSession.client else { throw message("ยังไม่ได้เข้าระบบ") }
         let server = try client.userId().split(separator: ":", maxSplits: 1).last.map(String.init) ?? ""
-        guard let room = try client.getDmRoom(userId: "@aranchat:\(server)") else {
+        // บางบัญชีมีแชทกับบอทหลายห้อง (ห้องเก่าที่เผลอเปิดเข้ารหัส → บอทย้ายไปห้องใหม่) — เลือกห้องที่ไม่เข้ารหัสและยังอยู่
+        let rooms = try client.getDmRooms(userId: "@aranchat:\(server)").filter { $0.membership() == .joined }
+        guard !rooms.isEmpty else {
             throw message("ยังไม่มีแชทกับ \"AranChat แจ้งเตือน\" — เปิดแชทนั้นก่อนแล้วลองใหม่")
         }
-        if (try? await room.latestEncryptionState()) == .encrypted {
-            throw message("แชท \"AranChat แจ้งเตือน\" เปิดการเข้ารหัสไว้ บอทจึงเปิดไฟล์ไม่ได้")
+        var plain: Room?
+        for candidate in rooms where (try? await candidate.latestEncryptionState()) != .encrypted {
+            plain = candidate
+            break
+        }
+        guard let room = plain else {
+            throw message("แชท \"AranChat แจ้งเตือน\" เปิดการเข้ารหัสไว้ บอทจึงเปิดไฟล์ไม่ได้ — พิมพ์ข้อความหาบอทเพื่อให้บอทสร้างแชทใหม่")
         }
         let data = try Data(contentsOf: fileURL)
         guard data.count <= botMaxBytes else { throw message("ไฟล์ใหญ่เกิน 200 MB — แบ่งไฟล์เป็นช่วงแล้วส่งทีละไฟล์") }
