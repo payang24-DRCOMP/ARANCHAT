@@ -1,0 +1,7 @@
+{
+  "name": "aranchat-maps",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node server.mjs" },
+  "dependencies": { "sharp": "^0.35.5" }
+}

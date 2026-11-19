@@ -16,8 +16,10 @@ export SHARP_PATH=${SHARP_PATH:-$(ls -d ~/aranchat-ess/notify/node_modules/sharp
 : "${CHAT_HOST:?brand.env ต้องมี CHAT_HOST (เช่น chat.arankub.com)}"
 hex=${BRAND_COLOR#\#}
 
-# 1. รหัสแอป / ชื่อแอป / app id ที่ลงทะเบียนกับ push gateway
+# 1. รหัสแอป / ชื่อแอป / app id ที่ลงทะเบียนกับ push gateway / แผนที่ (server แผนที่ของเราใช้รูปแบบ URL เดียวกับ MapTiler — กุญแจไม่ได้ใช้จริง แค่ต้องไม่ว่าง)
 f=plugins/src/main/kotlin/config/BuildTimeConfig.kt
+q() { [[ -n ${MAP_URL:-} ]] && printf '"%s"' "$1" || printf 'null'; }
+M_BASE=$(q "${MAP_URL:-}"); M_KEY=$(q aranchat); M_LIGHT=$(q light); M_DARK=$(q dark)
 sed -i -E \
   -e "s|(const val APPLICATION_ID = )\"[^\"]*\"|\1\"${APP_ID}\"|" \
   -e "s|(const val APPLICATION_NAME = )\"[^\"]*\"|\1\"${APP_NAME}\"|" \
@@ -31,6 +33,10 @@ sed -i -E \
   -e "s|(val PUSHER_APP_ID_RELEASE: String\? = ).*|\1\"${PUSHER_APP_ID}\"|" \
   -e "s|(val PUSHER_APP_ID_DEBUG: String\? = ).*|\1\"${PUSHER_APP_ID}.debug\"|" \
   -e "s|(val PUSHER_APP_ID_NIGHTLY: String\? = ).*|\1\"${PUSHER_APP_ID}.nightly\"|" \
+  -e "s|(val SERVICES_MAPTILER_BASE_URL: String\? = ).*|\1${M_BASE}|" \
+  -e "s|(val SERVICES_MAPTILER_APIKEY: String\? = ).*|\1${M_KEY}|" \
+  -e "s|(val SERVICES_MAPTILER_LIGHT_MAPID: String\? = ).*|\1${M_LIGHT}|" \
+  -e "s|(val SERVICES_MAPTILER_DARK_MAPID: String\? = ).*|\1${M_DARK}|" \
   "$f"
 f=appconfig/src/main/kotlin/io/element/android/appconfig/ApplicationConfig.kt
 sed -i -E \

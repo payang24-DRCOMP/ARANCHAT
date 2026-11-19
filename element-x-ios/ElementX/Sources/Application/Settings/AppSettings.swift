@@ -340,10 +340,12 @@ final nonisolated class AppSettings: @unchecked Sendable {
     // MARK: - Maps
     
     /// The locally-bundled MapTiler configuration.
-    private(set) var bundledMapTilerConfiguration = MapTilerConfiguration(baseURL: "https://api.maptiler.com/maps",
-                                                                          apiKey: Secrets.mapLibreAPIKey,
-                                                                          lightStyleID: "9bc819c8-e627-474a-a348-ec144fe3d810",
-                                                                          darkStyleID: "dea61faf-292b-4774-9660-58fcef89a7f3")
+    /// AranChat: server แผนที่ของ รพ. (aranchat-ess/maps · scripts/28-maps.sh) ใช้รูปแบบ URL เดียวกับ MapTiler
+    /// กุญแจไม่ได้ใช้จริง แต่ต้องไม่ว่าง (ว่าง = แอปปิดเมนูแชร์ตำแหน่ง)
+    private(set) var bundledMapTilerConfiguration = MapTilerConfiguration(baseURL: "https://chat.arankub.com/maps",
+                                                                          apiKey: "aranchat",
+                                                                          lightStyleID: "light",
+                                                                          darkStyleID: "dark")
     
     // MARK: - Feature Flags
     

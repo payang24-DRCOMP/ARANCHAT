@@ -35,6 +35,8 @@ except FileNotFoundError: pass
 # หน้าแชทแบบ LINE (_AranChatLine.pcss): แสดงเวลาข้างทุกข้อความ แบบ 24 ชม.
 # รายการแชทแบบ LINE: "รายการโปรด" (ปักหมุด) บนสุด แล้วแชททั้งหมด (ส่วนตัว+กลุ่มรวมกัน) เรียงจากข้อความล่าสุด
 c.setdefault("setting_defaults", {}).update({"alwaysShowTimestamps": True, "showTwelveHourTimestamps": False, "RoomList.showSections": True, "RoomList.showPeopleSection": False, "autoplayGifs": True})  # autoplayGifs: สติกเกอร์เคลื่อนไหวเล่นเองแบบ LINE
+# แชร์ตำแหน่ง: แผนที่จาก server ของเราเอง (maps/server.mjs · scripts/28-maps.sh) แทนกุญแจตัวอย่างของ MapTiler
+c["map_style_url"] = "https://chat." + sys.argv[2] + "/maps/light/style.json"
 print(json.dumps(c, ensure_ascii=False, indent=1))' "${RENDER_DIR}/brand/apps.json" "$SERVER_NAME" > "$OUT.new/config.json"
 
 # ภาษาไทย (scripts/11-thai.sh)

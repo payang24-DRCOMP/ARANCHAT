@@ -24,6 +24,7 @@
 | การ์ดแจ้งเตือน: แสดงผล (หัวตามระดับ ช่องข้อมูลมีสี ตาราง ขั้นตอน ตัวเลขสรุป ผลการตัดสิน) | ✅ เขียนแล้ว | `Services/AranChat/AranCard.swift`, `Screens/Timeline/View/TimelineItemViews/AranCardView.swift`, hook ใน `RoomTimelineItemFactory.buildTextTimelineItem` + `TextRoomTimelineView` + `TextRoomTimelineItemContent.aranCard` |
 | การ์ด: ปุ่มลิงก์ / คัดลอก / รับทราบ | ✅ เขียนแล้ว | `AranCardView.swift` (รับทราบ = `.toggleReaction`) |
 | การ์ด: ปุ่มสั่งงาน / เลือกวันเวลา | ⏳ แสดงปุ่มแบบกดไม่ได้ — ต้องเพิ่ม raw send (`Room.sendRaw` ของ SDK ผ่าน `JoinedRoomProxy`) + view action ใน `TimelineViewModel` แล้วส่งตามข้อ D | `AranCardView.swift` (`default:` ใน `buttonsView`) |
+| แชร์ตำแหน่ง (แผนที่ของ รพ. เอง) | ✅ ตั้งค่าแล้ว — `bundledMapTilerConfiguration` ชี้ `https://chat.arankub.com/maps` (server แผนที่: `server/maps/README.md`, รูปแบบ URL เดียวกับ MapTiler) · ⏳ ทดสอบบนเครื่องจริง | `AppSettings.swift` |
 | keyvault | ✅ logic เขียนแล้ว · ⏳ ยังไม่เรียกใช้ — เรียก `AranKeyvault.sync` หลัง session พร้อม (ดูหัวไฟล์) | `Services/AranChat/AranKeyvault.swift` |
 | มินิแอป (OpenID ใน fragment) | ⏳ เปิดลิงก์ได้ แต่ยังไม่แนบ token | ข้อ F |
 | บอท: คำสั่ง / เมนู / ปุ่มตอบด่วน | ⏳ ยังไม่ทำ | ข้อ E |

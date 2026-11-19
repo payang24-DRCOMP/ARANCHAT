@@ -28,6 +28,7 @@ sed -E \
   -e "s|^LAUNCHER_BG=.*|LAUNCHER_BG=${COLOR}|" \
   -e "s|^PUSHER_APP_ID=.*|PUSHER_APP_ID=${REV}.aranchat.android|" \
   -e "s|^KEYVAULT_URL=.*|KEYVAULT_URL=https://chat.${DOMAIN}/api/keyvault|" \
+  -e "s|^MAP_URL=.*|MAP_URL=https://chat.${DOMAIN}/maps|" \
   brands/arankub/brand.env > "$D/brand.env"
 echo "สร้าง $D แล้ว:"
 grep -E '^(APP_ID|APP_NAME|SERVER_NAME|HOMESERVER_URL|CHAT_HOST|BRAND_COLOR|PUSH_GATEWAY_URL|PUSHER_APP_ID)=' "$D/brand.env" | sed 's/^/  /'

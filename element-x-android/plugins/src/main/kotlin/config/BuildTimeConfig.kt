@@ -19,10 +19,10 @@ object BuildTimeConfig {
     val URL_ACCEPTABLE_USE: String? = "https://arankub.com/terms"
     val URL_PRIVACY: String? = "https://arankub.com/privacy"
     val URL_POLICY: String? = "https://arankub.com/privacy"
-    val SERVICES_MAPTILER_BASE_URL: String? = null
-    val SERVICES_MAPTILER_APIKEY: String? = null
-    val SERVICES_MAPTILER_LIGHT_MAPID: String? = null
-    val SERVICES_MAPTILER_DARK_MAPID: String? = null
+    val SERVICES_MAPTILER_BASE_URL: String? = "https://chat.arankub.com/maps"
+    val SERVICES_MAPTILER_APIKEY: String? = "aranchat"
+    val SERVICES_MAPTILER_LIGHT_MAPID: String? = "light"
+    val SERVICES_MAPTILER_DARK_MAPID: String? = "dark"
     val SERVICES_POSTHOG_HOST: String? = null
     val SERVICES_POSTHOG_APIKEY: String? = null
     val SERVICES_SENTRY_DSN: String? = null
