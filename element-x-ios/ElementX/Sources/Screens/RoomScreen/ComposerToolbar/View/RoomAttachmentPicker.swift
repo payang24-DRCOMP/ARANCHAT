@@ -57,6 +57,13 @@ struct RoomAttachmentPicker: View {
                 Label("อัลบั้ม", icon: \.image)
             }
             
+            // AranChat: ส่งข้อมูลติดต่อเพื่อน (การ์ดแนะนำเพื่อน)
+            Button {
+                context.showAranContacts = true
+            } label: {
+                Label("แนะนำเพื่อน", icon: \.userProfile)
+            }
+            
             Button {
                 context.send(viewAction: .attach(.poll))
             } label: {

@@ -17,4 +17,6 @@ nonisolated struct TextRoomTimelineItemContent: Hashable {
     var aranCard: AranCard?
     /// AranChat: note/album card (`com.arankub.note` / `com.arankub.album`), shown instead of the text.
     var aranBoard: AranBoardRef?
+    /// AranChat: contact card (`com.arankub.contact`), shown instead of the text.
+    var aranContact: AranContact?
 }

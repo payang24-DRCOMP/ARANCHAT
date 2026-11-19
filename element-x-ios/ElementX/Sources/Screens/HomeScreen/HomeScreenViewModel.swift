@@ -65,6 +65,12 @@ class HomeScreenViewModel: HomeScreenViewModelType, HomeScreenViewModelProtocol 
             .sink { [weak self] securityState in
                 guard let self else { return }
                 
+                // AranChat: ไม่แสดงแถบ "ตั้งกุญแจกู้คืน / กุญแจไม่ตรงกัน" — keyvault จัดการให้เอง (เหมือน Android RoomListPresenter)
+                if true {
+                    state.securityBannerMode = .none
+                    return
+                }
+                
                 switch securityState.recoveryState {
                 case .disabled:
                     if !state.securityBannerMode.isDismissed {

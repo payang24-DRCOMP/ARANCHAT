@@ -124,6 +124,9 @@ class OnboardingFlowCoordinator: FlowCoordinatorProtocol {
     // MARK: - Private
     
     private var requiresVerification: Bool {
+        // AranChat: ไม่บังคับหน้า "ยืนยันตัวตน" หลังล็อกอิน (เหมือน Android DefaultFtueService.canSkipVerification)
+        // keyvault กู้กุญแจ + ยืนยันเครื่องให้เองเบื้องหลัง (AranKeyvault) · ผู้ใช้ยังยืนยันเองได้ที่ ตั้งค่า → การเข้ารหัส
+        if true { return false }
         // We want to make sure onboarding finishes but also every time the user becomes unverified (e.g. account reset)
         !userSettings.account.hasRunIdentityConfirmationOnboarding || userSession.sessionSecurityStatePublisher.value.verificationState == .unverified
     }

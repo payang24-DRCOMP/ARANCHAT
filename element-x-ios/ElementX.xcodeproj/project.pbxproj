@@ -360,6 +360,7 @@
 		355B11D08CE0CEF97A813236 /* AppRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9E3FBE8A66B5A17AD7F74 /* AppRoutes.swift */; };
 		3582056513A384F110EC8274 /* MediaPlayerProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7A2C4A3A74F0D2FFE9356A /* MediaPlayerProviderTests.swift */; };
 		358290C2E4574456FE0C2DF6 /* LocationSharingScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73675A21580971E9ADF66A /* LocationSharingScreenViewModelProtocol.swift */; };
+		35CC3C3348E8F49A150A9A89 /* AranContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9404B2BB25FD003297F6801 /* AranContact.swift */; };
 		35E975CFDA60E05362A7CF79 /* target.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1222DB76B917EB8A55365BA5 /* target.yml */; };
 		36206F74DDEBF9BEAF6A6A1F /* ExtensionLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8571A8A071FB41778C016 /* ExtensionLogger.swift */; };
 		3683C4C0DBFA397BE0105B0D /* NotificationTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF08D6FC1919CB804A9191E8 /* NotificationTone.swift */; };
@@ -1378,6 +1379,7 @@
 		CF638B8C6FDCE920AE061FAE /* StateStoreViewModelV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A106D76741914F82664959 /* StateStoreViewModelV2.swift */; };
 		CF74231FF7340031B5DBB076 /* UserSessionMigratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA76C06705712B330532918 /* UserSessionMigratorTests.swift */; };
 		CF7D38F6478CDA5E48CA185D /* PresenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F62DA377B741D7B99AA7742 /* PresenceService.swift */; };
+		CFA5856F6337A36C90CB8286 /* AranMyQRSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58171F38EE6FB05370836B31 /* AranMyQRSheet.swift */; };
 		CFEC53440C572CEEABC4A6A0 /* ElementXAttributeScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = C024C151639C4E1B91FCC68B /* ElementXAttributeScope.swift */; };
 		D029EBF4C7E519F03DCBFEEF /* SpacesScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BA17E542757492510664F4 /* SpacesScreenViewModelProtocol.swift */; };
 		D02AA6208C7ACB9BE6332394 /* UNNotificationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE148A4FFEE853C5A281500C /* UNNotificationContent.swift */; };
@@ -2406,6 +2408,7 @@
 		57B160231C967427FB8217C7 /* ModerationAndSafetySettingsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModerationAndSafetySettingsScreenViewModel.swift; sourceTree = "<group>"; };
 		57EAAF82432B0B53881CF826 /* AudioRoomTimelineItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRoomTimelineItem.swift; sourceTree = "<group>"; };
 		580BDCD23DD02481AB5FFB47 /* LeaveSpaceHandleSDKMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveSpaceHandleSDKMock.swift; sourceTree = "<group>"; };
+		58171F38EE6FB05370836B31 /* AranMyQRSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AranMyQRSheet.swift; sourceTree = "<group>"; };
 		584A61D9C459FAFEF038A7C0 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		5875F7C0A2398E9F134B1284 /* EncryptionResetScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionResetScreenViewModel.swift; sourceTree = "<group>"; };
 		58C2527813FDAE23E72A9063 /* AnalyticsSettingsScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsSettingsScreenViewModelTests.swift; sourceTree = "<group>"; };
@@ -3011,6 +3014,7 @@
 		B902EA6CD3296B0E10EE432B /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		B91AD590B0B40718A0AA0C61 /* DeferredFulfillment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeferredFulfillment.swift; sourceTree = "<group>"; };
 		B9346C59026725968B8C319B /* MediaUploadQualitySettingsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaUploadQualitySettingsScreenViewModel.swift; sourceTree = "<group>"; };
+		B9404B2BB25FD003297F6801 /* AranContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AranContact.swift; sourceTree = "<group>"; };
 		B9406BD5F99685C5ABDEDD93 /* LocationShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationShareSheet.swift; sourceTree = "<group>"; };
 		B94A6A57FE7E71F7605070AA /* NotificationToneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToneManager.swift; sourceTree = "<group>"; };
 		B99E13633862847D8B7E2815 /* StartChatScreenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChatScreenModels.swift; sourceTree = "<group>"; };
@@ -5640,7 +5644,9 @@
 		77B0B45E27FBC2D362F19B4D /* AranFriends */ = {
 			isa = PBXGroup;
 			children = (
+				B9404B2BB25FD003297F6801 /* AranContact.swift */,
 				91D0A83D52F487011DEA79A6 /* AranFriendsScreen.swift */,
+				58171F38EE6FB05370836B31 /* AranMyQRSheet.swift */,
 			);
 			path = AranFriends;
 			sourceTree = "<group>";
@@ -9015,8 +9021,10 @@
 				6CB70FE65AC237775ACAA94A /* AranBot.swift in Sources */,
 				BE8F2D464BE9795EF65989E2 /* AranCard.swift in Sources */,
 				565B36515B3C68834DCE7D24 /* AranCardView.swift in Sources */,
+				35CC3C3348E8F49A150A9A89 /* AranContact.swift in Sources */,
 				519B7A6A5BF12ABF9CEE0DA9 /* AranFriendsScreen.swift in Sources */,
 				1E9A2AB607F76030B87916A8 /* AranKeyvault.swift in Sources */,
+				CFA5856F6337A36C90CB8286 /* AranMyQRSheet.swift in Sources */,
 				C0465E552069C8528DA9010C /* AranStickers.swift in Sources */,
 				E4A8CB748C5CC56E24FDAC2B /* AranTranscribeView.swift in Sources */,
 				61A36B9BB2ADE36CEFF5E98C /* Array.swift in Sources */,

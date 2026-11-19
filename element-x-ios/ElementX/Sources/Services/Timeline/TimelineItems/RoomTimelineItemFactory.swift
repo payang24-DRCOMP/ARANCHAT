@@ -205,6 +205,9 @@ nonisolated struct RoomTimelineItemFactory: RoomTimelineItemFactoryProtocol {
             content.aranCard = AranCard.from(originalJSON: debugInfo.originalJSON, latestEditJSON: debugInfo.latestEditJSON)
         }
         // AranChat: note/album (anyone in the group can create them) — body prefix first, id from the raw JSON.
+        if textMessageContent.body.hasPrefix(AranContact.bodyPrefix) {
+            content.aranContact = AranContact.from(originalJSON: eventItemProxy.item.lazyProvider.debugInfo().originalJson)
+        }
         if AranBoardRef.isCandidate(textMessageContent.body) {
             content.aranBoard = AranBoardRef.parse(body: textMessageContent.body,
                                                    originalJSON: eventItemProxy.item.lazyProvider.debugInfo().originalJson)

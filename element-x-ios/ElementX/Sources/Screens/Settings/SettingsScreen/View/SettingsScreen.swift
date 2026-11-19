@@ -76,6 +76,9 @@ struct SettingsScreen: View {
                 }
             })
             
+            // AranChat: QR โค้ดของฉัน / ชวนเพื่อน (เหมือน Android AranMyQrRow)
+            AranMyQRRow(myName: context.viewState.userProfile.displayName)
+            
             if context.viewState.showUserStatusInput {
                 SettingsScreenUserStatusRow(mode: context.viewState.userStatusRowMode) { action in
                     context.send(viewAction: .userStatus(action))

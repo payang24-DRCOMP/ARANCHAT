@@ -20,8 +20,18 @@ nonisolated struct AranFriend: Identifiable, Hashable {
 }
 
 nonisolated enum AranInvite {
+    struct Link: Equatable {
+        let url: String
+        /// จำนวนคนที่เข้ามาผ่านลิงก์นี้แล้ว
+        let joined: Int
+    }
+
     /// สร้าง (หรือใช้ซ้ำ) ลิงก์ชวน — roomID = แชร์กลุ่ม · nil = ชวนคุยกับฉัน
     static func create(roomID: String? = nil) async throws -> String {
+        try await createLink(roomID: roomID).url
+    }
+
+    static func createLink(roomID: String? = nil) async throws -> Link {
         guard let client = AranSession.client else { throw URLError(.userAuthenticationRequired) }
         let server = try client.userId().split(separator: ":", maxSplits: 1).last.map(String.init) ?? ""
         guard let url = URL(string: "https://chat.\(server)/api/notify/invite/create") else { throw URLError(.badURL) }
@@ -37,7 +47,7 @@ nonisolated enum AranInvite {
         guard (response as? HTTPURLResponse)?.statusCode == 200,
               let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
               let link = json["url"] as? String else { throw URLError(.badServerResponse) }
-        return link
+        return Link(url: link, joined: (json["joined"] as? NSNumber)?.intValue ?? 0)
     }
 
     /// ข้อความชวนสำหรับส่งทาง LINE / แอปอื่น (เหมือน Android aranInviteText)

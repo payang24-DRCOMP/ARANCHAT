@@ -29,7 +29,8 @@
 | มินิแอป (OpenID ใน fragment) | ✅ แนบ token แล้ว (เมนูบอท + ปุ่มการ์ด) | `AranBot.swift` `AranBotAPI.miniAppURL` · ข้อ F |
 | บอท: คำสั่ง / เมนู / ปุ่มตอบด่วน + มินิแอป | ✅ ทดสอบแล้ว | `Services/AranChat/AranBot.swift` · แถบอยู่เหนือช่องพิมพ์ (`RoomScreen.composer`) · มินิแอปส่ง OpenID ใน fragment (ข้อ F) · คำสั่ง /xxx ส่งเป็นข้อความธรรมดาอยู่แล้ว (iOS ตีความแค่ /join /me) |
 | สติกเกอร์ | ✅ build ผ่าน (รอทดสอบ) | `Services/AranChat/AranStickers.swift` · เมนู + → สติกเกอร์ · ส่งในเธรดได้ · ชุดจาก server (แคช index ไว้ใช้ออฟไลน์ — ยังไม่มีชุดในแอป) |
-| แท็บเพื่อน (แทน Spaces) + ปุ่มชวนเพื่อน | ✅ build ผ่าน (รอทดสอบ) | `Screens/AranFriends/AranFriendsScreen.swift` · ยังไม่ทำ: เปิดลิงก์ชวน /i/<รหัส> ในแอป (ต้องมี Universal Link = Apple Developer), การ์ดแนะนำเพื่อน, QR ของฉัน |
+| แท็บเพื่อน (แทน Spaces) + ปุ่มชวนเพื่อน · การ์ดแนะนำเพื่อน · QR โค้ดของฉัน | ✅ build ผ่าน (รอทดสอบ) | `Screens/AranFriends/` (`AranFriendsScreen.swift`, `AranContact.swift` — เมนู + → แนะนำเพื่อน, `AranMyQRSheet.swift` — ตั้งค่า → QR โค้ดของฉัน) · ยังไม่ทำ: เปิดลิงก์ชวน /i/<รหัส> ในแอป (ต้องมี Universal Link = Apple Developer) |
+| ซ่อนหน้า "ยืนยันตัวตน" หลังล็อกอิน + แถบตั้งกุญแจกู้คืน | ✅ | `OnboardingFlowCoordinator.requiresVerification`, `HomeScreenViewModel` (เหมือน Android — keyvault จัดการให้) |
 | ภาษาไทย | ✅ | `th.lproj` จาก Android (`aranchat/i18n-th.py`) · ตั้งค่า > ภาษา / Language → หน้า iOS ของแอป (เลือกภาษาต่อแอป) |
 | โน้ต/อัลบั้มในกลุ่ม | ✅ build ผ่าน (รอทดสอบ) | `Services/AranChat/AranBoard.swift`, `Screens/AranBoard/AranBoardSheet.swift` · เมนู + → โน้ต / อัลบั้ม · การ์ดในแชท · เพิ่มรูปในแผงได้ · แตะรูป = เปิดเธรดของอัลบั้ม (ดูรูปเต็ม) |
 | ถอดเสียง | ✅ build ผ่าน (รอทดสอบ) | `Screens/Timeline/View/TimelineItemViews/AranTranscribeView.swift` · ปุ่ม "🎙 ถอดเป็นข้อความ" ใต้ข้อความเสียง/ไฟล์เสียง · `POST /api/notify/asr` + header `X-AranChat-OpenID` (เหมือนเว็บ — Android ยังไม่มี) |

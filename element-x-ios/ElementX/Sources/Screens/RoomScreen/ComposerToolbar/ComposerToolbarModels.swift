@@ -159,6 +159,8 @@ struct ComposerToolbarViewStateBindings {
     var showAranStickers = false
     /// AranChat: เปิดแผงโน้ต/อัลบั้ม
     var showAranBoard: AranBoardKind?
+    /// AranChat: เปิดแผงเลือกเพื่อนเพื่อส่งการ์ดแนะนำเพื่อน
+    var showAranContacts = false
     
     var presendCallback: (() -> Void)?
 }
