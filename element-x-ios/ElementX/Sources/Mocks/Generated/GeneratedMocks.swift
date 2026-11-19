@@ -2675,14 +2675,14 @@ nonisolated class ClientProxyMock: ClientProxyProtocol, @unchecked Sendable {
     }
 
     private let makeNativeCallBackendReturnValueLock = NSLock()
-    private nonisolated(unsafe) var makeNativeCallBackendUnderlyingReturnValue: any ElementCallMatrixBackendProtocol?
-    var makeNativeCallBackendReturnValue: any ElementCallMatrixBackendProtocol? {
+    private nonisolated(unsafe) var makeNativeCallBackendUnderlyingReturnValue: (any ElementCallMatrixBackendProtocol)?
+    var makeNativeCallBackendReturnValue: (any ElementCallMatrixBackendProtocol)? {
         get { makeNativeCallBackendReturnValueLock.withLock { makeNativeCallBackendUnderlyingReturnValue } }
         set { makeNativeCallBackendReturnValueLock.withLock { makeNativeCallBackendUnderlyingReturnValue = newValue } }
     }
-    nonisolated(unsafe) var makeNativeCallBackendClosure: (() -> any ElementCallMatrixBackendProtocol?)?
+    nonisolated(unsafe) var makeNativeCallBackendClosure: (() -> (any ElementCallMatrixBackendProtocol)?)?
 
-    func makeNativeCallBackend() -> any ElementCallMatrixBackendProtocol? {
+    func makeNativeCallBackend() -> (any ElementCallMatrixBackendProtocol)? {
         makeNativeCallBackendCallsCountLock.withLock { makeNativeCallBackendUnderlyingCallsCount += 1 }
         if let makeNativeCallBackendClosure = makeNativeCallBackendClosure {
             return makeNativeCallBackendClosure()
@@ -6830,6 +6830,15 @@ nonisolated class JoinedRoomProxyMock: JoinedRoomProxyProtocol, @unchecked Senda
         set { sendTypingNotificationIsTypingReturnValueLock.withLock { sendTypingNotificationIsTypingUnderlyingReturnValue = newValue } }
     }
     nonisolated(unsafe) var sendTypingNotificationIsTypingClosure: ((Bool) async -> Result<Void, RoomProxyError>)?
+
+    //MARK: - sendRawMessage (AranChat — hand-written; sourcery generates the same shape)
+
+    nonisolated(unsafe) var sendRawMessageContentJSONReceivedContentJSON: String?
+    nonisolated(unsafe) var sendRawMessageContentJSONClosure: ((String) async -> Result<Void, RoomProxyError>)?
+    @concurrent func sendRawMessage(contentJSON: String) async -> Result<Void, RoomProxyError> {
+        sendRawMessageContentJSONReceivedContentJSON = contentJSON
+        return await sendRawMessageContentJSONClosure?(contentJSON) ?? .success(())
+    }
 
     @discardableResult
     @concurrent func sendTypingNotification(isTyping: Bool) async -> Result<Void, RoomProxyError> {

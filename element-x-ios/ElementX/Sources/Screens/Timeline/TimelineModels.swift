@@ -55,6 +55,8 @@ enum TimelineViewAction {
     case galleryItemTapped(GalleryItemID)
     case itemSendInfoTapped(itemID: TimelineItemIdentifier)
     case toggleReaction(key: String, itemID: TimelineItemIdentifier)
+    /// AranChat: กดปุ่มสั่งงาน/เลือกวันเวลาบนการ์ดแจ้งเตือน · completion(true) = ส่งแล้ว
+    case aranCardAction(itemID: TimelineItemIdentifier, buttonID: String, label: String, value: String?, completion: @MainActor (Bool) -> Void)
     case playReactionEffect(origin: CGPoint?)
     case sendReadReceiptIfNeeded(TimelineItemIdentifier)
     case paginateBackwards

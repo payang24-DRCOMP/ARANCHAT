@@ -27,6 +27,8 @@ struct AudioRoomTimelineView: View {
                 context?.send(viewAction: .mediaTapped(itemID: timelineItem.id))
             }
             .accessibilityLabel(L10n.commonAudio)
+            // AranChat: ถอดเสียงเป็นข้อความ (เห็นเฉพาะเครื่องนี้)
+            AranTranscribeView(itemID: timelineItem.id, content: timelineItem.content)
         }
     }
 }

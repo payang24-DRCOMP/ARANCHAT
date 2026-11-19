@@ -60,6 +60,12 @@ struct ComposerToolbar: View {
             }
         }
         .readFrame($frame)
+        .sheet(isPresented: $context.showAranStickers) {
+            AranStickerSheet(roomID: context.viewState.aranRoomID, threadRootID: context.viewState.aranThreadRootID)
+        }
+        .sheet(item: $context.showAranBoard) { kind in
+            AranBoardSheet(roomID: context.viewState.aranRoomID, kind: kind)
+        }
         .safeAreaInset(edge: .top) {
             if !context.viewState.isRoomEncrypted {
                 Label {

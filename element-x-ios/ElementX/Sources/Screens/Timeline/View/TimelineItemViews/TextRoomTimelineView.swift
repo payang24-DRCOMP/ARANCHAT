@@ -29,6 +29,11 @@ struct TextRoomTimelineView: View, TextBasedRoomTimelineViewProtocol {
             TimelineStyler(timelineItem: timelineItem) {
                 AranCardView(card: card, itemID: timelineItem.id, reactions: timelineItem.properties.reactions)
             }
+        } else if let board = timelineItem.content.aranBoard {
+            // AranChat: note/album card (see AranBoardSheet).
+            TimelineStyler(timelineItem: timelineItem) {
+                AranBoardCardView(ref: board, roomID: context?.viewState.roomID ?? "")
+            }
         } else {
             textBody
         }

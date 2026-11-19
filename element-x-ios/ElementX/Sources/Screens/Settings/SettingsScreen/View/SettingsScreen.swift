@@ -264,6 +264,16 @@ struct SettingsScreen: View {
                     kind: .picker(selection: $context.appAppearance,
                                   items: AppAppearance.allCases.map { (title: $0.name, tag: $0) }))
             
+            // AranChat: เลือกภาษาของแอป — iOS ตั้งภาษาต่อแอปที่ การตั้งค่า > AranChat > ภาษา (เทียบ Android per-app language)
+            ListRow(label: .default(title: "ภาษา / Language",
+                                    icon: \.translate),
+                    details: .title(Locale.current.localizedString(forIdentifier: Bundle.main.preferredLocalizations.first ?? "en") ?? ""),
+                    kind: .navigationLink {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url)
+                        }
+                    })
+            
             ListRow(label: .default(title: L10n.commonMediaUploadQuality,
                                     icon: \.image),
                     kind: .navigationLink {

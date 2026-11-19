@@ -28,7 +28,7 @@ struct AuthenticationStartLogo: View {
         size.map { customSize in
             let scale = customSize / 158
             return SizeMetrics(scale: scale,
-                               imageSize: hideBrandChrome ? customSize : 110 * scale)
+                               imageSize: customSize) // AranChat: โลโก้เป็นไอคอนมุมโค้งเต็มผืนอยู่แล้ว
         }
     }
     
@@ -80,7 +80,9 @@ private struct AuthenticationBrandLogoModifier: ViewModifier {
         if hideBrandChrome {
             content
         } else {
-            styledContent(content)
+            // AranChat: ไอคอนมีกรอบมุมโค้งในตัว — ไม่ต้องใส่การ์ดกระจกของ Element ซ้อนอีกชั้น
+            content
+                .shadow(color: .black.opacity(0.25), radius: 16 * scale, y: 8 * scale)
         }
     }
     

@@ -173,6 +173,8 @@ class TimelineViewModel: TimelineViewModelType, TimelineViewModelProtocol {
         case .toggleReaction(let emoji, let itemID):
             emojiProvider.markEmojiAsFrequentlyUsed(emoji)
             Task { await timelineInteractionHandler.toggleReaction(emoji, on: itemID) }
+        case .aranCardAction(let itemID, let buttonID, let label, let value, let completion):
+            Task { completion(await sendAranCardAction(itemID: itemID, buttonID: buttonID, label: label, value: value)) }
         case .playReactionEffect(let origin):
             playReactionEffect(at: origin)
         case .sendReadReceiptIfNeeded(let lastVisibleItemID):
@@ -1391,4 +1393,31 @@ extension EnvironmentValues {
 
 private enum SlashCommand: String, CaseIterable {
     case join = "/join "
+}
+
+// MARK: - AranChat card actions
+
+extension TimelineViewModel {
+    /// ส่งข้อความตอบกลับการ์ด + `com.arankub.card_action` → บอทส่งต่อให้ระบบต้นทาง แล้วแก้การ์ดเป็นผลการตัดสิน
+    /// ชุดเดียวกับ Android `AranCardSender.kt` และเว็บ `AranCardBody.tsx`
+    func sendAranCardAction(itemID: TimelineItemIdentifier, buttonID: String, label: String, value: String?) async -> Bool {
+        guard let cardEventID = itemID.eventID else { return false }
+        var action: [String: Any] = ["event_id": cardEventID, "id": buttonID]
+        if let value { action["value"] = value }
+        let content: [String: Any] = [
+            "msgtype": "m.text",
+            "body": value.map { "\(label): \($0.replacingOccurrences(of: "T", with: " "))" } ?? label,
+            "m.relates_to": ["m.in_reply_to": ["event_id": cardEventID]],
+            AranCard.actionKey: action
+        ]
+        guard let data = try? JSONSerialization.data(withJSONObject: content),
+              let json = String(data: data, encoding: .utf8) else { return false }
+        switch await roomProxy.sendRawMessage(contentJSON: json) {
+        case .success:
+            return true
+        case .failure:
+            userIndicatorController.submitIndicator(UserIndicator(title: L10n.errorUnknown))
+            return false
+        }
+    }
 }

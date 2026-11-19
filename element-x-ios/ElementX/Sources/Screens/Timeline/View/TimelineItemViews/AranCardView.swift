@@ -1,7 +1,7 @@
 //
 // AranChat — notification card in the timeline (same look as Android TimelineItemAranCardView / web AranCardBody).
 // Supported here: header by level, fields with tones, text/fields/steps/table/stats sections, status, link/copy/app buttons,
-// and "รับทราบ" (ack = reaction "✅ รับทราบ"). Action/datetime buttons need a raw send — see element-x-ios/aranchat/PORTING.md (D).
+// "รับทราบ" (ack = reaction "✅ รับทราบ") and action / datetime buttons (reply + com.arankub.card_action — TimelineViewModel.sendAranCardAction).
 //
 // SPDX-License-Identifier: AGPL-3.0-only
 //
@@ -17,6 +17,10 @@ struct AranCardView: View {
     let reactions: [AggregatedReaction]
 
     @State private var copiedLabel: String?
+    /// ปุ่มที่กำลังส่ง (id) — ล้างเมื่อบอทแก้การ์ดเป็นปิดแล้ว / ส่งไม่สำเร็จ / ไม่มีคำตอบใน 20 วินาที (เหมือน Android)
+    @State private var pending: String?
+    @State private var confirmButton: AranCard.Button?
+    @State private var pickerButton: AranCard.Button?
 
     private static let brand = Color(red: 0x5B / 255, green: 0x3F / 255, blue: 0xD9 / 255)
     private static let crit = Color(red: 0xDC / 255, green: 0x26 / 255, blue: 0x26 / 255)
@@ -60,6 +64,38 @@ struct AranCardView: View {
         .frame(maxWidth: 340)
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 18))
+        .task(id: pending) {
+            guard pending != nil else { return }
+            try? await Task.sleep(for: .seconds(20))
+            if !Task.isCancelled { pending = nil }
+        }
+        .onChange(of: card.closed) { _, closed in
+            if closed { pending = nil }
+        }
+        .alert(confirmButton?.confirm ?? "", isPresented: Binding(get: { confirmButton != nil }, set: { if !$0 { confirmButton = nil } })) {
+            Button("ยกเลิก", role: .cancel) { confirmButton = nil }
+            Button(confirmButton?.label ?? "ตกลง") {
+                if let button = confirmButton { runAction(button) }
+                confirmButton = nil
+            }
+        }
+        .sheet(item: $pickerButton) { button in
+            AranDateTimePicker(button: button) { value in
+                pickerButton = nil
+                runAction(button, value: value)
+            } onCancel: {
+                pickerButton = nil
+            }
+            .presentationDetents([.medium, .large])
+        }
+    }
+
+    private func runAction(_ button: AranCard.Button, value: String? = nil) {
+        guard pending == nil, let id = button.id, let context else { return }
+        pending = id
+        context.send(viewAction: .aranCardAction(itemID: itemID, buttonID: id, label: button.label, value: value) { sent in
+            if !sent { pending = nil }
+        })
     }
 
     // MARK: - Header
@@ -191,20 +227,34 @@ struct AranCardView: View {
             ForEach(Array(card.buttons.enumerated()), id: \.offset) { _, button in
                 switch button.type {
                 case "link", "app":
-                    // TODO(AranChat): "app" should append #aranchat_openid=… (PORTING.md F) — opens without identity for now
                     pill(button.label + (button.type == "app" ? " ↗" : ""), style: button.style ?? "secondary") {
-                        if let url = button.url { openURL(url) }
+                        guard let url = button.url else { return }
+                        guard button.type == "app" else { return openURL(url) }
+                        // มินิแอป: แนบ OpenID token ใน fragment ให้ระบบหลังบ้านรู้ว่าใครเปิด (เหมือน Android openAranMiniApp)
+                        Task {
+                            let target = (try? await AranBotAPI.miniAppURL(url)) ?? url
+                            openURL(target)
+                        }
                     }
                 case "copy":
                     pill(copiedLabel == button.label ? "คัดลอกแล้ว ✓" : button.label, style: button.style ?? "secondary") {
                         UIPasteboard.general.string = button.text
                         copiedLabel = button.label
                     }
+                case "datetime":
+                    // ซ่อนเมื่อบอทปิดการ์ดแล้ว · ส่งได้เฉพาะการ์ดที่ส่งถึงเซิร์ฟเวอร์แล้ว (มี event id)
+                    if !card.closed, itemID.eventID != nil {
+                        pill(pending == button.id ? "กำลังส่ง…" : "📅 " + button.label, style: button.style ?? "primary") {
+                            pickerButton = button
+                        }
+                        .disabled(pending != nil)
+                    }
                 default:
-                    // action / datetime: needs raw send of com.arankub.card_action (PORTING.md D) — hidden once the card is closed
-                    if !card.closed {
-                        pill(button.label + " (ใช้บนเว็บ/Android)", style: "secondary") { }
-                            .disabled(true)
+                    if !card.closed, itemID.eventID != nil {
+                        pill(pending == button.id ? "กำลังส่ง…" : button.label, style: button.style ?? "primary") {
+                            if button.confirm != nil { confirmButton = button } else { runAction(button) }
+                        }
+                        .disabled(pending != nil)
                     }
                 }
             }
@@ -236,5 +286,100 @@ struct AranCardView: View {
                 .overlay(Capsule().stroke(style == "danger" ? Self.crit : .clear, lineWidth: 1))
         }
         .buttonStyle(.plain)
+    }
+}
+
+// MARK: - Date / time picker
+
+// `id` (String?) ของปุ่มใช้เป็น Identifiable ได้เลย — ใช้กับ .sheet(item:)
+extension AranCard.Button: Identifiable { }
+
+/// เลือกวันเวลาตาม `mode` (date / time / datetime) ภายในช่วง min…max — ค่าที่ส่งกลับเป็นรูปแบบเดียวกับ Android/เว็บ
+/// ปฏิทินเกรกอเรียนเสมอ (เครื่องที่ตั้งภาษาไทยใช้พุทธศักราช — ระบบต้นทางต้องการ ค.ศ.)
+private struct AranDateTimePicker: View {
+    let button: AranCard.Button
+    let onPick: (String) -> Void
+    let onCancel: () -> Void
+
+    @State private var date: Date
+
+    private var mode: String { button.mode ?? "datetime" }
+
+    init(button: AranCard.Button, onPick: @escaping (String) -> Void, onCancel: @escaping () -> Void) {
+        self.button = button
+        self.onPick = onPick
+        self.onCancel = onCancel
+        let mode = button.mode ?? "datetime"
+        let initial = (button.initial ?? button.min).flatMap { Self.parse($0, mode: mode) } ?? Date()
+        _date = State(initialValue: initial)
+    }
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                picker
+            }
+            .navigationTitle(button.label)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) { Button("ยกเลิก", action: onCancel) }
+                ToolbarItem(placement: .confirmationAction) { Button("ตกลง") { onPick(Self.format(date, mode: mode)) } }
+            }
+        }
+        .environment(\.calendar, Self.calendar)
+    }
+
+    @ViewBuilder
+    private var picker: some View {
+        let components: DatePickerComponents = switch mode {
+        case "date": [.date]
+        case "time": [.hourAndMinute]
+        default: [.date, .hourAndMinute]
+        }
+        let lower = button.min.flatMap { Self.parse($0, mode: mode) }
+        let upper = button.max.flatMap { Self.parse($0, mode: mode) }
+        let style = DatePicker(button.label, selection: $date, displayedComponents: components)
+        switch (lower, upper) {
+        case let (lower?, upper?) where lower <= upper:
+            DatePicker(button.label, selection: $date, in: lower...upper, displayedComponents: components).datePickerStyle(.graphical)
+        case let (lower?, nil):
+            DatePicker(button.label, selection: $date, in: lower..., displayedComponents: components).datePickerStyle(.graphical)
+        case let (nil, upper?):
+            DatePicker(button.label, selection: $date, in: ...upper, displayedComponents: components).datePickerStyle(.graphical)
+        default:
+            style.datePickerStyle(.graphical)
+        }
+    }
+
+    private static let calendar: Calendar = {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.locale = Locale(identifier: "th_TH")
+        calendar.timeZone = .current
+        return calendar
+    }()
+
+    private static func formatter(_ mode: String) -> DateFormatter {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = .current
+        formatter.dateFormat = switch mode {
+        case "date": "yyyy-MM-dd"
+        case "time": "HH:mm"
+        default: "yyyy-MM-dd'T'HH:mm"
+        }
+        return formatter
+    }
+
+    private static func parse(_ value: String, mode: String) -> Date? {
+        guard mode == "time" else { return formatter(mode).date(from: value) }
+        // เวลาอย่างเดียว: ใช้วันนี้ + ชั่วโมง:นาที
+        guard let time = formatter(mode).date(from: value) else { return nil }
+        let parts = calendar.dateComponents([.hour, .minute], from: time)
+        return calendar.date(bySettingHour: parts.hour ?? 0, minute: parts.minute ?? 0, second: 0, of: Date())
+    }
+
+    private static func format(_ date: Date, mode: String) -> String {
+        formatter(mode).string(from: date)
     }
 }

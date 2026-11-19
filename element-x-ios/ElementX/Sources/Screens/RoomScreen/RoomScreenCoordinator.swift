@@ -54,6 +54,7 @@ final class RoomScreenCoordinator: CoordinatorProtocol {
     private var timelineViewModel: TimelineViewModelProtocol
     private var composerViewModel: ComposerToolbarViewModelProtocol
     private let userSettings: UserSettings
+    private var aranBot: AranBotBarModel?
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -102,6 +103,15 @@ final class RoomScreenCoordinator: CoordinatorProtocol {
                                                          analyticsService: parameters.analytics,
                                                          composerDraftService: parameters.composerDraftService)
         self.composerViewModel = composerViewModel
+        
+        // AranChat: เมนูบอท/ปุ่มตอบด่วน — prefill = ใส่ข้อความลงช่องพิมพ์แทนการส่ง
+        // AranChat: โน้ต/อัลบั้มใช้ห้อง + เปิดเธรดของอัลบั้ม
+        AranRoomContext.register(roomProxy: parameters.roomProxy, userSession: parameters.userSession) { [weak self] eventID in
+            self?.actionsSubject.send(.presentThread(threadRootEventID: eventID, focussedEventID: nil))
+        }
+        aranBot = AranBotBarModel(roomProxy: parameters.roomProxy) { [weak self] text in
+            self?.shareText(text)
+        }
     }
     
     // MARK: - Public
@@ -240,7 +250,8 @@ final class RoomScreenCoordinator: CoordinatorProtocol {
         
         return AnyView(RoomScreen(context: roomViewModel.context,
                                   timelineContext: timelineViewModel.context,
-                                  composerToolbar: composerToolbar))
+                                  composerToolbar: composerToolbar,
+                                  aranBot: aranBot))
     }
 }
 

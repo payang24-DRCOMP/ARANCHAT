@@ -83,6 +83,10 @@ struct ComposerToolbarViewState: BindableState {
     
     var keyCommands: [WysiwygKeyCommand] = []
     
+    /// AranChat: ห้อง/เธรดที่แผงสติกเกอร์จะส่งเข้า
+    var aranRoomID = ""
+    var aranThreadRootID: String?
+    
     var bindings: ComposerToolbarViewStateBindings
     
     var isUploading: Bool {
@@ -151,6 +155,10 @@ struct ComposerToolbarViewStateBindings {
     var formatItems: [FormatItem] = .init()
     var alertInfo: AlertInfo<UUID>?
     var selectedRange = NSRange(location: 0, length: 0)
+    /// AranChat: เปิดแผงสติกเกอร์
+    var showAranStickers = false
+    /// AranChat: เปิดแผงโน้ต/อัลบั้ม
+    var showAranBoard: AranBoardKind?
     
     var presendCallback: (() -> Void)?
 }

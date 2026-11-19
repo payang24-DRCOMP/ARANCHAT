@@ -15,4 +15,6 @@ nonisolated struct TextRoomTimelineItemContent: Hashable {
     var formattedBodyHTMLString: String?
     /// AranChat: card from the notification bot (`com.arankub.card`), shown instead of the text.
     var aranCard: AranCard?
+    /// AranChat: note/album card (`com.arankub.note` / `com.arankub.album`), shown instead of the text.
+    var aranBoard: AranBoardRef?
 }

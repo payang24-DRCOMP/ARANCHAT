@@ -15,9 +15,13 @@ struct VoiceMessageRoomTimelineView: View {
     
     var body: some View {
         TimelineStyler(timelineItem: timelineItem) {
-            VoiceMessageRoomTimelineContent(timelineItem: timelineItem,
-                                            playerState: playerState)
-                .frame(maxWidth: 400)
+            VStack(alignment: .leading, spacing: 0) {
+                VoiceMessageRoomTimelineContent(timelineItem: timelineItem,
+                                                playerState: playerState)
+                // AranChat: ถอดเสียงเป็นข้อความ (เห็นเฉพาะเครื่องนี้)
+                AranTranscribeView(itemID: timelineItem.id, content: timelineItem.content)
+            }
+            .frame(maxWidth: 400)
         }
     }
 }

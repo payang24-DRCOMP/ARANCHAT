@@ -282,7 +282,8 @@ class RoomScreenViewModel: RoomScreenViewModelType, RoomScreenViewModelProtocol 
         }
         
         guard let userIdentity else {
-            MXLog.failure("User identity should be known at this point")
+            // AranChat: บอท @aranchat (และบัญชีที่ไม่เคยเปิดเข้ารหัส) ไม่มี identity — ปกติ ไม่ใช่ข้อผิดพลาด
+            MXLog.warning("User identity unknown for DM recipient")
             state.dmRecipientDetails.verification = .notVerified
             return
         }

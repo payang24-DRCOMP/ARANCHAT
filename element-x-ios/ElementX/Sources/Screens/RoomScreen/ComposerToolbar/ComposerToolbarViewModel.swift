@@ -67,7 +67,8 @@ final class ComposerToolbarViewModel: ComposerToolbarViewModelType, ComposerTool
          mentionDisplayHelper: MentionDisplayHelper,
          userSettings: UserSettings,
          analyticsService: AnalyticsServiceProtocol,
-         composerDraftService: ComposerDraftServiceProtocol) {
+         composerDraftService: ComposerDraftServiceProtocol,
+         aranThreadRootID: String? = nil) {
         self.initialText = initialText
         self.wysiwygViewModel = wysiwygViewModel
         self.completionSuggestionService = completionSuggestionService
@@ -83,6 +84,9 @@ final class ComposerToolbarViewModel: ComposerToolbarViewModelType, ComposerTool
                                                               isLocationSharingEnabled: userSettings.account.mapTilerConfiguration.publisher.value.isEnabled,
                                                               bindings: .init()),
                    mediaProvider: mediaProvider)
+        
+        state.aranRoomID = roomProxy.id
+        state.aranThreadRootID = aranThreadRootID
         
         state.keyCommands = [
             .enter { [weak self] in

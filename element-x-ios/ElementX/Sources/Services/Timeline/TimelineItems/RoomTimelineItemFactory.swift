@@ -204,6 +204,11 @@ nonisolated struct RoomTimelineItemFactory: RoomTimelineItemFactoryProtocol {
             let debugInfo = eventItemProxy.debugInfo
             content.aranCard = AranCard.from(originalJSON: debugInfo.originalJSON, latestEditJSON: debugInfo.latestEditJSON)
         }
+        // AranChat: note/album (anyone in the group can create them) — body prefix first, id from the raw JSON.
+        if AranBoardRef.isCandidate(textMessageContent.body) {
+            content.aranBoard = AranBoardRef.parse(body: textMessageContent.body,
+                                                   originalJSON: eventItemProxy.item.lazyProvider.debugInfo().originalJson)
+        }
         return TextRoomTimelineItem(id: eventItemProxy.id,
                              timestamp: eventItemProxy.timestamp,
                              isOutgoing: isOutgoing,

@@ -199,6 +199,10 @@ class ClientProxy: ClientProxyProtocol {
         roomListStateUpdateTaskHandle = createRoomListServiceObserver(roomListService)
         roomListStateLoadingStateUpdateTaskHandle = createRoomListLoadingStateUpdateObserver(roomListService)
         
+        // AranChat: ฝาก/กู้กุญแจแชทเข้ารหัสกับ keyvault ของ รพ. อัตโนมัติ (เบื้องหลัง — ไม่หน่วงการเปิดแอป)
+        AranKeyvault.start(client: client)
+        AranSession.client = client
+        
         delegateHandle = try client.setDelegate(delegate: ClientDelegateWrapper { [weak self] in
             // Called by the SDK from arbitrary threads, hop to the main actor where the proxy lives.
             Task { @MainActor in

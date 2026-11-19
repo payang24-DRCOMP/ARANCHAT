@@ -427,6 +427,17 @@ class JoinedRoomProxy: JoinedRoomProxyProtocol {
         }
     }
     
+    // AranChat: ปุ่มสั่งงานบนการ์ดแจ้งเตือน — SDK เข้ารหัสให้เองถ้าห้องเข้ารหัส
+    func sendRawMessage(contentJSON: String) async -> Result<Void, RoomProxyError> {
+        do {
+            _ = try await room.sendRaw(eventType: "m.room.message", content: contentJSON, requestConfigOverride: nil)
+            return .success(())
+        } catch {
+            MXLog.error("Failed sending raw message with error: \(error)")
+            return .failure(.sdkError(error))
+        }
+    }
+    
     func sendTypingNotification(isTyping: Bool) async -> Result<Void, RoomProxyError> {
         do {
             try await room.typingNotice(isTyping: isTyping)

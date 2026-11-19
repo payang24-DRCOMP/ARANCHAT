@@ -122,6 +122,9 @@ protocol JoinedRoomProxyProtocol: RoomProxyProtocol {
     /// https://spec.matrix.org/v1.9/client-server-api/#typing-notifications
     @discardableResult func sendTypingNotification(isTyping: Bool) async -> Result<Void, RoomProxyError>
     
+    /// AranChat: ส่งข้อความ m.room.message แบบกำหนด content เอง (ปุ่มสั่งงานบนการ์ดแจ้งเตือน — com.arankub.card_action)
+    func sendRawMessage(contentJSON: String) async -> Result<Void, RoomProxyError>
+    
     func ignoreDeviceTrustAndResend(devices: [String: [String]], sendHandle: SendHandleProxy) async -> Result<Void, RoomProxyError>
     
     func withdrawVerificationAndResend(userIDs: [String], sendHandle: SendHandleProxy) async -> Result<Void, RoomProxyError>

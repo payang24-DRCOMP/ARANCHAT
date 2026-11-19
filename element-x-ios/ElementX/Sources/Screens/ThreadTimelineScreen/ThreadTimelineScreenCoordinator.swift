@@ -84,7 +84,11 @@ final class ThreadTimelineScreenCoordinator: CoordinatorProtocol {
                                                      mentionDisplayHelper: ComposerMentionDisplayHelper(timelineContext: timelineViewModel.context),
                                                      userSettings: parameters.userSession.userSettings,
                                                      analyticsService: parameters.analytics,
-                                                     composerDraftService: parameters.composerDraftService)
+                                                     composerDraftService: parameters.composerDraftService,
+                                                     aranThreadRootID: {
+                                                         if case let .thread(rootEventID) = parameters.timelineController.timelineKind { return rootEventID }
+                                                         return nil
+                                                     }())
     }
     
     func start() {

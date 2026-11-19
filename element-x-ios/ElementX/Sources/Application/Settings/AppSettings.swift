@@ -141,15 +141,15 @@ final nonisolated class AppSettings: @unchecked Sendable {
     let searchBackfillTaskIdentifier = "io.element.elementx.background.search-backfill"
     
     /// A URL where users can go read more about the app.
-    private(set) var websiteURL: URL = "https://element.io"
+    private(set) var websiteURL: URL = "https://arankub.com" // AranChat: MAS ต้องให้ client_uri/terms/privacy อยู่โดเมนเดียวกัน (เหมือน Android brand.env)
     /// A URL that contains the app's logo that may be used when showing content in a web view.
-    private(set) var logoURL: URL = "https://element.io/mobile-icon.png"
+    private(set) var logoURL: URL = "https://chat.arankub.com/branding/icon-512.png"
     /// A URL that contains that app's copyright notice.
     private(set) var copyrightURL: URL = "https://element.io/copyright"
     /// A URL that contains the app's Terms of use.
-    private(set) var acceptableUseURL: URL = "https://element.io/acceptable-use-policy-terms"
+    private(set) var acceptableUseURL: URL = "https://arankub.com/terms"
     /// A URL that contains the app's Privacy Policy.
-    private(set) var privacyURL: URL = "https://element.io/privacy"
+    private(set) var privacyURL: URL = "https://arankub.com/privacy"
     /// A URL where users can go read more about encryption in general.
     private(set) var encryptionURL: URL = "https://element.io/help#encryption"
     /// A URL where users can go read more about device verification..
@@ -202,11 +202,11 @@ final nonisolated class AppSettings: @unchecked Sendable {
     let oAuthStaticRegistrations: [URL: String] = ["https://id.thirdroom.io/realms/thirdroom": "elementx"]
     /// The redirect URL used for OAuth. For the normal case we don't actually need the bundle ID as the web authentication session handles the redirect internally.
     /// However in the case where MAS sends the user to an external app, we need to make sure that the system will open the correct variant of the app (e.g. Nightly).
-    private(set) nonisolated(unsafe) var oAuthRedirectURL: URL! = URL(string: "https://element.io/oauth/ios/\(InfoPlistReader.main.bundleIdentifier)")
+    private(set) nonisolated(unsafe) var oAuthRedirectURL: URL! = URL(string: "\(InfoPlistReader.main.baseBundleIdentifier):/oauth/callback") // AranChat: custom scheme = โดเมนกลับด้าน (com.arankub…) ตามที่ MAS กำหนด ไม่ต้องใช้ Associated Domains
     /// A path that is appended to `websiteURL` to form the OAuth `clientURI`. MAS uses `clientURI` as the identifier for a specific app, allowing us to
     /// distinguish the various clients we have for Android, iOS and Web from each other.
     /// Intentionally a distinct property so it can be easily overridden without having to manipulate the website URL.
-    private(set) var oAuthClientURIPath: String? = "apps/ios"
+    private(set) var oAuthClientURIPath: String? = nil // AranChat: client_uri = https://arankub.com (เหมือน Android)
     
     var oAuthConfiguration: OAuthConfiguration {
         OAuthConfiguration(clientName: InfoPlistReader.main.bundleDisplayName,

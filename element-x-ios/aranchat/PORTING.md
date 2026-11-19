@@ -23,12 +23,16 @@
 | แบรนด์ + ล็อกเซิร์ฟเวอร์ + push gateway | ✅ ตั้งค่าแล้ว | `app.yml`, `AppSettings.swift` |
 | การ์ดแจ้งเตือน: แสดงผล (หัวตามระดับ ช่องข้อมูลมีสี ตาราง ขั้นตอน ตัวเลขสรุป ผลการตัดสิน) | ✅ เขียนแล้ว | `Services/AranChat/AranCard.swift`, `Screens/Timeline/View/TimelineItemViews/AranCardView.swift`, hook ใน `RoomTimelineItemFactory.buildTextTimelineItem` + `TextRoomTimelineView` + `TextRoomTimelineItemContent.aranCard` |
 | การ์ด: ปุ่มลิงก์ / คัดลอก / รับทราบ | ✅ เขียนแล้ว | `AranCardView.swift` (รับทราบ = `.toggleReaction`) |
-| การ์ด: ปุ่มสั่งงาน / เลือกวันเวลา | ⏳ แสดงปุ่มแบบกดไม่ได้ — ต้องเพิ่ม raw send (`Room.sendRaw` ของ SDK ผ่าน `JoinedRoomProxy`) + view action ใน `TimelineViewModel` แล้วส่งตามข้อ D | `AranCardView.swift` (`default:` ใน `buttonsView`) |
+| การ์ด: ปุ่มสั่งงาน / เลือกวันเวลา | ✅ เขียนแล้ว (ถามยืนยัน · ปฏิทิน ค.ศ. ตาม min/max · "กำลังส่ง…" 20 วิ) | `AranCardView.swift`, `TimelineViewModel.sendAranCardAction`, `JoinedRoomProxy.sendRawMessage` |
 | แชร์ตำแหน่ง (แผนที่ของ รพ. เอง) | ✅ ตั้งค่าแล้ว — `bundledMapTilerConfiguration` ชี้ `https://chat.arankub.com/maps` (server แผนที่: `server/maps/README.md`, รูปแบบ URL เดียวกับ MapTiler) · ⏳ ทดสอบบนเครื่องจริง | `AppSettings.swift` |
-| keyvault | ✅ logic เขียนแล้ว · ⏳ ยังไม่เรียกใช้ — เรียก `AranKeyvault.sync` หลัง session พร้อม (ดูหัวไฟล์) | `Services/AranChat/AranKeyvault.swift` |
-| มินิแอป (OpenID ใน fragment) | ⏳ เปิดลิงก์ได้ แต่ยังไม่แนบ token | ข้อ F |
-| บอท: คำสั่ง / เมนู / ปุ่มตอบด่วน | ⏳ ยังไม่ทำ | ข้อ E |
-| สติกเกอร์ · โน้ต/อัลบั้ม · เพื่อน/ลิงก์ชวน · ถอดเสียง | ⏳ ยังไม่ทำ | ข้อ G–I · ถอดเสียง: `POST /api/notify/asr` + header `X-AranChat-OpenID` (ดู web `AranTranscribe.tsx`) |
+| keyvault | ✅ ทำงานแล้ว (ลำดับเดียวกับ Android · เริ่มจาก `ClientProxy.init` · ทดสอบกับ server จริง: get 200) | `Services/AranChat/AranKeyvault.swift` |
+| มินิแอป (OpenID ใน fragment) | ✅ แนบ token แล้ว (เมนูบอท + ปุ่มการ์ด) | `AranBot.swift` `AranBotAPI.miniAppURL` · ข้อ F |
+| บอท: คำสั่ง / เมนู / ปุ่มตอบด่วน + มินิแอป | ✅ ทดสอบแล้ว | `Services/AranChat/AranBot.swift` · แถบอยู่เหนือช่องพิมพ์ (`RoomScreen.composer`) · มินิแอปส่ง OpenID ใน fragment (ข้อ F) · คำสั่ง /xxx ส่งเป็นข้อความธรรมดาอยู่แล้ว (iOS ตีความแค่ /join /me) |
+| สติกเกอร์ | ✅ build ผ่าน (รอทดสอบ) | `Services/AranChat/AranStickers.swift` · เมนู + → สติกเกอร์ · ส่งในเธรดได้ · ชุดจาก server (แคช index ไว้ใช้ออฟไลน์ — ยังไม่มีชุดในแอป) |
+| แท็บเพื่อน (แทน Spaces) + ปุ่มชวนเพื่อน | ✅ build ผ่าน (รอทดสอบ) | `Screens/AranFriends/AranFriendsScreen.swift` · ยังไม่ทำ: เปิดลิงก์ชวน /i/<รหัส> ในแอป (ต้องมี Universal Link = Apple Developer), การ์ดแนะนำเพื่อน, QR ของฉัน |
+| ภาษาไทย | ✅ | `th.lproj` จาก Android (`aranchat/i18n-th.py`) · ตั้งค่า > ภาษา / Language → หน้า iOS ของแอป (เลือกภาษาต่อแอป) |
+| โน้ต/อัลบั้มในกลุ่ม | ✅ build ผ่าน (รอทดสอบ) | `Services/AranChat/AranBoard.swift`, `Screens/AranBoard/AranBoardSheet.swift` · เมนู + → โน้ต / อัลบั้ม · การ์ดในแชท · เพิ่มรูปในแผงได้ · แตะรูป = เปิดเธรดของอัลบั้ม (ดูรูปเต็ม) |
+| ถอดเสียง | ✅ build ผ่าน (รอทดสอบ) | `Screens/Timeline/View/TimelineItemViews/AranTranscribeView.swift` · ปุ่ม "🎙 ถอดเป็นข้อความ" ใต้ข้อความเสียง/ไฟล์เสียง · `POST /api/notify/asr` + header `X-AranChat-OpenID` (เหมือนเว็บ — Android ยังไม่มี) |
 
 ## ลำดับที่แนะนำ
 

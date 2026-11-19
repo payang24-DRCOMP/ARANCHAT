@@ -45,7 +45,16 @@ nonisolated struct AranCard: Hashable {
         let id: String?
         let confirm: String?
         let mode: String?
+        /// ปุ่มเลือกวันเวลา: ค่าต่ำสุด/สูงสุด/เริ่มต้น รูปแบบเดียวกับที่ส่งกลับ (ดู `dtPatterns`)
+        var min: String? = nil
+        var max: String? = nil
+        var initial: String? = nil
+        
+        var isAction: Bool { type == "action" || type == "datetime" }
     }
+    
+    /// รูปแบบค่าที่ปุ่มเลือกวันเวลาส่งกลับ (ตรงกับ notify/cardkit.mjs DT_MODES และ Android `AranCard.DT_MODES`)
+    static let dtPatterns = ["date": "^\\d{4}-\\d{2}-\\d{2}$", "time": "^\\d{2}:\\d{2}$", "datetime": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}$"]
 
     static let contentKey = "com.arankub.card"
     static let actionKey = "com.arankub.card_action"
@@ -181,9 +190,19 @@ nonisolated struct AranCard: Hashable {
                 return value.hasPrefix("https://") ? URL(string: value).map { Button(type: type, label: label, style: style, url: $0, text: nil, id: nil, confirm: nil, mode: nil) } : nil
             case "copy":
                 return (b["text"] as? String)?.nilIfEmpty.map { Button(type: type, label: label, style: style, url: nil, text: String($0.prefix(200)), id: nil, confirm: nil, mode: nil) }
-            case "action", "datetime":
+            case "action":
                 return id.map { Button(type: type, label: label, style: style, url: nil, text: nil, id: $0,
-                                       confirm: (b["confirm"] as? String)?.nilIfEmpty, mode: b["mode"] as? String) }
+                                       confirm: (b["confirm"] as? String)?.nilIfEmpty, mode: nil) }
+            case "datetime":
+                let rawMode = b["mode"] as? String ?? ""
+                let mode = ["date", "time"].contains(rawMode) ? rawMode : "datetime"
+                let valid = { (key: String) -> String? in
+                    guard let value = (b[key] as? String).map({ String($0.prefix(16)) }), let pattern = Self.dtPatterns[mode],
+                          value.range(of: pattern, options: .regularExpression) != nil else { return nil }
+                    return value
+                }
+                return id.map { Button(type: type, label: label, style: style, url: nil, text: nil, id: $0, confirm: nil, mode: mode,
+                                       min: valid("min"), max: valid("max"), initial: valid("initial")) }
             default:
                 return nil
             }
@@ -191,7 +210,7 @@ nonisolated struct AranCard: Hashable {
     }
 }
 
-private extension String {
+private nonisolated extension String {
     var nilIfEmpty: String? {
         isEmpty ? nil : self
     }

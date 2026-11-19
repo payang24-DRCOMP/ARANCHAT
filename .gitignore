@@ -25,3 +25,4 @@ element-x-android/aranchat/out/
 # แบรนด์แอปมือถือ — ไม่มีความลับ (ชื่อแอป/โดเมน/สี) ต้องอยู่ใน git
 !element-x-android/aranchat/brand.env
 !element-x-android/aranchat/brands/*/brand.env
+/build/

@@ -8,34 +8,34 @@
 
 import SwiftUI
 
-enum UserIDAttribute: AttributedStringKey {
+nonisolated enum UserIDAttribute: AttributedStringKey {
     typealias Value = String
     static let name = "MXUserIDAttribute"
 }
 
 /// This attribute is used to help the composer convert a mention into to a markdown link before sending
 /// the message. It doesn't interact mention pills, as these fetch display names live from the room.
-enum UserDisplayNameAttribute: AttributedStringKey {
+nonisolated enum UserDisplayNameAttribute: AttributedStringKey {
     typealias Value = String
     static let name = "MXUserDisplayNameAttribute"
 }
 
-enum RoomDisplayNameAttribute: AttributedStringKey {
+nonisolated enum RoomDisplayNameAttribute: AttributedStringKey {
     typealias Value = String
     static let name = "MXRoomDisplayNameAttribute"
 }
 
-enum RoomIDAttribute: AttributedStringKey {
+nonisolated enum RoomIDAttribute: AttributedStringKey {
     typealias Value = String
     static let name = "MXRoomIDAttribute"
 }
 
-enum RoomAliasAttribute: AttributedStringKey {
+nonisolated enum RoomAliasAttribute: AttributedStringKey {
     typealias Value = String
     static let name = "MXRoomAliasAttribute"
 }
 
-enum EventOnRoomIDAttribute: AttributedStringKey {
+nonisolated enum EventOnRoomIDAttribute: AttributedStringKey {
     struct Value: Hashable {
         let roomID: String
         // periphery:ignore - used via the synthesized Hashable conformance
@@ -45,7 +45,7 @@ enum EventOnRoomIDAttribute: AttributedStringKey {
     static let name = "MXEventOnRoomIDAttribute"
 }
 
-enum EventOnRoomAliasAttribute: AttributedStringKey {
+nonisolated enum EventOnRoomAliasAttribute: AttributedStringKey {
     struct Value: Hashable {
         let alias: String
         // periphery:ignore - used via the synthesized Hashable conformance
@@ -55,14 +55,14 @@ enum EventOnRoomAliasAttribute: AttributedStringKey {
     static let name = "MXEventOnRoomAliasAttribute"
 }
 
-enum AllUsersMentionAttribute: AttributedStringKey {
+nonisolated enum AllUsersMentionAttribute: AttributedStringKey {
     typealias Value = Bool
     static let name = "MXAllUsersMentionAttribute"
 }
 
 /// Marks the fallback text of a custom emoticon while parsing. It is replaced before the conversion
 /// to `AttributedString`, which is why it isn't part of ``AttributeScopes/ElementXAttributes``.
-enum EmoticonAttribute: AttributedStringKey {
+nonisolated enum EmoticonAttribute: AttributedStringKey {
     /// A reference type so that adjacent emoticons don't get merged into a single attribute run.
     final nonisolated class Value: NSObject {
         let url: URL
@@ -75,23 +75,23 @@ enum EmoticonAttribute: AttributedStringKey {
     static let name = "MXEmoticonAttribute"
 }
 
-enum BlockquoteAttribute: AttributedStringKey {
+nonisolated enum BlockquoteAttribute: AttributedStringKey {
     typealias Value = Bool
     static let name = "MXBlockquoteAttribute"
 }
 
 /// Marks the content of a `<details>` element, carrying its `<summary>` as the value.
-enum DetailsAttribute: AttributedStringKey {
+nonisolated enum DetailsAttribute: AttributedStringKey {
     typealias Value = String
     static let name = "MXDetailsAttribute"
 }
 
-enum CodeBlockAttribute: AttributedStringKey {
+nonisolated enum CodeBlockAttribute: AttributedStringKey {
     typealias Value = Bool
     static let name = "MXCodeBlockAttribute"
 }
 
-enum InlineCodeAttribute: AttributedStringKey {
+nonisolated enum InlineCodeAttribute: AttributedStringKey {
     typealias Value = Bool
     static let name = "MXInlineCodeAttribute"
 }

@@ -37,6 +37,26 @@ struct RoomAttachmentPicker: View {
             }
             .accessibilityIdentifier(A11yIdentifiers.roomScreen.attachmentPickerTextFormatting)
             
+            // AranChat: สติกเกอร์
+            Button {
+                context.showAranStickers = true
+            } label: {
+                Label("สติกเกอร์", icon: \.reaction)
+            }
+            
+            // AranChat: โน้ต / อัลบั้มของกลุ่ม (เหมือน LINE)
+            Button {
+                context.showAranBoard = .note
+            } label: {
+                Label("โน้ต", icon: \.document)
+            }
+            
+            Button {
+                context.showAranBoard = .album
+            } label: {
+                Label("อัลบั้ม", icon: \.image)
+            }
+            
             Button {
                 context.send(viewAction: .attach(.poll))
             } label: {

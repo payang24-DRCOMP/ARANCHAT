@@ -15,6 +15,8 @@ struct RoomScreen: View {
     @ObservedObject private var context: RoomScreenViewModelType.Context
     @ObservedObject private var timelineContext: TimelineViewModelType.Context
     let composerToolbar: ComposerToolbar
+    /// AranChat: แถบเมนู/ปุ่มตอบด่วนของบอทแจ้งเตือน
+    var aranBot: AranBotBarModel?
     @Environment(\.accessibilityVoiceOverEnabled) private var isVoiceOverEnabled
     
     enum MarkAsReadSource {
@@ -44,10 +46,12 @@ struct RoomScreen: View {
     
     init(context: RoomScreenViewModelType.Context,
          timelineContext: TimelineViewModelType.Context,
-         composerToolbar: ComposerToolbar) {
+         composerToolbar: ComposerToolbar,
+         aranBot: AranBotBarModel? = nil) {
         self.context = context
         self.timelineContext = timelineContext
         self.composerToolbar = composerToolbar
+        self.aranBot = aranBot
     }
     
     var body: some View {
@@ -271,7 +275,12 @@ struct RoomScreen: View {
             tombstonedDialogue
         } else if context.viewState.canSendMessage, !ProcessInfo.isRunningAccessibilityTests {
             // We are not sure why but when wrapped in the room screen the composer toolbar breaks the accessibility tests
-            composerToolbar
+            VStack(spacing: 0) {
+                if let aranBot {
+                    AranBotBar(model: aranBot)
+                }
+                composerToolbar
+            }
         } else {
             ComposerDisabledView()
         }

@@ -22,9 +22,8 @@ final nonisolated class NSEUserSession: NSEUserSessionProtocol {
     private let baseClient: ClientProtocol
     private let notificationClient: NotificationClient
     private let userID: String
-    private(set) lazy var mediaProvider: MediaProviderProtocol = MediaProvider(mediaLoader: MediaLoader(client: baseClient),
-                                                                               imageCache: .onlyOnDisk,
-                                                                               homeserverReachabilityPublisher: nil)
+    // AranChat(Xcode 26): not `lazy` — Swift 6.2 rejects lazy properties in a nonisolated class.
+    let mediaProvider: MediaProviderProtocol
     private let delegateHandle: TaskHandle?
     
     var mediaPreviewVisibility: MediaPreviews {
@@ -68,6 +67,9 @@ final nonisolated class NSEUserSession: NSEUserSessionProtocol {
                                                            clientSessionDelegate: clientSessionDelegate,
                                                            userSettings: userSettings,
                                                            appHooks: appHooks)
+        mediaProvider = MediaProvider(mediaLoader: MediaLoader(client: baseClient),
+                                      imageCache: .onlyOnDisk,
+                                      homeserverReachabilityPublisher: nil)
         
         do {
             try await baseClient.setPresence(presence: .offline, immediate: false)

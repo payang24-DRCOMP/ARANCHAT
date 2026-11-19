@@ -40,6 +40,7 @@ class UserSessionFlowCoordinator: FlowCoordinatorProtocol {
     private let chatsTabDetails: NavigationTabCoordinator<HomeTab>.TabDetails
     private let spacesTabFlowCoordinator: SpacesTabFlowCoordinator
     private let spacesTabDetails: NavigationTabCoordinator<HomeTab>.TabDetails
+    private var aranFriendsStackCoordinator: NavigationStackCoordinator?
     
     private let searchScreenCoordinator: SearchScreenCoordinator?
     private let searchTabNavigationStackCoordinator: NavigationStackCoordinator?
@@ -136,9 +137,16 @@ class UserSessionFlowCoordinator: FlowCoordinatorProtocol {
                                                               navigationStackCoordinator: onboardingStackCoordinator,
                                                               flowParameters: flowParameters)
         
+        // AranChat: แท็บ "เพื่อน" แทน Spaces (เหมือน Android HomeNavigationBarItem.Friends)
+        let friendsStackCoordinator = NavigationStackCoordinator()
+        let friendsTabDetails = NavigationTabCoordinator<HomeTab>.TabDetails(tag: HomeTab.spaces,
+                                                                             title: "เพื่อน",
+                                                                             icon: \.userProfile,
+                                                                             selectedIcon: \.userProfileSolid,
+                                                                             accessibilityIdentifier: A11yIdentifiers.homeTabs.spaces)
         var tabs: [NavigationTabCoordinator<HomeTab>.Tab] = [
             .init(coordinator: chatsSplitCoordinator, details: chatsTabDetails),
-            .init(coordinator: spacesSplitCoordinator, details: spacesTabDetails)
+            .init(coordinator: friendsStackCoordinator, details: friendsTabDetails)
         ]
         
         if let searchTabNavigationStackCoordinator, let searchTabDetails {
@@ -146,6 +154,7 @@ class UserSessionFlowCoordinator: FlowCoordinatorProtocol {
         }
         
         navigationTabCoordinator.setTabs(tabs)
+        aranFriendsStackCoordinator = friendsStackCoordinator
         
         stateMachine = flowParameters.stateMachineFactory.makeUserSessionFlowStateMachine(state: .initial)
         configureStateMachine()
@@ -231,6 +240,12 @@ class UserSessionFlowCoordinator: FlowCoordinatorProtocol {
             
             chatsTabFlowCoordinator.start()
             spacesTabFlowCoordinator.start()
+            // AranChat: แตะชื่อเพื่อน → เปิดแชทส่วนตัวในแท็บแชท
+            aranFriendsStackCoordinator?.setRootCoordinator(AranFriendsScreenCoordinator(userSession: userSession) { [weak self] roomID in
+                guard let self else { return }
+                navigationTabCoordinator.selectedTab = .chats
+                chatsTabFlowCoordinator.handleAppRoute(.room(roomID: roomID, via: []), animated: true)
+            })
             attemptStartingOnboarding()
         }
         
