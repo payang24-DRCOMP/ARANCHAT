@@ -697,6 +697,8 @@ async function syncLoop() {
           }
           // กดปุ่มสั่งงานบนการ์ด (ไม่ await — webhook ของระบบต้นทางอาจช้า อย่าให้ข้อความอื่นค้าง)
           if (isCardAction(ev)) { onCardAction(roomId, ev).catch((e) => log("card action error:", e.message)); continue; }
+          // คำตอบของปุ่มที่ถามก่อน (เช่น เหตุผลที่ตีกลับ)
+          if (onAskAnswer(roomId, ev)) continue;
           // คำสั่ง /… (ไม่ await — รอ webhook ของระบบเจ้าของคำสั่ง)
           const cmd = ev.type === "m.room.message" && ev.content?.msgtype === "m.text" ? parseCommand(ev.content.body) : null;
           if (cmd) { onCommand(roomId, ev, cmd).catch((e) => log("command error:", e.message)); continue; }
@@ -830,8 +832,7 @@ async function onCardAction(roomId, ev) {
   const act = ev.content["com.arankub.card_action"];
   const ref = actionIndex.get(String(act?.event_id ?? ""));
   const a = ref && state.actions[ref];
-  const replyTo = { "m.relates_to": { "m.in_reply_to": { event_id: ev.event_id } } };
-  const answer = (text) => mx("PUT", `${roomPath(roomId)}/send/m.room.message/${txn++}`, { msgtype: "m.notice", body: text, ...replyTo });
+  const answer = replier(roomId, ev.event_id);
   if (!a || !a.events.some((e) => e.roomId === roomId)) return;                     // การ์ดที่ส่งต่อไปห้องอื่น / ไม่รู้จัก
   const button = a.content["com.arankub.card"].buttons?.find((b) => isActionButton(b) && b.id === act.id);
   if (!button) return;
@@ -843,15 +844,67 @@ async function onCardAction(roomId, ev) {
       return void answer("วันเวลาที่เลือกไม่ถูกต้อง ลองเลือกใหม่อีกครั้ง");
     }
   }
-  if (a.closed) return void answer(`รายการนี้ปิดไปแล้ว${a.status ? `: ${a.status.text}` : ""}`);
-  if (a.approvers.length && !a.approvers.includes(ev.sender)) return void answer("คุณไม่มีสิทธิ์ตัดสินรายการนี้ — ผู้มีสิทธิ์ตามที่ระบบกำหนดเท่านั้น");
+  if (!canDecide(a, ev.sender, answer)) return;
+  // ปุ่มที่ถามก่อน (เช่น ตีกลับต้องมีเหตุผล): ถามในห้อง แล้วรอข้อความถัดไปของผู้กด
+  if (button.type === "action" && button.ask) {
+    asking.set(`${roomId}|${ev.sender}`, { ref, buttonId: button.id, until: Date.now() + ASK_MINUTES * 60_000 });
+    const options = button.ask.options.map((o) => ({ label: o.slice(0, 24), text: o }));
+    return void answer(`${button.ask.prompt}\nพิมพ์ตอบได้เลย หรือกดเหตุผลด้านล่าง (ภายใน ${ASK_MINUTES} นาที)`,
+      { "com.arankub.quick_replies": [...options, { label: "ยกเลิก", text: "ยกเลิก" }].slice(0, 6) });
+  }
+  await decide(roomId, ev, ref, button, value, answer);
+}
+
+const ASK_MINUTES = 15;
+const asking = new Map();        // "<roomId>|<mxid>" → { ref, buttonId, until } รอคำตอบของปุ่มที่ถามก่อน
+
+/** ข้อความ = คำตอบของปุ่มที่ถามไว้ไหม (true = ใช่ จัดการแล้ว) */
+function onAskAnswer(roomId, ev) {
+  if (ev.type !== "m.room.message" || ev.content?.msgtype !== "m.text") return false;
+  const key = `${roomId}|${ev.sender}`;
+  const q = asking.get(key);
+  if (!q) return false;
+  // ตัดส่วนอ้างข้อความเดิม (กรณีกดตอบกลับ) ออก
+  const text = String(ev.content.body ?? "").replace(/^(>.*\n)+\n?/, "").trim();
+  if (text.startsWith("/")) { asking.delete(key); return false; }                       // พิมพ์คำสั่งอื่น = เลิกถาม
+  asking.delete(key);
+  const answer = replier(roomId, ev.event_id);
+  if (Date.now() > q.until) return void answer("หมดเวลาตอบแล้ว — กดปุ่มบนการ์ดใหม่อีกครั้ง"), true;
+  if (/^ยกเลิก$/.test(text)) return void answer("ยกเลิกแล้ว"), true;
+  if (text.length < 3) {
+    asking.set(key, q);
+    return void answer("ช่วยพิมพ์เหตุผลให้ชัดอีกนิด (อย่างน้อย 3 ตัวอักษร) หรือพิมพ์ ยกเลิก"), true;
+  }
+  const a = state.actions[q.ref];
+  const button = a?.content["com.arankub.card"].buttons?.find((b) => b.id === q.buttonId);
+  if (!button) return void answer("ไม่พบการ์ดนี้แล้ว"), true;
+  if (!canDecide(a, ev.sender, answer)) return true;
+  decide(roomId, ev, q.ref, button, text.slice(0, 500), answer).catch((e) => log("card action error:", e.message));
+  return true;
+}
+
+function replier(roomId, eventId) {
+  return (text, extra = {}) => mx("PUT", `${roomPath(roomId)}/send/m.room.message/${txn++}`,
+    { msgtype: "m.notice", body: text, ...extra, "m.relates_to": { "m.in_reply_to": { event_id: eventId } } });
+}
+
+function canDecide(a, sender, answer) {
+  if (a.closed) return void answer(`รายการนี้ปิดไปแล้ว${a.status ? `: ${a.status.text}` : ""}`), false;
+  if (a.approvers.length && !a.approvers.includes(sender)) return void answer("คุณไม่มีสิทธิ์ตัดสินรายการนี้ — ผู้มีสิทธิ์ตามที่ระบบกำหนดเท่านั้น"), false;
+  return true;
+}
+
+/** ส่งการตัดสินไปยังระบบต้นทาง (webhook) แล้วแก้การ์ดทุกห้อง */
+async function decide(roomId, ev, ref, button, value, answer) {
+  const a = state.actions[ref];
   if (busy.has(ref)) return;
   busy.add(ref);
   try {
     const user = await whoIs(ev.sender);
     const at = new Date().toISOString();
     const time = new Date(at).toLocaleTimeString("th-TH", { timeZone: "Asia/Bangkok", hour: "2-digit", minute: "2-digit" });
-    const fallback = { text: `${button.label}${value ? `: ${thaiDateTime(value)}` : ""} · ${user.name} · ${time} น.`, tone: button.style === "danger" ? "crit" : "ok" };
+    const shown = value ? `: ${button.type === "datetime" ? thaiDateTime(value) : value}` : "";
+    const fallback = { text: `${button.label}${shown} · ${user.name} · ${time} น.`, tone: button.style === "danger" ? "crit" : "ok" };
     let close = true, status = fallback, reply = null;
     if (state.webhooks[a.src]?.url) {
       const r = await hookCall(a.src, {

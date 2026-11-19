@@ -11,6 +11,8 @@
 //              { type:"stats", items:[{ label, value, tone }] }]
 //   buttons   [{ label, type:"link", url }, { label, type:"copy", text },
 //              { label, type:"action", id:"approve", style:"primary"|"secondary"|"danger", confirm:"ยืนยัน…?" },
+//              { label, type:"action", id:"return", ask:{ prompt:"เหตุผลที่ตีกลับ?", options:["จำนวนไม่ถูก", …] } },
+//                 ask = กดแล้วบอทถามก่อน ผู้กดพิมพ์ตอบหรือกดตัวเลือก (สูงสุด 5) → ส่งคำตอบเป็น value ไปกับ webhook
 //              { label, type:"datetime", id:"pickup", mode:"date"|"time"|"datetime", min, max, initial },   เลือกวันเวลา → ส่ง value กลับ
 //              { label, type:"app", url:"https://…" }]   มินิแอป: เปิดหน้าเว็บในแชท พร้อม OpenID token ของผู้ใช้ (ดู POST /api/notify/miniapp/whoami)
 //             สูงสุด 4 ปุ่ม
@@ -85,6 +87,13 @@ export function cleanSections(v) {
   return out;
 }
 
+/** ปุ่มที่ถามก่อน: { prompt, options } */
+function cleanAsk(v) {
+  const prompt = s(v?.prompt, 300);
+  if (!prompt) return undefined;
+  return { prompt, options: arr(v.options, 5).map((o) => s(o, 60)).filter(Boolean) };
+}
+
 export function cleanButtons(v) {
   const out = [];
   const ids = new Set();
@@ -97,7 +106,7 @@ export function cleanButtons(v) {
     else if (b.type === "app" && /^https:\/\//.test(String(b.url ?? ""))) out.push({ type: "app", label, url: s(b.url, 2000), style });
     else if ((b.type === "action" || b.type === "datetime") && /^[\w.\-]{1,40}$/.test(String(b.id ?? "")) && !ids.has(b.id)) {
       ids.add(b.id);
-      if (b.type === "action") out.push({ type: "action", label, id: b.id, style, confirm: s(b.confirm, 120) || undefined });
+      if (b.type === "action") out.push({ type: "action", label, id: b.id, style, confirm: s(b.confirm, 120) || undefined, ask: cleanAsk(b.ask) });
       else {
         const mode = DT_MODES[b.mode] ? b.mode : "datetime";
         const ok = (v) => (DT_MODES[mode].test(String(v ?? "")) ? String(v) : undefined);

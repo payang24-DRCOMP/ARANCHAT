@@ -37,7 +37,8 @@ if [[ $ONLY == all || $ONLY == approve ]]; then
     "title":"[ทดสอบ] ขออนุมัติลาพักผ่อน 3 วัน","subtitle":"ตัวอย่างการ์ดอนุมัติงาน",
     "fields":[["วันที่","20–22 พ.ย. 2569"],["คงเหลือ","7 วัน"]],
     "buttons":[{"type":"action","id":"approve","label":"อนุมัติ","style":"primary"},
-               {"type":"action","id":"reject","label":"ไม่อนุมัติ","style":"danger","confirm":"ยืนยันไม่อนุมัติ?"}]}'
+               {"type":"action","id":"reject","label":"ไม่อนุมัติ","style":"danger",
+                "ask":{"prompt":"เหตุผลที่ไม่อนุมัติ?","options":["ช่วงนั้นคนไม่พอ","ขอเลื่อนวัน","วันลาไม่พอ"]}}]}'
 fi
 if [[ $ONLY == all || $ONLY == refer ]]; then
   send "ส่งต่อผู้ป่วย (ขั้นตอน + เลือกวันเวลา)" '{"event":"test.card","id":"test-refer-'"$RUN"'","to":["'"$TO"'"],"level":"info",
