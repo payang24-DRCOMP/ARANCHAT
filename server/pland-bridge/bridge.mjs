@@ -27,6 +27,7 @@ import { loadRoutes, routeOf, KNOWN_EVENTS } from "./routes.mjs";
 import { createUnits } from "./units.mjs";
 import { createDaily } from "./daily.mjs";
 import { createQuery } from "./query.mjs";
+import { createSettings } from "./settings.mjs";
 
 const HERE = new URL(".", import.meta.url).pathname;
 const readEnv = (file) => {
@@ -605,6 +606,9 @@ if (process.argv.includes("--sample")) {
 }
 
 log(`Plan-D bridge — ${PLAND} → ${DRY ? "[dry-run]" : ARANCHAT} · บัญชีบริการ: ${SVC_ID ? "มี" : "ยังไม่ตั้ง (ส่งแบบสั้น)"} · เชื่อมบัญชีรายบุคคล ${personal.linkedCount()} คน · คิวค้าง ${state.queue.length}`);
+// ค่าตั้งจากหน้า AranKub (settings.mjs) — เปลี่ยนเมนู → ลงทะเบียนคำสั่ง/เมนูใหม่
+const settings = createSettings({ cfg, log, ARANCHAT, KEY, DRY, onChange: () => personal.register().catch((e) => log("ลงทะเบียนเมนูใหม่ไม่ได้:", e.message)) });
+await settings.start();
 await describe();
 await personal.register();
 work();

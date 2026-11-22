@@ -15,12 +15,17 @@ const LIVE = new Set(["approved", "pending", "submitted", "scheduled", "complete
 const WAITING = new Set(["pending", "submitted"]);
 
 export function createDaily({ cfg, state, save, log, planDGet, send, CATS, TZ }) {
-  const at = String(cfg.DAILY_AT ?? "09:00").trim();
-  const enabled = /^\d{1,2}:\d{2}$/.test(at);
-  const days = parseDays(String(cfg.DAILY_DAYS ?? "0-6"));
-  const cats = String(cfg.DAILY_CATS ?? ALL.join(",")).split(",").map((s) => s.trim()).filter((c) => ALL.includes(c));
-  const sendEmpty = cfg.DAILY_EMPTY === "on";
-  const showLeaveType = (cfg.LEAVE_SHOW_TYPE ?? "on") === "on";
+  // อ่านค่าทุกครั้ง (ผู้ดูแลแก้ในหน้า AranKub /settings/aranchat → settings.mjs อัปเดต cfg ระหว่างทำงาน)
+  let at, enabled, days, cats, sendEmpty, showLeaveType;
+  const reload = () => {
+    at = String(cfg.DAILY_AT ?? "09:00").trim();
+    enabled = /^\d{1,2}:\d{2}$/.test(at);
+    days = parseDays(String(cfg.DAILY_DAYS ?? "0-6"));
+    cats = String(cfg.DAILY_CATS ?? ALL.join(",")).split(",").map((s) => s.trim()).filter((c) => ALL.includes(c));
+    sendEmpty = cfg.DAILY_EMPTY === "on";
+    showLeaveType = (cfg.LEAVE_SHOW_TYPE ?? "on") === "on";
+  };
+  reload();
 
   const today = () => new Date().toLocaleDateString("en-CA", { timeZone: TZ });
   const hhmm = (iso) => new Date(iso).toLocaleTimeString("th-TH", { timeZone: TZ, hour: "2-digit", minute: "2-digit" });
@@ -49,6 +54,7 @@ export function createDaily({ cfg, state, save, log, planDGet, send, CATS, TZ })
   const mark = (r) => (WAITING.has(r.status) ? " ⏳" : "");
 
   async function cards(date) {
+    reload();
     const out = [];
     const want = (c) => cats.includes(c);
     if (want("room") || want("vehicle") || want("booking")) {
@@ -141,6 +147,7 @@ export function createDaily({ cfg, state, save, log, planDGet, send, CATS, TZ })
 
   /** เรียกทุกนาที: ถึงเวลาแล้วและวันนี้ยังไม่ส่ง → ส่ง (รีสตาร์ตหลังเวลาส่งในวันเดียวกัน = ส่งตามทัน · เกิน 3 ชม. = ข้าม) */
   async function tick() {
+    reload();
     if (!enabled) return;
     const now = new Date();
     const d = today();
@@ -157,14 +164,15 @@ export function createDaily({ cfg, state, save, log, planDGet, send, CATS, TZ })
   }
 
   function start() {
+    reload();
+    setInterval(() => tick().catch((e) => log("สรุปวันนี้ขัดข้อง:", e.message)), 60_000).unref?.();
     if (!enabled) return log("สรุปวันนี้: ปิดอยู่ (DAILY_AT=off)");
     log(`สรุปวันนี้: ทุกวัน${days.size === 7 ? "" : ` (${[...days].join(",")})`} ${at} น. · ${cats.join(", ")}`);
-    setInterval(() => tick().catch((e) => log("สรุปวันนี้ขัดข้อง:", e.message)), 60_000).unref?.();
     tick().catch((e) => log("สรุปวันนี้ขัดข้อง:", e.message));
   }
 
   /** ชื่อเรื่องในหน้าจัดการแจ้งเตือน */
-  const events = () => Object.fromEntries(cats.map((c) => [`daily.${c}`, {
+  const events = () => Object.fromEntries(ALL.map((c) => [`daily.${c}`, {
     label: `Plan-D สรุปวันนี้: ${CATS[c].label}`, note: `ส่งทุกวัน ${at} น. (DAILY_AT) · ตัวเชื่อม: pland-bridge/daily.mjs`, sql: "",
   }]));
 

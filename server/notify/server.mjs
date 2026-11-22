@@ -63,6 +63,7 @@ state.cases ??= {};        // เรื่องด่วน (การ์ดม
 state.announced ??= {};    // ประกาศแอปรุ่นใหม่แล้ว "<desktop>|<android>" → เวลา (ไม่ประกาศรุ่นเดิมซ้ำ)
 state.actions ??= {};      // การ์ดที่มีปุ่มสั่งงาน "<ref>" → { src, ev, extId, buttons, approvers, card, body, html, events: [{roomId, eventId}], closed, status, at }
 state.webhooks ??= {};
+state.settings ??= {};     // ค่าตั้งของแต่ละระบบ (หน้า AranKub /settings/aranchat แท็บ "ตั้งค่าระบบ") ระบบ → { schema: [...], values: {...}, at, updatedAt, updatedBy }
 state.bots ??= {};         // คำสั่ง / เมนูบอท ที่แต่ละระบบลงทะเบียน ระบบ → { commands: [{command, description, usage}], menu: [{label, type, text|url}], at }     // ระบบ → { url, secret, lastError, lastOkAt } (ระบบตั้งเองด้วย PUT /api/notify/webhook)
 state.idem ??= {};         // กันส่งซ้ำ "<ระบบ>:<id ที่ระบบส่งมา>" → เวลา (เก็บ 3 วัน)
 // ระบบตั้งต้น (ลบไม่ได้) — สีตรงกับ THEMES ใน card.mjs
@@ -900,7 +901,7 @@ async function decide(roomId, ev, ref, button, value, answer) {
   if (busy.has(ref)) return;
   busy.add(ref);
   try {
-    const user = await whoIs(ev.sender);
+    const user = { ...await whoIs(ev.sender), channels: await channelsOf(ev.sender) };
     const at = new Date().toISOString();
     const time = new Date(at).toLocaleTimeString("th-TH", { timeZone: "Asia/Bangkok", hour: "2-digit", minute: "2-digit" });
     const shown = value ? `: ${button.type === "datetime" ? thaiDateTime(value) : value}` : "";
@@ -922,7 +923,12 @@ async function decide(roomId, ev, ref, button, value, answer) {
       if (r.data.card && typeof r.data.card === "object") {
         const made = await makeNotice(a.src, { ...r.data.card, title: r.data.card.title ?? button.label });
         if (made.error) log("การ์ดตอบปุ่มไม่ถูกรูปแบบ:", a.src, made.error);
-        else { made.n.priority = "normal"; await sayNativeCard(roomId, { key: a.ev, label: button.label, icon: "⌨️" }, made.n, true); }
+        else {
+          made.n.priority = "normal";
+          // กดในห้องกลุ่ม → การ์ดคำตอบไปแชทส่วนตัวของคนกด (ไม่รบกวนคนอื่น)
+          const to = state.dm[ev.sender] === roomId ? roomId : await dmRoom(ev.sender);
+          await sayNativeCard(to, { key: a.ev, label: button.label, icon: "⌨️" }, made.n, true);
+        }
       }
     }
     a.status = status;
@@ -1075,6 +1081,56 @@ function systemMenu(arg) {
 }
 const commandOwner = (cmd) => Object.entries(state.bots).find(([src, b]) => sourceOn(src) && b.commands?.some((c) => c.command === cmd))?.[0] ?? null;
 
+// ── ค่าตั้งของระบบ (ระบบประกาศเอง → หน้า AranKub สร้างฟอร์มให้ → ระบบอ่านค่าไปใช้) ─────────────────
+//   PUT /api/notify/settings  { "schema": [ { key, label, type, help?, default?, options?, group? } ] }   ประกาศ (ค่าเดิมยังอยู่)
+//   GET /api/notify/settings  → { values, schema, updatedAt }   values = ค่าที่ผู้ดูแลตั้ง + default ของช่องที่ยังไม่ตั้ง
+//   type: text | textarea | list (หลายค่า คั่นบรรทัด) | bool | number | time (HH:MM) | select (options) | multi (options) | days (0–6)
+const SETTING_TYPES = ["text", "textarea", "list", "bool", "number", "time", "select", "multi", "days"];
+function cleanSchema(v) {
+  const out = [], seen = new Set();
+  for (const f of (Array.isArray(v) ? v : []).slice(0, 40)) {
+    const key = String(f?.key ?? "");
+    if (!/^[A-Za-z][\w.]{0,40}$/.test(key) || seen.has(key) || !SETTING_TYPES.includes(f.type)) continue;
+    seen.add(key);
+    const options = Array.isArray(f.options) ? f.options.slice(0, 20).map((o) => (typeof o === "object" ? { value: String(o.value).slice(0, 60), label: String(o.label ?? o.value).slice(0, 60) } : { value: String(o).slice(0, 60), label: String(o).slice(0, 60) })) : undefined;
+    out.push({ key, type: f.type, label: String(f.label ?? key).slice(0, 80), help: f.help ? String(f.help).slice(0, 300) : undefined,
+      group: f.group ? String(f.group).slice(0, 60) : undefined, options, default: f.default });
+  }
+  return out;
+}
+function cleanSettings(schema, input) {
+  const values = {}, errors = [];
+  for (const f of schema) {
+    if (!(f.key in input)) continue;
+    const v = input[f.key];
+    const opt = new Set((f.options ?? []).map((o) => o.value));
+    switch (f.type) {
+      case "text": values[f.key] = String(v ?? "").slice(0, 300); break;
+      case "textarea": values[f.key] = String(v ?? "").slice(0, 3000); break;
+      case "list": values[f.key] = (Array.isArray(v) ? v : String(v ?? "").split(/\n|,/)).map((x) => String(x).trim().slice(0, 120)).filter(Boolean).slice(0, 100); break;
+      case "bool": values[f.key] = v === true; break;
+      case "number": if (Number.isFinite(Number(v))) values[f.key] = Number(v); else errors.push(`${f.label}: ต้องเป็นตัวเลข`); break;
+      case "time": if (/^([01]\d|2[0-3]):[0-5]\d$/.test(String(v))) values[f.key] = String(v); else errors.push(`${f.label}: เวลาไม่ถูกต้อง (HH:MM)`); break;
+      case "select": if (opt.has(String(v))) values[f.key] = String(v); else errors.push(`${f.label}: ค่าไม่อยู่ในตัวเลือก`); break;
+      case "multi": values[f.key] = (Array.isArray(v) ? v : []).map(String).filter((x) => opt.has(x)); break;
+      case "days": values[f.key] = [...new Set((Array.isArray(v) ? v : []).map(Number).filter((d) => Number.isInteger(d) && d >= 0 && d <= 6))].sort(); break;
+    }
+  }
+  return { values, errors };
+}
+function settingsValues(src) {
+  const x = state.settings[src] ?? {};
+  return Object.fromEntries((x.schema ?? []).map((f) => [f.key, x.values && f.key in x.values ? x.values[f.key] : f.default ?? null]));
+}
+function handleSettingsApi(src, method, body) {
+  if (method === "GET") return [200, { values: settingsValues(src), schema: state.settings[src]?.schema ?? [], updatedAt: state.settings[src]?.updatedAt ?? null }];
+  if (method !== "PUT") return [405, { error: "ใช้ GET / PUT" }];
+  const schema = cleanSchema(body?.schema);
+  state.settings[src] = { ...state.settings[src], schema, values: state.settings[src]?.values ?? {}, at: new Date().toISOString() };
+  save();
+  return [200, { ok: true, fields: schema.length, values: settingsValues(src) }];
+}
+
 //   PUT    /api/notify/bot  { commands: [{ command: "lab", description: "ดูผลแล็บล่าสุด", usage: "/lab <HN>" }], menu: [{ label, type: "text"|"link"|"app", text|url }], menu_icon: "📅" }
 //          เมนูมากกว่า 1 รายการ → เมนูหลักแสดง "<menu_icon> <ชื่อระบบ> ▸" กดแล้วได้เมนูย่อย (ปุ่มตอบด่วน สูงสุด 6)
 //   GET    /api/notify/bot  (ใช้ key ของระบบ = ที่ระบบนี้ลงทะเบียน · ไม่มี key = รายการรวมที่แอปใช้)
@@ -1108,14 +1164,22 @@ function parseCommand(body) {
 
 const lastCommand = new Map();   // mxid → เวลา (กันพิมพ์รัว)
 async function onCommand(roomId, ev, { command, args }) {
-  const reply = (content) => mx("PUT", `${roomPath(roomId)}/send/m.room.message/${txn++}`, {
-    msgtype: "m.notice", ...content, "m.relates_to": { "m.in_reply_to": { event_id: ev.event_id } },
-  });
   const isDm = state.dm[ev.sender] === roomId;
   const channel = Object.entries(state.channels).find(([, c]) => c.roomId === roomId)?.[0] ?? null;
   if (!isDm && !channel) return;
   if (Date.now() - (lastCommand.get(ev.sender) ?? 0) < 1500) return;
   lastCommand.set(ev.sender, Date.now());
+  // พิมพ์คำสั่งในห้องกลุ่ม → ไม่รบกวนคนอื่น: ลบข้อความคำสั่งออกจากห้อง แล้วตอบในแชทส่วนตัวของคนถาม
+  let outRoom = roomId, replyTo = ev.event_id;
+  if (!isDm) {
+    mx("PUT", `${roomPath(roomId)}/redact/${encodeURIComponent(ev.event_id)}/${txn++}`, { reason: "ตอบในแชทส่วนตัวแล้ว" }).catch((e) => log("ลบคำสั่งในห้องไม่ได้:", e.message));
+    outRoom = await dmRoom(ev.sender);
+    replyTo = null;
+    await mx("PUT", `${roomPath(outRoom)}/send/m.room.message/${txn++}`, { msgtype: "m.notice", body: `/${command}${args ? ` ${args}` : ""} — ถามจากห้อง "${state.channels[channel]?.name ?? channel}" (ตอบที่นี่ ไม่รบกวนคนในห้อง)` });
+  }
+  const reply = (content) => mx("PUT", `${roomPath(outRoom)}/send/m.room.message/${txn++}`, {
+    msgtype: "m.notice", ...content, ...(replyTo ? { "m.relates_to": { "m.in_reply_to": { event_id: replyTo } } } : {}),
+  });
   if (command === "help") {
     const { commands } = botInfo();
     const lines = commands.map((c) => `/${c.command}${c.usage ? ` — ${c.usage.replace(/^\/\S+\s*/, "")}` : ""}  ${c.description}${c.system ? ` (${c.system})` : ""}`);
@@ -1123,12 +1187,12 @@ async function onCommand(roomId, ev, { command, args }) {
   }
   if (command === "menu") return void reply(systemMenu(args));
   if (command === "settings") {
-    return void reply({ body: isDm ? settingsText(ev.sender) : "ตั้งค่าแจ้งเตือนได้ในแชทส่วนตัวกับ AranChat แจ้งเตือน" });
+    return void reply({ body: settingsText(ev.sender) });
   }
   const src = commandOwner(command);
   if (!src) return void reply({ body: `ไม่รู้จักคำสั่ง /${command} — พิมพ์ /help เพื่อดูคำสั่งทั้งหมด`, "com.arankub.quick_replies": [{ label: "❓ คำสั่งทั้งหมด", text: "/help" }] });
   if (!state.webhooks[src]?.url) return void reply({ body: `คำสั่ง /${command} ยังใช้ไม่ได้ (ระบบ ${state.sources[src]?.name ?? src} ยังไม่ได้ตั้ง webhook)` });
-  const user = await whoIs(ev.sender);
+  const user = { ...await whoIs(ev.sender), channels: await channelsOf(ev.sender) };
   const r = await hookCall(src, { type: "command", command, args, user, room: { id: roomId, kind: isDm ? "dm" : "channel", channel }, at: new Date().toISOString() });
   if (!r.ok) return void reply({ body: `ระบบ ${state.sources[src]?.name ?? src} ไม่ตอบ (${r.error ?? r.status}) — ลองใหม่อีกครั้ง` });
   const quick = cleanQuickReplies(r.data.quick_replies);
@@ -1137,7 +1201,7 @@ async function onCommand(roomId, ev, { command, args }) {
     const made = await makeNotice(src, card);
     if (made.error) return void reply({ body: `ระบบตอบการ์ดไม่ถูกรูปแบบ: ${made.error}` });
     made.n.priority = "normal";   // คำตอบคำสั่งไม่ใช่เรื่องด่วนที่ต้องติดตาม
-    await sayNativeCard(roomId, { key: `${src}:cmd.${command}`, label: `คำสั่ง /${command}`, icon: "⌨️" }, made.n, true);
+    await sayNativeCard(outRoom, { key: `${src}:cmd.${command}`, label: `คำสั่ง /${command}`, icon: "⌨️" }, made.n, true);
   }
   if (typeof r.data.reply === "string" && r.data.reply.trim()) {
     await reply({ body: r.data.reply.slice(0, 2000), ...(quick.length && !r.data.card ? { "com.arankub.quick_replies": quick } : {}) });
@@ -1160,6 +1224,7 @@ async function miniappWhoami(body) {
 async function handleSystemApi(src, method, sub, body) {
   if (sub === "/webhook" || sub === "/webhook/test") return handleWebhookApi(src, method, sub, body);
   if (sub === "/bot") return handleBotApi(src, method, body);
+  if (sub === "/settings") return handleSettingsApi(src, method, body);
   if (sub === "/miniapp/whoami" && method === "POST") return miniappWhoami(body);
   return null;
 }
@@ -1256,6 +1321,22 @@ async function createChannel({ id, name, icon, topic, members = [] }) {
     + `\nไม่อยากให้เด้ง: กดชื่อห้อง → การแจ้งเตือน → ปิดเสียง`);
   log("channel created", id, room_id);
   return { id, ...state.channels[id], invited: invite.length };
+}
+
+/** ห้องแจ้งเตือนที่ผู้ใช้อยู่ (ส่งให้ระบบต้นทางตรวจสิทธิ์ เช่น คนในห้องแจ้งลาดูใบลาได้) · แคช 5 นาที */
+const memberCache = new Map();   // roomId → { at, set }
+async function channelsOf(mxid) {
+  const out = [];
+  for (const [id, c] of Object.entries(state.channels)) {
+    let hit = memberCache.get(c.roomId);
+    if (!hit || Date.now() - hit.at > 300_000) {
+      const r = await mx("GET", `${roomPath(c.roomId)}/joined_members`).catch(() => null);
+      hit = { at: Date.now(), set: new Set(Object.keys(r?.joined ?? {})) };
+      memberCache.set(c.roomId, hit);
+    }
+    if (hit.set.has(mxid)) out.push(id);
+  }
+  return out;
 }
 
 async function channelMembers(roomId) {
@@ -1432,6 +1513,19 @@ async function handleAdmin(method, path, body) {
   const seg = path.split("/").filter(Boolean).slice(1);   // ตัด "admin"
   const [a, id, b] = seg;
   if (method === "GET" && a === "overview") return [200, overview()];
+  // ค่าตั้งของระบบ: GET /admin/settings → ทุกระบบที่ประกาศ schema · PATCH /admin/settings/<ระบบ> { values, by }
+  if (a === "settings") {
+    if (method === "GET" && !id) return [200, { systems: Object.entries(state.settings).filter(([, x]) => x.schema?.length).map(([src, x]) => ({ id: src, name: state.sources[src]?.name ?? src, schema: x.schema, values: settingsValues(src), updatedAt: x.updatedAt ?? null, updatedBy: x.updatedBy ?? null })) }];
+    if (method === "PATCH" && id && state.settings[id]?.schema) {
+      const { values, errors } = cleanSettings(state.settings[id].schema, body?.values ?? {});
+      if (errors.length) return [400, { error: errors.join(" · ") }];
+      Object.assign(state.settings[id], { values: { ...state.settings[id].values, ...values }, updatedAt: new Date().toISOString(), updatedBy: typeof body.by === "string" ? body.by.slice(0, 80) : null });
+      save();
+      log("ตั้งค่าระบบ:", id, Object.keys(values).join(","), body.by ? `โดย ${body.by}` : "");
+      return [200, { ok: true, values: settingsValues(id) }];
+    }
+    return [404, { error: "ไม่พบระบบนี้ หรือระบบยังไม่ได้ประกาศค่าที่ตั้งได้" }];
+  }
   if (method === "GET" && a === "people") return [200, { people: await people() }];
   if (method === "POST" && a === "announce") {
     const only = Array.isArray(body.only) ? body.only.map(String).filter((m) => /^@[^:]+:.+$/.test(m)).slice(0, 10) : undefined;
@@ -1604,7 +1698,7 @@ const server = http.createServer(async (req, res) => {
       const [code, out] = await handleAdmin(req.method, path, body);
       return reply(code, out);
     }
-    if (/^\/(webhook|bot|miniapp)/.test(path)) {
+    if (/^\/(webhook|bot|miniapp|settings)/.test(path)) {
       const src = sourceByKey(req.headers.authorization);
       if (!src) return reply(401, { error: "unauthorized" });
       const out = await handleSystemApi(src, req.method, path, body);
@@ -1703,7 +1797,7 @@ const publicApi = http.createServer(async (req, res) => {
     const src = sourceByKey(req.headers.authorization ?? url.searchParams.get("key"));
     if (!src) { log("api: key ไม่ถูกต้อง จาก", ip); return reply(401, { error: "key ไม่ถูกต้อง — ขอ key ได้จากผู้ดูแล (หน้าจัดการแจ้งเตือนใน AranKub)" }); }
     // webhook (ผลการกดปุ่มบนการ์ด) · คำสั่งบอท/เมนู · มินิแอป — ใช้ key ของระบบ
-    if (/^\/api\/notify\/(webhook|bot|miniapp)/.test(path)) {
+    if (/^\/api\/notify\/(webhook|bot|miniapp|settings)/.test(path)) {
       const body = ["PUT", "POST"].includes(req.method) ? await readBody().catch(() => null) : {};
       const out = await handleSystemApi(src, req.method, path.slice("/api/notify".length), body ?? {});
       return out ? reply(...out) : reply(404, { error: "ไม่พบ" });

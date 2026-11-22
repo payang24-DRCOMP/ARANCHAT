@@ -24,7 +24,6 @@ const PEOPLE = {
 };
 
 export function createQuery({ cfg, log, planDGet, TZ, PLAND, state = { links: {} } }) {
-  const DAY_START = cfg.WORK_START ?? "08:00", DAY_END = cfg.WORK_END ?? "16:30";
   const link = cfg.LINK_BOOKING ?? PLAND;
   const today = () => new Date().toLocaleDateString("en-CA", { timeZone: TZ });
   const addDays = (d, n) => new Date(Date.parse(`${d}T00:00:00Z`) + n * 86400_000).toISOString().slice(0, 10);
@@ -138,7 +137,7 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND, state = { links: {}
       all.add(n);
       byName.set(n, [...(byName.get(n) ?? []), r]);
     }
-    const dayFrom = mins(DAY_START), dayTo = mins(DAY_END);
+    const dayFrom = mins(cfg.WORK_START ?? "08:00"), dayTo = mins(cfg.WORK_END ?? "16:30");
     const sections = [];
     const when = p.from != null ? ` · ${fmt(p.from)}–${fmt(p.to)} น.` : "";
 
@@ -190,9 +189,13 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND, state = { links: {}
   // ── ใบลา / ไปราชการ ────────────────────────────────────────────────────────────────
   // ใบลา: เห็นเท่าที่ Plan-D ให้เห็น — แชทส่วนตัว: คนที่เชื่อม /pland แล้วและ Plan-D ให้เห็นใบลาหน่วยงาน (หน่วยตัวเอง) / ทั้งองค์กร
   //       ห้อง: เฉพาะห้องแจ้งลา (LEAVE_TO — คนในห้องเห็นใบลาทุกใบอยู่แล้ว) · ไปราชการ: ทุกคน (งานราชการ)
-  const leaveRooms = String(cfg.LEAVE_TO ?? "room:pland-leave").split(",").map((x) => x.trim().replace(/^room:/, "")).filter(Boolean);
   function leaveScope(body) {
-    if (body.room?.kind === "channel") return leaveRooms.includes(body.room.channel) ? { all: true } : { deny: "ดูใบลาได้ในห้องแจ้งลา หรือในแชทส่วนตัวกับ AranChat แจ้งเตือน (ต้องเชื่อม /pland)" };
+    const access = cfg.LEAVE_ACCESS ?? "plan-d";   // plan-d = ตามสิทธิ์ Plan-D + คนในห้องแจ้งลา · room = เฉพาะคนในห้องแจ้งลา · off = ปิด
+    if (access === "off") return { deny: "ผู้ดูแลปิดการดูใบลาจากแชทไว้" };
+    // คนในห้องแจ้งลาเห็นใบลาทุกใบอยู่แล้ว (ถามจากห้อง หรือจากแชทส่วนตัวก็ได้)
+    const rooms = (cfg.LEAVE_TO ?? "room:pland-leave").split(",").map((x) => x.trim().replace(/^room:/, "")).filter(Boolean);
+    if ((body.room?.kind === "channel" && rooms.includes(body.room.channel)) || body.user?.channels?.some((c) => rooms.includes(c))) return { all: true };
+    if (access === "room") return { deny: "ดูใบลาได้เฉพาะสมาชิกห้องแจ้งลา" };
     const l = state.links?.[body.user?.mxid];
     if (!l) return { deny: "ดูใบลาได้เมื่อเชื่อมบัญชี Plan-D แล้ว — พิมพ์ /pland", quick: [{ label: "🔗 เชื่อม Plan-D", text: "/pland" }] };
     if (l.leaveVisibility === "agency") return { all: true };
@@ -264,7 +267,7 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND, state = { links: {}
     ];
   }
 
-  const commands = [
+  const ALL_COMMANDS = [
     ...Object.values(KINDS).map((k) => ({
       command: k.cmd, description: `${k.label}: วันไหนใครจอง ว่างตอนไหน (Plan-D)`, usage: `/${k.cmd} [วันนี้|พรุ่งนี้|ศุกร์|25/11] [13:00-15:00]`,
     })),
@@ -272,17 +275,20 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND, state = { links: {}
     { command: "travel", description: "ไปราชการ: วันไหนใครไปไหน (Plan-D)", usage: "/travel [วันนี้|พรุ่งนี้|ศุกร์|25/11]" },
   ];
   // เมนูย่อย Plan-D (ปุ่มตอบด่วนได้ไม่เกิน 6) — แต่ละปุ่มเปิดการ์ดเลือกวัน (+ ปุ่มวันนี้/พรุ่งนี้)
-  const menu = [
-    { label: "🏢 ห้องประชุม", type: "text", text: "/room เลือกวัน" },
-    { label: "🚗 รถ", type: "text", text: "/car เลือกวัน" },
-    { label: "🏖️ ใบลา", type: "text", text: "/leave เลือกวัน" },
-    { label: "🚐 ไปราชการ", type: "text", text: "/travel เลือกวัน" },
+  const ALL_MENU = [
+    { cmd: "room", label: "🏢 ห้องประชุม", type: "text", text: "/room เลือกวัน" },
+    { cmd: "car", label: "🚗 รถ", type: "text", text: "/car เลือกวัน" },
+    { cmd: "leave", label: "🏖️ ใบลา", type: "text", text: "/leave เลือกวัน" },
+    { cmd: "travel", label: "🚐 ไปราชการ", type: "text", text: "/travel เลือกวัน" },
   ];
+  // ผู้ดูแลเลือกได้ว่าเปิดคำสั่งไหน (MENU_ITEMS = room,car,leave,travel · หน้า AranKub)
+  const on = (cmd) => String(cfg.MENU_ITEMS ?? "room,car,leave,travel").split(",").map((x) => x.trim()).includes(cmd) && !(cmd === "leave" && cfg.LEAVE_ACCESS === "off");
 
   /** คำสั่งจาก AranChat → คำตอบ (null = ไม่ใช่คำสั่งของเรา) */
   async function onCommand(body) {
     const k = Object.values(KINDS).find((x) => x.cmd === body.command) ?? Object.values(PEOPLE).find((x) => x.cmd === body.command);
     if (!k) return null;
+    if (!on(k.cmd)) return { reply: `ผู้ดูแลปิดคำสั่ง /${k.cmd} ไว้` };
     try { return k.path ? await answerPeople(k, body.args, body) : await answer(k, body.args); }
     catch (e) { log(`/${k.cmd} ขัดข้อง:`, e.message); return { reply: `อ่านข้อมูลจาก Plan-D ไม่ได้ตอนนี้ (${e.message}) — ลองใหม่อีกครั้ง หรือเปิดใน Plan-D` }; }
   }
@@ -291,6 +297,7 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND, state = { links: {}
   async function onAction(body) {
     const k = [...Object.values(KINDS), ...Object.values(PEOPLE)].find((x) => body.action === `pick-${x.cmd}`);
     if (!k) return null;
+    if (!on(k.cmd)) return { close: false, reply: `ผู้ดูแลปิดคำสั่ง /${k.cmd} ไว้` };
     if (!/^\d{4}-\d{2}-\d{2}$/.test(String(body.value ?? ""))) return { close: false, reply: "เลือกวันที่อีกครั้ง" };
     try {
       // คนกดอาจไม่ใช่คนพิมพ์คำสั่ง (การ์ดในห้อง) → ตรวจสิทธิ์ใบลาตามคนกด
@@ -301,5 +308,9 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND, state = { links: {}
     catch (e) { log(`เลือกวัน /${k.cmd} ขัดข้อง:`, e.message); return { close: false, reply: `อ่านข้อมูลจาก Plan-D ไม่ได้ตอนนี้ (${e.message})` }; }
   }
 
-  return { onCommand, onAction, commands, menu, parse, menuIcon: "📅" };
+  return {
+    onCommand, onAction, parse, menuIcon: "📅",
+    get commands() { return ALL_COMMANDS.filter((c) => on(c.command)); },
+    get menu() { return ALL_MENU.filter((m) => on(m.cmd)).map(({ cmd, ...m }) => m); },
+  };
 }

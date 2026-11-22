@@ -189,6 +189,18 @@ X-AranChat-Signature: base64(HMAC-SHA256(secret, body ดิบ))
   "quick_replies": [{ "label": "วันนี้", "text": "/appt วันนี้" }] }
 // webhook ได้ { "type": "action", "action": "pick-appt", "value": "2026-11-25", "user": {…}, "room": {…} } → ตอบ
 { "close": false, "card": { "title": "นัดวันที่ 25 พ.ย.", "sections": [{ "type": "table", "columns": […], "rows": […] }] } }</code></pre>
+    <h3>หน้าตั้งค่าของระบบใน AranKub</h3>
+    <p>ประกาศช่องที่ผู้ดูแลแก้ได้ → AranKub (ตั้งค่า → การแจ้งเตือน AranChat → แท็บ <b>ตั้งค่าระบบ</b>) สร้างฟอร์มให้ → ระบบอ่านค่ากลับ (แนะนำทุก 1 นาที) · ตัวอย่างจริง: <code>pland-bridge/settings.mjs</code></p>
+    <pre><code>curl -X PUT https://__CHAT_HOST__/api/notify/settings -H "Authorization: Bearer $ARANCHAT_KEY" -H "Content-Type: application/json" -d '{
+  "schema": [
+    { "group": "สรุปประจำวัน", "key": "daily_at", "type": "time", "label": "เวลาส่ง", "default": "09:00" },
+    { "group": "สรุปประจำวัน", "key": "daily_days", "type": "days", "label": "วันที่ส่ง", "default": [1,2,3,4,5] },
+    { "key": "wards", "type": "multi", "label": "หอผู้ป่วย", "options": [{ "value": "icu", "label": "ICU" }, "ER"], "default": ["icu"] },
+    { "key": "note", "type": "text", "label": "ข้อความท้ายการ์ด", "help": "แสดงใต้การ์ดทุกใบ" }
+  ] }'
+curl https://__CHAT_HOST__/api/notify/settings -H "Authorization: Bearer $ARANCHAT_KEY"
+# → { "values": { "daily_at": "09:00", "daily_days": [1,2,3,4,5], … }, "updatedAt": "…" }</code></pre>
+    <p>ชนิดช่อง: <code>text</code> <code>textarea</code> <code>list</code> (บรรทัดละค่า) <code>bool</code> <code>number</code> <code>time</code> <code>select</code> <code>multi</code> <code>days</code> (0=อาทิตย์ … 6=เสาร์) · ประกาศซ้ำได้ ค่าที่ผู้ดูแลตั้งไว้ไม่หาย</p>
     <h3>webhook ได้รับ</h3>
     <pre><code>{ "type": "command", "command": "lab", "args": "0012345",
   "user": { "mxid": "…", "name": "…", "arankub": "12" },
