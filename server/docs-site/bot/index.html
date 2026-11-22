@@ -146,7 +146,8 @@ X-AranChat-Signature: base64(HMAC-SHA256(secret, body ดิบ))
 
 { "type": "action",                 // action | ack | command | test
   "event": "leave.request", "id": "LV-2026-0458",   // event + id ที่คุณส่งมาตอนสร้างการ์ด
-  "action": "approve", "label": "อนุมัติ", "value": null,   // value = ค่าจากปุ่ม datetime
+  "action": "approve", "label": "อนุมัติ", "value": null,   // value = ค่าจากปุ่ม datetime / คำตอบของปุ่ม ask
+  "room": { "id": "!…", "kind": "dm", "channel": null },   // ห้องที่กด (ใช้ตรวจสิทธิ์ตามห้อง)
   "user": { "mxid": "@somchai:__SERVER__", "name": "สมชาย ใจดี", "arankub": "12" },
   "at": "2026-11-16T04:34:03.691Z", "webhookEventId": "c1286de0-…", "timestamp": 1794803245033 }</code></pre>
     <h3>ตอบกลับ (ภายใน 10 วินาที · ไม่บังคับ)</h3>
@@ -170,12 +171,24 @@ X-AranChat-Signature: base64(HMAC-SHA256(secret, body ดิบ))
     { "command": "lab", "description": "ดูผลแล็บล่าสุด", "usage": "/lab &lt;HN&gt;" },
     { "command": "bed", "description": "เตียงว่างตอนนี้" }
   ],
+  "menu_icon": "🏥",
   "menu": [
     { "label": "🧪 ผลแล็บ", "type": "text", "text": "/lab " },
     { "label": "🛏 เตียงว่าง", "type": "text", "text": "/bed" },
-    { "label": "📋 แบบฟอร์ม", "type": "app", "url": "https://your-system.example/form" }
+    { "label": "📅 นัดตามวัน", "type": "text", "text": "/appt เลือกวัน" }
   ] }'</code></pre>
-    <p>คำสั่งพื้นฐาน <code>/help</code> <code>/settings</code> มีให้แล้ว · ชื่อคำสั่งซ้ำกับระบบอื่นไม่ได้ · เมนูรวมทุกระบบสูงสุด 8 ปุ่ม · <code>text</code> ลงท้ายด้วยเว้นวรรค = ใส่ลงช่องพิมพ์ให้พิมพ์ต่อ</p>
+    <p>คำสั่งพื้นฐาน <code>/help</code> <code>/settings</code> <code>/menu</code> มีให้แล้ว · ชื่อคำสั่งซ้ำกับระบบอื่นไม่ได้ · <code>text</code> ลงท้ายด้วยเว้นวรรค = ใส่ลงช่องพิมพ์ให้พิมพ์ต่อ</p>
+    <h3>เมนูแยกตามระบบ</h3>
+    <p>เมนูหลักแสดงปุ่มละระบบ: ระบบที่มีเมนูหลายรายการ → ปุ่ม <b>“<code>menu_icon</code> ชื่อระบบ ▸”</b> กดแล้วบอทตอบเมนูย่อยของระบบนั้นเป็นปุ่มตอบด่วน (สูงสุด 6 รายการ — ปุ่มแบบ <code>text</code> เท่านั้น) · มีรายการเดียว → แสดงรายการนั้นตรงๆ · ผู้ใช้พิมพ์ <code>/menu ชื่อระบบ</code> เองก็ได้</p>
+    <h3>ให้ผู้ใช้เลือกวันจากปฏิทิน</h3>
+    <p>ตอบคำสั่งด้วยการ์ดที่มีปุ่ม <code>datetime</code> (<code>mode: "date"</code>) → ผู้ใช้กดแล้วปฏิทินขึ้นในแอป → webhook ได้ <code>{"type":"action","action":"&lt;id ปุ่ม&gt;","value":"2026-11-25", "room":{…}}</code>
+      → ตอบ <code>{"close": false, "card": {…}}</code> = ส่งการ์ดผลลัพธ์ในห้องเดียวกัน และการ์ดเดิมไม่ปิด (เลือกวันอื่นซ้ำได้) · ตัวอย่างจริง: Plan-D <code>/room เลือกวัน</code> (<code>pland-bridge/query.mjs</code>)</p>
+    <pre><code>// ตอบคำสั่ง /appt เลือกวัน
+{ "card": { "title": "📅 นัดตามวัน", "text": "เลือกวันจากปฏิทิน",
+    "buttons": [{ "type": "datetime", "id": "pick-appt", "label": "📅 เลือกวันที่", "mode": "date", "min": "2026-11-22" }] },
+  "quick_replies": [{ "label": "วันนี้", "text": "/appt วันนี้" }] }
+// webhook ได้ { "type": "action", "action": "pick-appt", "value": "2026-11-25", "user": {…}, "room": {…} } → ตอบ
+{ "close": false, "card": { "title": "นัดวันที่ 25 พ.ย.", "sections": [{ "type": "table", "columns": […], "rows": […] }] } }</code></pre>
     <h3>webhook ได้รับ</h3>
     <pre><code>{ "type": "command", "command": "lab", "args": "0012345",
   "user": { "mxid": "…", "name": "…", "arankub": "12" },

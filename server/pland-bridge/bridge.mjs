@@ -329,7 +329,7 @@ function save() {
 }
 
 // ถามจากแชท (query.mjs): /room /car — ห้องประชุม/รถ วันไหนใครจอง ว่างตอนไหน
-const query = createQuery({ cfg, log, planDGet, TZ, PLAND });
+const query = createQuery({ cfg, log, planDGet, TZ, PLAND, state });
 // แจ้งเตือนรายบุคคล (personal.mjs) — ผู้ใช้เชื่อมบัญชีด้วย /pland
 const personal = createPersonal({ cfg, state, save, log, PLAND, API, ARANCHAT, KEY, DRY, send, fieldsFor, CATS, ACTIONS, extraBot: query,
   onLinked: (mxid, record) => units.invite(record.orgUnit, [mxid]).catch((e) => log("ชวนเข้าห้องกลุ่มงานไม่ได้:", e.message)) });

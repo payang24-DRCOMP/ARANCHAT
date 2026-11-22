@@ -909,6 +909,7 @@ async function decide(roomId, ev, ref, button, value, answer) {
     if (state.webhooks[a.src]?.url) {
       const r = await hookCall(a.src, {
         type: "action", event: a.ev.split(":").slice(1).join(":"), id: a.extId, ref, action: button.id, label: button.label, value, user, at,
+        room: { id: roomId, kind: state.dm[ev.sender] === roomId ? "dm" : "channel", channel: Object.entries(state.channels).find(([, c]) => c.roomId === roomId)?.[0] ?? null },
       });
       if (!r.ok) {
         log("action webhook:", a.src, ref, r.status, r.error ?? "");

@@ -17,7 +17,13 @@ const WAITING = new Set(["pending", "submitted"]);
 const WEEKDAYS = { อาทิตย์: 0, จันทร์: 1, อังคาร: 2, พุธ: 3, พฤหัส: 4, พฤหัสบดี: 4, ศุกร์: 5, เสาร์: 6 };
 const MONTHS = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
 
-export function createQuery({ cfg, log, planDGet, TZ, PLAND }) {
+// ใบลา / ไปราชการ (คนละ API กับการจอง)
+const PEOPLE = {
+  leave: { label: "ใบลา", icon: "🏖️", cmd: "leave", path: "/leave-requests" },
+  travel: { label: "ไปราชการ", icon: "🚐", cmd: "travel", path: "/travel-requests" },
+};
+
+export function createQuery({ cfg, log, planDGet, TZ, PLAND, state = { links: {} } }) {
   const DAY_START = cfg.WORK_START ?? "08:00", DAY_END = cfg.WORK_END ?? "16:30";
   const link = cfg.LINK_BOOKING ?? PLAND;
   const today = () => new Date().toLocaleDateString("en-CA", { timeZone: TZ });
@@ -105,7 +111,7 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND }) {
 
   /** ปุ่มเลือกวันที่ (ปฏิทินในแอป) — กดแล้ว AranChat ส่ง value=YYYY-MM-DD มาที่ onAction */
   const picker = (k, label = "📅 เลือกวันที่") => ({
-    label, type: "datetime", id: `pick-${k.cmd}`, mode: "date", min: today(), max: addDays(today(), 180), initial: today(),
+    label, type: "datetime", id: `pick-${k.cmd}`, mode: "date", min: addDays(today(), k.path ? -30 : 0), max: addDays(today(), 180), initial: today(),
   });
 
   /** /room เลือกวัน → การ์ดเล็กมีปุ่มปฏิทิน */
@@ -113,7 +119,7 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND }) {
     return {
       card: {
         title: `${k.icon} เช็ค${k.label}ตามวัน`, level: "info",
-        text: `กด "เลือกวันที่" แล้วเลือกวันจากปฏิทิน — จะได้ตารางการจอง${k.label}และช่วงที่ยังว่างของวันนั้น\nหรือพิมพ์เอง เช่น /${k.cmd} 25/11 13:00-15:00`,
+        text: `กด "เลือกวันที่" แล้วเลือกวันจากปฏิทิน — จะได้${k.path ? `รายชื่อ${k.label}ของวันนั้น` : `ตารางการจอง${k.label}และช่วงที่ยังว่างของวันนั้น`}\nหรือพิมพ์เอง เช่น /${k.cmd} 25/11${k.path ? "" : " 13:00-15:00"}`,
         buttons: [picker(k)],
       },
       quick_replies: quick(k),
@@ -181,6 +187,65 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND }) {
     };
   }
 
+  // ── ใบลา / ไปราชการ ────────────────────────────────────────────────────────────────
+  // ใบลา: เห็นเท่าที่ Plan-D ให้เห็น — แชทส่วนตัว: คนที่เชื่อม /pland แล้วและ Plan-D ให้เห็นใบลาหน่วยงาน (หน่วยตัวเอง) / ทั้งองค์กร
+  //       ห้อง: เฉพาะห้องแจ้งลา (LEAVE_TO — คนในห้องเห็นใบลาทุกใบอยู่แล้ว) · ไปราชการ: ทุกคน (งานราชการ)
+  const leaveRooms = String(cfg.LEAVE_TO ?? "room:pland-leave").split(",").map((x) => x.trim().replace(/^room:/, "")).filter(Boolean);
+  function leaveScope(body) {
+    if (body.room?.kind === "channel") return leaveRooms.includes(body.room.channel) ? { all: true } : { deny: "ดูใบลาได้ในห้องแจ้งลา หรือในแชทส่วนตัวกับ AranChat แจ้งเตือน (ต้องเชื่อม /pland)" };
+    const l = state.links?.[body.user?.mxid];
+    if (!l) return { deny: "ดูใบลาได้เมื่อเชื่อมบัญชี Plan-D แล้ว — พิมพ์ /pland", quick: [{ label: "🔗 เชื่อม Plan-D", text: "/pland" }] };
+    if (l.leaveVisibility === "agency") return { all: true };
+    if (l.leaveVisibility === "unit" && l.orgUnit) return { unit: l.orgUnit };
+    return { deny: "บัญชี Plan-D ของคุณไม่ได้เห็นใบลาของหน่วยงาน (ดูได้เฉพาะหัวหน้า/งานบุคคล) — ได้สิทธิ์แล้ว? พิมพ์ /pland เชื่อม" };
+  }
+
+  async function answerPeople(k, args, body) {
+    if (/^(เลือกวัน|เลือก|pick)$/.test(String(args ?? "").trim())) return pickCard(k);
+    const scope = k.cmd === "leave" ? leaveScope(body) : { all: true };
+    if (scope.deny) return { reply: scope.deny, quick_replies: scope.quick };
+    const p = parse(args);
+    if (p.error) return { reply: `${p.error}\nตัวอย่าง: /${k.cmd} พรุ่งนี้ · /${k.cmd} ศุกร์ · /${k.cmd} 25/11`, quick_replies: quick(k) };
+    const rows = [];
+    for (let page = 1; page <= 5; page++) {
+      const j = await planDGet(k.path, { from: p.date, to: p.date, pageSize: "50", page: String(page) });
+      if (!j) throw new Error("ยังไม่ได้ตั้งบัญชีบริการ Plan-D");
+      rows.push(...(j.items ?? []));
+      if (page * (j.pageSize ?? 50) >= (j.total ?? 0)) break;
+    }
+    const sd = (d) => new Date(`${String(d).slice(0, 10)}T00:00:00Z`).toLocaleDateString("th-TH-u-ca-buddhist", { timeZone: "UTC", day: "numeric", month: "short" });
+    const range = (r) => (r.startDate === r.endDate ? "วันเดียว" : `${sd(r.startDate)} – ${sd(r.endDate)}`);
+    let live = rows.filter((r) => LIVE.has(r.status) && (!scope.unit || r.requesterOrgUnitName === scope.unit));
+    const seen = new Set();
+    live = live.filter((r) => { const key = [r.requesterName, r.startDate, r.endDate, r.leaveTypeName ?? r.destination].join("|"); return !seen.has(key) && seen.add(key); });
+    const showType = (cfg.LEAVE_SHOW_TYPE ?? "on") === "on";
+    const name = (r) => String(r.requesterName ?? "-").replace(/\s+/g, " ").trim() + (WAITING.has(r.status) ? " ⏳" : "");
+    let columns, table;
+    if (k.cmd === "leave") {
+      live.sort((a, b) => String(a.requesterOrgUnitName).localeCompare(String(b.requesterOrgUnitName), "th") || String(a.requesterName).localeCompare(String(b.requesterName), "th"));
+      columns = showType ? ["ผู้ลา", "หน่วยงาน", "ประเภท", "ช่วงลา"] : ["ผู้ลา", "หน่วยงาน", "ช่วงลา"];
+      table = live.map((r) => [name(r), r.requesterOrgUnitName ?? "-", ...(showType ? [r.leaveTypeName ?? "-"] : []), range(r)]);
+    } else {
+      columns = ["ผู้ขอ", "สถานที่", "เรื่อง", "ช่วงเวลา"];
+      table = live.map((r) => [name(r) + (r.companionCount ? ` +${r.companionCount}` : ""), r.destination ?? "-", r.purpose ?? "",
+        r.startDate === r.endDate ? (r.startTime ? `${r.startTime}${r.endTime ? `–${r.endTime}` : ""}` : "วันเดียว") : range(r)]);
+    }
+    const sections = [];
+    for (let i = 0; i < table.length && sections.length < 4; i += 20) sections.push({ type: "table", columns, rows: table.slice(i, i + 20) });
+    if (table.length > 80) sections.push({ type: "text", text: `และอีก ${table.length - 80} รายการ — ดูใน Plan-D` });
+    if (!table.length) sections.push({ type: "text", text: `ไม่มี${k.label}ในวันนี้` });
+    if (live.some((r) => WAITING.has(r.status))) sections.push({ type: "text", text: "⏳ = ยังรออนุมัติ" });
+    if (scope.unit) sections.push({ type: "text", text: `เฉพาะ ${scope.unit} (ตามสิทธิ์ที่เห็นใน Plan-D)` });
+    const unit = k.cmd === "leave" ? "คน" : "เรื่อง";
+    return {
+      card: {
+        title: `${k.icon} ${k.label} · ${thaiDay(p.date)} · ${table.length} ${unit}`, level: "info", sections, link,
+        buttons: [picker(k, "📅 เลือกวันอื่น"), { label: "เปิดใน Plan-D", type: "link", url: k.cmd === "leave" ? (cfg.LINK_LEAVE ?? `${PLAND}/hr/leave`) : (cfg.LINK_TRAVEL ?? PLAND) }],
+      },
+      quick_replies: quick(k, p.date),
+    };
+  }
+
   function slot(r, date) {
     const [s, e] = span(r, date);
     return `${fmt(s)}–${e >= 24 * 60 ? "ข้ามวัน" : fmt(e)}`;
@@ -195,34 +260,44 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND }) {
       ...(date && date >= addDays(t, 1) ? [{ label: "วันถัดไป", text: `/${k.cmd} ${next}` }] : []),
       { label: "📅 เลือกวัน", text: `/${k.cmd} เลือกวัน` },
       { label: "พิมพ์วัน/เวลา…", text: `/${k.cmd} `, prefill: true },
-      { label: k.cmd === "room" ? "🚗 รถ" : "🏢 ห้องประชุม", text: k.cmd === "room" ? "/car วันนี้" : "/room วันนี้" },
+      { label: "📅 Plan-D ▸", text: "/menu pland" },
     ];
   }
 
-  const commands = Object.values(KINDS).map((k) => ({
-    command: k.cmd, description: `${k.label}: วันไหนใครจอง ว่างตอนไหน (Plan-D)`, usage: `/${k.cmd} [วันนี้|พรุ่งนี้|ศุกร์|25/11] [13:00-15:00]`,
-  }));
+  const commands = [
+    ...Object.values(KINDS).map((k) => ({
+      command: k.cmd, description: `${k.label}: วันไหนใครจอง ว่างตอนไหน (Plan-D)`, usage: `/${k.cmd} [วันนี้|พรุ่งนี้|ศุกร์|25/11] [13:00-15:00]`,
+    })),
+    { command: "leave", description: "ใบลา: วันไหนใครลา (ตามสิทธิ์ใน Plan-D)", usage: "/leave [วันนี้|พรุ่งนี้|ศุกร์|25/11]" },
+    { command: "travel", description: "ไปราชการ: วันไหนใครไปไหน (Plan-D)", usage: "/travel [วันนี้|พรุ่งนี้|ศุกร์|25/11]" },
+  ];
+  // เมนูย่อย Plan-D (ปุ่มตอบด่วนได้ไม่เกิน 6) — แต่ละปุ่มเปิดการ์ดเลือกวัน (+ ปุ่มวันนี้/พรุ่งนี้)
   const menu = [
-    { label: "🏢 ห้องประชุมวันนี้", type: "text", text: "/room วันนี้" },
-    { label: "📅 เช็คห้องประชุมตามวัน", type: "text", text: "/room เลือกวัน" },
-    { label: "🚗 รถวันนี้", type: "text", text: "/car วันนี้" },
-    { label: "📅 เช็ครถตามวัน", type: "text", text: "/car เลือกวัน" },
+    { label: "🏢 ห้องประชุม", type: "text", text: "/room เลือกวัน" },
+    { label: "🚗 รถ", type: "text", text: "/car เลือกวัน" },
+    { label: "🏖️ ใบลา", type: "text", text: "/leave เลือกวัน" },
+    { label: "🚐 ไปราชการ", type: "text", text: "/travel เลือกวัน" },
   ];
 
   /** คำสั่งจาก AranChat → คำตอบ (null = ไม่ใช่คำสั่งของเรา) */
   async function onCommand(body) {
-    const k = Object.values(KINDS).find((x) => x.cmd === body.command);
+    const k = Object.values(KINDS).find((x) => x.cmd === body.command) ?? Object.values(PEOPLE).find((x) => x.cmd === body.command);
     if (!k) return null;
-    try { return await answer(k, body.args); }
+    try { return k.path ? await answerPeople(k, body.args, body) : await answer(k, body.args); }
     catch (e) { log(`/${k.cmd} ขัดข้อง:`, e.message); return { reply: `อ่านข้อมูลจาก Plan-D ไม่ได้ตอนนี้ (${e.message}) — ลองใหม่อีกครั้ง หรือเปิดใน Plan-D` }; }
   }
 
   /** กดเลือกวันที่บนการ์ด → การ์ดตารางของวันนั้น (การ์ดเดิมไม่ปิด เลือกวันอื่นซ้ำได้) */
   async function onAction(body) {
-    const k = Object.values(KINDS).find((x) => body.action === `pick-${x.cmd}`);
+    const k = [...Object.values(KINDS), ...Object.values(PEOPLE)].find((x) => body.action === `pick-${x.cmd}`);
     if (!k) return null;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(String(body.value ?? ""))) return { close: false, reply: "เลือกวันที่อีกครั้ง" };
-    try { const r = await answer(k, body.value); return { close: false, card: { ...r.card, quick_replies: r.quick_replies } }; }
+    try {
+      // คนกดอาจไม่ใช่คนพิมพ์คำสั่ง (การ์ดในห้อง) → ตรวจสิทธิ์ใบลาตามคนกด
+      const r = k.path ? await answerPeople(k, body.value, { user: body.user, room: body.room ?? { kind: body.room_kind, channel: body.channel } }) : await answer(k, body.value);
+      if (!r.card) return { close: false, reply: r.reply };
+      return { close: false, card: { ...r.card, quick_replies: r.quick_replies } };
+    }
     catch (e) { log(`เลือกวัน /${k.cmd} ขัดข้อง:`, e.message); return { close: false, reply: `อ่านข้อมูลจาก Plan-D ไม่ได้ตอนนี้ (${e.message})` }; }
   }
 
