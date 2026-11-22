@@ -108,6 +108,9 @@ final class AranBotBarModel {
 
     private func load(server: String) async {
         guard case let .success(member) = await roomProxy.getMember(userID: botUserID), member.membership == .join else { return }
+        // แถบเมนู/ปุ่มตอบด่วนเฉพาะแชทส่วนตัวกับบอท (สมาชิก 2 คน) — ห้องแจ้งเตือนกลุ่มมีแค่รายงาน
+        // (คำสั่งที่พิมพ์ในห้องกลุ่ม บอทลบออกแล้วตอบในแชทส่วนตัว — ฝั่ง server)
+        guard roomProxy.infoPublisher.value.joinedMembersCount <= 2 else { return }
         isBotRoom = true
         cancellable = roomProxy.timeline.timelineItemProvider.updatePublisher
             .receive(on: DispatchQueue.main)

@@ -85,6 +85,12 @@ export function isBotRoom(room: Room | null | undefined): boolean {
     return !!bot && !!room && room.getMember(bot)?.membership === KnownMembership.Join;
 }
 
+/** แชทส่วนตัวกับบอท (สมาชิก 2 คน: ผู้ใช้ + บอท) — แถบเมนู/ปุ่มตอบด่วนแสดงเฉพาะห้องนี้
+ *  ห้องแจ้งเตือนแบบกลุ่มมีแค่รายงาน · คำสั่งที่พิมพ์ในห้องกลุ่ม บอทลบออกแล้วตอบในแชทส่วนตัว */
+export function isBotDm(room: Room | null | undefined): boolean {
+    return isBotRoom(room) && room!.getJoinedMemberCount() <= 2;
+}
+
 /** "/lab 0012345" เป็นคำสั่งของบอทไหม (ห้องบอทเท่านั้น) — ใช่ = ส่งเป็นข้อความธรรมดาให้บอท ไม่ใช่คำสั่งของแอป */
 export function isBotCommandText(room: Room | null | undefined, text: string): boolean {
     if (!isBotRoom(room)) return false;

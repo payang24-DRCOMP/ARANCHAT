@@ -109,6 +109,9 @@ class AranBot(
 
     suspend fun isBotRoom(): Boolean = room.isAranBotRoom()
 
+    /** แชทส่วนตัวกับบอท (สมาชิก 2 คน) — แถบเมนู/ปุ่มตอบด่วนแสดงเฉพาะห้องนี้ (ห้องแจ้งเตือนกลุ่มมีแค่รายงาน) */
+    suspend fun isBotDm(): Boolean = isBotRoom() && room.info().joinedMembersCount <= 2
+
     /** รายการคำสั่ง/เมนู (แคช 60 วินาที) */
     suspend fun info(): AranBotInfo? {
         AranBotCache.info?.takeIf { System.currentTimeMillis() - AranBotCache.loadedAt < 60_000 }?.let { return it }
@@ -197,7 +200,7 @@ fun AranBotBar(
     var info by remember { mutableStateOf(AranBotCache.info) }
     var open by rememberSaveable { mutableStateOf(true) }
     LaunchedEffect(bot) {
-        isBotRoom = bot.isBotRoom()
+        isBotRoom = bot.isBotDm()
         if (isBotRoom) info = bot.info()
     }
     if (!isBotRoom) return

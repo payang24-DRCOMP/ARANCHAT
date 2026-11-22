@@ -18,7 +18,7 @@ import {
     type BotInfo,
     type BotMenuItem,
     cachedBotInfo,
-    isBotRoom,
+    isBotDm,
     latestQuickReplies,
     loadBotInfo,
     miniAppUrl,
@@ -42,7 +42,7 @@ export function AranBotBar({ room }: { room: Room }): JSX.Element | null {
     const [, refresh] = useReducer((n: number) => n + 1, 0);
     const [info, setInfo] = useState<BotInfo | null>(cachedBotInfo());
     const [open, setOpen] = useState(readMenuOpen);
-    const botRoom = isBotRoom(room);
+    const botRoom = isBotDm(room);   // เมนูเฉพาะแชทส่วนตัวกับบอท
 
     useEffect(() => {
         if (!botRoom) return;
