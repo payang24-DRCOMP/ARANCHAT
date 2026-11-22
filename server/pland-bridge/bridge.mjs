@@ -556,7 +556,7 @@ if (process.argv.includes("--daily")) {
   const i = process.argv.indexOf("--date");
   const date = i > 0 ? process.argv[i + 1] : daily.today();
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) { console.error("--date ต้องเป็น YYYY-MM-DD"); process.exit(1); }
-  const n = await daily.run(date, { dry: !process.argv.includes("--send") });
+  const n = await daily.run(date, { dry: !process.argv.includes("--send"), test: true });
   log(`สรุปวันที่ ${date}: ${n} การ์ด${process.argv.includes("--send") ? " (ส่งแล้ว)" : " (พิมพ์อย่างเดียว · --send = ส่งจริง)"}`);
   process.exit(0);
 }

@@ -128,9 +128,11 @@ export function createDaily({ cfg, state, save, log, planDGet, send, CATS, TZ })
     };
   }
 
-  async function run(date = today(), { dry = false } = {}) {
+  async function run(date = today(), { dry = false, test = false } = {}) {
     const list = await cards(date);
     for (const msg of list) {
+      // ส่งทดสอบ: id ไม่ซ้ำกับรอบจริง (AranChat กันซ้ำด้วย id — ไม่งั้นรอบ 09:00 ของวันนั้นจะไม่ถูกส่ง)
+      if (test) { msg.id += `:test-${Date.now()}`; msg.title = `[ทดสอบ] ${msg.title}`; }
       if (dry) { console.log(JSON.stringify(msg, null, 1)); continue; }
       await send(msg).then(() => log("ส่งสรุปวันนี้:", msg.event, msg.title), (e) => log("ส่งสรุปวันนี้ไม่ได้:", msg.event, e.message));
     }
