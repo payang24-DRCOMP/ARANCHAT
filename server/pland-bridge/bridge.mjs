@@ -25,6 +25,7 @@ import http from "node:http";
 import { createPersonal, nameKey } from "./personal.mjs";
 import { loadRoutes, routeOf, KNOWN_EVENTS } from "./routes.mjs";
 import { createUnits } from "./units.mjs";
+import { createDaily } from "./daily.mjs";
 
 const HERE = new URL(".", import.meta.url).pathname;
 const readEnv = (file) => {
@@ -303,6 +304,7 @@ async function describe() {
     events[type] = { label, note, sql: "" };
     if (routeOf(ROUTES, cat, action).unit) events[`unit.${type}`] = { label: `${label} (ห้องกลุ่มงาน)`, note, sql: "" };
   }
+  Object.assign(events, daily.events());
   const res = await fetch(`${ARANCHAT}/describe`, {
     method: "POST", headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" }, body: JSON.stringify({ events }),
     signal: AbortSignal.timeout(15_000),
@@ -548,6 +550,17 @@ async function listen({ keep = false } = {}) {
   }
 }
 
+// สรุปประจำวัน (daily.mjs): ทุกเช้าส่งการ์ด "วันนี้" ห้องประชุม / รถ / ลา / ไปราชการ / ประชุม
+const daily = createDaily({ cfg, state, save, log, planDGet, send, CATS, TZ });
+if (process.argv.includes("--daily")) {
+  const i = process.argv.indexOf("--date");
+  const date = i > 0 ? process.argv[i + 1] : daily.today();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) { console.error("--date ต้องเป็น YYYY-MM-DD"); process.exit(1); }
+  const n = await daily.run(date, { dry: !process.argv.includes("--send") });
+  log(`สรุปวันที่ ${date}: ${n} การ์ด${process.argv.includes("--send") ? " (ส่งแล้ว)" : " (พิมพ์อย่างเดียว · --send = ส่งจริง)"}`);
+  process.exit(0);
+}
+
 // ── ตัวอย่างการ์ด: node bridge.mjs --sample (พิมพ์) · --sample --send (ส่งเข้าห้องจริง ไว้ดูหน้าตา/เช็กว่าห้องพร้อม) ──────
 if (process.argv.includes("--sample")) {
   const at = new Date().toISOString();
@@ -589,6 +602,7 @@ serveHook();
 if (LISTEN) listen();
 else {
   serve();
+  daily.start();
   // ระหว่างที่ Plan-D ยังส่งเข้าปลายทาง webhook ไม่ได้: ดึงเหตุการณ์เองด้วย webhook listen (กันซ้ำกับทางปกติด้วย id เหตุการณ์)
   if (cfg.PLAND_PULL === "on") listen({ keep: true });
 }
