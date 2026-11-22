@@ -4,7 +4,7 @@
 # ใช้: ./27-test-cards.sh @payang:arankub.com          ส่งครบ 4 ใบ
 #      ./27-test-cards.sh @payang:arankub.com lab      เฉพาะใบค่าวิกฤตแล็บ (lab | approve | refer | report)
 #
-# การ์ดเข้าแชท "AranChat แจ้งเตือน" ของคนนั้น · เรื่อง "ทดสอบการ์ด" (ปิดรับได้ด้วย "ปิด N" เหมือนเรื่องอื่น)
+# การ์ดเข้าแชท "ARANKUB AI" ของคนนั้น · เรื่อง "ทดสอบการ์ด" (ปิดรับได้ด้วย "ปิด N" เหมือนเรื่องอื่น)
 # ค่าวิกฤตทดสอบ = เรื่องด่วน: ไม่กดรับเคสภายใน 15 นาทีจะมีข้อความเตือนซ้ำ (ทดสอบระบบเตือนได้ด้วย)
 set -euo pipefail
 ESS=$(cd "$(dirname "$0")/.." && pwd)
@@ -53,4 +53,4 @@ if [[ $ONLY == all || $ONLY == report ]]; then
     "sections":[{"type":"stats","items":[{"label":"OPD","value":"412"},{"label":"ER","value":"57"},{"label":"Admit","value":"18","tone":"high"}]}],
     "quick_replies":[{"label":"❓ คำสั่งทั้งหมด","text":"/help"},{"label":"⚙️ ตั้งค่า","text":"/settings"}]}'
 fi
-echo "เปิดแชท \"AranChat แจ้งเตือน\" ในแอปเพื่อดูการ์ด"
+echo "เปิดแชท \"ARANKUB AI\" ในแอปเพื่อดูการ์ด"

@@ -1,6 +1,6 @@
 // แจ้งเตือนรายบุคคล: ผู้ใช้ AranChat เชื่อมบัญชี Plan-D ของตัวเองครั้งเดียว แล้วได้แจ้งเตือนเรื่องของตัวเองในแชทส่วนตัวกับบอท
 //
-// เชื่อมบัญชี: พิมพ์ /pland ในแชทกับ "AranChat แจ้งเตือน" → ปุ่ม "เชื่อมบัญชี Plan-D" (ลิงก์ใช้ครั้งเดียว 10 นาที)
+// เชื่อมบัญชี: พิมพ์ /pland ในแชทกับ "ARANKUB AI" → ปุ่ม "เชื่อมบัญชี Plan-D" (ลิงก์ใช้ครั้งเดียว 10 นาที)
 //   → https://<chat>/api/pland/link/<token> → หน้าเข้าสู่ระบบของ Plan-D (OAuth + PKCE) → /api/pland/callback
 //   → อ่าน /me + ทะเบียนบุคลากรของตัวเอง → จำ "mxid ↔ บุคลากร Plan-D" · token ของผู้ใช้ไม่เก็บ (เพิกถอนทันที)
 //
@@ -196,7 +196,7 @@ export function createPersonal({ cfg, state, save, log, PLAND, API, ARANCHAT, KE
   function onCommand(body) {
     const mxid = body.user?.mxid;
     if (!mxid) return { reply: "ไม่ทราบผู้ใช้" };
-    if (body.room?.kind !== "dm") return { reply: "พิมพ์ /pland ในแชทส่วนตัวกับ AranChat แจ้งเตือน (ลิงก์เชื่อมบัญชีเป็นของคุณคนเดียว)" };
+    if (body.room?.kind !== "dm") return { reply: "พิมพ์ /pland ในแชทส่วนตัวกับ ARANKUB AI (ลิงก์เชื่อมบัญชีเป็นของคุณคนเดียว)" };
     if (!CLIENT_ID) return { reply: "ระบบยังไม่ได้ตั้งค่าการเชื่อมบัญชี Plan-D (PLAND_CLIENT_ID) — แจ้งผู้ดูแลระบบ" };
     const args = String(body.args ?? "").trim().split(/\s+/).filter(Boolean);
     const l = state.links[mxid];
@@ -314,7 +314,7 @@ export function createPersonal({ cfg, state, save, log, PLAND, API, ARANCHAT, KE
   async function startLink(res, token) {
     prune();
     const t = state.linkTokens[token];
-    if (!t) return page(res, 410, "ลิงก์หมดอายุหรือใช้ไปแล้ว", "กลับไปที่แอป AranChat แล้วพิมพ์ <b>/pland</b> ในแชทกับ AranChat แจ้งเตือน เพื่อขอลิงก์ใหม่");
+    if (!t) return page(res, 410, "ลิงก์หมดอายุหรือใช้ไปแล้ว", "กลับไปที่แอป AranChat แล้วพิมพ์ <b>/pland</b> ในแชทกับ ARANKUB AI เพื่อขอลิงก์ใหม่");
     if (!CLIENT_ID) return page(res, 500, "ยังไม่ได้ตั้งค่า", "ผู้ดูแลระบบยังไม่ได้ตั้ง PLAND_CLIENT_ID");
     delete state.linkTokens[token];
     const verifier = b64url(crypto.randomBytes(32));
@@ -333,7 +333,7 @@ export function createPersonal({ cfg, state, save, log, PLAND, API, ARANCHAT, KE
     prune();
     const st = url.searchParams.get("state") ?? "";
     const o = state.oauth[st];
-    if (!o) return page(res, 400, "ลิงก์ไม่ถูกต้องหรือหมดเวลา", "พิมพ์ <b>/pland</b> ในแชทกับ AranChat แจ้งเตือน เพื่อเริ่มใหม่");
+    if (!o) return page(res, 400, "ลิงก์ไม่ถูกต้องหรือหมดเวลา", "พิมพ์ <b>/pland</b> ในแชทกับ ARANKUB AI เพื่อเริ่มใหม่");
     delete state.oauth[st];
     save();
     if (url.searchParams.get("error")) {
@@ -395,7 +395,7 @@ export function createPersonal({ cfg, state, save, log, PLAND, API, ARANCHAT, KE
       log("เชื่อม Plan-D: รอยืนยันในแชท", o.mxid);
       return page(res, 200, "อีกขั้นเดียว",
         `${esc(record.fullName ?? record.displayName)}${record.orgUnit ? `<br>${esc(record.orgUnit)}` : ""}<br><br>`
-        + `กลับไปที่แอป AranChat แล้วกด <b>✅ ใช่ ฉันเอง</b> บนการ์ดในแชทกับ AranChat แจ้งเตือน ภายใน ${CONFIRM_MIN} นาที`, true);
+        + `กลับไปที่แอป AranChat แล้วกด <b>✅ ใช่ ฉันเอง</b> บนการ์ดในแชทกับ ARANKUB AI ภายใน ${CONFIRM_MIN} นาที`, true);
     } catch (e) {
       log("เชื่อม Plan-D: อ่านข้อมูลไม่ได้", o.mxid, e.message);
       return page(res, 502, "เชื่อมไม่สำเร็จ", `อ่านข้อมูลจาก Plan-D ไม่ได้ (${esc(e.message)}) — ผู้ดูแลต้องให้สิทธิ์ ${esc(SCOPES)} กับแอปนี้`);

@@ -156,7 +156,7 @@ curl_exec($ch);
 
 ### แจ้งเตือนรายบุคคล (AranChat Notify — `notify/`)
 
-bot `@aranchat` "AranChat แจ้งเตือน" ส่งเข้าแชทส่วนตัวของแต่ละคน · รันบนเครื่อง host ด้วย pm2 (`aranchat-notify`)
+bot `@aranchat` "ARANKUB AI" ส่งเข้าแชทส่วนตัวของแต่ละคน · รันบนเครื่อง host ด้วย pm2 (`aranchat-notify`)
 
 | แหล่ง | ทำงานยังไง | ต้องแก้ระบบต้นทางไหม |
 |---|---|---|

@@ -22,7 +22,7 @@ nonisolated enum AranTranscribe {
     static func transcribe(fileURL: URL, mimeType: String) async throws -> String {
         let data = try Data(contentsOf: fileURL)
         guard data.count <= maxBytes else {
-            throw message("ไฟล์ใหญ่เกิน 25 MB — ส่งไฟล์ให้ \"AranChat แจ้งเตือน\" แทน")
+            throw message("ไฟล์ใหญ่เกิน 25 MB — ส่งไฟล์ให้ \"ARANKUB AI\" แทน")
         }
         guard let client = AranSession.client else { throw message("ยังไม่ได้เข้าระบบ") }
         let server = try client.userId().split(separator: ":", maxSplits: 1).last.map(String.init) ?? ""
@@ -40,7 +40,7 @@ nonisolated enum AranTranscribe {
         return text.isEmpty ? "(ไม่พบเสียงพูด)" : text
     }
 
-    /// ไฟล์ยาว (ประชุม): ส่งเข้าแชท "AranChat แจ้งเตือน" ให้บอทถอด (แยกผู้พูด) + สรุปประชุม — รับได้ถึง 200 MB
+    /// ไฟล์ยาว (ประชุม): ส่งเข้าแชท "ARANKUB AI" ให้บอทถอด (แยกผู้พูด) + สรุปประชุม — รับได้ถึง 200 MB
     /// ห้องบอทไม่เข้ารหัส บอทจึงเปิดไฟล์ได้ · ไฟล์ประมวลผลบนเครื่องของ รพ. (notify/asr.mjs onAudioMessage)
     static let botMaxBytes = 200 * 1024 * 1024
 
@@ -50,7 +50,7 @@ nonisolated enum AranTranscribe {
         // บางบัญชีมีแชทกับบอทหลายห้อง (ห้องเก่าที่เผลอเปิดเข้ารหัส → บอทย้ายไปห้องใหม่) — เลือกห้องที่ไม่เข้ารหัสและยังอยู่
         let rooms = try client.getDmRooms(userId: "@aranchat:\(server)").filter { $0.membership() == .joined }
         guard !rooms.isEmpty else {
-            throw message("ยังไม่มีแชทกับ \"AranChat แจ้งเตือน\" — เปิดแชทนั้นก่อนแล้วลองใหม่")
+            throw message("ยังไม่มีแชทกับ \"ARANKUB AI\" — เปิดแชทนั้นก่อนแล้วลองใหม่")
         }
         var plain: Room?
         for candidate in rooms where (try? await candidate.latestEncryptionState()) != .encrypted {
@@ -58,7 +58,7 @@ nonisolated enum AranTranscribe {
             break
         }
         guard let room = plain else {
-            throw message("แชท \"AranChat แจ้งเตือน\" เปิดการเข้ารหัสไว้ บอทจึงเปิดไฟล์ไม่ได้ — พิมพ์ข้อความหาบอทเพื่อให้บอทสร้างแชทใหม่")
+            throw message("แชท \"ARANKUB AI\" เปิดการเข้ารหัสไว้ บอทจึงเปิดไฟล์ไม่ได้ — พิมพ์ข้อความหาบอทเพื่อให้บอทสร้างแชทใหม่")
         }
         let data = try Data(contentsOf: fileURL)
         guard data.count <= botMaxBytes else { throw message("ไฟล์ใหญ่เกิน 200 MB — แบ่งไฟล์เป็นช่วงแล้วส่งทีละไฟล์") }
@@ -136,7 +136,7 @@ struct AranTranscribeView: View {
             } else if source != nil {
                 VStack(alignment: .leading, spacing: 4) {
                     if sentToBot {
-                        Text("✅ ส่งให้บอทแล้ว — บทถอดเสียงและสรุปประชุมจะมาที่แชท \"AranChat แจ้งเตือน\" (ไฟล์ 1 ชม. ใช้เวลาราว 10 นาที)")
+                        Text("✅ ส่งให้บอทแล้ว — บทถอดเสียงและสรุปประชุมจะมาที่แชท \"ARANKUB AI\" (ไฟล์ 1 ชม. ใช้เวลาราว 10 นาที)")
                             .font(.compound.bodySM)
                             .foregroundStyle(.compound.textSecondary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -216,7 +216,7 @@ struct AranTranscribeView: View {
         Task {
             defer { busy = false }
             if let size = fileSize, size > AranTranscribe.maxBytes {
-                error = "ไฟล์ใหญ่เกิน 25 MB — ส่งไฟล์ให้ \"AranChat แจ้งเตือน\" แทน"
+                error = "ไฟล์ใหญ่เกิน 25 MB — ส่งไฟล์ให้ \"ARANKUB AI\" แทน"
                 return
             }
             switch await mediaProvider.loadFileFromSource(source, filename: filename) {

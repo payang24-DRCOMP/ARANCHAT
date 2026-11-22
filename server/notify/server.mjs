@@ -1,4 +1,4 @@
-// AranChat Notify — ส่งแจ้งเตือนรายบุคคลเข้าแชท (bot @aranchat "AranChat แจ้งเตือน")
+// AranChat Notify — ส่งแจ้งเตือนรายบุคคลเข้าแชท (bot @aranchat "ARANKUB AI")
 //
 // แหล่งแจ้งเตือน:
 //   1. AranKub / P4P — อ่านตาราง notifications ของแต่ละระบบ (อ่านอย่างเดียว ไม่ต้องแก้โค้ดระบบนั้น)
@@ -179,7 +179,7 @@ async function say(roomId, text, html) {
     { msgtype: "m.text", body: text, ...(html ? { format: "org.matrix.custom.html", formatted_body: html } : {}) });
 }
 
-const WELCOME = "สวัสดีครับ ผมคือ AranChat แจ้งเตือน 🔔\n"
+const WELCOME = "สวัสดีครับ ผมคือ ARANKUB AI 🔔\n"
   + "แจ้งเตือนจาก AranKub, P4P และระบบอื่นๆ ที่เกี่ยวกับคุณจะส่งมาที่ห้องนี้\n"
   + "เลือกเรื่องที่อยากรับ: พิมพ์ \"ตั้งค่า\"\n"
   + "📄 ส่งรูปหรือ PDF เอกสารมาที่ห้องนี้ ผมจะอ่านข้อความออกมาให้ก๊อปไปใช้ได้";
@@ -233,7 +233,7 @@ async function onFileMessage(roomId, ev) {
   const isPdf = c.msgtype === "m.file" && (mime === "application/pdf" || /\.pdf$/i.test(name));
   const isImg = c.msgtype === "m.image" || (c.msgtype === "m.file" && /^image\//.test(mime));
   if (!isImg && !isPdf) return reply("📄 อ่านข้อความได้จากรูปภาพ (JPG/PNG/TIFF) หรือไฟล์ PDF · 🎙 ถอดเสียงได้จากไฟล์เสียง/วิดีโอครับ");
-  if (!c.url) return reply("🔒 ไฟล์นี้ถูกเข้ารหัส bot เปิดอ่านไม่ได้ — ลองส่งในห้องแชทกับ \"AranChat แจ้งเตือน\" ที่ไม่ได้เข้ารหัส");
+  if (!c.url) return reply("🔒 ไฟล์นี้ถูกเข้ารหัส bot เปิดอ่านไม่ได้ — ลองส่งในห้องแชทกับ \"ARANKUB AI\" ที่ไม่ได้เข้ารหัส");
   if ((c.info?.size ?? 0) > OCR_MAX_BYTES) return reply("ไฟล์ใหญ่เกิน 25 MB — แบ่งส่งทีละส่วนครับ");
 
   if (isPdf) await reply("⏳ กำลังอ่าน PDF… (ประมาณ 1 วินาทีต่อหน้า)").catch(() => {});
@@ -328,14 +328,22 @@ async function onAudioMessage(roomId, ev, reply) {
   }
 }
 
+// ชื่อ/รูปของบอท = ชื่อห้องแชทส่วนตัวกับบอท (เปลี่ยนชื่อบอท: Synapse admin API · รูป: PUT profile avatar_url)
+const BOT_NAME = env("BOT_NAME", "ARANKUB AI");
+let botAvatar = null;
+
 async function dmRoom(mxid) {
   if (state.dm[mxid]) return state.dm[mxid];
+  botAvatar ??= await mx("GET", `/_matrix/client/v3/profile/${encodeURIComponent(`@aranchat:${serverName}`)}`).then((p) => p.avatar_url ?? null).catch(() => null);
   const { room_id } = await mx("POST", "/_matrix/client/v3/createRoom", {
     // public_chat + join_rules invite = ห้องส่วนตัวที่ server ไม่บังคับเข้ารหัส (encryption_enabled_by_default_for_room_type: invite
     // ใช้กับ preset private_chat/trusted_private_chat เท่านั้น) — บอทไม่มีกุญแจ ส่ง/อ่านในห้องเข้ารหัสไม่ได้
     preset: "public_chat", is_direct: true, invite: [mxid],
-    name: "AranChat แจ้งเตือน",
-    initial_state: [{ type: "m.room.join_rules", state_key: "", content: { join_rule: "invite" } }],
+    name: BOT_NAME,
+    initial_state: [
+      { type: "m.room.join_rules", state_key: "", content: { join_rule: "invite" } },
+      ...(botAvatar ? [{ type: "m.room.avatar", state_key: "", content: { url: botAvatar } }] : []),
+    ],
   });
   state.dm[mxid] = room_id;
   save();
@@ -352,7 +360,7 @@ async function moveEncryptedDm(mxid, oldRoom) {
   save();
   const room = await dmRoom(mxid);
   // ข้อความแจ้งในห้องเดิม — ห้องเข้ารหัสแล้วบอทส่งได้แค่ข้อความไม่เข้ารหัส บางแอปอาจไม่แสดง
-  await say(oldRoom, "ห้องนี้เปิดการเข้ารหัสไว้ บอทจึงอ่านข้อความที่ส่งมาไม่ได้ — ย้ายไปแชท \"AranChat แจ้งเตือน\" ห้องใหม่แล้ว กรุณาส่งอีกครั้งที่นั่นครับ").catch(() => {});
+  await say(oldRoom, "ห้องนี้เปิดการเข้ารหัสไว้ บอทจึงอ่านข้อความที่ส่งมาไม่ได้ — ย้ายไปแชท \"ARANKUB AI\" ห้องใหม่แล้ว กรุณาส่งอีกครั้งที่นั่นครับ").catch(() => {});
   await mx("POST", `/_matrix/client/v3/rooms/${encodeURIComponent(oldRoom)}/leave`, {}).catch(() => {});
   await say(room, "📌 ย้ายมาห้องนี้แทนห้องเดิมที่เปิดการเข้ารหัสไว้ (บอทอ่านข้อความในห้องเข้ารหัสไม่ได้) — ส่งไฟล์เสียง/รูป/คำสั่งที่นี่ได้เลยครับ");
   log("dm moved (encrypted)", mxid);

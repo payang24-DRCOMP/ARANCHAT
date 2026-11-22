@@ -107,7 +107,7 @@ export function createInvites({ state, save, mx, say, dmRoom, log, matrixUrl, ch
       inv.joined.push(mxid);
       save();
       log("invite accepted", code, mxid);
-      // บอกคนชวน (แชทกับบอท "AranChat แจ้งเตือน") — เห็นผลทันทีว่ามีคนเข้ามาจากลิงก์ของตัวเอง
+      // บอกคนชวน (แชทกับบอท "ARANKUB AI") — เห็นผลทันทีว่ามีคนเข้ามาจากลิงก์ของตัวเอง
       const p = await profile(mxid);
       const who = p.displayname || mxid;
       const what = inv.kind === "room" ? `เปิดลิงก์กลุ่ม "${(await roomInfo(inv.roomId).catch(() => ({ name: "กลุ่ม" }))).name}" ของคุณ — กดขอเข้าร่วมแล้วจะขึ้นให้ผู้ดูแลอนุมัติในกลุ่ม`

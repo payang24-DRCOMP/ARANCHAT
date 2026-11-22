@@ -31,7 +31,7 @@
   <div style="margin-top:24px;padding:16px 24px;border-radius:16px;background:#F7F5FC;border:1px solid #ECE8F6;color:#3F3A5C">
     <h3 style="margin:0 0 8px;font-size:16px">💡 ใช้งานเบื้องต้น</h3>
     <ul style="margin:0;padding-left:24px">
-      <li style="margin:4px 0">แจ้งเตือนจาก AranKub / P4P / สปสช. ส่งมาที่แชท <b>"AranChat แจ้งเตือน"</b> · ไม่อยากรับเรื่องไหน พิมพ์ <b>ปิด</b> ตามด้วยหมายเลข</li>
+      <li style="margin:4px 0">แจ้งเตือนจาก AranKub / P4P / สปสช. ส่งมาที่แชท <b>"ARANKUB AI"</b> · ไม่อยากรับเรื่องไหน พิมพ์ <b>ปิด</b> ตามด้วยหมายเลข</li>
       <li style="margin:4px 0">มือถือ: ติดตั้งแอปแล้วเข้าระบบด้วยบัญชี AranKub เดียวกัน · Samsung/Oppo/Vivo ตั้งค่าแบตเตอรี่ให้แอป "ไม่จำกัด" ไม่งั้นแจ้งเตือนไม่เด้ง</li>
       <li style="margin:4px 0">กลับมาหน้านี้: กดรูปโปรไฟล์มุมซ้ายบน → หน้าแรก</li>
     </ul>

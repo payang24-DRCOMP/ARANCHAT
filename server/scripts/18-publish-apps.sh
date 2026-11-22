@@ -4,7 +4,7 @@
 #
 #   ./18-publish-apps.sh desktop android "ข้อความบอกผู้ใช้ว่ามีอะไรใหม่"
 #   ./18-publish-apps.sh desktop                 (ขึ้นเฉพาะ Desktop — ส่วน Android ใน latest.json คงเดิม)
-#   เพิ่ม --announce = บอท "AranChat แจ้งเตือน" ส่งการ์ด "มีรุ่นใหม่ + ปุ่มดาวน์โหลด" เข้าแชททุกคน (รุ่นเดิมไม่ประกาศซ้ำ)
+#   เพิ่ม --announce = บอท "ARANKUB AI" ส่งการ์ด "มีรุ่นใหม่ + ปุ่มดาวน์โหลด" เข้าแชททุกคน (รุ่นเดิมไม่ประกาศซ้ำ)
 #   ประกาศอย่างเดียว (ขึ้นไฟล์ไปแล้ว): ./18-publish-apps.sh --announce
 # ก่อนรัน: build ด้วย element-web/aranchat/build-desktop.sh linux + win และ element-x-android/aranchat/build.sh :app:assembleGplayRelease
 # รุ่น: Desktop = apps/desktop/package.json "version" · Android = plugins/src/main/kotlin/Versions.kt — เปลี่ยนเลขทุกครั้งที่ออกรุ่นใหม่

@@ -101,7 +101,7 @@ export async function renderCard(c) {
   svg += `<line x1="${PAD}" y1="${y - 30}" x2="${W - PAD}" y2="${y - 30}" stroke="#E2E8F0" stroke-width="2"/>`;
   y += 18;
   svg += `<text x="${PAD}" y="${y}" font-family="${FONT}" font-size="22" fill="#94A3B8">${xml(at)} น.</text>`
-    + `<text x="${W - PAD}" y="${y}" text-anchor="end" font-family="${FONT}" font-weight="600" font-size="22" fill="#94A3B8">AranChat แจ้งเตือน</text>`;
+    + `<text x="${W - PAD}" y="${y}" text-anchor="end" font-family="${FONT}" font-weight="600" font-size="22" fill="#94A3B8">ARANKUB AI</text>`;
   const H = y + 34;
 
   const markSize = mark.length > 2 ? 22 : mark.length > 1 ? 26 : 34;

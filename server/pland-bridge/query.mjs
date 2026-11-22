@@ -7,7 +7,7 @@
 //
 // Plan-D API ไม่มีรายชื่อห้อง/รถทั้งหมด → รวบรวมชื่อจากการจองย้อนหลัง 3 เดือน + ล่วงหน้า 2 เดือน (แคช 6 ชม.)
 // ห้องที่ไม่เคยถูกจองเลยจะไม่รู้จัก → เพิ่มเองได้ใน .env: ROOM_LIST=ห้องA,ห้องB · VEHICLE_LIST=รถตู้ นข 1234,…
-// ใช้ได้ในแชทกับ AranChat แจ้งเตือน และในห้องแจ้งเตือน (เช่น ห้อง Plan-D · ห้องประชุม)
+// ใช้ได้ในแชทกับ ARANKUB AI และในห้องแจ้งเตือน (เช่น ห้อง Plan-D · ห้องประชุม)
 const KINDS = {
   room: { kind: "meeting_room", label: "ห้องประชุม", icon: "🏢", unit: "ห้อง", env: "ROOM_LIST", cmd: "room" },
   car: { kind: "vehicle", label: "รถ", icon: "🚗", unit: "คัน", env: "VEHICLE_LIST", cmd: "car" },

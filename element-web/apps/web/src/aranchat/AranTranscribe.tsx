@@ -30,7 +30,7 @@ export function AranTranscribe({ mxEvent }: { mxEvent: MatrixEvent }): JSX.Eleme
         const helper = new MediaEventHelper(mxEvent);
         try {
             const blob = await helper.sourceBlob.value;
-            if (blob.size > 25 * 1024 * 1024) throw new Error("ไฟล์ใหญ่เกิน 25 MB — ส่งไฟล์ให้ \"AranChat แจ้งเตือน\" แทน");
+            if (blob.size > 25 * 1024 * 1024) throw new Error("ไฟล์ใหญ่เกิน 25 MB — ส่งไฟล์ให้ \"ARANKUB AI\" แทน");
             const token = await MatrixClientPeg.safeGet().getOpenIdToken();
             const r = await fetch(asrUrl(), {
                 method: "POST",
