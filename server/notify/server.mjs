@@ -917,13 +917,19 @@ async function decide(roomId, ev, ref, button, value, answer) {
       close = r.data.close !== false;
       status = cleanStatus(r.data.status, close ? fallback : undefined);
       reply = typeof r.data.reply === "string" ? r.data.reply.slice(0, 1000) : null;
+      // ระบบตอบเป็นการ์ด (เช่น เลือกวันที่แล้วได้ตาราง) → ส่งการ์ดในห้องเดียวกัน
+      if (r.data.card && typeof r.data.card === "object") {
+        const made = await makeNotice(a.src, { ...r.data.card, title: r.data.card.title ?? button.label });
+        if (made.error) log("การ์ดตอบปุ่มไม่ถูกรูปแบบ:", a.src, made.error);
+        else { made.n.priority = "normal"; await sayNativeCard(roomId, { key: a.ev, label: button.label, icon: "⌨️" }, made.n, true); }
+      }
     }
     a.status = status;
     if (close) { a.closed = true; a.by = ev.sender; a.action = button.id; a.decidedAt = at; }
     save();
     log("กดปุ่ม:", a.ev, ref, button.id, "โดย", ev.sender, close ? "(ปิดรายการ)" : "");
     if (close && state.cases[ref]) closeCase(ref, ev.sender, "action");
-    await updateActionCards(ref);
+    if (close || status) await updateActionCards(ref);   // ปุ่มที่ใช้ซ้ำได้ (close:false ไม่มีสถานะ) ไม่ต้องแก้การ์ด
     if (reply) await answer(reply);
   } finally {
     busy.delete(ref);
@@ -1010,6 +1016,7 @@ const CMD = /^[a-z][a-z0-9_]{0,31}$/;
 const BUILTIN_CMDS = [
   { command: "help", description: "ดูคำสั่งทั้งหมด" },
   { command: "settings", description: "เลือกเรื่องที่จะรับแจ้งเตือน" },
+  { command: "menu", description: "เมนูของแต่ละระบบ", usage: "/menu [ระบบ]" },
 ];
 const BUILTIN_MENU = [
   { label: "⚙️ ตั้งค่าแจ้งเตือน", type: "text", text: "/settings" },
@@ -1032,19 +1039,43 @@ function cleanMenu(v) {
 }
 
 /** คำสั่ง + เมนูทั้งหมด (ระบบที่ปิดใช้งานไม่นับ) */
+// เมนูหลัก = ปุ่มละระบบ ("Plan-D ▸") กดแล้วบอทตอบเมนูย่อยของระบบนั้นเป็นปุ่มตอบด่วน (/menu <ระบบ>)
+//   ระบบที่มีเมนูรายการเดียว = แสดงรายการนั้นตรงๆ · แอปไม่ต้องอัปเดต (เมนูย่อยใช้ปุ่มตอบด่วนที่มีอยู่แล้ว)
 function botInfo() {
-  const commands = [...BUILTIN_CMDS], menu = [...BUILTIN_MENU];
+  const commands = [...BUILTIN_CMDS], menu = [];
   for (const [src, b] of Object.entries(state.bots)) {
     if (!sourceOn(src)) continue;
     const system = state.sources[src]?.name ?? src;
     for (const c of b.commands ?? []) commands.push({ ...c, system });
-    for (const m of b.menu ?? []) if (menu.length < MENU_MAX) menu.push(m);
+    const items = b.menu ?? [];
+    if (items.length === 1) menu.push(items[0]);
+    else if (items.length > 1) menu.push({ label: `${b.menuIcon ?? "📂"} ${system} ▸`.slice(0, 24), type: "text", text: `/menu ${src}` });
   }
-  return { commands, menu };
+  return { commands, menu: [...menu.slice(0, MENU_MAX - BUILTIN_MENU.length), ...BUILTIN_MENU] };
+}
+
+/** /menu [ระบบ] → ปุ่มตอบด่วนของเมนูระบบนั้น (ไม่ระบุ = รายชื่อระบบ) */
+function systemMenu(arg) {
+  const bots = Object.entries(state.bots).filter(([src, b]) => sourceOn(src) && b.menu?.length);
+  const name = (src) => state.sources[src]?.name ?? src;
+  const q = String(arg ?? "").trim().toLowerCase();
+  const hit = q && bots.find(([src]) => src.toLowerCase() === q || name(src).toLowerCase() === q);
+  if (!hit) {
+    if (!bots.length) return { body: "ยังไม่มีระบบที่ตั้งเมนูไว้" };
+    return { body: "เลือกระบบ:", "com.arankub.quick_replies": bots.slice(0, 6).map(([src, b]) => ({ label: `${b.menuIcon ?? "📂"} ${name(src)}`.slice(0, 24), text: `/menu ${src}` })) };
+  }
+  const [src, b] = hit;
+  const text = b.menu.filter((m) => m.type === "text").slice(0, 6);
+  const links = b.menu.filter((m) => m.type !== "text").map((m) => `${m.label}: ${m.url}`);
+  return {
+    body: [`เมนู ${name(src)} — เลือกด้านล่าง`, ...links].join("\n"),
+    ...(text.length ? { "com.arankub.quick_replies": text.map((m) => ({ label: m.label, text: m.text, ...(m.prefill ? { prefill: true } : {}) })) } : {}),
+  };
 }
 const commandOwner = (cmd) => Object.entries(state.bots).find(([src, b]) => sourceOn(src) && b.commands?.some((c) => c.command === cmd))?.[0] ?? null;
 
-//   PUT    /api/notify/bot  { commands: [{ command: "lab", description: "ดูผลแล็บล่าสุด", usage: "/lab <HN>" }], menu: [{ label, type: "text"|"link"|"app", text|url }] }
+//   PUT    /api/notify/bot  { commands: [{ command: "lab", description: "ดูผลแล็บล่าสุด", usage: "/lab <HN>" }], menu: [{ label, type: "text"|"link"|"app", text|url }], menu_icon: "📅" }
+//          เมนูมากกว่า 1 รายการ → เมนูหลักแสดง "<menu_icon> <ชื่อระบบ> ▸" กดแล้วได้เมนูย่อย (ปุ่มตอบด่วน สูงสุด 6)
 //   GET    /api/notify/bot  (ใช้ key ของระบบ = ที่ระบบนี้ลงทะเบียน · ไม่มี key = รายการรวมที่แอปใช้)
 //   DELETE /api/notify/bot
 function handleBotApi(src, method, body) {
@@ -1061,7 +1092,8 @@ function handleBotApi(src, method, body) {
     taken.add(command);
     commands.push({ command, description: String(c.description ?? "").slice(0, 80), usage: c.usage ? String(c.usage).slice(0, 80) : undefined });
   }
-  state.bots[src] = { commands, menu: cleanMenu(body?.menu), at: new Date().toISOString() };
+  const menuIcon = typeof body?.menu_icon === "string" && body.menu_icon.trim() ? [...body.menu_icon.trim()].slice(0, 2).join("") : undefined;
+  state.bots[src] = { commands, menu: cleanMenu(body?.menu), ...(menuIcon ? { menuIcon } : {}), at: new Date().toISOString() };
   save();
   log("ลงทะเบียนคำสั่ง:", src, commands.map((c) => "/" + c.command).join(" ") || "(ไม่มี)", `เมนู ${state.bots[src].menu.length}`);
   return [200, { ok: true, ...state.bots[src], webhook: !!state.webhooks[src]?.url }];
@@ -1088,6 +1120,7 @@ async function onCommand(roomId, ev, { command, args }) {
     const lines = commands.map((c) => `/${c.command}${c.usage ? ` — ${c.usage.replace(/^\/\S+\s*/, "")}` : ""}  ${c.description}${c.system ? ` (${c.system})` : ""}`);
     return void reply({ body: `คำสั่งที่ใช้ได้:\n${lines.join("\n")}`, "com.arankub.quick_replies": [{ label: "⚙️ ตั้งค่า", text: "/settings" }] });
   }
+  if (command === "menu") return void reply(systemMenu(args));
   if (command === "settings") {
     return void reply({ body: isDm ? settingsText(ev.sender) : "ตั้งค่าแจ้งเตือนได้ในแชทส่วนตัวกับ AranChat แจ้งเตือน" });
   }

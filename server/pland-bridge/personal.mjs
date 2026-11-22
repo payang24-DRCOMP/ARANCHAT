@@ -126,7 +126,8 @@ export function createPersonal({ cfg, state, save, log, PLAND, API, ARANCHAT, KE
     if (hook.ok && hook.json.secret) { state.hookSecret = hook.json.secret; save(); }
     const bot = await call("PUT", "/bot", {
       commands: [{ command: "pland", description: "เชื่อมบัญชี Plan-D · แจ้งเตือนใบลา/ไปราชการ/การจองของฉัน", usage: "/pland [ทีม|เลิก]" }, ...extraBot.commands],
-      menu: [{ label: "🔗 Plan-D ของฉัน", type: "text", text: "/pland" }, ...extraBot.menu],
+      menu: [...extraBot.menu, { label: "🔗 Plan-D ของฉัน", type: "text", text: "/pland" }],
+      menu_icon: extraBot.menuIcon,
     });
     const events = {
       "me.leave": "Plan-D ของฉัน: ผลใบลา", "me.travel": "Plan-D ของฉัน: ผลคำขอไปราชการ",
@@ -295,6 +296,7 @@ export function createPersonal({ cfg, state, save, log, PLAND, API, ARANCHAT, KE
     if (body.type === "test") return [200, { ok: true }];
     if (body.type === "command" && body.command === "pland") return [200, onCommand(body)];
     if (body.type === "command") { const r = await extraBot.onCommand(body); if (r) return [200, r]; }
+    if (body.type === "action" && extraBot.onAction) { const r = await extraBot.onAction(body); if (r) return [200, r]; }
     if (body.type === "action" && body.event === "me.link.confirm") return [200, onAction(body)];
     return [200, {}];
   }

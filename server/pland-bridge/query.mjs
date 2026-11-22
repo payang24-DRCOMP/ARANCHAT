@@ -103,7 +103,25 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND }) {
     return [s, e];
   }
 
+  /** ปุ่มเลือกวันที่ (ปฏิทินในแอป) — กดแล้ว AranChat ส่ง value=YYYY-MM-DD มาที่ onAction */
+  const picker = (k, label = "📅 เลือกวันที่") => ({
+    label, type: "datetime", id: `pick-${k.cmd}`, mode: "date", min: today(), max: addDays(today(), 180), initial: today(),
+  });
+
+  /** /room เลือกวัน → การ์ดเล็กมีปุ่มปฏิทิน */
+  function pickCard(k) {
+    return {
+      card: {
+        title: `${k.icon} เช็ค${k.label}ตามวัน`, level: "info",
+        text: `กด "เลือกวันที่" แล้วเลือกวันจากปฏิทิน — จะได้ตารางการจอง${k.label}และช่วงที่ยังว่างของวันนั้น\nหรือพิมพ์เอง เช่น /${k.cmd} 25/11 13:00-15:00`,
+        buttons: [picker(k)],
+      },
+      quick_replies: quick(k),
+    };
+  }
+
   async function answer(k, args) {
+    if (/^(เลือกวัน|เลือก|pick)$/.test(String(args ?? "").trim())) return pickCard(k);
     const p = parse(args);
     if (p.error) return { reply: `${p.error}\nตัวอย่าง: /${k.cmd} พรุ่งนี้ · /${k.cmd} ศุกร์ · /${k.cmd} 25/11 13:00-15:00`, quick_replies: quick(k) };
     const [rows, all] = await Promise.all([list({ from: p.date, to: p.date, resourceKind: k.kind }), names(k)]);
@@ -157,7 +175,7 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND }) {
       card: {
         title: `${k.icon} ${k.label} · ${thaiDay(p.date)}${when}`, level: "info",
         sections: sections.slice(0, 8), link,
-        buttons: [{ label: "จองใน Plan-D", type: "link", url: link }],
+        buttons: [picker(k, "📅 เลือกวันอื่น"), { label: "จองใน Plan-D", type: "link", url: link }],
       },
       quick_replies: quick(k, p.date),
     };
@@ -175,7 +193,8 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND }) {
       { label: "วันนี้", text: `/${k.cmd} วันนี้` },
       { label: "พรุ่งนี้", text: `/${k.cmd} พรุ่งนี้` },
       ...(date && date >= addDays(t, 1) ? [{ label: "วันถัดไป", text: `/${k.cmd} ${next}` }] : []),
-      { label: "ระบุวัน/เวลา…", text: `/${k.cmd} `, prefill: true },
+      { label: "📅 เลือกวัน", text: `/${k.cmd} เลือกวัน` },
+      { label: "พิมพ์วัน/เวลา…", text: `/${k.cmd} `, prefill: true },
       { label: k.cmd === "room" ? "🚗 รถ" : "🏢 ห้องประชุม", text: k.cmd === "room" ? "/car วันนี้" : "/room วันนี้" },
     ];
   }
@@ -183,7 +202,12 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND }) {
   const commands = Object.values(KINDS).map((k) => ({
     command: k.cmd, description: `${k.label}: วันไหนใครจอง ว่างตอนไหน (Plan-D)`, usage: `/${k.cmd} [วันนี้|พรุ่งนี้|ศุกร์|25/11] [13:00-15:00]`,
   }));
-  const menu = [{ label: "🏢 ห้องประชุมว่าง", type: "text", text: "/room วันนี้" }, { label: "🚗 รถว่าง", type: "text", text: "/car วันนี้" }];
+  const menu = [
+    { label: "🏢 ห้องประชุมวันนี้", type: "text", text: "/room วันนี้" },
+    { label: "📅 เช็คห้องประชุมตามวัน", type: "text", text: "/room เลือกวัน" },
+    { label: "🚗 รถวันนี้", type: "text", text: "/car วันนี้" },
+    { label: "📅 เช็ครถตามวัน", type: "text", text: "/car เลือกวัน" },
+  ];
 
   /** คำสั่งจาก AranChat → คำตอบ (null = ไม่ใช่คำสั่งของเรา) */
   async function onCommand(body) {
@@ -193,5 +217,14 @@ export function createQuery({ cfg, log, planDGet, TZ, PLAND }) {
     catch (e) { log(`/${k.cmd} ขัดข้อง:`, e.message); return { reply: `อ่านข้อมูลจาก Plan-D ไม่ได้ตอนนี้ (${e.message}) — ลองใหม่อีกครั้ง หรือเปิดใน Plan-D` }; }
   }
 
-  return { onCommand, commands, menu, parse };
+  /** กดเลือกวันที่บนการ์ด → การ์ดตารางของวันนั้น (การ์ดเดิมไม่ปิด เลือกวันอื่นซ้ำได้) */
+  async function onAction(body) {
+    const k = Object.values(KINDS).find((x) => body.action === `pick-${x.cmd}`);
+    if (!k) return null;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(body.value ?? ""))) return { close: false, reply: "เลือกวันที่อีกครั้ง" };
+    try { const r = await answer(k, body.value); return { close: false, card: { ...r.card, quick_replies: r.quick_replies } }; }
+    catch (e) { log(`เลือกวัน /${k.cmd} ขัดข้อง:`, e.message); return { close: false, reply: `อ่านข้อมูลจาก Plan-D ไม่ได้ตอนนี้ (${e.message})` }; }
+  }
+
+  return { onCommand, onAction, commands, menu, parse, menuIcon: "📅" };
 }
