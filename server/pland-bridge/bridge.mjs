@@ -26,6 +26,7 @@ import { createPersonal, nameKey } from "./personal.mjs";
 import { loadRoutes, routeOf, KNOWN_EVENTS } from "./routes.mjs";
 import { createUnits } from "./units.mjs";
 import { createDaily } from "./daily.mjs";
+import { createQuery } from "./query.mjs";
 
 const HERE = new URL(".", import.meta.url).pathname;
 const readEnv = (file) => {
@@ -327,8 +328,10 @@ function save() {
   fs.renameSync(STATE + ".tmp", STATE);
 }
 
+// ถามจากแชท (query.mjs): /room /car — ห้องประชุม/รถ วันไหนใครจอง ว่างตอนไหน
+const query = createQuery({ cfg, log, planDGet, TZ, PLAND });
 // แจ้งเตือนรายบุคคล (personal.mjs) — ผู้ใช้เชื่อมบัญชีด้วย /pland
-const personal = createPersonal({ cfg, state, save, log, PLAND, API, ARANCHAT, KEY, DRY, send, fieldsFor, CATS, ACTIONS,
+const personal = createPersonal({ cfg, state, save, log, PLAND, API, ARANCHAT, KEY, DRY, send, fieldsFor, CATS, ACTIONS, extraBot: query,
   onLinked: (mxid, record) => units.invite(record.orgUnit, [mxid]).catch((e) => log("ชวนเข้าห้องกลุ่มงานไม่ได้:", e.message)) });
 // ห้องกลุ่มงาน (units.mjs)
 const units = createUnits({ cfg, state, save, log, readEnv, DRY, membersOf: (orgUnit) => personal.membersOf(orgUnit) });
@@ -558,6 +561,13 @@ if (process.argv.includes("--daily")) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) { console.error("--date ต้องเป็น YYYY-MM-DD"); process.exit(1); }
   const n = await daily.run(date, { dry: !process.argv.includes("--send"), test: true });
   log(`สรุปวันที่ ${date}: ${n} การ์ด${process.argv.includes("--send") ? " (ส่งแล้ว)" : " (พิมพ์อย่างเดียว · --send = ส่งจริง)"}`);
+  process.exit(0);
+}
+
+// ทดลองคำสั่ง: node bridge.mjs --ask room "พรุ่งนี้ 13:00-15:00"
+if (process.argv.includes("--ask")) {
+  const i = process.argv.indexOf("--ask");
+  console.log(JSON.stringify(await query.onCommand({ command: process.argv[i + 1], args: process.argv[i + 2] ?? "" }), null, 1));
   process.exit(0);
 }
 

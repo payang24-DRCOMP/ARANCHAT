@@ -32,7 +32,7 @@ export function nameKey(s) {
 const b64url = (buf) => Buffer.from(buf).toString("base64url");
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
-export function createPersonal({ cfg, state, save, log, PLAND, API, ARANCHAT, KEY, DRY, send, fieldsFor, CATS, ACTIONS, onLinked }) {
+export function createPersonal({ cfg, state, save, log, PLAND, API, ARANCHAT, KEY, DRY, send, fieldsFor, CATS, ACTIONS, onLinked, extraBot = { commands: [], menu: [], onCommand: async () => null } }) {
   // แอปเดียวกับบัญชีบริการ (Plan-D ผูกบัญชีบริการกับแอป) — ใส่ชุดไหนชุดหนึ่งก็ได้
   const CLIENT_ID = (cfg.PLAND_CLIENT_ID || cfg.PLAND_SERVICE_CLIENT_ID)?.trim();
   const CLIENT_SECRET = (cfg.PLAND_CLIENT_SECRET || cfg.PLAND_SERVICE_CLIENT_SECRET)?.trim();
@@ -125,8 +125,8 @@ export function createPersonal({ cfg, state, save, log, PLAND, API, ARANCHAT, KE
     const hook = await call("PUT", "/webhook", { url: HOOK_URL });
     if (hook.ok && hook.json.secret) { state.hookSecret = hook.json.secret; save(); }
     const bot = await call("PUT", "/bot", {
-      commands: [{ command: "pland", description: "เชื่อมบัญชี Plan-D · แจ้งเตือนใบลา/ไปราชการ/การจองของฉัน", usage: "/pland [ทีม|เลิก]" }],
-      menu: [{ label: "🔗 Plan-D ของฉัน", type: "text", text: "/pland" }],
+      commands: [{ command: "pland", description: "เชื่อมบัญชี Plan-D · แจ้งเตือนใบลา/ไปราชการ/การจองของฉัน", usage: "/pland [ทีม|เลิก]" }, ...extraBot.commands],
+      menu: [{ label: "🔗 Plan-D ของฉัน", type: "text", text: "/pland" }, ...extraBot.menu],
     });
     const events = {
       "me.leave": "Plan-D ของฉัน: ผลใบลา", "me.travel": "Plan-D ของฉัน: ผลคำขอไปราชการ",
@@ -288,12 +288,13 @@ export function createPersonal({ cfg, state, save, log, PLAND, API, ARANCHAT, KE
   }
 
   /** webhook จาก AranChat → [status, json] */
-  function handleHook(raw, headers) {
+  async function handleHook(raw, headers) {
     if (!verifyHook(raw, headers["x-aranchat-signature"])) return [401, { error: "ลายเซ็นไม่ถูกต้อง" }];
     let body;
     try { body = JSON.parse(raw); } catch { return [400, { error: "JSON" }]; }
     if (body.type === "test") return [200, { ok: true }];
     if (body.type === "command" && body.command === "pland") return [200, onCommand(body)];
+    if (body.type === "command") { const r = await extraBot.onCommand(body); if (r) return [200, r]; }
     if (body.type === "action" && body.event === "me.link.confirm") return [200, onAction(body)];
     return [200, {}];
   }
