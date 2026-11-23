@@ -147,34 +147,36 @@ nonisolated struct AranBoard {
     // MARK: - Permission
 
     /// state event ปกติต้องเป็นผู้ดูแล → ผู้ดูแลเปิดให้สมาชิกทุกคน (0) อัตโนมัติ · true = สร้าง/แก้ได้
+    /// ใช้ตัวตรวจสิทธิ์ของ SDK (รองรับห้อง v12 ที่ผู้สร้างมีสิทธิ์สูงสุดโดยไม่อยู่ใน power_levels.users)
     func ensurePermission() async -> Bool {
-        guard let room = try? room() else { return false }
+        guard let room = try? room(), let levels = try? await room.getPowerLevels() else {
+            MXLog.warning("AranBoard: permission — power levels unavailable")
+            return false
+        }
+        let types = AranBoardKind.allCases.map { stateEventTypeFromString(s: $0.type) }
+        let canAll = types.allSatisfy { levels.canOwnUserSendState(stateEvent: $0) }
+        let canChangePowerLevels = levels.canOwnUserSendState(stateEvent: .roomPowerLevels)
+        MXLog.info("AranBoard: permission canCreate=\(canAll) canChangePowerLevels=\(canChangePowerLevels) myLevel=\(levels.userPowerLevels()[me].map(String.init) ?? "default/creator")")
+        if canAll { return true }
+        guard canChangePowerLevels else { return false }
+
+        // ผู้ดูแล: เปิดให้สมาชิกทุกคนสร้าง/แก้โน้ต-อัลบั้มได้ (events[type] = 0) — แก้เฉพาะ events ที่เหลือคงเดิม
         let plEvent = try? await room.stateEvents(eventType: .roomPowerLevels).first
         var pl = plEvent.flatMap { (try? JSONSerialization.jsonObject(with: Data($0.contentJson.utf8))) as? [String: Any] } ?? [:]
-        let create = try? await room.stateEvents(eventType: .roomCreate).first
-        var creators = Set<String>()
-        if let create {
-            creators.insert(create.sender)
-            if let c = (try? JSONSerialization.jsonObject(with: Data(create.contentJson.utf8))) as? [String: Any],
-               let extra = c["additional_creators"] as? [String] { creators.formUnion(extra) }
-        }
-        let users = pl["users"] as? [String: Any] ?? [:]
-        let usersDefault = (pl["users_default"] as? NSNumber)?.int64Value ?? 0
-        let isV12Creator = creators.contains(me) && users[me] == nil
-        let myLevel = isV12Creator ? Int64.max : ((users[me] as? NSNumber)?.int64Value ?? usersDefault)
-        let stateDefault = (pl["state_default"] as? NSNumber)?.int64Value ?? 50
+        guard !pl.isEmpty else { return false }
         var events = pl["events"] as? [String: Any] ?? [:]
-        func need(_ type: String) -> Int64 { (events[type] as? NSNumber)?.int64Value ?? stateDefault }
-        let kinds = AranBoardKind.allCases
-        let open = kinds.allSatisfy { (events[$0.type] as? NSNumber)?.int64Value == 0 }
-        let canAll = kinds.allSatisfy { myLevel >= need($0.type) }
-        if open || (canAll && myLevel < need("m.room.power_levels")) { return canAll }
-        guard myLevel >= need("m.room.power_levels") else { return false }
-        for kind in kinds { events[kind.type] = 0 }
+        for kind in AranBoardKind.allCases { events[kind.type] = 0 }
         pl["events"] = events
         guard let data = try? JSONSerialization.data(withJSONObject: pl) else { return false }
-        return (try? await room.sendStateEventRaw(eventType: "m.room.power_levels", stateKey: "",
-                                                  content: String(decoding: data, as: UTF8.self), requestConfigOverride: nil)) != nil
+        do {
+            _ = try await room.sendStateEventRaw(eventType: "m.room.power_levels", stateKey: "",
+                                                 content: String(decoding: data, as: UTF8.self), requestConfigOverride: nil)
+            MXLog.info("AranBoard: opened notes/albums to all members")
+            return true
+        } catch {
+            MXLog.error("AranBoard: open permission failed: \(error)")
+            return false
+        }
     }
 
     // MARK: - Write

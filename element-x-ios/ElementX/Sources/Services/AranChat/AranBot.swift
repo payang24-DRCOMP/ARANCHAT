@@ -122,7 +122,8 @@ final class AranBotBarModel {
     /// ปุ่มตอบด่วนแสดงเฉพาะเมื่อข้อความล่าสุดในห้องมาจากบอท
     private func updateQuickReplies(_ items: [TimelineItemProxy]) {
         let newest = items.reversed().lazy.compactMap { item -> EventTimelineItemProxy? in
-            if case let .event(event) = item { return event }
+            // ข้ามรายการเปลี่ยนแปลงห้อง (สมาชิก/โปรไฟล์/state) — Android รวมเป็นกลุ่ม ไม่นับเป็นข้อความล่าสุด
+            if case let .event(event) = item, case .msgLike = event.content { return event }
             return nil
         }.first
         guard let newest, newest.sender.id == botUserID else {
@@ -167,33 +168,61 @@ final class AranBotBarModel {
     }
 }
 
-/// แถบเหนือช่องพิมพ์ในห้องบอท: แถวเดียวเลื่อนซ้าย-ขวา — ปุ่มตอบด่วน (ขอบม่วง จากข้อความล่าสุดของบอท) ตามด้วยเมนูบอท (พื้นเทา)
-/// แถวเดียวเพื่อไม่ให้กินที่/บังข้อความล่างสุด (เดิมเป็นตาราง + ปุ่มเปิด/ปิดเมนู)
+/// แถบเหนือช่องพิมพ์ในห้องบอท — เทียบ Android AranBotBar:
+///   ปุ่มตอบด่วน (ขอบม่วง จากข้อความล่าสุดของบอท) แถวเลื่อนซ้าย-ขวา
+///   + "☰ เมนู / ▾ ซ่อนเมนู" + ตารางเมนูบอท 3 ช่องต่อแถว (จำสถานะเปิด/ปิด)
 struct AranBotBar: View {
     @Bindable var model: AranBotBarModel
     @Environment(\.openURL) private var openURL
+    @AppStorage("aranBotMenuOpen") private var isMenuOpen = true
 
     var body: some View {
         if model.isBotRoom, !(model.quickReplies.isEmpty && model.menu.isEmpty) {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 6) {
-                    ForEach(model.quickReplies, id: \.self) { reply in
-                        Button { model.run(text: reply.text, prefill: reply.prefill) } label: {
-                            chip(reply.label, accent: true)
+            VStack(alignment: .leading, spacing: 6) {
+                if !model.quickReplies.isEmpty {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 6) {
+                            ForEach(model.quickReplies, id: \.self) { reply in
+                                Button { model.run(text: reply.text, prefill: reply.prefill) } label: {
+                                    chip(reply.label, accent: true)
+                                }
+                            }
                         }
+                        .padding(.vertical, 1)
                     }
-                    ForEach(model.menu, id: \.self) { item in
-                        Button { model.open(item, openURL: openURL) } label: {
-                            chip(item.label + (item.type == "text" ? "" : " ↗"), accent: false)
+                }
+                if !model.menu.isEmpty {
+                    Button { isMenuOpen.toggle() } label: {
+                        Text(isMenuOpen ? "▾ ซ่อนเมนู" : "☰ เมนู")
+                            .font(.compound.bodyXSSemibold)
+                            .foregroundStyle(.compound.textSecondary)
+                            .padding(.horizontal, 4)
+                            .padding(.vertical, 2)
+                            .contentShape(Rectangle())
+                    }
+                    if isMenuOpen {
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 3), spacing: 6) {
+                            ForEach(model.menu, id: \.self) { item in
+                                Button { model.open(item, openURL: openURL) } label: {
+                                    Text(item.label + (item.type == "text" ? "" : " ↗"))
+                                        .font(.compound.bodySMSemibold)
+                                        .foregroundStyle(.compound.textPrimary)
+                                        .lineLimit(1)
+                                        .truncationMode(.tail)
+                                        .frame(maxWidth: .infinity)
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 9)
+                                        .background(Color.compound.bgSubtleSecondary, in: RoundedRectangle(cornerRadius: 12))
+                                        .contentShape(Rectangle())
+                                }
+                            }
                         }
                     }
                 }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 1)
             }
             .buttonStyle(.plain)
-            .padding(.top, 4)
-            .padding(.bottom, 2)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 4)
         }
     }
 

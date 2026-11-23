@@ -44,17 +44,19 @@ struct RoomAttachmentPicker: View {
                 Label("สติกเกอร์", icon: \.reaction)
             }
             
-            // AranChat: โน้ต / อัลบั้มของกลุ่ม (เหมือน LINE)
-            Button {
-                context.showAranBoard = .note
-            } label: {
-                Label("โน้ต", icon: \.document)
-            }
-            
-            Button {
-                context.showAranBoard = .album
-            } label: {
-                Label("อัลบั้ม", icon: \.image)
+            // AranChat: โน้ต / อัลบั้มของกลุ่ม (เหมือน LINE) — เฉพาะกลุ่ม ไม่แสดงในแชทส่วนตัว/แชทบอท
+            if !context.viewState.aranIsDirect {
+                Button {
+                    context.showAranBoard = .note
+                } label: {
+                    Label("โน้ต", icon: \.document)
+                }
+                
+                Button {
+                    context.showAranBoard = .album
+                } label: {
+                    Label("อัลบั้ม", icon: \.image)
+                }
             }
             
             // AranChat: ส่งข้อมูลติดต่อเพื่อน (การ์ดแนะนำเพื่อน)

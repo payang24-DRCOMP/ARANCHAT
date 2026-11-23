@@ -86,6 +86,8 @@ struct ComposerToolbarViewState: BindableState {
     /// AranChat: ห้อง/เธรดที่แผงสติกเกอร์จะส่งเข้า
     var aranRoomID = ""
     var aranThreadRootID: String?
+    /// AranChat: แชทส่วนตัว/แชทบอท — ไม่มีโน้ต/อัลบั้ม (มีไว้สำหรับกลุ่ม แบบ LINE)
+    var aranIsDirect = false
     
     var bindings: ComposerToolbarViewStateBindings
     

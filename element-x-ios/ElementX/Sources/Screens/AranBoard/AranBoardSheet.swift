@@ -13,7 +13,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 private let brand = Color(red: 0x5B / 255, green: 0x3F / 255, blue: 0xD9 / 255)
-private let noPermission = "ต้องให้ผู้ดูแลกลุ่มเปิดสิทธิ์ก่อน (ผู้ดูแลเปิดแผงนี้ครั้งแรก ระบบจะเปิดให้สมาชิกทุกคนอัตโนมัติ)"
+private let noPermission = "คุณยังสร้างโน้ต/อัลบั้มในกลุ่มนี้ไม่ได้ — ให้ผู้ดูแลกลุ่มเปิดแผงโน้ตหรืออัลบั้มสักครั้ง ระบบจะเปิดสิทธิ์ให้สมาชิกทุกคนอัตโนมัติ"
 
 private func day(_ ts: UInt64) -> String {
     let formatter = DateFormatter()

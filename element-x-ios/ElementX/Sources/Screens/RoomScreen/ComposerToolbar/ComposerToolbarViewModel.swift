@@ -87,6 +87,7 @@ final class ComposerToolbarViewModel: ComposerToolbarViewModelType, ComposerTool
         
         state.aranRoomID = roomProxy.id
         state.aranThreadRootID = aranThreadRootID
+        state.aranIsDirect = roomProxy.infoPublisher.value.isDirect || roomProxy.infoPublisher.value.activeMembersCount <= 2
         
         state.keyCommands = [
             .enter { [weak self] in
