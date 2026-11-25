@@ -17,7 +17,8 @@ import pg from "pg";
 import { EVENTS } from "./events.mjs";
 import { renderCard } from "./card.mjs";
 import { createInvites, templateReader } from "./invites.mjs";
-import { transcribe, transcriptText, summarize, ASR_MAX_BYTES } from "./asr.mjs";
+import { transcribe, transcriptText, summarize, summarizeLong, ASR_MAX_BYTES } from "./asr.mjs";
+import { createMeetings } from "./meeting.mjs";
 import { cardExtras, cleanFields, sectionsText, imageToMxc, newSecret, callWebhook, cleanStatus, isActionButton, DT_MODES, cleanQuickReplies } from "./cardkit.mjs";
 
 const run = promisify(execFile);
@@ -313,7 +314,7 @@ async function onAudioMessage(roomId, ev, reply) {
       const file = await uploadText(fname, `${transcript}\n\n— ${ASR_NOTE}\n`);
       if (file) await sendMsg(roomId, { msgtype: "m.file", body: fname, filename: fname, url: file.url, info: { mimetype: "text/plain", size: file.size } });
     }
-    const summary = await summarize(transcript).catch((e) => { log("summary error:", e.message); return null; });
+    const summary = await summarizeLong(transcript).catch((e) => { log("summary error:", e.message); return null; });
     if (summary) {
       await reply(`📝 สรุปการประชุม${dur ? ` (${dur})` : ""}\n\n${summary}\n\n— สรุปโดย AI ในเครื่องของ รพ. · ตรวจทานก่อนใช้`,
         `<p><b>📝 สรุปการประชุม${dur ? ` (${esc(dur)})` : ""}</b></p><p>${esc(summary).replace(/\n/g, "<br>")}</p><p><sub>สรุปโดย AI ในเครื่องของ รพ. · ตรวจทานก่อนใช้</sub></p>`);
@@ -327,6 +328,25 @@ async function onAudioMessage(roomId, ev, reply) {
     asrBusy.delete(ev.sender);
   }
 }
+
+// ── จดการประชุม (meeting.mjs): แอปส่งเสียงสดมาทาง WS /api/notify/meeting/live → บทถอด + สรุป ส่งเข้าแชท ARANKUB AI ──
+async function openIdUser(token) {
+  if (!/^[\w\-.~+/=]{8,256}$/.test(token)) return null;
+  const who = await fetch(`${MATRIX}/_matrix/federation/v1/openid/userinfo?access_token=${encodeURIComponent(token)}`, { signal: AbortSignal.timeout(10_000) })
+    .then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  return who?.sub ?? null;
+}
+const meetings = createMeetings({
+  dir: new URL("./data/meetings/", import.meta.url).pathname,
+  log,
+  whoami: openIdUser,
+  notice: async (mxid, text, html) => say(await dmRoom(mxid), text, html),
+  file: async (mxid, name, text) => {
+    const f = await uploadText(name, text);
+    if (!f) throw new Error("อัปโหลดบทถอดเสียงไม่ได้");
+    await sendMsg(await dmRoom(mxid), { msgtype: "m.file", body: name, filename: name, url: f.url, info: { mimetype: "text/plain", size: f.size } });
+  },
+});
 
 // ชื่อ/รูปของบอท = ชื่อห้องแชทส่วนตัวกับบอท (เปลี่ยนชื่อบอท: Synapse admin API · รูป: PUT profile avatar_url)
 const BOT_NAME = env("BOT_NAME", "ARANKUB AI");
@@ -1032,9 +1052,11 @@ const BUILTIN_CMDS = [
   { command: "help", description: "ดูคำสั่งทั้งหมด" },
   { command: "settings", description: "เลือกเรื่องที่จะรับแจ้งเตือน" },
   { command: "menu", description: "เมนูของแต่ละระบบ", usage: "/menu [ระบบ]" },
+  { command: "meeting", description: "จดประชุม: ถอดเสียง + สรุปการประชุม" },
 ];
 const BUILTIN_MENU = [
   { label: "⚙️ ตั้งค่าแจ้งเตือน", type: "text", text: "/settings" },
+  { label: "🎙 จดประชุม", type: "text", text: "/meeting" },
   { label: "❓ คำสั่งทั้งหมด", type: "text", text: "/help" },
 ];
 const MENU_MAX = 8;
@@ -1194,6 +1216,15 @@ async function onCommand(roomId, ev, { command, args }) {
     return void reply({ body: `คำสั่งที่ใช้ได้:\n${lines.join("\n")}`, "com.arankub.quick_replies": [{ label: "⚙️ ตั้งค่า", text: "/settings" }] });
   }
   if (command === "menu") return void reply(systemMenu(args));
+  if (command === "meeting") {
+    const st = meetings.status();
+    return void reply({ body: "🎙 จดประชุม — ถอดเสียงเป็นข้อความ + สรุปการประชุม (ประเด็น · มติ · งานที่มอบหมาย) ส่งเข้าแชทนี้\n\n"
+      + "1) ประชุมในห้องประชุม: เปิดแอป AranChat บนคอม/มือถือที่วางใกล้ผู้พูด → ห้องแชทใดก็ได้ → ปุ่ม + → \"จดประชุม\" → ไมค์ของเครื่องนี้\n"
+      + "2) Zoom / Teams / Google Meet / ถ่ายทอดสด: เปิดแอป AranChat Desktop บนเครื่องที่เข้าประชุม (Windows) → + → \"จดประชุม\" → เสียงจากเครื่อง + ไมค์\n"
+      + "3) มีไฟล์เสียง/วิดีโอประชุมอยู่แล้ว: ส่งไฟล์เข้าแชทนี้ได้เลย\n\n"
+      + "ระหว่างประชุมเห็นข้อความสด · กด \"จบประชุม\" แล้วบทถอดเต็ม + สรุปจะส่งมาที่นี่ภายในไม่กี่นาที · ประมวลผลบนเครื่องของ รพ. เสียงลบทิ้งเมื่อถอดเสร็จ"
+      + (st.sessions ? `\n\nตอนนี้กำลังจดประชุมอยู่ ${st.sessions} ห้อง` : "") });
+  }
   if (command === "settings") {
     return void reply({ body: settingsText(ev.sender) });
   }
@@ -1843,6 +1874,9 @@ const publicApi = http.createServer(async (req, res) => {
     log("public api error:", e.message);
     reply(500, { error: "ระบบแจ้งเตือนขัดข้อง" });
   }
+});
+publicApi.on("upgrade", (req, socket, head) => {
+  if (!meetings.handleUpgrade(req, socket, head)) socket.destroy();
 });
 function listenPublic() {
   publicApi.once("error", (e) => { log(`เปิดทางเข้า ${PUB_HOST}:${PUB_PORT} ไม่ได้ (${e.code}) — ลองใหม่ใน 30 วินาที`); setTimeout(listenPublic, 30_000); });

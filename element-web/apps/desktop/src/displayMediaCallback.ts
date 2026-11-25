@@ -29,3 +29,15 @@ export const consumeDisplayMediaCallback = (): DisplayMediaCallback | null => {
     displayMediaCallback = null;
     return callback;
 };
+
+// AranChat: "จดประชุม" ขอเสียงจากลำโพงเครื่อง (Zoom/Teams/ถ่ายทอดสด) — คำขอ getDisplayMedia ครั้งถัดไป
+// ตอบทันทีด้วยจอหลัก + audio "loopback" โดยไม่เปิดหน้าต่างเลือกจอ (หน้าเว็บทิ้งภาพไป ใช้แค่เสียง) · หมดอายุใน 10 วินาที
+let aranLoopbackUntil = 0;
+export const armAranLoopback = (): void => {
+    aranLoopbackUntil = Date.now() + 10_000;
+};
+export const takeAranLoopback = (): boolean => {
+    const armed = Date.now() < aranLoopbackUntil;
+    aranLoopbackUntil = 0;
+    return armed;
+};

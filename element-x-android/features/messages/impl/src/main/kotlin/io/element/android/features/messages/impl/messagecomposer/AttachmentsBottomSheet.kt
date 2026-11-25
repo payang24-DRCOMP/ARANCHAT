@@ -93,6 +93,15 @@ internal fun AttachmentsBottomSheet(
             onDismiss = { showContacts = false },
         )
     }
+    // AranChat: จดประชุม (aranchat/AranMeetingSheet.kt)
+    val aranBot = io.element.android.features.messages.impl.aranchat.LocalAranBot.current
+    var showMeeting by remember { mutableStateOf(false) }
+    if (showMeeting && aranBot != null) {
+        io.element.android.features.messages.impl.aranchat.AranMeetingSheet(
+            bot = aranBot,
+            onDismiss = { showMeeting = false },
+        )
+    }
     if (showStickers) {
         AranStickerSheet(
             onStickerClick = {
@@ -127,6 +136,14 @@ internal fun AttachmentsBottomSheet(
                     showContacts = true
                     state.eventSink(MessageComposerEvent.LoadAranFriends)
                 },
+                onMeetingClick = if (aranBot != null && !state.isInThreadTimeline) {
+                    {
+                        isVisible = false
+                        showMeeting = true
+                    }
+                } else {
+                    null
+                },
                 onBoardClick = if (aranBoard != null) {
                     { kind ->
                         isVisible = false
@@ -149,6 +166,7 @@ private fun AttachmentSourcePickerMenu(
     onStickersClick: () -> Unit = {},
     onContactsClick: () -> Unit = {},
     onBoardClick: ((io.element.android.features.messages.impl.aranchat.AranBoardKind) -> Unit)? = null,
+    onMeetingClick: (() -> Unit)? = null,
 ) {
     Column(
         modifier = Modifier
@@ -171,6 +189,13 @@ private fun AttachmentSourcePickerMenu(
                 modifier = Modifier.clickable { onBoardClick(io.element.android.features.messages.impl.aranchat.AranBoardKind.ALBUM) },
                 leadingContent = ListItemContent.Icon(IconSource.Vector(CompoundIcons.Image())),
                 content = { Text("อัลบั้ม") },
+            )
+        }
+        if (onMeetingClick != null) {
+            ListItem(
+                modifier = Modifier.clickable(onClick = onMeetingClick),
+                leadingContent = ListItemContent.Icon(IconSource.Vector(CompoundIcons.MicOnSolid())),
+                content = { Text("จดประชุม (ถอดเสียง + สรุป)") },
             )
         }
         if (AranStickerPack.load(LocalContext.current).isNotEmpty()) {

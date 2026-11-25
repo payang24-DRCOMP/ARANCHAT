@@ -9,7 +9,7 @@ import { app, autoUpdater, desktopCapturer, ipcMain, powerSaveBlocker, TouchBar,
 
 import IpcMainEvent = Electron.IpcMainEvent;
 import { randomArray } from "./utils.js";
-import { consumeDisplayMediaCallback } from "./displayMediaCallback.js";
+import { armAranLoopback, consumeDisplayMediaCallback } from "./displayMediaCallback.js";
 import Store, { clearData } from "./store.js";
 import { getConfig } from "./config.js";
 
@@ -167,6 +167,12 @@ ipcMain.on("ipcCall", async function (_ev: IpcMainEvent, payload) {
                 ret = [];
             }
             break;
+        case "aranPrepareLoopback":
+            // AranChat จดประชุม: เก็บเสียงจากลำโพงเครื่องได้บน Windows (Chromium loopback) — macOS/Linux ใช้ไมค์อย่างเดียว
+            if (process.platform === "win32") armAranLoopback();
+            ret = process.platform === "win32";
+            break;
+
         case "callDisplayMediaCallback":
             consumeDisplayMediaCallback()?.({ video: args[0] });
             ret = null;

@@ -57,6 +57,9 @@ dependencies {
     implementation(projects.libraries.audio.api)
     implementation(projects.libraries.voiceplayer.api)
     implementation(projects.libraries.voicerecorder.api)
+    // AranChat จดประชุม: WebSocket ส่งเสียงสด
+    implementation(platform(libs.network.okhttp.bom))
+    implementation(libs.network.okhttp)
     implementation(projects.libraries.mediaplayer.api)
     implementation(projects.libraries.push.api)
     implementation(projects.libraries.uiCommon)

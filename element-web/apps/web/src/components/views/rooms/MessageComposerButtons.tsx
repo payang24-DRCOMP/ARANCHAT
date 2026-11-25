@@ -18,6 +18,7 @@ import {
 import React, { type JSX, type ReactElement, type ReactNode, useContext } from "react";
 import {
     MicOnIcon,
+    MicOnSolidIcon,
     OverflowHorizontalIcon,
     PollsIcon,
     UserProfileIcon,
@@ -37,6 +38,7 @@ import Modal from "../../../Modal";
 import { aranChatConfig } from "../../../aranchat/config";
 import { AranContactPickerDialog } from "../../../aranchat/AranContact";
 import { AranBoardDialog } from "../../../aranchat/AranBoard";
+import { openAranMeeting } from "../../../aranchat/AranMeeting";
 import PollCreateDialog from "../elements/PollCreateDialog";
 import { MatrixClientPeg } from "../../../MatrixClientPeg";
 import MatrixClientContext from "../../../contexts/MatrixClientContext";
@@ -106,6 +108,7 @@ const MessageComposerButtons: React.FC<IProps> = (props: IProps) => {
             )),
             aranContactButton(room, props.relation),
             ...aranBoardButtons(room, props.relation),
+            aranMeetingButton(room, props.relation),
             showStickersButton(props),
             voiceRecordingButton(props, narrow),
             props.showPollsButton ? pollButton(room, props.relation) : null,
@@ -127,6 +130,7 @@ const MessageComposerButtons: React.FC<IProps> = (props: IProps) => {
         moreButtons = [
             aranContactButton(room, props.relation),
             ...aranBoardButtons(room, props.relation),
+            aranMeetingButton(room, props.relation),
             showStickersButton(props),
             voiceRecordingButton(props, narrow),
             props.showPollsButton ? pollButton(room, props.relation) : null,
@@ -251,6 +255,29 @@ function AranBoardButton({ room, kind }: { room: Room; kind: "note" | "album" })
             title={kind === "note" ? "โน้ต" : "อัลบั้ม"}
         >
             {kind === "note" ? <DocumentIcon /> : <ImageIcon />}
+        </CollapsibleButton>
+    );
+}
+
+/** AranChat: จดประชุม (ถอดเสียงสด + สรุปการประชุม) — src/aranchat/AranMeeting.tsx · ไม่แสดงในเธรด */
+function aranMeetingButton(room: Room, relation?: IEventRelation): ReactElement | null {
+    if (!aranChatConfig() || relation?.rel_type === THREAD_RELATION_TYPE.name) return null;
+    return <AranMeetingButton key="aran_meeting" room={room} />;
+}
+
+function AranMeetingButton({ room }: { room: Room }): JSX.Element {
+    const closeMenu = useContext(OverflowMenuContext);
+    return (
+        <CollapsibleButton
+            className="mx_MessageComposer_button"
+            onClick={() => {
+                closeMenu?.();
+                // แชทส่วนตัว/ห้องบอท ไม่ใส่ชื่อห้องในชื่อการประชุม
+                openAranMeeting(room.getJoinedMemberCount() > 2 ? room.name : undefined);
+            }}
+            title="จดประชุม (ถอดเสียง + สรุป)"
+        >
+            <MicOnSolidIcon />
         </CollapsibleButton>
     );
 }

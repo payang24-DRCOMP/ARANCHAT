@@ -39,7 +39,7 @@ import webContentsHandler from "./webcontents-handler.js";
 import * as updater from "./updater.js";
 import ProtocolHandler from "./protocol.js";
 import { _t, AppLocalization } from "./language-helper.js";
-import { setDisplayMediaCallback } from "./displayMediaCallback.js";
+import { setDisplayMediaCallback, takeAranLoopback } from "./displayMediaCallback.js";
 import { setupMacosTitleBar } from "./macos-titlebar.js";
 import { setupMediaAuth } from "./media-auth.js";
 import { handleWindowClose, revealMainWindow } from "./window-close.js";
@@ -389,6 +389,21 @@ app.on("ready", async () => {
 
     session.defaultSession.setDisplayMediaRequestHandler(
         (_, callback) => {
+            // AranChat จดประชุม (Windows): ขอเสียงลำโพงเครื่อง — ตอบเองโดยไม่เปิดหน้าต่างเลือกจอ (ipc "aranPrepareLoopback")
+            if (takeAranLoopback()) {
+                desktopCapturer
+                    .getSources({ types: ["screen"] })
+                    .then((sources) => {
+                        // oxlint-disable-next-line promise/no-callback-in-promise
+                        callback({ video: sources[0], audio: "loopback" });
+                    })
+                    .catch((err) => {
+                        console.error("AranChat loopback: failed to get screen source:", err);
+                        // oxlint-disable-next-line promise/no-callback-in-promise
+                        callback({});
+                    });
+                return;
+            }
             if (process.env.XDG_SESSION_TYPE === "wayland") {
                 // On Wayland, calling getSources() opens the xdg-desktop-portal picker.
                 // The user can only select a single source there, so Electron will return an array with exactly one entry.

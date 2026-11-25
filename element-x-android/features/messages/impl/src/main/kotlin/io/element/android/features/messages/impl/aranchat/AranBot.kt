@@ -133,6 +133,15 @@ class AranBot(
         }
     }
 
+    /** ชื่อกลุ่มสำหรับตั้งชื่อการประชุม (แชทส่วนตัว = null) */
+    suspend fun groupName(): String? = room.info().takeIf { it.joinedMembersCount > 2 }?.name
+
+    /** จดประชุม: ทางส่งเสียงสด (notify/meeting.mjs) */
+    fun meetingLiveUrl(): String = "wss://chat.${client.userIdServerName()}/api/notify/meeting/live"
+
+    /** OpenID token ใหม่ (ยืนยันตัวกับ notify — หมดอายุใน 1 ชม.) */
+    suspend fun openIdToken(): String = JSONObject(client.requestOpenIdToken().getOrThrow()).getString("access_token")
+
     /** ส่งข้อความหาบอท (เมนู / ปุ่มตอบด่วน) */
     suspend fun sendText(text: String): Result<Unit> = runCatching {
         room.sendRawForEventId("m.room.message", JSONObject().put("msgtype", "m.text").put("body", text.trim()).toString()).getOrThrow()

@@ -14,7 +14,7 @@ const MEETING_MIN_S = 180;                        // ยาวกว่า 3 น
 /** ถอดเสียง → { text, duration_s, segments?, speakers? } */
 export async function transcribe(buf, { name = "audio", mime = "application/octet-stream", durationS = 0, meeting } = {}) {
   const fd = new FormData();
-  fd.append("file", new Blob([buf], { type: mime }), name);
+  fd.append("file", buf instanceof Blob ? buf : new Blob([buf], { type: mime }), name);
   const mode = meeting ?? durationS >= MEETING_MIN_S ? "meeting" : "standard";
   fd.append("mode", mode);
   // ไฟล์ยาว: ประมวลผลได้ราว 7 เท่าของเวลาจริงบน GPU — เผื่อเวลาโหลดโมเดลครั้งแรก
@@ -54,10 +54,56 @@ const SUMMARY_PROMPT = `คุณคือเลขานุการการ�
 
 ข้อห้าม: ห้ามแต่งข้อมูลที่ไม่มีในบทถอด · บทถอดเสียงอาจสะกดผิด ให้ตีความตามบริบทและเขียนให้ถูก · ห้ามใส่ชื่อผู้ป่วยหรือเลขประจำตัวผู้ป่วย`;
 
+const NOTES_PROMPT = `คุณคือเลขานุการการประชุมของโรงพยาบาล นี่คือบทถอดเสียง "ช่วงหนึ่ง" ของการประชุมที่ยาว
+จดบันทึกเป็นภาษาไทยแบบย่อ บรรทัดละข้อ ขึ้นต้นด้วย "- " ให้ครบทุกเรื่องที่คุย ทุกข้อตกลง/มติ ทุกงานที่มีคนรับไปทำ (ใคร ทำอะไร เมื่อไร) ตัวเลข วันที่ ที่สำคัญ
+ไม่ต้องมีหัวข้อหรือคำเกริ่น · ห้ามแต่งข้อมูลที่ไม่มีในบทถอด · ห้ามใส่ชื่อผู้ป่วยหรือเลขประจำตัวผู้ป่วย`;
+
+async function chat(system, user, ctx = 16384) {
+  const r = await fetch(OLLAMA_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: SUMMARY_MODEL, stream: false, think: false,
+      options: { temperature: 0.2, num_ctx: ctx },
+      messages: [{ role: "system", content: system }, { role: "user", content: user }],
+    }),
+    signal: AbortSignal.timeout(300_000),
+  });
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(data.error ?? `ollama ${r.status}`);
+  return String(data.message?.content ?? "").replace(/<think>[\s\S]*?<\/think>/g, "").trim();
+}
+
+/** ตัดบทถอดเป็นช่วง ๆ ตามบรรทัด (ไม่ตัดกลางประโยค) */
+function chunks(text, size) {
+  const out = []; let cur = "";
+  for (const line of text.split("\n")) {
+    if (cur && cur.length + line.length > size) { out.push(cur); cur = ""; }
+    cur += (cur ? "\n" : "") + line;
+    while (cur.length > size * 1.5) { out.push(cur.slice(0, size)); cur = cur.slice(size); }
+  }
+  if (cur.trim()) out.push(cur);
+  return out;
+}
+
+/** สรุปการประชุมยาว (เกิน ~1 ชม.): จดบันทึกทีละช่วง แล้วสรุปรวมจากบันทึก — ไม่ทิ้งช่วงกลางของการประชุม */
+export async function summarizeLong(transcript, onProgress) {
+  if (transcript.length <= 24_000) return summarize(transcript);
+  const parts = chunks(transcript, 12_000);
+  const notes = [];
+  for (let i = 0; i < parts.length; i++) {
+    onProgress?.(i + 1, parts.length);
+    notes.push(`[ช่วงที่ ${i + 1}/${parts.length}]\n${await chat(NOTES_PROMPT, `บทถอดเสียงช่วงที่ ${i + 1} จาก ${parts.length}:\n${parts[i]}`)}`);
+  }
+  let joined = notes.join("\n\n");
+  if (joined.length > 24_000) joined = joined.slice(0, 24_000);
+  return summarize(`(บันทึกย่อเรียงตามช่วงเวลาของการประชุม)\n${joined}`, { force: true });
+}
+
 /** สรุปประชุมด้วย AI ในเครื่อง — คืนข้อความ หรือ null ถ้าสั้นเกินไป/ระบบสรุปไม่ว่าง */
-export async function summarize(transcript) {
-  if (transcript.length < 200) return null;
-  // ตัดให้พอดีบริบทของโมเดล (ประมาณ 1 ชม. ของการพูด) — ยาวกว่านั้นสรุปจากช่วงต้นและท้าย
+export async function summarize(transcript, { force = false } = {}) {
+  if (transcript.length < 200 && !force) return null;
+  // ตัดให้พอดีบริบทของโมเดล (ประมาณ 1 ชม. ของการพูด) — ยาวกว่านั้นใช้ summarizeLong
   const text = transcript.length > 24_000 ? `${transcript.slice(0, 16_000)}\n…(ตัดช่วงกลาง)…\n${transcript.slice(-8_000)}` : transcript;
   const r = await fetch(OLLAMA_URL, {
     method: "POST",

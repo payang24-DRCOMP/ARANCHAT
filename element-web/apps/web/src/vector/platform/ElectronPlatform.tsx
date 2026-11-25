@@ -451,6 +451,11 @@ export default class ElectronPlatform extends BasePlatform {
         return this.ipc.call("getDesktopCapturerSources", options);
     }
 
+    /** AranChat จดประชุม: ให้คำขอ getDisplayMedia ถัดไปได้เสียงลำโพงเครื่อง (Windows) — false = เครื่องนี้ทำไม่ได้ */
+    public async aranPrepareLoopback(): Promise<boolean> {
+        return this.ipc.call("aranPrepareLoopback").catch(() => false);
+    }
+
     public supportsDesktopCapturer(): boolean {
         return true;
     }

@@ -1,0 +1,57 @@
+/* AranChat — จดประชุม (src/aranchat/AranMeeting.tsx): หน้าตั้งค่า + แผงลอยมุมจอ */
+.mx_AranMeeting_setup {
+    max-width: 520px;
+    .mx_AranMeeting_hint { color: var(--cpd-color-text-secondary); margin: 0 0 12px; line-height: 1.5; }
+    .mx_AranMeeting_field { display: flex; flex-direction: column; gap: 6px; margin: 0 0 12px; border: 0; padding: 0; }
+    .mx_AranMeeting_field > span, legend { font-weight: 600; margin-bottom: 4px; }
+    input[type="text"], .mx_AranMeeting_field > input {
+        font: inherit; padding: 8px 10px; border-radius: 8px;
+        border: 1px solid var(--cpd-color-border-interactive-primary); background: var(--cpd-color-bg-canvas-default); color: inherit;
+    }
+    fieldset label, .mx_AranMeeting_check { display: block; padding: 8px 10px; border-radius: 8px; cursor: pointer; }
+    fieldset label:hover { background: var(--cpd-color-bg-subtle-secondary); }
+    small { display: block; color: var(--cpd-color-text-secondary); margin: 2px 0 0 24px; font-size: 12px; }
+    .mx_AranMeeting_disabled { opacity: 0.5; cursor: default; }
+    .mx_AranMeeting_privacy { font-size: 12px; color: var(--cpd-color-text-secondary); background: var(--cpd-color-bg-subtle-secondary); padding: 8px 10px; border-radius: 8px; }
+}
+.mx_AranMeeting_error { color: var(--cpd-color-text-critical-primary); }
+.mx_AranMeeting_actions { display: flex; gap: 8px; justify-content: flex-end; align-items: center; margin-top: 8px; }
+.mx_AranMeeting_btn {
+    font: inherit; font-weight: 600; padding: 7px 14px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--cpd-color-border-interactive-primary); background: var(--cpd-color-bg-canvas-default); color: var(--cpd-color-text-primary);
+    &:disabled { opacity: 0.6; cursor: default; }
+}
+.mx_AranMeeting_primary { background: var(--cpd-color-bg-action-primary-rest); color: var(--cpd-color-text-on-solid-primary); border-color: transparent; }
+.mx_AranMeeting_danger { background: var(--cpd-color-bg-critical-primary); color: var(--cpd-color-text-on-solid-primary); border-color: transparent; }
+
+.mx_AranMeeting_panel {
+    position: fixed; right: 16px; bottom: 16px; z-index: 4000;
+    width: min(380px, calc(100vw - 32px));
+    background: var(--cpd-color-bg-canvas-default); color: var(--cpd-color-text-primary);
+    border: 1px solid var(--cpd-color-border-interactive-secondary); border-radius: 14px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22); padding: 10px 12px; font-size: 14px;
+    &.mx_AranMeeting_min { width: auto; max-width: calc(100vw - 32px); }
+}
+.mx_AranMeeting_head { display: flex; align-items: center; gap: 8px; }
+.mx_AranMeeting_title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mx_AranMeeting_min .mx_AranMeeting_title { max-width: 160px; }
+.mx_AranMeeting_time { font-variant-numeric: tabular-nums; color: var(--cpd-color-text-secondary); }
+.mx_AranMeeting_icon { border: 0; background: none; color: inherit; cursor: pointer; font-size: 16px; width: 28px; height: 28px; border-radius: 6px;
+    &:hover { background: var(--cpd-color-bg-subtle-secondary); } }
+.mx_AranMeeting_dot { width: 10px; height: 10px; border-radius: 50%; background: #e5484d; flex: none; animation: mx_AranMeeting_pulse 1.4s infinite; }
+.mx_AranMeeting_dotOff { background: var(--cpd-color-icon-tertiary); animation: none; }
+@keyframes mx_AranMeeting_pulse { 50% { opacity: 0.35; } }
+@media (prefers-reduced-motion: reduce) { .mx_AranMeeting_dot { animation: none; } }
+.mx_AranMeeting_status { display: flex; align-items: center; gap: 8px; margin: 8px 0 6px; color: var(--cpd-color-text-secondary); font-size: 12px; }
+.mx_AranMeeting_level { display: inline-flex; gap: 2px; align-items: flex-end; height: 14px;
+    i { width: 3px; height: 4px; background: var(--cpd-color-bg-subtle-primary); border-radius: 1px; }
+    i:nth-child(n+4) { height: 8px; } i:nth-child(n+7) { height: 12px; }
+    i.on { background: var(--cpd-color-bg-success-primary, #2e9d5c); } }
+.mx_AranMeeting_warn { color: var(--cpd-color-text-critical-primary); }
+.mx_AranMeeting_caps {
+    max-height: 220px; overflow-y: auto; background: var(--cpd-color-bg-subtle-secondary); border-radius: 10px; padding: 8px 10px;
+    p { margin: 0 0 6px; line-height: 1.5; }
+}
+.mx_AranMeeting_partial { color: var(--cpd-color-text-secondary); font-style: italic; }
+.mx_AranMeeting_muted { color: var(--cpd-color-text-secondary); }
+.mx_AranMeeting_note { font-size: 12px; margin: 8px 0 0; color: var(--cpd-color-text-secondary); }

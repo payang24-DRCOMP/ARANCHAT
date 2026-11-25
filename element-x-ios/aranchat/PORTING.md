@@ -34,6 +34,7 @@
 | ภาษาไทย | ✅ | `th.lproj` จาก Android (`aranchat/i18n-th.py`) · ตั้งค่า > ภาษา / Language → หน้า iOS ของแอป (เลือกภาษาต่อแอป) |
 | โน้ต/อัลบั้มในกลุ่ม | ✅ build ผ่าน (รอทดสอบ) | `Services/AranChat/AranBoard.swift`, `Screens/AranBoard/AranBoardSheet.swift` · เมนู + → โน้ต / อัลบั้ม · การ์ดในแชท · เพิ่มรูปในแผงได้ · แตะรูป = เปิดเธรดของอัลบั้ม (ดูรูปเต็ม) |
 | ถอดเสียง | ✅ build ผ่าน (รอทดสอบ) | `Screens/Timeline/View/TimelineItemViews/AranTranscribeView.swift` · ปุ่ม "🎙 ถอดเป็นข้อความ" ใต้ข้อความเสียง/ไฟล์เสียง (รวมไฟล์เสียงที่ส่งเป็น m.file) · ≤ 25 MB: `POST /api/notify/asr` + header `X-AranChat-OpenID` · > 25 MB (ประชุม): ปุ่ม "📝 ส่งให้บอทถอด + สรุปประชุม" → ถอดรหัสในเครื่องแล้วส่ง m.audio (มี duration) เข้าแชทบอท (ไม่เข้ารหัส, ≤ 200 MB) |
+| จดประชุม (ถอดเสียงสด + สรุป) | ⬜ ยังไม่ทำ — ดูข้อ K | Android: `aranchat/AranMeeting.kt`, `AranMeetingSheet.kt` · เว็บ: `src/aranchat/meeting.ts`, `AranMeeting.tsx` |
 
 ## ลำดับที่แนะนำ
 
@@ -104,6 +105,29 @@
 - การ์ดแนะนำเพื่อน: body ขึ้นต้น `"👤 "` + `content["com.arankub.contact"]`
 - ลิงก์ชวน `https://chat.arankub.com/i/<รหัส 8 ตัว>` (Universal Link — เพิ่ม `apple-app-site-association` ที่ `chat.arankub.com/.well-known/` คู่กับ `assetlinks.json` ของ Android) → `POST https://chat.arankub.com/api/notify/invite/<รหัส>/accept {openid}` → เข้าห้อง/เพิ่มเพื่อน
 - QR โค้ดของฉัน (ตั้งค่า): `POST …/api/notify/invite {openid}` → ลิงก์ชวนส่วนตัว
+
+
+### K. จดประชุม (ถอดเสียงสด + สรุปการประชุม) — Android: `aranchat/AranMeeting.kt` (service) + `AranMeetingSheet.kt` (หน้าจอ)
+- ทางเข้า: เมนู + ในห้องแชท → "จดประชุม (ถอดเสียง + สรุป)" (ไม่แสดงในเธรด) · บอทมีคำสั่ง `/meeting` อธิบายวิธีใช้
+- เสียง: `AVAudioEngine` input tap → แปลงเป็น **PCM16 little-endian · 16 kHz · mono** (`AVAudioConverter`) ส่งก้อนละ ~200 ms (6400 bytes)
+  - `AVAudioSession` category `.playAndRecord`/`.record`, mode `.measurement` (ไม่ตัดเสียงเบา/ไกล — ไมค์วางกลางโต๊ะ)
+  - **Background**: เปิด `UIBackgroundModes: audio` ใน `app.yml` (ไม่งั้นล็อกจอแล้วหยุดบันทึก) · `NSMicrophoneUsageDescription` มีอยู่แล้ว (ข้อความเสียง)
+- WS `wss://chat.<เซิร์ฟเวอร์>/api/notify/meeting/live` (`URLSessionWebSocketTask`)
+  1. ส่ง text JSON `{"type":"start","openid":"<OpenID access_token>","title":"…","captions":true}`
+     - ต่อใหม่หลังเน็ตหลุด: `{"type":"resume","openid":"<token ใหม่>","session":"<id จาก ready>"}` — **ขอ OpenID token ใหม่ทุกครั้งที่ต่อ** (หมดอายุ 1 ชม.)
+  2. รอ `{"type":"ready","session","captions":bool,"note"?}` แล้วส่งเสียงเป็น binary message
+  3. รับ `partial` {text} (ข้อความที่กำลังพูด) · `final` {text,start,end} (จบประโยค) · `level` {seconds} (ทุก 5 วิ) · `error` {message}
+  4. จบ: ส่ง text `end` → ได้ `processing` แล้ว server ปิดสาย · ผลบทถอดเต็ม (ไฟล์ .txt) + สรุป ส่งเข้าแชท ARANKUB AI เอง
+  - ส่ง text `ping` ได้ (ตอบ `pong`) — หรือใช้ `sendPing` ของ URLSession ทุก 25 วิ
+- เน็ตหลุด: เก็บก้อนเสียงในคิว (≤ ~30 นาที = 9000 ก้อน) → ต่อใหม่ (หน่วง 1,2,4,8,15 วิ) ด้วย resume → ส่งที่ค้างก่อนเสียงใหม่
+  - `error` ที่ข้อความมีคำว่า "ปิดไปแล้ว" ตอน resume = server รีสตาร์ท → ล้าง session แล้ว start ใหม่ (ชื่อเดิม) ต่อเลย
+  - `error` ก่อนได้ ready ครั้งแรก = ผิดถาวร (token ผิด / เต็ม) → หยุดและแสดงข้อความ
+- หน้าจอ: ชื่อการประชุม (ค่าเริ่มต้น "ประชุม <ชื่อกลุ่ม> <วันที่>" · แชทส่วนตัวไม่ใส่ชื่อห้อง) · สวิตช์ "แสดงข้อความสด" ·
+  ระหว่างบันทึก: จุดแดง เวลา แถบระดับเสียง สถานะ (กำลังฟัง/เน็ตหลุด/พัก/บันทึกอย่างเดียว) รายการข้อความสด ปุ่ม พัก/บันทึกต่อ และ จบประชุม (ถามยืนยัน)
+  - ปิดหน้าได้ การบันทึกยังทำต่อ · เปิดเมนูอีกครั้ง = กลับมาหน้าเดิม · มีได้ทีละการประชุมต่อเครื่อง
+  - พัก = หยุดส่งเสียง (ไม่ต้องบอก server)
+  - ข้อความเตือน: "แจ้งผู้เข้าประชุมว่ากำลังบันทึก · หลีกเลี่ยงการเอ่ยชื่อ/เลขประจำตัวผู้ป่วย · เสียงลบทิ้งเมื่อถอดเสร็จ"
+- iOS เก็บเสียงจากแอปอื่น (Zoom) ไม่ได้ — ใช้ไมค์อย่างเดียว (ประชุม Zoom ให้ใช้แอป Desktop บน Windows)
 
 ### J. อื่นๆ
 - ภาษาไทย: Element X iOS มีคำแปลไทยจาก Localazy อยู่แล้ว · ข้อความใหม่ของ AranChat ใช้ชุดคำเดียวกับ Android (`values-th/aranchat_th.xml`) และเว็บ
