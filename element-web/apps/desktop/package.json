@@ -3,7 +3,7 @@
     "productName": "Element",
     "main": "lib/electron-main.js",
     "exports": "./lib/electron-main.js",
-    "version": "26.11.10",
+    "version": "26.11.11",
     "description": "Element: the future of secure communication",
     "author": {
         "name": "Element",

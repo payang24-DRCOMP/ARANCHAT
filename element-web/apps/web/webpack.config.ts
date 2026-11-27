@@ -714,6 +714,8 @@ export default (env: string, argv: Record<string, any>): webpack.Configuration =
                     { from: "media/**", context: path.resolve(__dirname, "res/") },
                     // AranChat: สติกเกอร์ (aranchat/make-stickers.mjs)
                     { from: "aranchat-stickers/**", context: path.resolve(__dirname, "res/") },
+                    // AranChat: AudioWorklet ของจดประชุม (src/aranchat/meeting.ts)
+                    { from: "aranchat-worklet/**", context: path.resolve(__dirname, "res/") },
                     { from: "config.json", noErrorOnMissing: true },
                     // Element Call embedded widget
                     {

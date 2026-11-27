@@ -39,31 +39,8 @@ export function systemAudioSupport(): "desktop" | "browser" | null {
 }
 
 // แปลงเสียงเป็น PCM16 16 kHz mono ใน AudioWorklet (ลดอัตราสุ่มเอง — ไม่พึ่ง AudioContext ที่ตั้ง sampleRate ได้)
-const WORKLET = `
-class AranPcm extends AudioWorkletProcessor {
-  constructor() { super(); this.ratio = sampleRate / 16000; this.pos = 0; this.buf = new Int16Array(3200); this.n = 0; this.sum = 0; this.cnt = 0; }
-  process(inputs) {
-    const ch = inputs[0]; if (!ch || !ch.length) return true;
-    const len = ch[0].length;
-    for (let i = 0; i < len; i++) {
-      let v = 0; for (let c = 0; c < ch.length; c++) v += ch[c][i]; v /= ch.length;
-      this.sum += v * v; this.cnt++;
-      this.pos += 1;
-      if (this.pos >= this.ratio) {
-        this.pos -= this.ratio;
-        const s = Math.max(-1, Math.min(1, v));
-        this.buf[this.n++] = s < 0 ? s * 0x8000 : s * 0x7fff;
-        if (this.n === this.buf.length) {
-          this.port.postMessage({ pcm: this.buf.buffer, rms: Math.sqrt(this.sum / this.cnt) }, [this.buf.buffer]);
-          this.buf = new Int16Array(3200); this.n = 0; this.sum = 0; this.cnt = 0;
-        }
-      }
-    }
-    return true;
-  }
-}
-registerProcessor("aran-pcm", AranPcm);
-`;
+// ไฟล์ worklet อยู่ที่ res/aranchat-worklet/aran-pcm.js (คัดลอกโดย webpack) — ห้ามใช้ blob: เพราะ CSP script-src ของ index.html บล็อก
+const WORKLET_URL = "aranchat-worklet/aran-pcm.js";
 
 export class MeetingRecorder {
     private ctx?: AudioContext;
@@ -111,9 +88,7 @@ export class MeetingRecorder {
         if (!this.streams.length) throw new Error("ไม่มีแหล่งเสียง");
 
         this.ctx = new AudioContext();
-        const url = URL.createObjectURL(new Blob([WORKLET], { type: "application/javascript" }));
-        await this.ctx.audioWorklet.addModule(url);
-        URL.revokeObjectURL(url);
+        await this.ctx.audioWorklet.addModule(new URL(WORKLET_URL, document.baseURI).href);
         const node = new AudioWorkletNode(this.ctx, "aran-pcm", { channelCount: 1, channelCountMode: "explicit" });
         for (const s of this.streams) this.ctx.createMediaStreamSource(s).connect(node); // ผสมไมค์ + เสียงเครื่อง
         const mute = this.ctx.createGain();
